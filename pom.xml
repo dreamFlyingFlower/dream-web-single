@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>dream-web-single</artifactId>
+	<version>${dream-web-single.version}</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>dream.flying.flower</groupId>
+		<artifactId>dream-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	
+	<properties>
+		<dream-web-single.version>0.0.1</dream-web-single.version>
+	</properties>
+
+	<modules>
+		<module>dream-web</module>
+	</modules>
+
+</project>
