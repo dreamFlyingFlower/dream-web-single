@@ -1,4 +1,4 @@
-package com.dream.web.common.cache;
+package com.dream.web.cache;
 
 /**
  * Redis Key管理

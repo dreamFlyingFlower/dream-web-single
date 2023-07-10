@@ -49,6 +49,11 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserVO, UserQuery
 
 	@Autowired
 	private RoleOrgMapper roleOrgMapper;
+	
+	@Override
+	public UserVO getByMobile(String mobile) {
+		return baseMapper.getByMobile(mobile);
+	}
 
 	@Override
 	public UserVO getByUsername(String username) {

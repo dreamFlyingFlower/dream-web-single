@@ -1,10 +1,10 @@
 package com.dream.web.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.dream.web.mapper.UserMapper;
 import com.dream.web.mobile.MobileUserDetailsService;
 import com.dream.web.service.UserService;
 import com.dream.web.vo.UserVO;
@@ -19,13 +19,12 @@ import com.dream.web.vo.UserVO;
 @Service
 public class MobileUserDetailsServiceImpl implements MobileUserDetailsService {
 
+	@Autowired
 	private UserService userService;
-
-	private UserMapper userMapper;
 
 	@Override
 	public UserDetails loadUserByMobile(String mobile) throws UsernameNotFoundException {
-		UserVO usesrVo = userMapper.getByMobile(mobile);
+		UserVO usesrVo = userService.getByMobile(mobile);
 		if (usesrVo == null) {
 			throw new UsernameNotFoundException("手机号或验证码错误");
 		}

@@ -1,4 +1,4 @@
-package com.dream.web.common.cache;
+package com.dream.web.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

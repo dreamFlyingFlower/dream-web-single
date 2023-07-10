@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dream.web.mobile.MobileVerifyCodeService;
+import com.dream.web.sms.SmsManager;
 
 /**
  * 短信验证码效验
@@ -16,10 +17,10 @@ import com.dream.web.mobile.MobileVerifyCodeService;
 public class MobileVerifyCodeServiceImpl implements MobileVerifyCodeService {
 
 	@Autowired
-	private SmsApi smsApi;
+	private SmsManager smsManager;
 
 	@Override
 	public boolean verifyCode(String mobile, String code) {
-		return smsApi.verifyCode(mobile, code);
+		return smsManager.verifyCode(mobile, code);
 	}
 }

@@ -14,8 +14,9 @@ import com.dream.web.vo.UserVO;
  */
 public interface UserService extends BaseService<User, UserVO, UserQuery> {
 
+	UserVO getByMobile(String mobile);
+
 	UserVO getByUsername(String username);
 
 	void getUserDetails(UserVO usesrVo);
-
 }
