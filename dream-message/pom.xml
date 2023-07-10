@@ -28,7 +28,10 @@
 			<groupId>com.qiniu</groupId>
 			<artifactId>qiniu-java-sdk</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>dream.flying.flower</groupId>
+			<artifactId>dream-basic-web</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
