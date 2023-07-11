@@ -1,4 +1,4 @@
-package com.electric.monitor.utils;
+package com.dream.monitor.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

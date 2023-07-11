@@ -1,5 +1,6 @@
 package com.dream.message.sms;
 
+import java.rmi.ServerException;
 import java.util.Map;
 
 import com.aliyun.dysmsapi20170525.Client;
@@ -7,11 +8,9 @@ import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
 import com.dream.message.sms.config.SmsConfig;
-import com.electric.framework.constant.Constant;
-import com.electric.framework.exception.ServerException;
-import com.electric.framework.utils.JsonUtils;
+import com.wy.collection.MapTool;
+import com.wy.result.ResultException;
 
-import cn.hutool.core.map.MapUtil;
 
 /**
  * 阿里云短信
@@ -46,8 +45,8 @@ public class AliyunSmsStrategy implements SmsStrategy {
 		request.setTemplateCode(smsConfig.getTemplateId());
 		request.setPhoneNumbers(mobile);
 		// request.setTemplateParam("{\"code\":\"1234\"}");
-		if (MapUtil.isNotEmpty(params)) {
-			request.setTemplateParam(JsonUtils.toJsonString(params));
+		if (MapTool.isNotEmpty(params)) {
+			request.setTemplateParam(JsonTools.toJsonString(params));
 		}
 
 		try {
@@ -56,10 +55,10 @@ public class AliyunSmsStrategy implements SmsStrategy {
 
 			// 发送失败
 			if (!Constant.OK.equalsIgnoreCase(response.getBody().getCode())) {
-				throw new ServerException(response.getBody().getMessage());
+				throw new ResultException(response.getBody().getMessage());
 			}
 		} catch (Exception e) {
-			throw new ServerException(e.getMessage());
+			throw new ResultException(e.getMessage());
 		}
 	}
 }

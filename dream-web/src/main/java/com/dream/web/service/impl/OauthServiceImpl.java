@@ -37,7 +37,7 @@ public class OauthServiceImpl implements OauthService {
 	@Transactional(readOnly = true)
 	public List<OAuthClientDetailsDTO> loadAllOauthClientDetailsDtos() {
 		List<OAuthClientDetails> clientDetailses = oauthRepository.findAllOauthClientDetails();
-		return oauthClientDetailsConvert.toDTO(clientDetailses);
+		return oauthClientDetailsConvert.convertt(clientDetailses);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class OauthServiceImpl implements OauthService {
 	@Transactional(readOnly = true)
 	public OAuthClientDetailsDTO loadOauthClientDetailsDto(String clientId) {
 		final OAuthClientDetails oauthClientDetails = oauthRepository.findOauthClientDetails(clientId);
-		return oauthClientDetails != null ? oauthClientDetailsConvert.toDTO(oauthClientDetails) : null;
+		return oauthClientDetails != null ? oauthClientDetailsConvert.convertt(oauthClientDetails) : null;
 	}
 
 	@Override

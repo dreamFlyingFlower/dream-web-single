@@ -1,6 +1,9 @@
-package com.electric.monitor.model;
+package com.dream.monitor.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 硬盘
@@ -10,7 +13,10 @@ import lombok.Data;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Data
-public class Disk {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class DiskInfo {
 
 	/**
 	 * 磁盘名称

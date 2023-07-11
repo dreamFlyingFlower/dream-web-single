@@ -1,12 +1,12 @@
-package com.electric.monitor.vo;
+package com.dream.monitor.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import com.electric.monitor.model.*;
-import com.electric.monitor.utils.ArityUtil;
+import com.dream.monitor.model.*;
+import com.dream.monitor.utils.ArityUtil;
 
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
@@ -29,42 +29,42 @@ public class Server {
      * Cpu Info
      */
     @Schema(description = "CPU信息")
-    private Cpu cpu;
+    private CpuInfo cpu;
 
     /**
      * Mem Info
      */
     @Schema(description = "内存信息")
-    private Mem mem;
+    private MemoryInfo mem;
 
     /**
      * Jvm Info
      */
     @Schema(description = "JVM信息")
-    private Jvm jvm;
+    private JvmInfo jvm;
 
     /**
      * Sys Info
      */
     @Schema(description = "系统信息")
-    private Sys sys;
+    private SystemInfo sys;
 
     /**
      * SysFile Info
      */
     @Schema(description = "系统文件信息")
-    private List<Disk> disks = new LinkedList<>();
+    private List<DiskInfo> disks = new LinkedList<>();
 
     public Server() {
-        this.cpu = new Cpu();
-        this.mem = new Mem();
-        this.jvm = new Jvm();
-        this.sys = new Sys();
+        this.cpu = new CpuInfo();
+        this.mem = new MemoryInfo();
+        this.jvm = new JvmInfo();
+        this.sys = new SystemInfo();
         this.setDiskList();
         log.info("Server Info => {}", this);
     }
 
-    public Server(Disk disk) {
+    public Server(DiskInfo disk) {
         this.setDiskList();
         log.info("Server Info => {}", this);
     }
@@ -80,7 +80,7 @@ public class Server {
             long free = fs.getUsableSpace();
             long total = fs.getTotalSpace();
             long used = total - free;
-            Disk disk = new Disk();
+            DiskInfo disk = new DiskInfo();
             disk.setDiskName(fs.getName());
             disk.setDiskType(fs.getType());
             disk.setDirName(fs.getMount());

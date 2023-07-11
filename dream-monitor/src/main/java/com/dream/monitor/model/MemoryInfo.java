@@ -1,8 +1,10 @@
-package com.electric.monitor.model;
+package com.dream.monitor.model;
 
-import com.electric.monitor.utils.ArityUtil;
+import com.dream.monitor.utils.ArityUtil;
 
 import cn.hutool.system.oshi.OshiUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import oshi.hardware.GlobalMemory;
 
@@ -14,7 +16,9 @@ import oshi.hardware.GlobalMemory;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Data
-public class Mem {
+@Builder
+@AllArgsConstructor
+public class MemoryInfo {
 
 	/**
 	 * 内存总数(G)
@@ -36,7 +40,7 @@ public class Mem {
 	 */
 	private double usage;
 
-	public Mem() {
+	public MemoryInfo() {
 		GlobalMemory globalMemory = OshiUtil.getMemory();
 		this.setTotal(ArityUtil.div(globalMemory.getTotal(), 1024 * 1024 * 1024, 2));
 		this.setFree(ArityUtil.div(globalMemory.getAvailable(), 1024 * 1024 * 1024, 2));

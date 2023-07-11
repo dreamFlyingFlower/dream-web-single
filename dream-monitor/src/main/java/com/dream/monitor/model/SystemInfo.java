@@ -1,7 +1,9 @@
-package com.electric.monitor.model;
+package com.dream.monitor.model;
 
 import cn.hutool.system.SystemUtil;
 import cn.hutool.system.oshi.OshiUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -12,7 +14,9 @@ import lombok.Data;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Data
-public class Sys {
+@Builder
+@AllArgsConstructor
+public class SystemInfo {
 
 	/**
 	 * 操作系统
@@ -39,7 +43,7 @@ public class Sys {
 	 */
 	private String computerIp;
 
-	public Sys() {
+	public SystemInfo() {
 		this.setOsName(SystemUtil.getOsInfo().getName());
 		this.setOsArch(SystemUtil.getOsInfo().getArch());
 		this.setOsVersion(SystemUtil.getOsInfo().getVersion());

@@ -1,14 +1,16 @@
-package com.electric.monitor.model;
-
-import cn.hutool.core.date.BetweenFormatter;
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.system.SystemUtil;
-import lombok.Data;
+package com.dream.monitor.model;
 
 import java.util.Date;
 import java.util.List;
 
-import com.electric.monitor.utils.ArityUtil;
+import com.dream.monitor.utils.ArityUtil;
+
+import cn.hutool.core.date.BetweenFormatter;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.system.SystemUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * JVM
@@ -18,7 +20,9 @@ import com.electric.monitor.utils.ArityUtil;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Data
-public class Jvm {
+@Builder
+@AllArgsConstructor
+public class JvmInfo {
 
 	/**
 	 * JVM 最大可用内存总数(G)
@@ -85,7 +89,7 @@ public class Jvm {
 	 */
 	private List<String> inputArguments;
 
-	public Jvm() {
+	public JvmInfo() {
 		this.setMax(ArityUtil.div(SystemUtil.getMaxMemory(), 1024 * 1024 * 1024, 2));
 		this.setTotal(ArityUtil.div(SystemUtil.getTotalMemory(), 1024 * 1024 * 1024, 2));
 		this.setFree(ArityUtil.div(SystemUtil.getFreeMemory(), 1024 * 1024 * 1024, 2));

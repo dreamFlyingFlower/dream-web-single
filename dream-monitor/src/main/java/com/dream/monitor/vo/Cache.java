@@ -1,4 +1,4 @@
-package com.electric.monitor.vo;
+package com.dream.monitor.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

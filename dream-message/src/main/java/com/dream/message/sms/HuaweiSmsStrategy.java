@@ -8,6 +8,8 @@ import lombok.Data;
 import com.dream.message.sms.config.SmsConfig;
 import com.electric.framework.exception.ServerException;
 import com.electric.framework.utils.JsonUtils;
+import com.wy.collection.MapTool;
+import com.wy.result.ResultException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
@@ -46,7 +48,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 	public void send(String mobile, Map<String, String> params) {
 		// 有参数则设置
 		String templateParas = null;
-		if (MapUtil.isNotEmpty(params)) {
+		if (MapTool.isNotEmpty(params)) {
 			templateParas = JsonUtils.toJsonString(params.values().toArray(new String[0]));
 		}
 
@@ -54,13 +56,13 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 		String body = buildRequestBody(smsConfig.getSenderId(), "+86" + mobile, smsConfig.getTemplateId(),
 				templateParas, null, smsConfig.getSignName());
 		if (StringUtils.isBlank(body)) {
-			throw new ServerException("body is null.");
+			throw new ResultException("body is null.");
 		}
 
 		// 请求Headers中的X-WSSE参数值
 		String wsseHeader = buildWsseHeader(smsConfig.getAccessKey(), smsConfig.getSecretKey());
 		if (StringUtils.isBlank(wsseHeader)) {
-			throw new ServerException("wsse header is null.");
+			throw new ResultException("wsse header is null.");
 		}
 
 		try {
@@ -92,13 +94,13 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 				// 短信是否发送成功
 				assert result != null;
 				if (!"000000".equals(result.code)) {
-					throw new ServerException(result.description);
+					throw new ResultException(result.description);
 				}
 			} else { // 400 401
-				throw new ServerException(IoUtil.read(connection.getErrorStream(), CharsetUtil.CHARSET_UTF_8));
+				throw new ResultException(IoUtil.read(connection.getErrorStream(), CharsetUtil.CHARSET_UTF_8));
 			}
 		} catch (Exception e) {
-			throw new ServerException(e.getMessage());
+			throw new ResultException(e.getMessage());
 		}
 	}
 
@@ -111,7 +113,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 			String statusCallBack, String signature) {
 		if (null == sender || null == receiver || null == templateId || sender.isEmpty() || receiver.isEmpty()
 				|| templateId.isEmpty()) {
-			throw new ServerException("buildRequestBody(): sender, receiver or templateId is null.");
+			throw new ResultException("buildRequestBody(): sender, receiver or templateId is null.");
 		}
 		Map<String, String> map = new HashMap<>();
 
@@ -148,7 +150,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 	 */
 	static String buildWsseHeader(String appKey, String appSecret) {
 		if (null == appKey || null == appSecret || appKey.isEmpty() || appSecret.isEmpty()) {
-			throw new ServerException("buildWsseHeader(): appKey or appSecret is null.");
+			throw new ResultException("buildWsseHeader(): appKey or appSecret is null.");
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		String time = sdf.format(new Date());

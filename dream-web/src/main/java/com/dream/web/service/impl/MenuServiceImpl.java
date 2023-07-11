@@ -91,7 +91,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 		List<Menu> menus =
 				ListTool.isEmpty(menuIds) ? list() : list(new LambdaQueryWrapper<Menu>().in(Menu::getId, menuIds));
 		if (ListTool.isNotEmpty(menus)) {
-			rets = baseConvert.toDTO(menus).stream().collect(Collectors.toMap(k -> k.getId(), v -> v));
+			rets = baseConvert.convertt(menus).stream().collect(Collectors.toMap(k -> k.getId(), v -> v));
 			redisTemplate.opsForHash().putAll(ConstRedis.buildKey("menu"), rets);
 		}
 		return rets;
@@ -106,7 +106,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 		Map<Long, List<MenuDTO>> mapMenuPid2MenuDTOs =
 				cacheMenus.values().stream().collect(Collectors.groupingBy(k -> k.getPid()));
 		Map<Long, List<ButtonDTO>> mapMenuId2Buttons =
-				buttonConvert.toDTO(buttonService.list(new LambdaQueryWrapper<Button>())).stream()
+				buttonConvert.convertt(buttonService.list(new LambdaQueryWrapper<Button>())).stream()
 						.collect(Collectors.groupingBy(k -> k.getMenuId()));
 		handlerChildren(cacheMenus.get(id), mapMenuPid2MenuDTOs, mapMenuId2Buttons);
 		return Arrays.asList(cacheMenus.get(id));
@@ -156,7 +156,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 				cacheMenus.values().stream().collect(Collectors.groupingBy(k -> k.getPid()));
 		Map<Long,
 				List<ButtonDTO>> mapMenuId2Buttons = buttonConvert
-						.toDTO(buttonService.list(new LambdaQueryWrapper<Button>().in(Button::getId, buttonIds)))
+						.convertt(buttonService.list(new LambdaQueryWrapper<Button>().in(Button::getId, buttonIds)))
 						.stream().collect(Collectors.groupingBy(k -> k.getMenuId()));
 
 		List<MenuDTO> rootMenus = mapMenuPid2MenuDTOs.get(0L);

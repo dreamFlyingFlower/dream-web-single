@@ -1,4 +1,4 @@
-package com.electric.monitor.controller;
+package com.dream.monitor.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.electric.monitor.vo.Cache;
+import com.dream.monitor.vo.Cache;
 import com.wy.lang.StrTool;
 import com.wy.result.Result;
 

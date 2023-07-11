@@ -1,4 +1,4 @@
-package com.electric.monitor.controller;
+package com.dream.monitor.controller;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.electric.monitor.model.Cpu;
-import com.electric.monitor.model.Disk;
-import com.electric.monitor.model.Jvm;
-import com.electric.monitor.model.Mem;
-import com.electric.monitor.model.Sys;
-import com.electric.monitor.vo.Server;
+import com.dream.monitor.model.CpuInfo;
+import com.dream.monitor.model.DiskInfo;
+import com.dream.monitor.model.JvmInfo;
+import com.dream.monitor.model.MemoryInfo;
+import com.dream.monitor.model.SystemInfo;
+import com.dream.monitor.vo.Server;
 import com.wy.result.Result;
 
 /**
@@ -41,8 +41,8 @@ public class ServerController {
 	 */
 	@GetMapping("cpu")
 	@PreAuthorize("hasAuthority('monitor:server:all')")
-	public Result<Cpu> getCpuInfo() {
-		Cpu cpu = new Cpu();
+	public Result<CpuInfo> getCpuInfo() {
+		CpuInfo cpu = new CpuInfo();
 		return Result.ok(cpu);
 	}
 
@@ -51,8 +51,8 @@ public class ServerController {
 	 */
 	@GetMapping("mem")
 	@PreAuthorize("hasAuthority('monitor:server:all')")
-	public Result<Mem> getMemInfo() {
-		Mem mem = new Mem();
+	public Result<MemoryInfo> getMemInfo() {
+		MemoryInfo mem = new MemoryInfo();
 		return Result.ok(mem);
 	}
 
@@ -61,8 +61,8 @@ public class ServerController {
 	 */
 	@GetMapping("jvm")
 	@PreAuthorize("hasAuthority('monitor:server:all')")
-	public Result<Jvm> getJvmInfo() {
-		Jvm jvm = new Jvm();
+	public Result<JvmInfo> getJvmInfo() {
+		JvmInfo jvm = new JvmInfo();
 		return Result.ok(jvm);
 	}
 
@@ -71,8 +71,8 @@ public class ServerController {
 	 */
 	@GetMapping("sys")
 	@PreAuthorize("hasAuthority('monitor:server:all')")
-	public Result<Sys> getSysInfo() {
-		Sys sys = new Sys();
+	public Result<SystemInfo> getSysInfo() {
+		SystemInfo sys = new SystemInfo();
 		return Result.ok(sys);
 	}
 
@@ -81,8 +81,8 @@ public class ServerController {
 	 */
 	@GetMapping("disk")
 	@PreAuthorize("hasAuthority('monitor:server:all')")
-	public Result<List<Disk>> getSysFileInfo() {
-		Server server = new Server(new Disk());
+	public Result<List<DiskInfo>> getSysFileInfo() {
+		Server server = new Server(new DiskInfo());
 		return Result.ok(server.getDisks());
 	}
 }
