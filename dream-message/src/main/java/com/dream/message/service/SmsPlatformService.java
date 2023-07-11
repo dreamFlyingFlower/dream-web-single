@@ -20,9 +20,6 @@ public interface SmsPlatformService extends BaseService<SmsPlatformEntity, SmsPl
 
 	Result<List<SmsPlatformVO>> page(SmsPlatformQuery query);
 
-	/**
-	 * 启用的短信平台列表
-	 */
 	List<SmsConfig> listByEnable();
 
 	void save(SmsPlatformVO vo);

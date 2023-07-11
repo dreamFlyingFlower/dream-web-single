@@ -3,8 +3,12 @@ package com.dream.message.query;
 import com.dream.basic.web.query.AbstractQuery;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 短信平台查询
@@ -13,8 +17,12 @@ import lombok.EqualsAndHashCode;
  * @date 2023-07-11 00:02:20
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@ToString
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Schema(description = "短信平台查询")
 public class SmsPlatformQuery extends AbstractQuery {
 
