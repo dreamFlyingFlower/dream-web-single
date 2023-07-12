@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
+import com.dream.framework.web.query.MenuQuery;
 import com.dream.web.entity.Menu;
-import com.dream.web.query.MenuQuery;
 
 /**
  * 菜单表

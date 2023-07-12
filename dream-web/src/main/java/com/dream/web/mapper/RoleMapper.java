@@ -4,8 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
+import com.dream.framework.web.query.RoleQuery;
 import com.dream.web.entity.Role;
-import com.dream.web.query.RoleQuery;
 
 /**
  * 角色信息

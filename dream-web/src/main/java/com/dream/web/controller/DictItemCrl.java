@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
+import com.dream.framework.web.query.DictItemQuery;
+import com.dream.framework.web.vo.DictItemDTO;
 import com.dream.web.entity.DictItem;
-import com.dream.web.query.DictItemQuery;
-import com.dream.web.vo.DictItemDTO;
 
 import io.swagger.annotations.Api;
 

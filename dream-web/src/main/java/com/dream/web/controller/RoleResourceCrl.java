@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
+import com.dream.framework.web.query.RoleResourceQuery;
+import com.dream.framework.web.vo.RoleResourceDTO;
 import com.dream.web.entity.RoleResource;
-import com.dream.web.query.RoleResourceQuery;
-import com.dream.web.vo.RoleResourceDTO;
 
 import io.swagger.annotations.Api;
 

@@ -2,8 +2,8 @@ package com.dream.web.entity;
 
 import java.io.Serializable;
 
+import com.dream.framework.utils.GuidGenerator;
 import com.dream.web.repository.PasswordHandler;
-import com.dream.web.utils.GuidGenerator;
 import com.wy.digest.DigestTool;
 import com.wy.lang.StrTool;
 

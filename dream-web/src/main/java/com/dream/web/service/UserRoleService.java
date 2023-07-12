@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
+import com.dream.framework.web.query.UserRoleQuery;
+import com.dream.framework.web.vo.UserRoleDTO;
 import com.dream.web.entity.UserRole;
-import com.dream.web.query.UserRoleQuery;
-import com.dream.web.vo.UserRoleDTO;
 
 /**
  * 账号-角色关系

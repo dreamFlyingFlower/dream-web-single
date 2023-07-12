@@ -3,8 +3,8 @@ package com.dream.web.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dream.framework.sms.SmsManager;
 import com.dream.web.mobile.MobileVerifyCodeService;
-import com.dream.web.sms.SmsManager;
 
 /**
  * 短信验证码效验

@@ -5,9 +5,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.mobile.MobileUserDetailsService;
 import com.dream.web.service.UserService;
-import com.dream.web.vo.UserVO;
 
 /**
  * 手机验证码登录

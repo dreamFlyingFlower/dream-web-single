@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
+import com.dream.framework.web.query.OrgQuery;
 import com.dream.web.entity.Org;
-import com.dream.web.query.OrgQuery;
 
 /**
  * 组织机构表

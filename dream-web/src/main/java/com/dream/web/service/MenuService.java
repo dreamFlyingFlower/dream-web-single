@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.Set;
 
 import com.dream.basic.web.service.BaseService;
+import com.dream.framework.web.query.MenuQuery;
+import com.dream.framework.web.vo.MenuDTO;
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.entity.Menu;
-import com.dream.web.query.MenuQuery;
-import com.dream.web.vo.MenuDTO;
-import com.dream.web.vo.UserVO;
 
 /**
  * 菜单表

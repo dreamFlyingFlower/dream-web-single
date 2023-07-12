@@ -5,12 +5,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import com.dream.basic.core.helper.SpringContextHelper;
-import com.dream.web.agent.AccountApiAgent;
+import com.dream.framework.web.vo.AccountDTO;
+import com.dream.framework.web.vo.LoginAccountVO;
 import com.dream.web.service.UserService;
-import com.dream.web.vo.AccountDTO;
-import com.dream.web.vo.LoginAccountVO;
 import com.wy.lang.StrTool;
-import com.wy.result.Result;
 
 public class IntegrationUserDetailsAuthenticationHandler {
 
@@ -42,17 +40,17 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		loginAccountVO.setMobile(username);
 		loginAccountVO.setPassword(presentedPassword);
 		UserService userService = SpringContextHelper.getBean(UserService.class);
-		Result<AccountDTO> restResponse = userService.login(loginAccountVO);
+		AccountDTO accountVO = userService.login(loginAccountVO);
 
 		// 3.异常处理
-		if (restResponse.getCode() != 0) {
+		if (null == accountVO) {
 			throw new BadCredentialsException("登录失败");
 		}
 
 		// 4.登录成功,把用户数据封装到UnifiedUserDetails对象中
-		UnifiedUserDetails unifiedUserDetails = new UnifiedUserDetails(restResponse.getData().getUsername(),
-				presentedPassword, AuthorityUtils.createAuthorityList());
-		unifiedUserDetails.setMobile(restResponse.getData().getMobile());
+		UnifiedUserDetails unifiedUserDetails = new UnifiedUserDetails(accountVO.getUsername(), presentedPassword,
+				AuthorityUtils.createAuthorityList());
+		unifiedUserDetails.setMobile(accountVO.getMobile());
 		return unifiedUserDetails;
 	}
 }

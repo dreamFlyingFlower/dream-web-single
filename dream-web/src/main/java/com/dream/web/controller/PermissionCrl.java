@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
+import com.dream.framework.web.query.PermissionQuery;
+import com.dream.framework.web.vo.PermissionDTO;
 import com.dream.web.entity.Permission;
-import com.dream.web.query.PermissionQuery;
-import com.dream.web.vo.PermissionDTO;
 
 import io.swagger.annotations.Api;
 

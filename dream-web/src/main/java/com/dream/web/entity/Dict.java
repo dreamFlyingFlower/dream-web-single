@@ -2,7 +2,7 @@ package com.dream.web.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
-import com.wy.db.annotation.Unique;
+import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

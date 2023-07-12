@@ -6,15 +6,16 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.dream.framework.constant.ConstCommon;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.service.SmsLogService;
 import com.dream.message.service.SmsPlatformService;
 import com.dream.message.sms.SmsContext;
 import com.dream.message.sms.config.SmsConfig;
-import com.electric.framework.utils.JsonUtils;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
+import com.wy.third.json.JsonTools;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 短信服务
  *
- * @author
+ * @author 飞花梦影
+ * @date 2023-07-12 10:01:23
+ * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Slf4j
 @Service
@@ -74,14 +77,14 @@ public class SmsService {
 		logEntity.setPlatform(config.getPlatform());
 		logEntity.setPlatformId(config.getId());
 		logEntity.setMobile(mobile);
-		logEntity.setParams(JsonUtils.toJsonString(params));
+		logEntity.setParams(JsonTools.toJson(params));
 
 		if (e != null) {
-			String error = StringUtils.substring(ExceptionUtils.getExceptionMessage(e), 0, 2000);
-			logEntity.setStatus(Constant.FAIL);
+			String error = StringUtils.substring(e.getMessage(), 0, 2000);
+			logEntity.setStatus(ConstCommon.FAIL);
 			logEntity.setError(error);
 		} else {
-			logEntity.setStatus(Constant.SUCCESS);
+			logEntity.setStatus(ConstCommon.SUCCESS);
 		}
 
 		smsLogService.save(logEntity);

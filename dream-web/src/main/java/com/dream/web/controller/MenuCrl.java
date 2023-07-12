@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
+import com.dream.framework.web.query.MenuQuery;
+import com.dream.framework.web.vo.MenuDTO;
 import com.dream.web.entity.Menu;
-import com.dream.web.query.MenuQuery;
-import com.dream.web.vo.MenuDTO;
 
 import io.swagger.annotations.Api;
 

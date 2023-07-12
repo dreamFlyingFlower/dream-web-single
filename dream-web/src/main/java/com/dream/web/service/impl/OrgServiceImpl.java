@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.web.query.OrgQuery;
+import com.dream.framework.web.vo.OrgDTO;
 import com.dream.web.convert.OrgConvert;
 import com.dream.web.entity.Org;
 import com.dream.web.mapper.OrgMapper;
-import com.dream.web.query.OrgQuery;
 import com.dream.web.service.OrgService;
-import com.dream.web.vo.OrgDTO;
 
 /**
  * 组织机构表Service

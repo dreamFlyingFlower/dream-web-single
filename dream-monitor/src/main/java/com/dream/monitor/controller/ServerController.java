@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.monitor.model.CpuInfo;
-import com.dream.monitor.model.DiskInfo;
-import com.dream.monitor.model.JvmInfo;
-import com.dream.monitor.model.MemoryInfo;
-import com.dream.monitor.model.SystemInfo;
+import com.dream.monitor.entity.CpuInfo;
+import com.dream.monitor.entity.DiskInfo;
+import com.dream.monitor.entity.JvmInfo;
+import com.dream.monitor.entity.MemoryInfo;
+import com.dream.monitor.entity.SystemInfo;
 import com.dream.monitor.vo.Server;
 import com.wy.result.Result;
 

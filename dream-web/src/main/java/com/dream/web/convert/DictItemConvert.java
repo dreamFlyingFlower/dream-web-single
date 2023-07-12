@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
+import com.dream.framework.web.vo.DictItemDTO;
 import com.dream.web.entity.DictItem;
-import com.dream.web.vo.DictItemDTO;
 
 /**
  * 字典项数据库实体与DTO互转

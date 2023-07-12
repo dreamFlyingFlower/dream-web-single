@@ -1,45 +1,48 @@
 package com.dream.message.cache;
 
-import lombok.AllArgsConstructor;
-
 import org.springframework.stereotype.Service;
 
-import com.electric.framework.cache.RedisCache;
+import com.dream.framework.cache.RedisCache;
+
+import lombok.AllArgsConstructor;
 
 /**
  * 短信发送 Cache
  *
- * @author  
+ * @author 飞花梦影
+ * @date 2023-07-12 09:51:56
+ * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Service
 @AllArgsConstructor
 public class SmsSendCache {
-    private final RedisCache redisCache;
 
-    /**
-     * 获取发送手机短信验证码KEY
-     *
-     * @param mobile 手机号
-     * @return KEY
-     */
-    private String getCodeKey(String mobile) {
-        return "message:sms:code" + mobile;
-    }
+	private final RedisCache redisCache;
 
-    public void saveCode(String mobile, String code) {
-        String key = getCodeKey(mobile);
+	/**
+	 * 获取发送手机短信验证码KEY
+	 *
+	 * @param mobile 手机号
+	 * @return KEY
+	 */
+	private String getCodeKey(String mobile) {
+		return "message:sms:code" + mobile;
+	}
 
-        // 保存到Redis，有效期10分钟
-        redisCache.set(key, code, 10 * 60);
-    }
+	public void saveCode(String mobile, String code) {
+		String key = getCodeKey(mobile);
 
-    public String getCode(String mobile) {
-        String key = getCodeKey(mobile);
-        return (String) redisCache.get(key);
-    }
+		// 保存到Redis，有效期10分钟
+		redisCache.set(key, code, 10 * 60);
+	}
 
-    public void deleteCode(String mobile) {
-        String key = getCodeKey(mobile);
-        redisCache.delete(key);
-    }
+	public String getCode(String mobile) {
+		String key = getCodeKey(mobile);
+		return (String) redisCache.get(key);
+	}
+
+	public void deleteCode(String mobile) {
+		String key = getCodeKey(mobile);
+		redisCache.delete(key);
+	}
 }

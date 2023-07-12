@@ -3,9 +3,9 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
+import com.dream.framework.web.query.UserQuery;
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.entity.User;
-import com.dream.web.query.UserQuery;
-import com.dream.web.vo.UserVO;
 
 /**
  * 用户表

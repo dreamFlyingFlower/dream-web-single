@@ -3,12 +3,12 @@ package com.dream.web.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.web.query.RoleResourceQuery;
+import com.dream.framework.web.vo.RoleResourceDTO;
 import com.dream.web.convert.RoleResourceConvert;
 import com.dream.web.entity.RoleResource;
 import com.dream.web.mapper.RoleResourceMapper;
-import com.dream.web.query.RoleResourceQuery;
 import com.dream.web.service.RoleResourceService;
-import com.dream.web.vo.RoleResourceDTO;
 
 /**
  * 角色-资源关系Service

@@ -18,23 +18,23 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.dream.basic.core.enums.ResourceType;
 import com.dream.basic.core.helper.FastjsonHelper;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.web.constant.ConstRedis;
+import com.dream.framework.cache.RedisKeys;
+import com.dream.framework.enums.SuperAdminEnum;
+import com.dream.framework.web.query.MenuQuery;
+import com.dream.framework.web.vo.ButtonDTO;
+import com.dream.framework.web.vo.MenuDTO;
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.convert.ButtonConvert;
 import com.dream.web.convert.MenuConvert;
 import com.dream.web.entity.Button;
 import com.dream.web.entity.Menu;
 import com.dream.web.entity.RoleResource;
 import com.dream.web.entity.UserRole;
-import com.dream.web.enums.SuperAdminEnum;
 import com.dream.web.mapper.MenuMapper;
 import com.dream.web.mapper.UserRoleMapper;
-import com.dream.web.query.MenuQuery;
 import com.dream.web.service.ButtonService;
 import com.dream.web.service.MenuService;
 import com.dream.web.service.RoleResourceService;
-import com.dream.web.vo.ButtonDTO;
-import com.dream.web.vo.MenuDTO;
-import com.dream.web.vo.UserVO;
 import com.wy.collection.ListTool;
 import com.wy.collection.MapTool;
 import com.wy.enums.TipEnum;
@@ -69,7 +69,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 
 	@Override
 	public Map<Long, MenuDTO> getCache(String key) {
-		Map<Object, Object> cacheEntries = redisTemplate.opsForHash().entries(ConstRedis.buildKey("menu"));
+		Map<Object, Object> cacheEntries = redisTemplate.opsForHash().entries(RedisKeys.buildKey("menu"));
 		if (MapTool.isNotEmpty(cacheEntries)) {
 			return FastjsonHelper.parseMap(cacheEntries, new HashMap<Long, MenuDTO>());
 		}
@@ -78,7 +78,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 
 	@Override
 	public Map<Long, MenuDTO> getCaches(List<Long> menuIds) {
-		List<Object> cacheMenus = redisTemplate.opsForHash().multiGet(ConstRedis.buildKey("menu"),
+		List<Object> cacheMenus = redisTemplate.opsForHash().multiGet(RedisKeys.buildKey("menu"),
 				menuIds.stream().map(t -> t).collect(Collectors.toCollection(() -> new ArrayList<Object>())));
 		if (ListTool.isNotEmpty(cacheMenus)) {
 			return FastjsonHelper.parseMap(cacheMenus, new HashMap<Long, MenuDTO>());
@@ -92,7 +92,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 				ListTool.isEmpty(menuIds) ? list() : list(new LambdaQueryWrapper<Menu>().in(Menu::getId, menuIds));
 		if (ListTool.isNotEmpty(menus)) {
 			rets = baseConvert.convertt(menus).stream().collect(Collectors.toMap(k -> k.getId(), v -> v));
-			redisTemplate.opsForHash().putAll(ConstRedis.buildKey("menu"), rets);
+			redisTemplate.opsForHash().putAll(RedisKeys.buildKey("menu"), rets);
 		}
 		return rets;
 	}

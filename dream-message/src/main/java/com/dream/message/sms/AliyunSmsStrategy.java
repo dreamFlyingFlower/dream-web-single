@@ -1,15 +1,16 @@
 package com.dream.message.sms;
 
-import java.rmi.ServerException;
 import java.util.Map;
 
 import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
+import com.dream.framework.constant.ConstCommon;
 import com.dream.message.sms.config.SmsConfig;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
+import com.wy.third.json.JsonTools;
 
 
 /**
@@ -46,7 +47,7 @@ public class AliyunSmsStrategy implements SmsStrategy {
 		request.setPhoneNumbers(mobile);
 		// request.setTemplateParam("{\"code\":\"1234\"}");
 		if (MapTool.isNotEmpty(params)) {
-			request.setTemplateParam(JsonTools.toJsonString(params));
+			request.setTemplateParam(JsonTools.toJson(params));
 		}
 
 		try {
@@ -54,7 +55,7 @@ public class AliyunSmsStrategy implements SmsStrategy {
 			SendSmsResponse response = client.sendSms(request);
 
 			// 发送失败
-			if (!Constant.OK.equalsIgnoreCase(response.getBody().getCode())) {
+			if (!ConstCommon.OK.equalsIgnoreCase(response.getBody().getCode())) {
 				throw new ResultException(response.getBody().getMessage());
 			}
 		} catch (Exception e) {

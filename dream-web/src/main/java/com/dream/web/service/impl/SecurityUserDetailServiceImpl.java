@@ -9,10 +9,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson2.JSON;
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.entity.Permission;
 import com.dream.web.service.PermissionService;
 import com.dream.web.service.UserService;
-import com.dream.web.vo.UserVO;
 import com.wy.collection.ListTool;
 
 /**

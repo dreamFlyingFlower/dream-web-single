@@ -11,18 +11,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.enums.DataScopeEnum;
+import com.dream.framework.enums.UserStatus;
+import com.dream.framework.web.query.UserQuery;
+import com.dream.framework.web.vo.AccountDTO;
+import com.dream.framework.web.vo.LoginAccountVO;
+import com.dream.framework.web.vo.UserVO;
 import com.dream.web.convert.UserConvert;
 import com.dream.web.entity.User;
-import com.dream.web.enums.DataScopeEnum;
-import com.dream.web.enums.UserStatus;
 import com.dream.web.mapper.RoleMapper;
 import com.dream.web.mapper.RoleOrgMapper;
 import com.dream.web.mapper.UserMapper;
-import com.dream.web.query.UserQuery;
 import com.dream.web.service.MenuService;
 import com.dream.web.service.OrgService;
 import com.dream.web.service.UserService;
-import com.dream.web.vo.UserVO;
 
 /**
  * 用户Service
@@ -49,7 +51,7 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserVO, UserQuery
 
 	@Autowired
 	private RoleOrgMapper roleOrgMapper;
-	
+
 	@Override
 	public UserVO getByMobile(String mobile) {
 		return baseMapper.getByMobile(mobile);
@@ -114,5 +116,11 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserVO, UserQuery
 		}
 
 		return new ArrayList<>();
+	}
+
+	@Override
+	public AccountDTO login(LoginAccountVO loginAccountVO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

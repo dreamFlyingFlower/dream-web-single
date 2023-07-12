@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
+import com.dream.framework.web.vo.OrgDTO;
 import com.dream.web.entity.Org;
-import com.dream.web.vo.OrgDTO;
 
 /**
  * 组织机构表数据库实体与DTO互转

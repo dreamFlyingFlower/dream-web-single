@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
+import com.dream.framework.web.vo.RoleDTO;
 import com.dream.web.entity.Role;
-import com.dream.web.vo.RoleDTO;
 
 /**
  * 角色信息数据库实体与DTO互转

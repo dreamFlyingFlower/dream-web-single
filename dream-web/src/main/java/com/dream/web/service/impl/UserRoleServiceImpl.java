@@ -3,12 +3,12 @@ package com.dream.web.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.web.query.UserRoleQuery;
+import com.dream.framework.web.vo.UserRoleDTO;
 import com.dream.web.convert.UserRoleConvert;
 import com.dream.web.entity.UserRole;
 import com.dream.web.mapper.UserRoleMapper;
-import com.dream.web.query.UserRoleQuery;
 import com.dream.web.service.UserRoleService;
-import com.dream.web.vo.UserRoleDTO;
 
 /**
  * 账号-角色关系Service

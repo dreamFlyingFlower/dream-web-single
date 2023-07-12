@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
+import com.dream.framework.web.vo.PermissionDTO;
 import com.dream.web.entity.Permission;
-import com.dream.web.vo.PermissionDTO;
 
 /**
  * 权限数据库实体与DTO互转

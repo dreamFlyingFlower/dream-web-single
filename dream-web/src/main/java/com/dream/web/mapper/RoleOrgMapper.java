@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.RoleOrg;
-import com.dream.web.query.RoleOrgQuery;
+import com.dream.framework.web.query.RoleOrgQuery;
 
 /**
  * 角色数据权限

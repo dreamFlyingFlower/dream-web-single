@@ -15,6 +15,7 @@
 	</properties>
 	
 	<modules>
+		<module>dream-framework</module>
 		<module>dream-message</module>
 		<module>dream-monitor</module>
 		<module>dream-web</module>

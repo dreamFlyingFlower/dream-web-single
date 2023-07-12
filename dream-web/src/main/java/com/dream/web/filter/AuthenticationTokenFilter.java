@@ -15,9 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.dream.web.cache.TokenStoreCache;
-import com.dream.web.utils.TokenUtils;
-import com.dream.web.vo.UserVO;
+import com.dream.framework.cache.TokenStoreCache;
+import com.dream.framework.utils.TokenUtils;
+import com.dream.framework.web.vo.UserVO;
 import com.wy.lang.StrTool;
 
 /**

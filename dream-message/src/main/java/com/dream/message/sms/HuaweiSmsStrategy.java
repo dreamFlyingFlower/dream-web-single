@@ -1,20 +1,5 @@
 package com.dream.message.sms;
 
-import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.map.MapUtil;
-import cn.hutool.core.util.CharsetUtil;
-import lombok.Data;
-
-import com.dream.message.sms.config.SmsConfig;
-import com.electric.framework.exception.ServerException;
-import com.electric.framework.utils.JsonUtils;
-import com.wy.collection.MapTool;
-import com.wy.result.ResultException;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
-
-import javax.net.ssl.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -22,7 +7,30 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Base64;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
+
+import com.dream.message.sms.config.SmsConfig;
+import com.wy.ConstLang;
+import com.wy.collection.MapTool;
+import com.wy.result.ResultException;
+import com.wy.third.json.JsonTools;
+
+import cn.hutool.core.io.IoUtil;
+import lombok.Data;
 
 /**
  * 华为云短信
@@ -49,7 +57,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 		// 有参数则设置
 		String templateParas = null;
 		if (MapTool.isNotEmpty(params)) {
-			templateParas = JsonUtils.toJsonString(params.values().toArray(new String[0]));
+			templateParas = JsonTools.toJson(params.values().toArray(new String[0]));
 		}
 
 		// 请求Body,不携带签名名称时,signature请填null
@@ -88,8 +96,8 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 
 			int status = connection.getResponseCode();
 			if (status == HttpStatus.OK.value()) {
-				String response = IoUtil.read(connection.getInputStream(), CharsetUtil.CHARSET_UTF_8);
-				HuaweiSmsResult result = JsonUtils.parseObject(response, HuaweiSmsResult.class);
+				String response = IoUtil.read(connection.getInputStream(), ConstLang.DEFAULT_CHARSET);
+				HuaweiSmsResult result = JsonTools.parse(response, HuaweiSmsResult.class);
 
 				// 短信是否发送成功
 				assert result != null;
@@ -97,7 +105,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 					throw new ResultException(result.description);
 				}
 			} else { // 400 401
-				throw new ResultException(IoUtil.read(connection.getErrorStream(), CharsetUtil.CHARSET_UTF_8));
+				throw new ResultException(IoUtil.read(connection.getErrorStream(), ConstLang.DEFAULT_CHARSET));
 			}
 		} catch (Exception e) {
 			throw new ResultException(e.getMessage());

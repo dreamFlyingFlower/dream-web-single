@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.web.mapper.UserRoleMapper">
+
+	<resultMap id="BaseResultMap" type="com.dream.web.entity.UserRole">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="user_id" jdbcType="BIGINT" property="userId" />
+		<result column="role_id" jdbcType="BIGINT" property="roleId" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_user" jdbcType="BIGINT" property="createUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="update_user" jdbcType="BIGINT" property="updateUser" />
+	</resultMap>
+
+	<sql id="BaseColumnList">
+		a.id, a.user_id, a.role_id, a.create_time, a.create_user, a.update_time, a.update_user
+	</sql>
+
+	<select id="list" resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		FROM ts_user_role a
+		<where>
+			<if test="query.id != null and query.id != ''">
+				AND a.id = #{query.id, jdbcType=BIGINT }
+			</if>
+			<if test="query.userId != null and query.userId != ''">
+				AND a.user_id = #{query.userId, jdbcType=BIGINT }
+			</if>
+			<if test="query.roleId != null and query.roleId != ''">
+				AND a.role_id = #{query.roleId, jdbcType=BIGINT }
+			</if>
+		</where>
+		ORDER BY a.id DESC
+	</select>
+</mapper>

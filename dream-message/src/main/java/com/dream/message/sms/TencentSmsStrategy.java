@@ -2,6 +2,7 @@ package com.dream.message.sms;
 
 import java.util.Map;
 
+import com.dream.framework.constant.ConstCommon;
 import com.dream.message.sms.config.SmsConfig;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -60,7 +61,7 @@ public class TencentSmsStrategy implements SmsStrategy {
 		String[] phoneNumberSet = { "+86" + mobile };
 		request.setPhoneNumberSet(phoneNumberSet);
 
-		// 国际、港澳台短信，需要添加SenderId，国内短信填空，默认未开通
+		// 国际、港澳台短信,需要添加SenderId,国内短信填空,默认未开通
 		request.setSenderId(smsConfig.getSenderId());
 
 		try {
@@ -69,7 +70,7 @@ public class TencentSmsStrategy implements SmsStrategy {
 			SendStatus sendStatus = response.getSendStatusSet()[0];
 
 			// 发送失败
-			if (!Constant.OK.equalsIgnoreCase(sendStatus.getCode())) {
+			if (!ConstCommon.OK.equalsIgnoreCase(sendStatus.getCode())) {
 				throw new ResultException(sendStatus.getMessage());
 			}
 		} catch (Exception e) {

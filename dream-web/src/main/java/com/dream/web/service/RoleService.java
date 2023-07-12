@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
+import com.dream.framework.web.query.RoleQuery;
+import com.dream.framework.web.vo.RoleDTO;
 import com.dream.web.entity.Role;
-import com.dream.web.query.RoleQuery;
-import com.dream.web.vo.RoleDTO;
 
 /**
  * 角色信息

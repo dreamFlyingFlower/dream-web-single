@@ -3,8 +3,8 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
+import com.dream.framework.web.query.RoleResourceQuery;
 import com.dream.web.entity.RoleResource;
-import com.dream.web.query.RoleResourceQuery;
 
 /**
  * 角色-权限关系

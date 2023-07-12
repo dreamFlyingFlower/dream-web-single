@@ -3,9 +3,9 @@ package com.dream.web.service;
 import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
+import com.dream.framework.web.query.OrgQuery;
+import com.dream.framework.web.vo.OrgDTO;
 import com.dream.web.entity.Org;
-import com.dream.web.query.OrgQuery;
-import com.dream.web.vo.OrgDTO;
 
 /**
  * 组织机构表

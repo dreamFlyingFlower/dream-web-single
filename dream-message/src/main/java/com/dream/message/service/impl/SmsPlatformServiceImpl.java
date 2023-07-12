@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.constant.ConstCommon;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.convert.SmsPlatformConvert;
 import com.dream.message.entity.SmsPlatformEntity;
@@ -56,7 +57,7 @@ public class SmsPlatformServiceImpl extends
 		// 如果缓存没有,则从DB读取,然后保存到缓存里
 		if (cacheList == null) {
 			List<SmsPlatformEntity> list = this.list(
-					new LambdaQueryWrapper<SmsPlatformEntity>().in(SmsPlatformEntity::getStatus, Constant.ENABLE));
+					new LambdaQueryWrapper<SmsPlatformEntity>().in(SmsPlatformEntity::getStatus, ConstCommon.ENABLE));
 			cacheList = SmsPlatformConvert.INSTANCE.convertList2(list);
 			smsPlatformCache.save(cacheList);
 		}

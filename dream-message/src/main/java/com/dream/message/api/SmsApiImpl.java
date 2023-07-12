@@ -1,16 +1,16 @@
 package com.dream.message.api;
 
-import lombok.AllArgsConstructor;
-
-import com.dream.message.cache.SmsSendCache;
-import com.dream.message.sms.service.SmsService;
-import com.electric.api.module.message.SmsApi;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.dream.framework.sms.SmsManager;
+import com.dream.message.cache.SmsSendCache;
+import com.dream.message.sms.service.SmsService;
+
+import lombok.AllArgsConstructor;
 
 /**
  * 短信服务Api
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Component
 @AllArgsConstructor
-public class SmsApiImpl implements SmsApi {
+public class SmsApiImpl implements SmsManager {
 
 	@Autowired
 	private SmsService smsService;

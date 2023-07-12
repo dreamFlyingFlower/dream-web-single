@@ -3,12 +3,12 @@ package com.dream.web.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.web.query.ButtonQuery;
+import com.dream.framework.web.vo.ButtonDTO;
 import com.dream.web.convert.ButtonConvert;
 import com.dream.web.entity.Button;
 import com.dream.web.mapper.ButtonMapper;
-import com.dream.web.query.ButtonQuery;
 import com.dream.web.service.ButtonService;
-import com.dream.web.vo.ButtonDTO;
 
 /**
  * 按钮表Service
@@ -18,6 +18,7 @@ import com.dream.web.vo.ButtonDTO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("buttonService")
-public class ButtonServiceImpl extends AbstractServiceImpl<Button, ButtonDTO, ButtonQuery, ButtonConvert, ButtonMapper> implements ButtonService {
+public class ButtonServiceImpl extends AbstractServiceImpl<Button, ButtonDTO, ButtonQuery, ButtonConvert, ButtonMapper>
+		implements ButtonService {
 
 }

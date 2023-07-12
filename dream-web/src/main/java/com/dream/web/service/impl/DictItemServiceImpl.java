@@ -3,12 +3,12 @@ package com.dream.web.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.framework.web.query.DictItemQuery;
+import com.dream.framework.web.vo.DictItemDTO;
 import com.dream.web.convert.DictItemConvert;
 import com.dream.web.entity.DictItem;
 import com.dream.web.mapper.DictItemMapper;
-import com.dream.web.query.DictItemQuery;
 import com.dream.web.service.DictItemService;
-import com.dream.web.vo.DictItemDTO;
 
 /**
  * 字典项Service
