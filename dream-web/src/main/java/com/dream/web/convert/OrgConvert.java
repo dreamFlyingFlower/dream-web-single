@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.framework.web.vo.OrgDTO;
+import com.dream.framework.web.vo.OrgVO;
 import com.dream.web.entity.Org;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.entity.Org;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface OrgConvert extends BaseConvert<Org, OrgDTO> {
+public interface OrgConvert extends BaseConvert<Org, OrgVO> {
 
 	OrgConvert INSTANCE = Mappers.getMapper(OrgConvert.class);
 

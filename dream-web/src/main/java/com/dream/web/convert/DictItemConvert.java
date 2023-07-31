@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.framework.web.vo.DictItemDTO;
+import com.dream.framework.web.vo.DictItemVO;
 import com.dream.web.entity.DictItem;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.entity.DictItem;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface DictItemConvert extends BaseConvert<DictItem, DictItemDTO> {
+public interface DictItemConvert extends BaseConvert<DictItem, DictItemVO> {
 
 	DictItemConvert INSTANCE = Mappers.getMapper(DictItemConvert.class);
 

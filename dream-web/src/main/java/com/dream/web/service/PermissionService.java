@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.PermissionQuery;
-import com.dream.framework.web.vo.PermissionDTO;
+import com.dream.framework.web.vo.PermissionVO;
 import com.dream.web.entity.Permission;
 
 /**
@@ -14,7 +14,7 @@ import com.dream.web.entity.Permission;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface PermissionService extends BaseService<Permission, PermissionDTO, PermissionQuery> {
+public interface PermissionService extends BaseService<Permission, PermissionVO, PermissionQuery> {
 
 	List<Permission> getPermissionsByUserId(Long userId);
 }

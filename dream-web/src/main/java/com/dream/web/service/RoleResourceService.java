@@ -2,7 +2,7 @@ package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.RoleResourceQuery;
-import com.dream.framework.web.vo.RoleResourceDTO;
+import com.dream.framework.web.vo.RoleResourceVO;
 import com.dream.web.entity.RoleResource;
 
 /**
@@ -12,6 +12,6 @@ import com.dream.web.entity.RoleResource;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface RoleResourceService extends BaseService<RoleResource, RoleResourceDTO, RoleResourceQuery> {
+public interface RoleResourceService extends BaseService<RoleResource, RoleResourceVO, RoleResourceQuery> {
 
 }

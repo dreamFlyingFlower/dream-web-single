@@ -14,7 +14,7 @@ import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.enums.DataScopeEnum;
 import com.dream.framework.enums.UserStatus;
 import com.dream.framework.web.query.UserQuery;
-import com.dream.framework.web.vo.AccountDTO;
+import com.dream.framework.web.vo.AccountVO;
 import com.dream.framework.web.vo.LoginAccountVO;
 import com.dream.framework.web.vo.UserVO;
 import com.dream.web.convert.UserConvert;
@@ -119,7 +119,7 @@ public class UserServiceImpl extends AbstractServiceImpl<User, UserVO, UserQuery
 	}
 
 	@Override
-	public AccountDTO login(LoginAccountVO loginAccountVO) {
+	public AccountVO login(LoginAccountVO loginAccountVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

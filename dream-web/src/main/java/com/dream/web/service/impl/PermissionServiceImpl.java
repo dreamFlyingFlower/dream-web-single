@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.web.query.PermissionQuery;
-import com.dream.framework.web.vo.PermissionDTO;
+import com.dream.framework.web.vo.PermissionVO;
 import com.dream.web.convert.PermissionConvert;
 import com.dream.web.entity.Permission;
 import com.dream.web.mapper.PermissionMapper;
@@ -21,7 +21,7 @@ import com.dream.web.service.PermissionService;
  */
 @Service("permissionService")
 public class PermissionServiceImpl
-		extends AbstractServiceImpl<Permission, PermissionDTO, PermissionQuery, PermissionConvert, PermissionMapper>
+		extends AbstractServiceImpl<Permission, PermissionVO, PermissionQuery, PermissionConvert, PermissionMapper>
 		implements PermissionService {
 
 	@Override

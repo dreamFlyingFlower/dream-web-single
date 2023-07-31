@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.web.query.OrgQuery;
-import com.dream.framework.web.vo.OrgDTO;
+import com.dream.framework.web.vo.OrgVO;
 import com.dream.web.convert.OrgConvert;
 import com.dream.web.entity.Org;
 import com.dream.web.mapper.OrgMapper;
@@ -21,7 +21,7 @@ import com.dream.web.service.OrgService;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("orgService")
-public class OrgServiceImpl extends AbstractServiceImpl<Org, OrgDTO, OrgQuery, OrgConvert, OrgMapper>
+public class OrgServiceImpl extends AbstractServiceImpl<Org, OrgVO, OrgQuery, OrgConvert, OrgMapper>
 		implements OrgService {
 
 	@Override

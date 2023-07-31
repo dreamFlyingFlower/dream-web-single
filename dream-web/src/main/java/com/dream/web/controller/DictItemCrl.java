@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.DictItemQuery;
-import com.dream.framework.web.vo.DictItemDTO;
+import com.dream.framework.web.vo.DictItemVO;
 import com.dream.web.entity.DictItem;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "字典详情API")
 @RestController
 @RequestMapping("dictItem")
-public class DictItemCrl extends AbstractController<DictItem, DictItemDTO, DictItemQuery> {
+public class DictItemCrl extends AbstractController<DictItem, DictItemVO, DictItemQuery> {
 
 }

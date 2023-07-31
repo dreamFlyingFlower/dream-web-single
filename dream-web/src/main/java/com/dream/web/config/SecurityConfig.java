@@ -39,13 +39,13 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.accept.ContentNegotiationStrategy;
 import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 
-import com.dream.web.config.oauth.RestOAuth2AuthExceptionEntryPoint;
 import com.dream.web.entity.IntegrationUserDetailsAuthenticationHandler;
 import com.dream.web.entity.IntegrationUserDetailsAuthenticationProvider;
 import com.dream.web.filter.AuthenticationTokenFilter;
 import com.dream.web.mobile.MobileAuthenticationProvider;
 import com.dream.web.mobile.MobileUserDetailsService;
 import com.dream.web.mobile.MobileVerifyCodeService;
+import com.dream.web.oauth.config.RestOAuth2AuthExceptionEntryPoint;
 
 import lombok.SneakyThrows;
 

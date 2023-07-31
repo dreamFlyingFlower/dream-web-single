@@ -1,21 +1,33 @@
-package com.dream.web.entity;
+package com.dream.framework.web.query;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.dream.basic.web.query.AbstractQuery;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
-@Data
-@Builder
+/**
+ * 按钮表查询参数
+ * 
+ * @author 飞花梦影
+ * @date 2022-09-01 16:09:57
+ * @git {@link https://github.com/dreamFlyingFlower}
+ */
+@ApiModel(description = "按钮表查询参数")
+@Getter
+@Setter
+@ToString
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("oauth_client_details")
-public class OAuthClientDetails implements Serializable {
+public class OAuthClientDetailsQuery extends AbstractQuery {
 
 	private static final long serialVersionUID = -6947822646185526939L;
 
@@ -83,5 +95,4 @@ public class OAuthClientDetails implements Serializable {
 	 * Value is 'true' or 'false', default 'false'
 	 */
 	private String autoApprove;
-
 }

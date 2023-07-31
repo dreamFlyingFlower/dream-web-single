@@ -2,8 +2,8 @@ package com.dream.web.entity;
 
 import java.io.Serializable;
 
-import com.dream.framework.utils.GuidGenerator;
-import com.dream.web.repository.PasswordHandler;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.wy.digest.DigestTool;
 import com.wy.lang.StrTool;
 
@@ -30,7 +30,7 @@ public class OAuthClientDetailsDTO implements Serializable {
 	private String resourceIds;
 
 	@Builder.Default
-	private String clientSecret = GuidGenerator.generateClientSecret();
+	private String clientSecret = DigestTool.uuid();
 
 	private String scope;
 
@@ -76,24 +76,26 @@ public class OAuthClientDetailsDTO implements Serializable {
 	}
 
 	public OAuthClientDetails createDomain() {
-		OAuthClientDetails clientDetails = new OAuthClientDetails().clientId(clientId)
-				// encrypted client secret
-				.clientSecret(PasswordHandler.encode(clientSecret)).resourceIds(resourceIds)
-				.authorizedGrantTypes(authorizedGrantTypes).scope(scope);
+		OAuthClientDetails clientDetails = OAuthClientDetails.builder().clientId(clientId)
+				.clientSecret(new BCryptPasswordEncoder().encode(clientSecret)).resourceIds(resourceIds)
+				.authorizedGrantTypes(authorizedGrantTypes).scope(scope).build();
 
 		if (StrTool.isNotBlank(webServerRedirectUri)) {
-			clientDetails.webServerRedirectUri(webServerRedirectUri);
+			clientDetails.setWebServerRedirectUri(webServerRedirectUri);
 		}
 
 		if (StrTool.isNotBlank(authorities)) {
-			clientDetails.authorities(authorities);
+			clientDetails.setAuthorities(authorities);
 		}
 
-		clientDetails.accessTokenValidity(accessTokenValidity).refreshTokenValidity(refreshTokenValidity)
-				.trusted(trusted);
+		clientDetails.setAccessTokenValidity(accessTokenValidity);
+
+		clientDetails.setRefreshTokenValidity(refreshTokenValidity);
+
+		clientDetails.setTrusted(trusted);
 
 		if (StrTool.isNotEmpty(additionalInformation)) {
-			clientDetails.additionalInformation(additionalInformation);
+			clientDetails.setAdditionalInformation(additionalInformation);
 		}
 
 		return clientDetails;

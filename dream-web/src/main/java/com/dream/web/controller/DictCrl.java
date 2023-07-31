@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.DictQuery;
-import com.dream.framework.web.vo.DictDTO;
+import com.dream.framework.web.vo.DictVO;
 import com.dream.web.entity.Dict;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "字典API")
 @RestController
 @RequestMapping("dict")
-public class DictCrl extends AbstractController<Dict, DictDTO, DictQuery> {
+public class DictCrl extends AbstractController<Dict, DictVO, DictQuery> {
 
 }

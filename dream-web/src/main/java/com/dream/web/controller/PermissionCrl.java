@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.PermissionQuery;
-import com.dream.framework.web.vo.PermissionDTO;
+import com.dream.framework.web.vo.PermissionVO;
 import com.dream.web.entity.Permission;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "权限API")
 @RestController
 @RequestMapping("permission")
-public class PermissionCrl extends AbstractController<Permission, PermissionDTO, PermissionQuery> {
+public class PermissionCrl extends AbstractController<Permission, PermissionVO, PermissionQuery> {
 
 }

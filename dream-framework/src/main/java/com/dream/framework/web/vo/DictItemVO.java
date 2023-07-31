@@ -14,49 +14,43 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 组织机构表DTO
+ * 字典详情DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "组织机构表DTO")
+@ApiModel(description = "字典详情DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrgDTO {
+public class DictItemVO {
 
 	/**
-	 * 主键ID
+	 * 主键
 	 */
-	@ApiModelProperty("主键ID")
+	@ApiModelProperty("主键")
 	@NotNull(groups = ValidEdit.class)
 	private Long id;
 
 	/**
-	 * 组织机构编码
+	 * 字典编码
 	 */
-	@ApiModelProperty("组织机构编码")
-	private String orgCode;
+	@ApiModelProperty("字典编码")
+	private String dictCode;
 
 	/**
-	 * 组织机构简称
+	 * 字典值
 	 */
-	@ApiModelProperty("组织机构简称")
-	private String orgName;
+	@ApiModelProperty("字典值")
+	private String dictValue;
 
 	/**
-	 * 上级组织机构,顶层组织机构为0
+	 * 字典名
 	 */
-	@ApiModelProperty("上级组织机构,顶层组织机构为0")
-	private Long pid;
-
-	/**
-	 * 组织机构层级,由高到低,以-相连
-	 */
-	@ApiModelProperty("组织机构层级,由高到低,以-相连")
-	private String orgLevel;
+	@ApiModelProperty("字典名")
+	private String dictName;
 
 	/**
 	 * 创建时间
@@ -71,14 +65,14 @@ public class OrgDTO {
 	private Long createUser;
 
 	/**
-	 * 最新一次更新时间
+	 * 更新时间
 	 */
-	@ApiModelProperty("最新一次更新时间")
+	@ApiModelProperty("更新时间")
 	private LocalDateTime updateTime;
 
 	/**
-	 * 最近一次更新用户ID
+	 * 更新人ID
 	 */
-	@ApiModelProperty("最近一次更新用户ID")
+	@ApiModelProperty("更新人ID")
 	private Long updateUser;
 }

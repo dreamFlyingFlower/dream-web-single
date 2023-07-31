@@ -1,4 +1,4 @@
-package com.dream.web.config.oauth;
+package com.dream.web.oauth.config;
 //package com.wy.gateway.config;
 //
 //import org.springframework.beans.factory.annotation.Autowired;

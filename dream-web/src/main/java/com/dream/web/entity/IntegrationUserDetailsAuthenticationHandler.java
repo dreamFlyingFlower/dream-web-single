@@ -5,7 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import com.dream.basic.core.helper.SpringContextHelper;
-import com.dream.framework.web.vo.AccountDTO;
+import com.dream.framework.web.vo.AccountVO;
 import com.dream.framework.web.vo.LoginAccountVO;
 import com.dream.web.service.UserService;
 import com.wy.lang.StrTool;
@@ -40,7 +40,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		loginAccountVO.setMobile(username);
 		loginAccountVO.setPassword(presentedPassword);
 		UserService userService = SpringContextHelper.getBean(UserService.class);
-		AccountDTO accountVO = userService.login(loginAccountVO);
+		AccountVO accountVO = userService.login(loginAccountVO);
 
 		// 3.异常处理
 		if (null == accountVO) {

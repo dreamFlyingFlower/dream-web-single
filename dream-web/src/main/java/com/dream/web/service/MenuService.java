@@ -6,7 +6,7 @@ import java.util.Set;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.MenuQuery;
-import com.dream.framework.web.vo.MenuDTO;
+import com.dream.framework.web.vo.MenuVO;
 import com.dream.framework.web.vo.UserVO;
 import com.dream.web.entity.Menu;
 
@@ -17,15 +17,15 @@ import com.dream.web.entity.Menu;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface MenuService extends BaseService<Menu, MenuDTO, MenuQuery> {
+public interface MenuService extends BaseService<Menu, MenuVO, MenuQuery> {
 
-	Map<Long, MenuDTO> getCaches(List<Long> menuIds);
+	Map<Long, MenuVO> getCaches(List<Long> menuIds);
 
-	List<MenuDTO> tree(Long id);
+	List<MenuVO> tree(Long id);
 
-	List<MenuDTO> treeByRoleId(Long roleId);
+	List<MenuVO> treeByRoleId(Long roleId);
 
-	List<MenuDTO> treeByUseId(Long userId);
+	List<MenuVO> treeByUseId(Long userId);
 
 	Set<String> getUserAuthority(UserVO usesrVo);
 }

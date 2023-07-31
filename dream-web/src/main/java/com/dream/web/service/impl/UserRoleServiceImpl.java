@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.web.query.UserRoleQuery;
-import com.dream.framework.web.vo.UserRoleDTO;
+import com.dream.framework.web.vo.UserRoleVO;
 import com.dream.web.convert.UserRoleConvert;
 import com.dream.web.entity.UserRole;
 import com.dream.web.mapper.UserRoleMapper;
@@ -18,6 +18,6 @@ import com.dream.web.service.UserRoleService;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("userRoleService")
-public class UserRoleServiceImpl extends AbstractServiceImpl<UserRole, UserRoleDTO, UserRoleQuery, UserRoleConvert, UserRoleMapper> implements UserRoleService {
+public class UserRoleServiceImpl extends AbstractServiceImpl<UserRole, UserRoleVO, UserRoleQuery, UserRoleConvert, UserRoleMapper> implements UserRoleService {
 
 }

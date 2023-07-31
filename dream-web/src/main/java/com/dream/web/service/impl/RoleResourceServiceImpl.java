@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.web.query.RoleResourceQuery;
-import com.dream.framework.web.vo.RoleResourceDTO;
+import com.dream.framework.web.vo.RoleResourceVO;
 import com.dream.web.convert.RoleResourceConvert;
 import com.dream.web.entity.RoleResource;
 import com.dream.web.mapper.RoleResourceMapper;
@@ -19,7 +19,7 @@ import com.dream.web.service.RoleResourceService;
  */
 @Service("roleResourceService")
 public class RoleResourceServiceImpl extends
-        AbstractServiceImpl<RoleResource, RoleResourceDTO, RoleResourceQuery, RoleResourceConvert, RoleResourceMapper>
+        AbstractServiceImpl<RoleResource, RoleResourceVO, RoleResourceQuery, RoleResourceConvert, RoleResourceMapper>
         implements RoleResourceService {
 
 }

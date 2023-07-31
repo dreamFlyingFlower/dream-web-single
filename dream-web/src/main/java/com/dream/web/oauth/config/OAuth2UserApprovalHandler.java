@@ -1,11 +1,11 @@
-package com.dream.web.config.oauth;
+package com.dream.web.oauth.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
 
 import com.dream.web.entity.OAuthClientDetails;
-import com.dream.web.service.OauthService;
+import com.dream.web.oauth.service.OAuthService;
 
 /**
  * 自定义用户token通过处理器
@@ -16,7 +16,7 @@ import com.dream.web.service.OauthService;
  */
 public class OAuth2UserApprovalHandler extends TokenStoreUserApprovalHandler {
 
-	private OauthService oauthService;
+	private OAuthService oauthService;
 
 	public OAuth2UserApprovalHandler() {}
 
@@ -30,10 +30,10 @@ public class OAuth2UserApprovalHandler extends TokenStoreUserApprovalHandler {
 		}
 
 		OAuthClientDetails clientDetails = oauthService.loadOauthClientDetails(authorizationRequest.getClientId());
-		return clientDetails != null && clientDetails.trusted();
+		return clientDetails != null && clientDetails.isTrusted();
 	}
 
-	public void setOauthService(OauthService oauthService) {
+	public void setOauthService(OAuthService oauthService) {
 		this.oauthService = oauthService;
 	}
 }

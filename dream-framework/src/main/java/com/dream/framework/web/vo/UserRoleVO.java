@@ -14,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 字典详情DTO
+ * 账号-角色关系DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "字典详情DTO")
+@ApiModel(description = "账号-角色关系DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DictItemDTO {
+public class UserRoleVO {
 
 	/**
 	 * 主键
@@ -35,22 +35,16 @@ public class DictItemDTO {
 	private Long id;
 
 	/**
-	 * 字典编码
+	 * 用户名
 	 */
-	@ApiModelProperty("字典编码")
-	private String dictCode;
+	@ApiModelProperty("用户名")
+	private Long userId;
 
 	/**
-	 * 字典值
+	 * 角色编码
 	 */
-	@ApiModelProperty("字典值")
-	private String dictValue;
-
-	/**
-	 * 字典名
-	 */
-	@ApiModelProperty("字典名")
-	private String dictName;
+	@ApiModelProperty("角色编码")
+	private Long roleId;
 
 	/**
 	 * 创建时间

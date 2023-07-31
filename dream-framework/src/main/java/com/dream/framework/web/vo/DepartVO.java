@@ -14,37 +14,49 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 字典DTO
+ * 部门表DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "字典DTO")
+@ApiModel(description = "部门表DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DictDTO {
+public class DepartVO {
 
 	/**
-	 * 主键
+	 * 主键ID
 	 */
-	@ApiModelProperty("主键")
+	@ApiModelProperty("主键ID")
 	@NotNull(groups = ValidEdit.class)
 	private Long id;
 
 	/**
-	 * 字典编码
+	 * 部门编码
 	 */
-	@ApiModelProperty("字典编码")
-	private String dictCode;
+	@ApiModelProperty("部门编码")
+	private String departCode;
 
 	/**
-	 * 字典名称
+	 * 部门名称
 	 */
-	@ApiModelProperty("字典名称")
-	private String dictName;
+	@ApiModelProperty("部门名称")
+	private String departName;
+
+	/**
+	 * 上级部门ID,顶层部门为0
+	 */
+	@ApiModelProperty("上级部门ID,顶层部门为0")
+	private Long pid;
+
+	/**
+	 * 部门层级,由高到低,以-相连
+	 */
+	@ApiModelProperty("部门层级,由高到低,以-相连")
+	private String departLevel;
 
 	/**
 	 * 创建时间
@@ -59,14 +71,14 @@ public class DictDTO {
 	private Long createUser;
 
 	/**
-	 * 更新时间
+	 * 最新一次更新时间
 	 */
-	@ApiModelProperty("更新时间")
+	@ApiModelProperty("最新一次更新时间")
 	private LocalDateTime updateTime;
 
 	/**
-	 * 更新人ID
+	 * 最近一次更新用户ID
 	 */
-	@ApiModelProperty("更新人ID")
+	@ApiModelProperty("最近一次更新用户ID")
 	private Long updateUser;
 }

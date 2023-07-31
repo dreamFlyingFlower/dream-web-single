@@ -1,4 +1,4 @@
-package com.dream.web.config.oauth;
+package com.dream.web.oauth.config;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -35,7 +35,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import com.dream.web.entity.SelfJdbcClientDetailsService;
-import com.dream.web.service.OauthService;
+import com.dream.web.oauth.service.OAuthService;
 
 /**
  * OAuth2认证服务器配置
@@ -65,7 +65,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 	private JwtAccessTokenConverter accessTokenConverter;
 
 	@Autowired
-	private OauthService oauthService;
+	private OAuthService oauthService;
 
 	@Autowired
 	private TokenStore tokenStore;

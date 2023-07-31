@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.UserRoleQuery;
-import com.dream.framework.web.vo.UserRoleDTO;
+import com.dream.framework.web.vo.UserRoleVO;
 import com.dream.web.entity.UserRole;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "账号-角色关系API")
 @RestController
 @RequestMapping("userRole")
-public class UserRoleCrl extends AbstractController<UserRole, UserRoleDTO, UserRoleQuery> {
+public class UserRoleCrl extends AbstractController<UserRole, UserRoleVO, UserRoleQuery> {
 
 }

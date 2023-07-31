@@ -2,7 +2,7 @@ package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.UserQuery;
-import com.dream.framework.web.vo.AccountDTO;
+import com.dream.framework.web.vo.AccountVO;
 import com.dream.framework.web.vo.LoginAccountVO;
 import com.dream.framework.web.vo.UserVO;
 import com.dream.web.entity.User;
@@ -22,5 +22,5 @@ public interface UserService extends BaseService<User, UserVO, UserQuery> {
 
 	void getUserDetails(UserVO usesrVo);
 
-	AccountDTO login(LoginAccountVO loginAccountVO);
+	AccountVO login(LoginAccountVO loginAccountVO);
 }

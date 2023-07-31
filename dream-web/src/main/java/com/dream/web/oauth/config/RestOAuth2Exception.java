@@ -1,4 +1,4 @@
-package com.dream.web.config.oauth;
+package com.dream.web.oauth.config;
 
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 

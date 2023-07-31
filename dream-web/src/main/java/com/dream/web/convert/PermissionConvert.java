@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.framework.web.vo.PermissionDTO;
+import com.dream.framework.web.vo.PermissionVO;
 import com.dream.web.entity.Permission;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.entity.Permission;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface PermissionConvert extends BaseConvert<Permission, PermissionDTO> {
+public interface PermissionConvert extends BaseConvert<Permission, PermissionVO> {
 
 	PermissionConvert INSTANCE = Mappers.getMapper(PermissionConvert.class);
 

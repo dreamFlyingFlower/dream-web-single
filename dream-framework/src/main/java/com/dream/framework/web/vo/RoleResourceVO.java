@@ -1,7 +1,6 @@
 package com.dream.framework.web.vo;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -15,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 菜单表DTO
+ * 角色-权限关系DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "菜单表DTO")
+@ApiModel(description = "角色-权限关系DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuDTO {
+public class RoleResourceVO {
 
 	/**
 	 * 主键
@@ -36,39 +35,22 @@ public class MenuDTO {
 	private Long id;
 
 	/**
-	 * 菜单标题
+	 * 角色id
 	 */
-	@ApiModelProperty("菜单标题")
-	private String menuName;
+	@ApiModelProperty("角色id")
+	private Long roleId;
 
 	/**
-	 * 父id
+	 * 资源id
 	 */
-	@ApiModelProperty("父id")
-	private Long pid;
+	@ApiModelProperty("资源id")
+	private Long resourceId;
 
 	/**
-	 * 层级,以-拼接
+	 * 资源类型:1-菜单;2-按钮;3数据
 	 */
-	private String level;
-
-	/**
-	 * 链接url
-	 */
-	@ApiModelProperty("链接url")
-	private String url;
-
-	/**
-	 * 图标
-	 */
-	@ApiModelProperty("图标")
-	private String icon;
-
-	/**
-	 * 排序
-	 */
-	@ApiModelProperty("排序")
-	private Integer sort;
+	@ApiModelProperty("资源类型:1-菜单;2-按钮;3数据")
+	private Integer resourceType;
 
 	/**
 	 * 创建时间
@@ -93,14 +75,4 @@ public class MenuDTO {
 	 */
 	@ApiModelProperty("更新人ID")
 	private Long updateUser;
-
-	/**
-	 * 当前菜单子菜单列表
-	 */
-	private List<MenuDTO> children;
-
-	/**
-	 * 当前菜单中的按钮
-	 */
-	private List<ButtonDTO> buttons;
 }

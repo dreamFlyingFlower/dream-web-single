@@ -14,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 账号-角色关系DTO
+ * 权限DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "账号-角色关系DTO")
+@ApiModel(description = "权限DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRoleDTO {
+public class PermissionVO {
 
 	/**
 	 * 主键
@@ -35,16 +35,16 @@ public class UserRoleDTO {
 	private Long id;
 
 	/**
-	 * 用户名
+	 * 权限编码
 	 */
-	@ApiModelProperty("用户名")
-	private Long userId;
+	@ApiModelProperty("权限编码")
+	private String permissionCode;
 
 	/**
-	 * 角色编码
+	 * 权限名称
 	 */
-	@ApiModelProperty("角色编码")
-	private Long roleId;
+	@ApiModelProperty("权限名称")
+	private String permissionName;
 
 	/**
 	 * 创建时间

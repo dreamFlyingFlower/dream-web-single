@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.OrgQuery;
-import com.dream.framework.web.vo.OrgDTO;
+import com.dream.framework.web.vo.OrgVO;
 import com.dream.web.entity.Org;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "组织机构表API")
 @RestController
 @RequestMapping("org")
-public class OrgCrl extends AbstractController<Org, OrgDTO, OrgQuery> {
+public class OrgCrl extends AbstractController<Org, OrgVO, OrgQuery> {
 
 }

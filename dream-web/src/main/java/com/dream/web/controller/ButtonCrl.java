@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.ButtonQuery;
-import com.dream.framework.web.vo.ButtonDTO;
+import com.dream.framework.web.vo.ButtonVO;
 import com.dream.web.entity.Button;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "按钮表API")
 @RestController
 @RequestMapping("button")
-public class ButtonCrl extends AbstractController<Button, ButtonDTO, ButtonQuery> {
+public class ButtonCrl extends AbstractController<Button, ButtonVO, ButtonQuery> {
 
 }

@@ -21,8 +21,8 @@ import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.cache.RedisKeys;
 import com.dream.framework.enums.SuperAdminEnum;
 import com.dream.framework.web.query.MenuQuery;
-import com.dream.framework.web.vo.ButtonDTO;
-import com.dream.framework.web.vo.MenuDTO;
+import com.dream.framework.web.vo.ButtonVO;
+import com.dream.framework.web.vo.MenuVO;
 import com.dream.framework.web.vo.UserVO;
 import com.dream.web.convert.ButtonConvert;
 import com.dream.web.convert.MenuConvert;
@@ -49,7 +49,7 @@ import com.wy.result.ResultException;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("menuService")
-public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuery, MenuConvert, MenuMapper>
+public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuVO, MenuQuery, MenuConvert, MenuMapper>
 		implements MenuService {
 
 	@Autowired
@@ -68,26 +68,26 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 	private ButtonConvert buttonConvert;
 
 	@Override
-	public Map<Long, MenuDTO> getCache(String key) {
+	public Map<Long, MenuVO> getCache(String key) {
 		Map<Object, Object> cacheEntries = redisTemplate.opsForHash().entries(RedisKeys.buildKey("menu"));
 		if (MapTool.isNotEmpty(cacheEntries)) {
-			return FastjsonHelper.parseMap(cacheEntries, new HashMap<Long, MenuDTO>());
+			return FastjsonHelper.parseMap(cacheEntries, new HashMap<Long, MenuVO>());
 		}
 		return handlerCache(null);
 	}
 
 	@Override
-	public Map<Long, MenuDTO> getCaches(List<Long> menuIds) {
+	public Map<Long, MenuVO> getCaches(List<Long> menuIds) {
 		List<Object> cacheMenus = redisTemplate.opsForHash().multiGet(RedisKeys.buildKey("menu"),
 				menuIds.stream().map(t -> t).collect(Collectors.toCollection(() -> new ArrayList<Object>())));
 		if (ListTool.isNotEmpty(cacheMenus)) {
-			return FastjsonHelper.parseMap(cacheMenus, new HashMap<Long, MenuDTO>());
+			return FastjsonHelper.parseMap(cacheMenus, new HashMap<Long, MenuVO>());
 		}
 		return handlerCache(menuIds);
 	}
 
-	private Map<Long, MenuDTO> handlerCache(List<Long> menuIds) {
-		Map<Long, MenuDTO> rets = Collections.emptyMap();
+	private Map<Long, MenuVO> handlerCache(List<Long> menuIds) {
+		Map<Long, MenuVO> rets = Collections.emptyMap();
 		List<Menu> menus =
 				ListTool.isEmpty(menuIds) ? list() : list(new LambdaQueryWrapper<Menu>().in(Menu::getId, menuIds));
 		if (ListTool.isNotEmpty(menus)) {
@@ -98,14 +98,14 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 	}
 
 	@Override
-	public List<MenuDTO> tree(Long id) {
-		Map<Long, MenuDTO> cacheMenus = getCache(null);
+	public List<MenuVO> tree(Long id) {
+		Map<Long, MenuVO> cacheMenus = getCache(null);
 		if (MapTool.isEmpty(cacheMenus)) {
 			ResultException.throwException(TipEnum.TIP_ROLE_UNASSIGNED_RESOURCE);
 		}
-		Map<Long, List<MenuDTO>> mapMenuPid2MenuDTOs =
+		Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs =
 				cacheMenus.values().stream().collect(Collectors.groupingBy(k -> k.getPid()));
-		Map<Long, List<ButtonDTO>> mapMenuId2Buttons =
+		Map<Long, List<ButtonVO>> mapMenuId2Buttons =
 				buttonConvert.convertt(buttonService.list(new LambdaQueryWrapper<Button>())).stream()
 						.collect(Collectors.groupingBy(k -> k.getMenuId()));
 		handlerChildren(cacheMenus.get(id), mapMenuPid2MenuDTOs, mapMenuId2Buttons);
@@ -113,12 +113,12 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 	}
 
 	@Override
-	public List<MenuDTO> treeByRoleId(Long roleId) {
+	public List<MenuVO> treeByRoleId(Long roleId) {
 		return handlerTree(roleId);
 	}
 
 	@Override
-	public List<MenuDTO> treeByUseId(Long userId) {
+	public List<MenuVO> treeByUseId(Long userId) {
 		List<UserRole> userRoles = userRoleMapper
 				.selectList(new LambdaQueryWrapper<UserRole>().eq(UserRole::getUserId, userId).last(" limit 1"));
 		if (ListTool.isEmpty(userRoles)) {
@@ -129,7 +129,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 		return handlerTree(userRole.getRoleId());
 	}
 
-	private List<MenuDTO> handlerTree(Long roleId) {
+	private List<MenuVO> handlerTree(Long roleId) {
 		List<RoleResource> roleResources =
 				roleResourceService.list(new LambdaQueryWrapper<RoleResource>().eq(RoleResource::getRoleId, roleId)
 						.in(RoleResource::getResourceType, ResourceType.MENU, ResourceType.BUTTON));
@@ -148,18 +148,18 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 			}
 		}
 
-		Map<Long, MenuDTO> cacheMenus = getCaches(menuIds);
+		Map<Long, MenuVO> cacheMenus = getCaches(menuIds);
 		if (MapTool.isEmpty(cacheMenus)) {
 			ResultException.throwException(TipEnum.TIP_ROLE_UNASSIGNED_RESOURCE);
 		}
-		Map<Long, List<MenuDTO>> mapMenuPid2MenuDTOs =
+		Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs =
 				cacheMenus.values().stream().collect(Collectors.groupingBy(k -> k.getPid()));
 		Map<Long,
-				List<ButtonDTO>> mapMenuId2Buttons = buttonConvert
+				List<ButtonVO>> mapMenuId2Buttons = buttonConvert
 						.convertt(buttonService.list(new LambdaQueryWrapper<Button>().in(Button::getId, buttonIds)))
 						.stream().collect(Collectors.groupingBy(k -> k.getMenuId()));
 
-		List<MenuDTO> rootMenus = mapMenuPid2MenuDTOs.get(0L);
+		List<MenuVO> rootMenus = mapMenuPid2MenuDTOs.get(0L);
 		if (ListTool.isEmpty(rootMenus)) {
 			ResultException.throwException("根目录不存在,请重新分配菜单");
 		}
@@ -167,13 +167,13 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuDTO, MenuQuer
 		return rootMenus;
 	}
 
-	private void handlerChildren(MenuDTO parent, Map<Long, List<MenuDTO>> mapMenuPid2MenuDTOs,
-			Map<Long, List<ButtonDTO>> mapMenuId2Buttons) {
-		List<MenuDTO> children = mapMenuPid2MenuDTOs.get(parent.getId());
+	private void handlerChildren(MenuVO parent, Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs,
+			Map<Long, List<ButtonVO>> mapMenuId2Buttons) {
+		List<MenuVO> children = mapMenuPid2MenuDTOs.get(parent.getId());
 		if (ListTool.isNotEmpty(children)) {
 			parent.setChildren(children);
 			children.forEach(t -> t.setButtons(mapMenuId2Buttons.get(t.getId())));
-			for (MenuDTO menuDTO : children) {
+			for (MenuVO menuDTO : children) {
 				handlerChildren(menuDTO, mapMenuPid2MenuDTOs, mapMenuId2Buttons);
 			}
 		}

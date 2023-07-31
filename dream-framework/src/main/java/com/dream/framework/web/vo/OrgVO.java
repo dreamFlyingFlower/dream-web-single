@@ -14,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 部门表DTO
+ * 组织机构表DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "部门表DTO")
+@ApiModel(description = "组织机构表DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DepartDTO {
+public class OrgVO {
 
 	/**
 	 * 主键ID
@@ -35,28 +35,28 @@ public class DepartDTO {
 	private Long id;
 
 	/**
-	 * 部门编码
+	 * 组织机构编码
 	 */
-	@ApiModelProperty("部门编码")
-	private String departCode;
+	@ApiModelProperty("组织机构编码")
+	private String orgCode;
 
 	/**
-	 * 部门名称
+	 * 组织机构简称
 	 */
-	@ApiModelProperty("部门名称")
-	private String departName;
+	@ApiModelProperty("组织机构简称")
+	private String orgName;
 
 	/**
-	 * 上级部门ID,顶层部门为0
+	 * 上级组织机构,顶层组织机构为0
 	 */
-	@ApiModelProperty("上级部门ID,顶层部门为0")
+	@ApiModelProperty("上级组织机构,顶层组织机构为0")
 	private Long pid;
 
 	/**
-	 * 部门层级,由高到低,以-相连
+	 * 组织机构层级,由高到低,以-相连
 	 */
-	@ApiModelProperty("部门层级,由高到低,以-相连")
-	private String departLevel;
+	@ApiModelProperty("组织机构层级,由高到低,以-相连")
+	private String orgLevel;
 
 	/**
 	 * 创建时间

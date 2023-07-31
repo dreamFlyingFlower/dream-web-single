@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.framework.web.vo.RoleResourceDTO;
+import com.dream.framework.web.vo.RoleResourceVO;
 import com.dream.web.entity.RoleResource;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.entity.RoleResource;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface RoleResourceConvert extends BaseConvert<RoleResource, RoleResourceDTO> {
+public interface RoleResourceConvert extends BaseConvert<RoleResource, RoleResourceVO> {
 
 	RoleResourceConvert INSTANCE = Mappers.getMapper(RoleResourceConvert.class);
 

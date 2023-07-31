@@ -14,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 按钮表DTO
+ * 字典DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "按钮表DTO")
+@ApiModel(description = "字典DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ButtonDTO {
+public class DictVO {
 
 	/**
 	 * 主键
@@ -35,34 +35,16 @@ public class ButtonDTO {
 	private Long id;
 
 	/**
-	 * 按钮标题
+	 * 字典编码
 	 */
-	@ApiModelProperty("按钮标题")
-	private String buttonName;
+	@ApiModelProperty("字典编码")
+	private String dictCode;
 
 	/**
-	 * 所属菜单ID
+	 * 字典名称
 	 */
-	@ApiModelProperty("所属菜单ID")
-	private Long menuId;
-
-	/**
-	 * 链接url
-	 */
-	@ApiModelProperty("链接url")
-	private String url;
-
-	/**
-	 * 图标
-	 */
-	@ApiModelProperty("图标")
-	private String icon;
-
-	/**
-	 * 排序
-	 */
-	@ApiModelProperty("排序")
-	private Integer sort;
+	@ApiModelProperty("字典名称")
+	private String dictName;
 
 	/**
 	 * 创建时间

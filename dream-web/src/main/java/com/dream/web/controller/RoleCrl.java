@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.RoleQuery;
-import com.dream.framework.web.vo.RoleDTO;
+import com.dream.framework.web.vo.RoleVO;
 import com.dream.web.entity.Role;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "角色信息API")
 @RestController
 @RequestMapping("role")
-public class RoleCrl extends AbstractController<Role, RoleDTO, RoleQuery> {
+public class RoleCrl extends AbstractController<Role, RoleVO, RoleQuery> {
 
 }

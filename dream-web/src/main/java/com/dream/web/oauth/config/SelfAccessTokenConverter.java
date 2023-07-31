@@ -1,4 +1,4 @@
-package com.dream.web.config.oauth;
+package com.dream.web.oauth.config;
 
 import java.util.Arrays;
 import java.util.Collection;

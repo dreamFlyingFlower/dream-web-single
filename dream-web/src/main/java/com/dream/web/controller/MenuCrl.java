@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.web.query.MenuQuery;
-import com.dream.framework.web.vo.MenuDTO;
+import com.dream.framework.web.vo.MenuVO;
 import com.dream.web.entity.Menu;
 
 import io.swagger.annotations.Api;
@@ -20,6 +20,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "菜单表API")
 @RestController
 @RequestMapping("menu")
-public class MenuCrl extends AbstractController<Menu, MenuDTO, MenuQuery> {
+public class MenuCrl extends AbstractController<Menu, MenuVO, MenuQuery> {
 
 }

@@ -14,18 +14,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 角色信息DTO
+ * 按钮表DTO
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:09:10
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "角色信息DTO")
+@ApiModel(description = "按钮表DTO")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleDTO {
+public class ButtonVO {
 
 	/**
 	 * 主键
@@ -35,22 +35,34 @@ public class RoleDTO {
 	private Long id;
 
 	/**
-	 * 角色名称
+	 * 按钮标题
 	 */
-	@ApiModelProperty("角色名称")
-	private String roleName;
+	@ApiModelProperty("按钮标题")
+	private String buttonName;
 
 	/**
-	 * 角色编码
+	 * 所属菜单ID
 	 */
-	@ApiModelProperty("角色编码")
-	private String roleCode;
+	@ApiModelProperty("所属菜单ID")
+	private Long menuId;
 
 	/**
-	 * 角色类型:1-超级管理员;2-普通角色
+	 * 链接url
 	 */
-	@ApiModelProperty("角色类型:1-超级管理员;2-普通角色")
-	private Integer roleType;
+	@ApiModelProperty("链接url")
+	private String url;
+
+	/**
+	 * 图标
+	 */
+	@ApiModelProperty("图标")
+	private String icon;
+
+	/**
+	 * 排序
+	 */
+	@ApiModelProperty("排序")
+	private Integer sort;
 
 	/**
 	 * 创建时间

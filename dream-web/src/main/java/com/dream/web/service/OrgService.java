@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.OrgQuery;
-import com.dream.framework.web.vo.OrgDTO;
+import com.dream.framework.web.vo.OrgVO;
 import com.dream.web.entity.Org;
 
 /**
@@ -14,7 +14,7 @@ import com.dream.web.entity.Org;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface OrgService extends BaseService<Org, OrgDTO, OrgQuery> {
+public interface OrgService extends BaseService<Org, OrgVO, OrgQuery> {
 
 	/**
 	 * 根据机构ID,获取子机构ID列表(包含本机构ID)

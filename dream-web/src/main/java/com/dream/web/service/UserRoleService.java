@@ -2,7 +2,7 @@ package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
 import com.dream.framework.web.query.UserRoleQuery;
-import com.dream.framework.web.vo.UserRoleDTO;
+import com.dream.framework.web.vo.UserRoleVO;
 import com.dream.web.entity.UserRole;
 
 /**
@@ -12,6 +12,6 @@ import com.dream.web.entity.UserRole;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface UserRoleService extends BaseService<UserRole, UserRoleDTO, UserRoleQuery> {
+public interface UserRoleService extends BaseService<UserRole, UserRoleVO, UserRoleQuery> {
 
 }
