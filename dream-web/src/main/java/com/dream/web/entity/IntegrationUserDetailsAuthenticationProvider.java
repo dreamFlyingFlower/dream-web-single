@@ -23,11 +23,13 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
 		this.authenticationHandler = authenticationHandler;
 	}
 
+	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
 			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
 		// 仅在父类中验证用户的状态
 	}
 
+	@Override
 	protected final UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
 			throws AuthenticationException {
 		try {

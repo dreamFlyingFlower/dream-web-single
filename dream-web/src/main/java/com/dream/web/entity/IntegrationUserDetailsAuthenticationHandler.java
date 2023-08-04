@@ -23,7 +23,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 	public UnifiedUserDetails authentication(String domain, String authenticationType,
 			UsernamePasswordAuthenticationToken token) {
 
-		// 1.从客户端取数据
+		// 从客户端取数据
 		String username = token.getName();
 		if (StrTool.isBlank(username)) {
 			throw new BadCredentialsException("账户为空");
@@ -33,7 +33,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		}
 		String presentedPassword = token.getCredentials().toString();
 
-		// 2.远程调用统一账户服务,进行账户密码校验
+		// 远程调用统一账户服务,进行账户密码校验
 		LoginAccountVO loginAccountVO = new LoginAccountVO();
 		loginAccountVO.setDomain(domain);
 		loginAccountVO.setUsername(username);
@@ -42,12 +42,10 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		UserService userService = SpringContextHelper.getBean(UserService.class);
 		AccountVO accountVO = userService.login(loginAccountVO);
 
-		// 3.异常处理
 		if (null == accountVO) {
 			throw new BadCredentialsException("登录失败");
 		}
 
-		// 4.登录成功,把用户数据封装到UnifiedUserDetails对象中
 		UnifiedUserDetails unifiedUserDetails = new UnifiedUserDetails(accountVO.getUsername(), presentedPassword,
 				AuthorityUtils.createAuthorityList());
 		unifiedUserDetails.setMobile(accountVO.getMobile());

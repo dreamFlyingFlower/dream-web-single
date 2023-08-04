@@ -1,4 +1,4 @@
-package com.dream.web.config;
+package com.dream.web.security;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,8 +20,8 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -46,19 +46,33 @@ import com.dream.web.mobile.MobileAuthenticationProvider;
 import com.dream.web.mobile.MobileUserDetailsService;
 import com.dream.web.mobile.MobileVerifyCodeService;
 import com.dream.web.oauth.config.RestOAuth2AuthExceptionEntryPoint;
+import com.dream.web.properties.SecurityProperties;
 
 import lombok.SneakyThrows;
 
+/**
+ * Security配置
+ *
+ * @author 飞花梦影
+ * @date 2022-06-17 16:41:00
+ * @git {@link https://github.com/dreamFlyingFlower }
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
 	@Autowired
-	private AuthenticationTokenFilter authenticationTokenFilter;
+	private SecuritySuccessHandler securitySuccessHandler;
 
 	@Autowired
-	private PermitResource permitResource;
+	private SecurityFailureHandler securityFailureHandler;
+
+	@Autowired
+	private SecurityLogoutHandler securityLogoutHandler;
+
+	@Autowired
+	private AuthenticationTokenFilter authenticationTokenFilter;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -74,6 +88,9 @@ public class SecurityConfig {
 
 	@Autowired
 	private ApplicationEventPublisher applicationEventPublisher;
+
+	@Autowired
+	private SecurityProperties securityProperties;
 
 	/**
 	 * 普通用户数据库用户名密码登录
@@ -104,12 +121,23 @@ public class SecurityConfig {
 	 * @return IntegrationUserDetailsAuthenticationProvider
 	 */
 	@Bean
-	public IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider() {
+	IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider() {
 		return new IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
 	}
 
+	@Autowired
+	private AuthenticationDetailsSource<HttpServletRequest,
+			WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
+
+	@Bean
+	public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler() {
+		IntegrationUserDetailsAuthenticationHandler authenticationHandler =
+				new IntegrationUserDetailsAuthenticationHandler();
+		return authenticationHandler;
+	}
+
 	/**
-	 * 生成各种登录解析器,可自定义添加
+	 * 添加各种登录解析器,可自定义添加
 	 * 
 	 * @return AuthenticationManager
 	 */
@@ -126,96 +154,46 @@ public class SecurityConfig {
 	}
 
 	/**
-	 * SpringSecurity安全拦截,若报错,可去掉WebSecurity试试
+	 * SpringSecurity HttpSecurity安全拦截
 	 * 
-	 * @param http
-	 * @param webSecurity
+	 * @param httpSecurity
 	 * @return SecurityFilterChain
 	 */
 	@Bean
 	@SneakyThrows
-	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, WebSecurity webSecurity) {
-		// 忽略授权的地址列表
-		List<String> permitList = permitResource.getPermitList();
-		String[] permits = permitList.toArray(new String[permitList.size()]);
+	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
 		httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers(permits).permitAll().antMatchers(HttpMethod.OPTIONS).permitAll()
-				// .antMatchers("/login*").permitAll().antMatchers("/logout*").permitAll()
-				// .antMatchers("/druid/**").permitAll()
+				// 禁止使用HttpSession
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+				// 不需要校验的请求
+				.authorizeRequests().antMatchers(securityProperties.getHttpIgnoreResources()).permitAll()
+				// 不需要校验的请求方式
+				.antMatchers(HttpMethod.OPTIONS).permitAll()
+				// 其他请求都需要校验
 				.anyRequest().authenticated().and()
-				// 登录页面
-				// .formLogin().loginPage("/login")
-				// .authenticationDetailsSource(integrationWebAuthenticationDetailsSource)
-				// 登录处理url
-				// .loginProcessingUrl("/login.do")
-				// .failureUrl("/login?authentication_error=1").defaultSuccessUrl("/oauth/authorize")
-				// .and().logout().logoutUrl("/logout.do")
-				// .deleteCookies("JSESSIONID").logoutSuccessUrl("/").and().exceptionHandling()
-				// .accessDeniedPage("/login?authorization_error=2").and().requestCache()
-				// .requestCache(getRequestCache(http))
+				// 登录相关
+				.formLogin().loginProcessingUrl("/login").successHandler(securitySuccessHandler)
+				.failureHandler(securityFailureHandler).permitAll().and()
+				// 登出相关
+				.logout().logoutUrl("/logout").logoutSuccessHandler(securityLogoutHandler).deleteCookies("JSESSIONID")
+				.and().authorizeRequests().antMatchers("/**").permitAll().and()
+				// 异常相关
 				.exceptionHandling().authenticationEntryPoint(new RestOAuth2AuthExceptionEntryPoint()).and().headers()
 				.frameOptions().disable().and().csrf().disable();
-
-		webSecurity.ignoring().antMatchers("/public/**", "/webjars/**", "/v2/**", "/swagger**", "/static/**",
-				"/resources/**");
-		// web.httpFirewall(new DefaultHttpFirewall());//StrictHttpFirewall
-		// 去除验url非法验证防火墙
 
 		return httpSecurity.build();
 	}
 
-	///////////////////////////////////////
-	@Autowired
-	private AuthenticationDetailsSource<HttpServletRequest,
-			WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
-
+	/**
+	 * SpringSecurity WebSecurity安全拦截
+	 * 
+	 * @return WebSecurityCustomizer
+	 */
 	@Bean
-	public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler() {
-		IntegrationUserDetailsAuthenticationHandler authenticationHandler =
-				new IntegrationUserDetailsAuthenticationHandler();
-		return authenticationHandler;
-	}
-
-	private RequestCache getRequestCache(HttpSecurity http) {
-		RequestCache result = http.getSharedObject(RequestCache.class);
-		if (result != null) {
-			return result;
-		}
-		HttpSessionRequestCache defaultCache = new HttpSessionRequestCache();
-		defaultCache.setRequestMatcher(createDefaultSavedRequestMatcher(http));
-		return defaultCache;
-	}
-
-	private RequestMatcher createDefaultSavedRequestMatcher(HttpSecurity http) {
-		ContentNegotiationStrategy contentNegotiationStrategy = http.getSharedObject(ContentNegotiationStrategy.class);
-		if (contentNegotiationStrategy == null) {
-			contentNegotiationStrategy = new HeaderContentNegotiationStrategy();
-		}
-
-		RequestMatcher notFavIcon = new NegatedRequestMatcher(new AntPathRequestMatcher("/**/favicon.ico"));
-
-		MediaTypeRequestMatcher jsonRequest =
-				new MediaTypeRequestMatcher(contentNegotiationStrategy, MediaType.APPLICATION_JSON);
-		jsonRequest.setIgnoredMediaTypes(Collections.singleton(MediaType.ALL));
-		RequestMatcher notJson = new NegatedRequestMatcher(jsonRequest);
-
-		// RequestMatcher notXRequestedWith =
-		// new NegatedRequestMatcher(new RequestHeaderRequestMatcher("X-Requested-With",
-		// "XMLHttpRequest"));
-
-		@SuppressWarnings("unchecked")
-		boolean isCsrfEnabled = http.getConfigurer(CsrfConfigurer.class) != null;
-
-		List<RequestMatcher> matchers = new ArrayList<>();
-		if (isCsrfEnabled) {
-			RequestMatcher getRequests = new AntPathRequestMatcher("/**", "GET");
-			matchers.add(0, getRequests);
-		}
-		matchers.add(notFavIcon);
-		matchers.add(notJson);
-		// matchers.add(notXRequestedWith);
-
-		return new AndRequestMatcher(matchers);
+	WebSecurityCustomizer webSecurityCustomizer() {
+		return webSecurity -> webSecurity
+				// 去除验url非法验证防火墙
+				// web.httpFirewall(new DefaultHttpFirewall());//StrictHttpFirewall
+				.ignoring().antMatchers(securityProperties.getWebIgnoreResources());
 	}
 }
