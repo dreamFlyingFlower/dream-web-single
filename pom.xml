@@ -15,10 +15,10 @@
 	</properties>
 	
 	<modules>
-		<module>dream-framework</module>
-		<module>dream-message</module>
-		<module>dream-monitor</module>
-		<module>dream-web</module>
+		<module>dream-single-message</module>
+		<module>dream-single-monitor</module>
+		<module>dream-single-system</module>
+		<module>dream-single-web</module>
 	</modules>
 
 </project>

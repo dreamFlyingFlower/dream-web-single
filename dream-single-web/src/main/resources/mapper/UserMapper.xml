@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.web.mapper.UserMapper">
+
+	<resultMap id="BaseResultMap" type="com.dream.web.entity.User">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="salt" jdbcType="VARCHAR" property="salt" />
+		<result column="nickname" jdbcType="VARCHAR" property="nickname" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="depart_id" jdbcType="BIGINT" property="departId" />
+		<result column="org_id" jdbcType="BIGINT" property="orgId" />
+		<result column="status" jdbcType="TINYINT" property="status" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_user" jdbcType="BIGINT" property="createUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="update_user" jdbcType="BIGINT" property="updateUser" />
+	</resultMap>
+
+	<sql id="BaseColumnList">
+		a.id, a.username, a.password, a.salt, a.nickname, a.mobile, a.depart_id, a.org_id,
+		a.status,
+		a.create_time,a.create_user, a.update_time,a.update_user
+	</sql>
+
+	<select id="list" resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		FROM ts_user a
+		<where>
+			<if test="query.id != null and query.id != ''">
+				AND a.id = #{query.id, jdbcType=BIGINT }
+			</if>
+			<if test="query.username != null and query.username != ''">
+				AND a.username = #{query.username, jdbcType=VARCHAR }
+			</if>
+			<if test="query.password != null and query.password != ''">
+				AND a.password = #{query.password, jdbcType=VARCHAR }
+			</if>
+			<if test="query.salt != null and query.salt != ''">
+				AND a.salt = #{query.salt, jdbcType=VARCHAR }
+			</if>
+			<if test="query.nickname != null and query.nickname != ''">
+				AND a.nickname = #{query.nickname, jdbcType=VARCHAR }
+			</if>
+			<if test="query.mobile != null and query.mobile != ''">
+				AND a.mobile = #{query.mobile, jdbcType=VARCHAR }
+			</if>
+			<if test="query.departId != null and query.departId != ''">
+				AND a.depart_id = #{query.departId, jdbcType=BIGINT }
+			</if>
+			<if test="query.orgId != null and query.orgId != ''">
+				AND a.org_id = #{query.orgId, jdbcType=BIGINT }
+			</if>
+			<if test="query.status != null and query.status != ''">
+				AND a.status = #{query.status, jdbcType=TINYINT }
+			</if>
+		</where>
+		ORDER BY a.id DESC
+	</select>
+
+	<select id="getById" resultType="com.dream.web.entity.UserEntity">
+		SELECT t1.*, (SELECT t2.name FROM ts_org t2 where t2.id = t1.org_id) orgName
+		FROM ts_user t1
+		WHERE t1.id = #{id} AND t1.deleted = 0
+	</select>
+
+	<select id="getRoleUserList" resultType="com.electric.system.entity.SysUserEntity">
+		SELECT t1.* from ts_user t1 left join ts_user_role t2 on t1.id = t2.user_id
+		WHERE t1.deleted = 0 and t2.deleted = 0
+		AND
+		t2.role_id = #{roleId}
+		<if test="username != null and username.trim() != ''">
+			AND t1.username = #{username}
+		</if>
+		<if test="mobile != null and mobile.trim() != ''">
+			AND t1.mobile = #{mobile}
+		</if>
+		<if test="gender != null">
+			AND t1.gender = #{gender}
+		</if>
+	</select>
+
+	<update id="updateUserCert">
+		update `ts_user` set `user_cert` = NULL where `id` =#{id};
+	</update>
+</mapper>
