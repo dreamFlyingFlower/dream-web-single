@@ -1,7 +1,7 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.DictItem;
+import com.dream.web.entity.DictItemEntity;
 import com.dream.web.query.DictItemQuery;
 import com.dream.web.vo.DictItemVO;
 
@@ -12,6 +12,6 @@ import com.dream.web.vo.DictItemVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface DictItemService extends BaseService<DictItem, DictItemVO, DictItemQuery> {
+public interface DictItemService extends BaseService<DictItemEntity, DictItemVO, DictItemQuery> {
 
 }

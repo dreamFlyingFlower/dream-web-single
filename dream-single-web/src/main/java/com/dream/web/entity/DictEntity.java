@@ -2,7 +2,10 @@ package com.dream.web.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
+import com.wy.annotation.Unique;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,30 +14,42 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 账号-角色关系 ts_user_role
+ * ts_dict
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
+@ApiModel(description = " ts_dict")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_user_role")
-public class UserRole extends AbstractEntity {
+@TableName("ts_dict")
+public class DictEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 用户名
+	 * 主键
 	 */
-	private Long userId;
+	@ApiModelProperty("主键")
+	private Long id;
 
 	/**
-	 * 角色编码
+	 * 字典编码
 	 */
-	private Long roleId;
+	@ApiModelProperty("字典编码")
+	@Unique
+	private String dictCode;
+
+	/**
+	 * 字典名称
+	 */
+	@ApiModelProperty("字典名称")
+	private String dictName;
+
+	/** 非数据库字段 */
 }

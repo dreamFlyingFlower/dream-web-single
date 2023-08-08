@@ -29,7 +29,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("ts_user")
-public class User extends AbstractEntity {
+public class UserEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 

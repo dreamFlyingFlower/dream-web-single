@@ -11,14 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
+import com.dream.system.constant.ConstCommon;
+import com.dream.system.utils.TreeUtils;
 import com.dream.web.convert.OrgConvert;
 import com.dream.web.entity.OrgEntity;
-import com.dream.web.entity.SysUserEntity;
+import com.dream.web.entity.UserEntity;
 import com.dream.web.mapper.OrgMapper;
 import com.dream.web.query.OrgQuery;
 import com.dream.web.service.OrgService;
+import com.dream.web.service.UserService;
 import com.dream.web.vo.OrgVO;
 import com.wy.result.ResultException;
+
+import lombok.AllArgsConstructor;
 
 /**
  * 组织机构表Service
@@ -28,15 +33,18 @@ import com.wy.result.ResultException;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("orgService")
+@AllArgsConstructor
 public class OrgServiceImpl extends AbstractServiceImpl<OrgEntity, OrgVO, OrgQuery, OrgConvert, OrgMapper>
 		implements OrgService {
+
+	private final UserService userService;
 
 	@Override
 	public List<OrgVO> getList() {
 		Map<String, Object> params = new HashMap<>();
 
 		// 数据权限
-		params.put(Constant.DATA_SCOPE, getDataScope("t1", "id"));
+		params.put(ConstCommon.DATA_SCOPE, getDataScope("t1", "id"));
 
 		// 机构列表
 		List<OrgEntity> entityList = baseMapper.getList(params);
@@ -73,7 +81,7 @@ public class OrgServiceImpl extends AbstractServiceImpl<OrgEntity, OrgVO, OrgQue
 		}
 
 		// 判断机构下面是否有用户
-		long userCount = userDao.selectCount(new QueryWrapper<SysUserEntity>().eq("org_id", id));
+		long userCount = userService.count(new QueryWrapper<UserEntity>().eq("org_id", id));
 		if (userCount > 0) {
 			throw new ResultException("机构下面有用户，不能删除");
 		}

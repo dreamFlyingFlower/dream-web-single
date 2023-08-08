@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.web.entity.User;
+import com.dream.web.entity.UserEntity;
 import com.dream.web.query.UserQuery;
 import com.dream.web.service.UserService;
 import com.dream.web.vo.UserVO;
@@ -21,6 +21,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "用户表API")
 @RestController
 @RequestMapping("user")
-public class UserController extends AbstractController<User, UserVO, UserQuery, UserService> {
+public class UserController extends AbstractController<UserEntity, UserVO, UserQuery, UserService> {
 
 }

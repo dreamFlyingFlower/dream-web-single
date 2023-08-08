@@ -3,7 +3,7 @@ package com.dream.web.service;
 import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.Dict;
+import com.dream.web.entity.DictEntity;
 import com.dream.web.query.DictQuery;
 import com.dream.web.vo.DictItemVO;
 import com.dream.web.vo.DictVO;
@@ -15,7 +15,7 @@ import com.dream.web.vo.DictVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface DictService extends BaseService<Dict, DictVO, DictQuery> {
+public interface DictService extends BaseService<DictEntity, DictVO, DictQuery> {
 
 	/**
 	 * 获取动态SQL数据

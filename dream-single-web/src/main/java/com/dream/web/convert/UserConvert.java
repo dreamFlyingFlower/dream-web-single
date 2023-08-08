@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.web.entity.User;
+import com.dream.web.entity.UserEntity;
 import com.dream.web.vo.UserVO;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.vo.UserVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface UserConvert extends BaseConvert<User, UserVO> {
+public interface UserConvert extends BaseConvert<UserEntity, UserVO> {
 
 	UserConvert INSTANCE = Mappers.getMapper(UserConvert.class);
 

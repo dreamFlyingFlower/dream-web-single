@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.UserRole;
+import com.dream.web.entity.UserRoleEntity;
 import com.dream.web.query.UserRoleQuery;
 
 /**
@@ -17,7 +17,7 @@ import com.dream.web.query.UserRoleQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface UserRoleMapper extends BaseMappers<UserRole, UserRoleQuery> {
+public interface UserRoleMapper extends BaseMappers<UserRoleEntity, UserRoleQuery> {
 
 	/**
 	 * 角色ID列表

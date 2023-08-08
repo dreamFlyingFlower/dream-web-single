@@ -1,5 +1,6 @@
 package com.dream.web.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
@@ -34,5 +35,5 @@ public interface RoleDataScopeService extends BaseService<RoleDataScopeEntity, R
 	 * 
 	 * @param roleIdList 角色id列表
 	 */
-	void deleteByRoleIdList(List<Long> roleIdList);
+	void deleteByRoleIdList(List<Serializable> roleIdList);
 }

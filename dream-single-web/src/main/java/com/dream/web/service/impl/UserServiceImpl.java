@@ -14,7 +14,7 @@ import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.enums.DataScopeEnum;
 import com.dream.system.enums.UserStatus;
 import com.dream.web.convert.UserConvert;
-import com.dream.web.entity.User;
+import com.dream.web.entity.UserEntity;
 import com.dream.web.mapper.RoleMapper;
 import com.dream.web.mapper.RoleOrgMapper;
 import com.dream.web.mapper.UserMapper;
@@ -34,7 +34,7 @@ import com.dream.web.vo.UserVO;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Service("userService")
-public class UserServiceImpl extends AbstractServiceImpl<User, UserVO, UserQuery, UserConvert, UserMapper>
+public class UserServiceImpl extends AbstractServiceImpl<UserEntity, UserVO, UserQuery, UserConvert, UserMapper>
 		implements UserService, UserDetailsService {
 
 	@Autowired

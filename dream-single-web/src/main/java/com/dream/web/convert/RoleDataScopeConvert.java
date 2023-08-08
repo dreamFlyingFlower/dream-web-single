@@ -5,19 +5,19 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.web.entity.UserRoleEntity;
-import com.dream.web.vo.UserRoleVO;
+import com.dream.web.entity.RoleDataScopeEntity;
+import com.dream.web.vo.RoleDataScopeVO;
 
 /**
- * 账号-角色关系数据库实体与DTO互转
+ * 角色权限对应关系
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface UserRoleConvert extends BaseConvert<UserRoleEntity, UserRoleVO> {
+public interface RoleDataScopeConvert extends BaseConvert<RoleDataScopeEntity, RoleDataScopeVO> {
 
-	UserRoleConvert INSTANCE = Mappers.getMapper(UserRoleConvert.class);
+	RoleDataScopeConvert INSTANCE = Mappers.getMapper(RoleDataScopeConvert.class);
 
 }

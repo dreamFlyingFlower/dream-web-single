@@ -3,7 +3,7 @@ package com.dream.web.service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.User;
+import com.dream.web.entity.UserEntity;
 import com.dream.web.query.UserQuery;
 import com.dream.web.query.UserRoleQuery;
 import com.dream.web.vo.AccountVO;
@@ -18,7 +18,7 @@ import com.wy.result.Result;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface UserService extends BaseService<User, UserVO, UserQuery> {
+public interface UserService extends BaseService<UserEntity, UserVO, UserQuery> {
 
 	UserVO getByMobile(String mobile);
 

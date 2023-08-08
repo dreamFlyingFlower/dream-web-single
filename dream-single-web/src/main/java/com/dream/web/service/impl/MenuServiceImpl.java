@@ -28,7 +28,7 @@ import com.dream.web.convert.MenuConvert;
 import com.dream.web.entity.Button;
 import com.dream.web.entity.MenuEntity;
 import com.dream.web.entity.RoleResource;
-import com.dream.web.entity.UserRole;
+import com.dream.web.entity.UserRoleEntity;
 import com.dream.web.mapper.MenuMapper;
 import com.dream.web.mapper.UserRoleMapper;
 import com.dream.web.query.MenuQuery;
@@ -127,13 +127,13 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 
 	@Override
 	public List<MenuVO> treeByUseId(Long userId) {
-		List<UserRole> userRoles = userRoleMapper
-				.selectList(new LambdaQueryWrapper<UserRole>().eq(UserRole::getUserId, userId).last(" limit 1"));
+		List<UserRoleEntity> userRoles = userRoleMapper
+				.selectList(new LambdaQueryWrapper<UserRoleEntity>().eq(UserRoleEntity::getUserId, userId).last(" limit 1"));
 		if (ListTool.isEmpty(userRoles)) {
 			ResultException.throwException(TipEnum.TIP_USER_NOT_DISTRIBUTE_ROLE);
 		}
 		// FIXME 若多角色,可从登录缓存中取得正在使用的角色 (飞花梦影,2022-09-05,[2022-09-05])
-		UserRole userRole = userRoles.get(0);
+		UserRoleEntity userRole = userRoles.get(0);
 		return handlerTree(userRole.getRoleId());
 	}
 

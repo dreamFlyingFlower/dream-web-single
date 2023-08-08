@@ -1,9 +1,10 @@
 package com.dream.web.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.UserRole;
+import com.dream.web.entity.UserRoleEntity;
 import com.dream.web.query.UserRoleQuery;
 import com.dream.web.vo.UserRoleVO;
 
@@ -14,7 +15,7 @@ import com.dream.web.vo.UserRoleVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface UserRoleService extends BaseService<UserRole, UserRoleVO, UserRoleQuery> {
+public interface UserRoleService extends BaseService<UserRoleEntity, UserRoleVO, UserRoleQuery> {
 
 	/**
 	 * 保存或修改
@@ -37,14 +38,14 @@ public interface UserRoleService extends BaseService<UserRole, UserRoleVO, UserR
 	 * 
 	 * @param roleIdList 角色id
 	 */
-	void deleteByRoleIdList(List<Long> roleIdList);
+	void deleteByRoleIdList(List<Serializable> roleIdList);
 
 	/**
 	 * 根据用户id列表,删除用户角色关系
 	 * 
 	 * @param userIdList 用户id列表
 	 */
-	void deleteByUserIdList(List<Long> userIdList);
+	void deleteByUserIdList(List<Serializable> userIdList);
 
 	/**
 	 * 根据角色id、用户id列表,删除用户角色关系

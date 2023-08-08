@@ -35,7 +35,7 @@ public interface RoleMenuService extends BaseService<RoleMenuEntity, RoleMenuVO,
 	 * 
 	 * @param roleIdList 角色id列表
 	 */
-	void deleteByRoleIdList(List<Long> roleIdList);
+	void deleteByRoleIdList(List<Serializable> roleIdList);
 
 	/**
 	 * 根据菜单id，删除角色菜单关系

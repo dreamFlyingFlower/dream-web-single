@@ -2,7 +2,6 @@ package com.dream.web.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
-import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,21 +13,21 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * ts_dict
+ * ts_dict_item
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = " ts_dict")
+@ApiModel(description = " ts_dict_item")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_dict")
-public class Dict extends AbstractEntity {
+@TableName("ts_dict_item")
+public class DictItemEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,16 +38,27 @@ public class Dict extends AbstractEntity {
 	private Long id;
 
 	/**
+	 * 字典ID
+	 */
+	@ApiModelProperty("字典ID")
+	private Long dictId;
+
+	/**
 	 * 字典编码
 	 */
 	@ApiModelProperty("字典编码")
-	@Unique
 	private String dictCode;
 
 	/**
-	 * 字典名称
+	 * 字典值
 	 */
-	@ApiModelProperty("字典名称")
+	@ApiModelProperty("字典值")
+	private String dictValue;
+
+	/**
+	 * 字典名
+	 */
+	@ApiModelProperty("字典名")
 	private String dictName;
 
 	/** 非数据库字段 */
