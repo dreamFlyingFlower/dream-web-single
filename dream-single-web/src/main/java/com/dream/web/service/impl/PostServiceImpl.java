@@ -7,13 +7,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.web.query.PostQuery;
-import com.dream.system.web.vo.PostVO;
 import com.dream.web.convert.PostConvert;
 import com.dream.web.entity.PostEntity;
 import com.dream.web.mapper.PostMapper;
+import com.dream.web.query.PostQuery;
 import com.dream.web.service.PostService;
 import com.dream.web.service.UserPostService;
+import com.dream.web.vo.PostVO;
 
 /**
  * 岗位管理

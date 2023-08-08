@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.system.web.vo.MenuVO;
-import com.dream.web.entity.Menu;
+import com.dream.web.entity.MenuEntity;
+import com.dream.web.vo.MenuVO;
 
 /**
  * 菜单表数据库实体与DTO互转
@@ -16,7 +16,7 @@ import com.dream.web.entity.Menu;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface MenuConvert extends BaseConvert<Menu, MenuVO> {
+public interface MenuConvert extends BaseConvert<MenuEntity, MenuVO> {
 
 	MenuConvert INSTANCE = Mappers.getMapper(MenuConvert.class);
 

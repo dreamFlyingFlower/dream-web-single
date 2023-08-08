@@ -6,8 +6,8 @@ import java.util.Set;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.PostQuery;
 import com.dream.web.entity.PostEntity;
+import com.dream.web.query.PostQuery;
 
 /**
  * 岗位管理

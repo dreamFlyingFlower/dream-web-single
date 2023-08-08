@@ -3,12 +3,12 @@ package com.dream.web.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.web.query.DepartQuery;
-import com.dream.system.web.vo.DepartVO;
 import com.dream.web.convert.DepartConvert;
 import com.dream.web.entity.Depart;
 import com.dream.web.mapper.DepartMapper;
+import com.dream.web.query.DepartQuery;
 import com.dream.web.service.DepartService;
+import com.dream.web.vo.DepartVO;
 
 /**
  * 部门表Service

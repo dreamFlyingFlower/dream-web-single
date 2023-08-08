@@ -1,9 +1,10 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.ParamsQuery;
-import com.dream.system.web.vo.ParamsVO;
 import com.dream.web.entity.ParamsEntity;
+import com.dream.web.query.ParamsQuery;
+import com.dream.web.vo.ParamsVO;
+import com.wy.third.json.JsonTools;
 
 /**
  * 参数管理
@@ -24,14 +25,18 @@ public interface ParamsService extends BaseService<ParamsEntity, ParamsVO, Param
 	 *
 	 * @param paramKey 参数Key
 	 */
-	int getInt(String paramKey);
+	default int getInt(String paramKey) {
+		return Integer.parseInt(getString(paramKey));
+	}
 
 	/**
 	 * 根据paramKey,获取布尔值
 	 *
 	 * @param paramKey 参数Key
 	 */
-	boolean getBoolean(String paramKey);
+	default boolean getBoolean(String paramKey) {
+		return Boolean.parseBoolean(getString(paramKey));
+	}
 
 	/**
 	 * 根据paramKey,获取对象值
@@ -39,5 +44,7 @@ public interface ParamsService extends BaseService<ParamsEntity, ParamsVO, Param
 	 * @param paramKey 参数Key
 	 * @param valueType 类型
 	 */
-	<T> T getJSONObject(String paramKey, Class<T> valueType);
+	default <T> T getJSONObject(String paramKey, Class<T> valueType) {
+		return JsonTools.parse(getString(paramKey), valueType);
+	}
 }

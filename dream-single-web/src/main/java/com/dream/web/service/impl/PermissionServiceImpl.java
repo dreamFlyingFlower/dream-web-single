@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.web.query.PermissionQuery;
-import com.dream.system.web.vo.PermissionVO;
 import com.dream.web.convert.PermissionConvert;
 import com.dream.web.entity.Permission;
 import com.dream.web.mapper.PermissionMapper;
+import com.dream.web.query.PermissionQuery;
 import com.dream.web.service.PermissionService;
+import com.dream.web.vo.PermissionVO;
 
 /**
  * 权限Service

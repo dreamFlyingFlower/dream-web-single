@@ -33,12 +33,6 @@ public class OrgEntity extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键ID
-	 */
-	@ApiModelProperty("主键ID")
-	private Long id;
-
-	/**
 	 * 组织机构编码
 	 */
 	@ApiModelProperty("组织机构编码")
@@ -61,7 +55,5 @@ public class OrgEntity extends AbstractEntity {
 	 * 组织机构层级,由高到低,以-相连
 	 */
 	@ApiModelProperty("组织机构层级,由高到低,以-相连")
-	private String orgLevel;
-
-	/** 非数据库字段 */
+	private String level;
 }

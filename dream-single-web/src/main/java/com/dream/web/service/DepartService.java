@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.DepartQuery;
-import com.dream.system.web.vo.DepartVO;
 import com.dream.web.entity.Depart;
+import com.dream.web.query.DepartQuery;
+import com.dream.web.vo.DepartVO;
 
 /**
  * 部门表

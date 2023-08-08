@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.system.web.query.AttachmentQuery;
-import com.dream.system.web.vo.AttachmentVO;
 import com.dream.web.entity.AttachmentEntity;
+import com.dream.web.query.AttachmentQuery;
 import com.dream.web.service.AttachmentService;
+import com.dream.web.vo.AttachmentVO;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

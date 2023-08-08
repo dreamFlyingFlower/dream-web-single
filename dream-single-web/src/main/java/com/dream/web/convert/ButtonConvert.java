@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.system.web.vo.ButtonVO;
 import com.dream.web.entity.Button;
+import com.dream.web.vo.ButtonVO;
 
 /**
  * 按钮表数据库实体与DTO互转

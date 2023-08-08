@@ -13,18 +13,18 @@ import org.springframework.stereotype.Service;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.enums.DataScopeEnum;
 import com.dream.system.enums.UserStatus;
-import com.dream.system.web.query.UserQuery;
-import com.dream.system.web.vo.AccountVO;
-import com.dream.system.web.vo.LoginAccountVO;
-import com.dream.system.web.vo.UserVO;
 import com.dream.web.convert.UserConvert;
 import com.dream.web.entity.User;
 import com.dream.web.mapper.RoleMapper;
 import com.dream.web.mapper.RoleOrgMapper;
 import com.dream.web.mapper.UserMapper;
+import com.dream.web.query.UserQuery;
 import com.dream.web.service.MenuService;
 import com.dream.web.service.OrgService;
 import com.dream.web.service.UserService;
+import com.dream.web.vo.AccountVO;
+import com.dream.web.vo.LoginAccountVO;
+import com.dream.web.vo.UserVO;
 
 /**
  * 用户Service

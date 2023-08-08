@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.system.web.query.DepartQuery;
-import com.dream.system.web.vo.DepartVO;
 import com.dream.web.entity.Depart;
+import com.dream.web.query.DepartQuery;
 import com.dream.web.service.DepartService;
+import com.dream.web.vo.DepartVO;
 
 import io.swagger.annotations.Api;
 

@@ -27,11 +27,11 @@ import java.util.Set;
  */
 @Service
 @AllArgsConstructor
-public class SysUserDetailsServiceImpl implements SysUserDetailsService {
+public class SysUserDetailsServiceImpl implements UserDetailsService {
     private final SysMenuService sysMenuService;
     private final SysOrgService sysOrgService;
     private final SysRoleMapper sysRoleDao;
-    private final SysRoleDataScopeMapper sysRoleDataScopeDao;
+    private final RoleDataScopeMapper sysRoleDataScopeDao;
 
     @Override
     public UserDetails getUserDetails(SysUserEntity userEntity) {

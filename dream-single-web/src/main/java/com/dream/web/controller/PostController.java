@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.system.web.query.PostQuery;
-import com.dream.system.web.vo.PostVO;
 import com.dream.web.entity.PostEntity;
+import com.dream.web.query.PostQuery;
 import com.dream.web.service.PostService;
+import com.dream.web.vo.PostVO;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

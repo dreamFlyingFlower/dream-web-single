@@ -6,9 +6,9 @@ import org.springframework.security.authentication.event.AbstractAuthenticationF
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.stereotype.Component;
 
-import com.dream.system.web.vo.UserVO;
 import com.dream.web.entity.OperateLog;
 import com.dream.web.service.OperateLogService;
+import com.dream.web.vo.UserVO;
 import com.wy.enums.TipEnum;
 import com.wy.logger.BusinessType;
 

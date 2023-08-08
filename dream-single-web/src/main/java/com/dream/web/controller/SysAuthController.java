@@ -28,9 +28,9 @@ import javax.servlet.http.HttpServletRequest;
 @AllArgsConstructor
 public class SysAuthController {
 
-	private final SysCaptchaService sysCaptchaService;
+	private final CaptchaService sysCaptchaService;
 
-	private final SysAuthService sysAuthService;
+	private final AuthService sysAuthService;
 
 	@GetMapping("captcha")
 	@Operation(summary = "验证码")
@@ -41,8 +41,8 @@ public class SysAuthController {
 
 	@PostMapping("login")
 	@Operation(summary = "账号密码登录")
-	public Result<SysTokenVO> login(@RequestBody SysAccountLoginVO login) {
-		SysTokenVO token = sysAuthService.loginByAccount(login);
+	public Result<TokenVO> login(@RequestBody SysAccountLoginVO login) {
+		TokenVO token = sysAuthService.loginByAccount(login);
 		return Result.ok(token);
 	}
 	
@@ -58,8 +58,8 @@ public class SysAuthController {
 
 	@PostMapping("mobile")
 	@Operation(summary = "手机号登录")
-	public Result<SysTokenVO> mobile(@RequestBody SysMobileLoginVO login) {
-		SysTokenVO token = sysAuthService.loginByMobile(login);
+	public Result<TokenVO> mobile(@RequestBody MobileLoginVO login) {
+		TokenVO token = sysAuthService.loginByMobile(login);
 		return Result.ok(token);
 	}
 

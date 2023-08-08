@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.dream.message.cache.SmsSendCache;
 import com.dream.message.sms.service.SmsService;
-import com.dream.system.sms.SmsManager;
+import com.dream.system.manager.SmsManager;
 
 import lombok.AllArgsConstructor;
 

@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.ButtonQuery;
-import com.dream.system.web.vo.ButtonVO;
 import com.dream.web.entity.Button;
+import com.dream.web.query.ButtonQuery;
+import com.dream.web.vo.ButtonVO;
 
 /**
  * 按钮表

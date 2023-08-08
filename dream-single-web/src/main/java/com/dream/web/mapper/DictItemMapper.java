@@ -1,10 +1,15 @@
 package com.dream.web.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.DictItemQuery;
 import com.dream.web.entity.DictItem;
+import com.dream.web.query.DictItemQuery;
+import com.dream.web.vo.DictItemVO;
 
 /**
  * 
@@ -16,8 +21,6 @@ import com.dream.web.entity.DictItem;
 @Mapper
 public interface DictItemMapper extends BaseMappers<DictItem, DictItemQuery> {
 
-	// List<DictItem> list(Page<DictItem> page, @Param("query") DictItemQuery
-	// query);
-	//
-	// List<DictItem> list(@Param("query") DictItemQuery query);
+	@Select("${sql}")
+	List<DictItemVO> getListForSql(@Param("sql") String sql);
 }

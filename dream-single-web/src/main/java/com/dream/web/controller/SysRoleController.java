@@ -37,8 +37,8 @@ import java.util.List;
 public class SysRoleController {
     private final SysRoleService sysRoleService;
     private final SysUserService sysUserService;
-    private final SysRoleMenuService sysRoleMenuService;
-    private final SysRoleDataScopeService sysRoleDataScopeService;
+    private final RoleMenuService sysRoleMenuService;
+    private final RoleDataScopeService sysRoleDataScopeService;
     private final SysMenuService sysMenuService;
     private final SysUserRoleService sysUserRoleService;
 
@@ -101,7 +101,7 @@ public class SysRoleController {
     @PutMapping("data-scope")
     @Operation(summary = "数据权限")
     @PreAuthorize("hasAuthority('sys:role:update')")
-    public Result<String> dataScope(@RequestBody @Valid SysRoleDataScopeVO vo) {
+    public Result<String> dataScope(@RequestBody @Valid RoleDataScopeQuery vo) {
         sysRoleService.dataScope(vo);
 
         return Result.ok();

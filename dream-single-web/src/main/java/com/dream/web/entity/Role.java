@@ -1,11 +1,13 @@
 package com.dream.web.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
+import com.dream.system.enums.DataScopeEnum;
 import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,29 +35,34 @@ public class Role extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键
-	 */
-	@ApiModelProperty("主键")
-	private Long id;
-
-	/**
 	 * 角色名称
 	 */
-	@ApiModelProperty("角色名称")
 	private String roleName;
 
 	/**
 	 * 角色编码
 	 */
-	@ApiModelProperty("角色编码")
 	@Unique
 	private String roleCode;
 
 	/**
 	 * 角色类型:1-超级管理员;2-普通角色
 	 */
-	@ApiModelProperty("角色类型:1-超级管理员;2-普通角色")
 	private Integer roleType;
 
-	/** 非数据库字段 */
+	/**
+	 * 备注
+	 */
+	private String remark;
+
+	/**
+	 * 数据范围 {@link DataScopeEnum}
+	 */
+	private Integer dataScope;
+
+	/**
+	 * 机构ID
+	 */
+	@TableField(fill = FieldFill.INSERT)
+	private Long orgId;
 }

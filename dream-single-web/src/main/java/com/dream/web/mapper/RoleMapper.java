@@ -4,8 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.RoleQuery;
 import com.dream.web.entity.Role;
+import com.dream.web.query.RoleQuery;
 
 /**
  * 角色信息
@@ -16,10 +16,6 @@ import com.dream.web.entity.Role;
  */
 @Mapper
 public interface RoleMapper extends BaseMappers<Role, RoleQuery> {
-
-	// List<Role> list(Page<Role> page, @Param("query") RoleQuery query);
-
-	// List<Role> list(@Param("query") RoleQuery query);
 
 	/**
 	 * 根据用户ID,获取用户最大的数据范围

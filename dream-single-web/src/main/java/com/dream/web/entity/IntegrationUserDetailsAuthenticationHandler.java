@@ -5,9 +5,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import com.dream.basic.core.helper.SpringContextHelper;
-import com.dream.system.web.vo.AccountVO;
-import com.dream.system.web.vo.LoginAccountVO;
 import com.dream.web.service.UserService;
+import com.dream.web.vo.AccountVO;
+import com.dream.web.vo.LoginAccountVO;
 import com.wy.lang.StrTool;
 
 public class IntegrationUserDetailsAuthenticationHandler {

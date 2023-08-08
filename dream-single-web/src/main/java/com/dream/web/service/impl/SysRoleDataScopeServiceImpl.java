@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
  * @author  
  */
 @Service
-public class SysRoleDataScopeServiceImpl extends BaseServiceImpl<SysRoleDataScopeMapper, SysRoleDataScopeEntity>
-        implements SysRoleDataScopeService {
+public class SysRoleDataScopeServiceImpl extends BaseServiceImpl<RoleDataScopeMapper, RoleDataScopeQuery>
+        implements RoleDataScopeService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -32,8 +32,8 @@ public class SysRoleDataScopeServiceImpl extends BaseServiceImpl<SysRoleDataScop
         // 需要新增的机构ID
         Collection<Long> insertOrgIdList = CollUtil.subtract(orgIdList, dbOrgIdList);
         if (CollUtil.isNotEmpty(insertOrgIdList)){
-            List<SysRoleDataScopeEntity> orgList = insertOrgIdList.stream().map(orgId -> {
-                SysRoleDataScopeEntity entity = new SysRoleDataScopeEntity();
+            List<RoleDataScopeQuery> orgList = insertOrgIdList.stream().map(orgId -> {
+                RoleDataScopeQuery entity = new RoleDataScopeQuery();
                 entity.setOrgId(orgId);
                 entity.setRoleId(roleId);
                 return entity;
@@ -46,9 +46,9 @@ public class SysRoleDataScopeServiceImpl extends BaseServiceImpl<SysRoleDataScop
         // 需要删除的机构ID
         Collection<Long> deleteOrgIdList = CollUtil.subtract(dbOrgIdList, orgIdList);
         if (CollUtil.isNotEmpty(deleteOrgIdList)){
-            LambdaQueryWrapper<SysRoleDataScopeEntity> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(SysRoleDataScopeEntity::getRoleId, roleId);
-            queryWrapper.in(SysRoleDataScopeEntity::getOrgId, deleteOrgIdList);
+            LambdaQueryWrapper<RoleDataScopeQuery> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(RoleDataScopeQuery::getRoleId, roleId);
+            queryWrapper.in(RoleDataScopeQuery::getOrgId, deleteOrgIdList);
 
             remove(queryWrapper);
         }
@@ -61,6 +61,6 @@ public class SysRoleDataScopeServiceImpl extends BaseServiceImpl<SysRoleDataScop
 
     @Override
     public void deleteByRoleIdList(List<Long> roleIdList) {
-        remove(new LambdaQueryWrapper<SysRoleDataScopeEntity>().in(SysRoleDataScopeEntity::getRoleId, roleIdList));
+        remove(new LambdaQueryWrapper<RoleDataScopeQuery>().in(RoleDataScopeQuery::getRoleId, roleIdList));
     }
 }

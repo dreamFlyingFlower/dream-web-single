@@ -81,7 +81,7 @@ public class SysUserController {
 
     @PutMapping("password")
     @Operation(summary = "修改密码")
-    public Result<String> password(@RequestBody @Valid SysUserPasswordVO vo) {
+    public Result<String> password(@RequestBody @Valid UserPasswordVO vo) {
         // 原密码不正确
         UserDetail user = SecurityUser.getUser();
         if (!passwordEncoder.matches(vo.getPassword(), user.getPassword())) {

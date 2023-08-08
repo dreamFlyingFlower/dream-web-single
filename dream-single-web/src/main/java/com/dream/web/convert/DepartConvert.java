@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.system.web.vo.DepartVO;
 import com.dream.web.entity.Depart;
+import com.dream.web.vo.DepartVO;
 
 /**
  * 部门表数据库实体与DTO互转

@@ -4,8 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.ParamsQuery;
 import com.dream.web.entity.ParamsEntity;
+import com.dream.web.query.ParamsQuery;
 
 /**
  * 参数管理

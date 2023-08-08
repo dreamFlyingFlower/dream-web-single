@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * @author  
  */
 @Service
-public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenuMapper, SysRoleMenuEntity> implements SysRoleMenuService {
+public class SysRoleMenuServiceImpl extends BaseServiceImpl<RoleMenuMapper, RoleMenuQuery> implements RoleMenuService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -32,8 +32,8 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenuMapper, S
 		// 需要新增的菜单ID
 		Collection<Long> insertMenuIdList = CollUtil.subtract(menuIdList, dbMenuIdList);
 		if (CollUtil.isNotEmpty(insertMenuIdList)){
-			List<SysRoleMenuEntity> menuList = insertMenuIdList.stream().map(menuId -> {
-				SysRoleMenuEntity entity = new SysRoleMenuEntity();
+			List<RoleMenuQuery> menuList = insertMenuIdList.stream().map(menuId -> {
+				RoleMenuQuery entity = new RoleMenuQuery();
 				entity.setMenuId(menuId);
 				entity.setRoleId(roleId);
 				return entity;
@@ -46,8 +46,8 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenuMapper, S
 		// 需要删除的菜单ID
 		Collection<Long> deleteMenuIdList = CollUtil.subtract(dbMenuIdList, menuIdList);
 		if (CollUtil.isNotEmpty(deleteMenuIdList)){
-			LambdaQueryWrapper<SysRoleMenuEntity> queryWrapper = new LambdaQueryWrapper<>();
-			remove(queryWrapper.eq(SysRoleMenuEntity::getRoleId, roleId).in(SysRoleMenuEntity::getMenuId, deleteMenuIdList));
+			LambdaQueryWrapper<RoleMenuQuery> queryWrapper = new LambdaQueryWrapper<>();
+			remove(queryWrapper.eq(RoleMenuQuery::getRoleId, roleId).in(RoleMenuQuery::getMenuId, deleteMenuIdList));
 		}
 	}
 
@@ -59,13 +59,13 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenuMapper, S
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void deleteByRoleIdList(List<Long> roleIdList) {
-		remove(new LambdaQueryWrapper<SysRoleMenuEntity>().in(SysRoleMenuEntity::getRoleId, roleIdList));
+		remove(new LambdaQueryWrapper<RoleMenuQuery>().in(RoleMenuQuery::getRoleId, roleIdList));
 	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void deleteByMenuId(Long menuId) {
-		remove(new LambdaQueryWrapper<SysRoleMenuEntity>().eq(SysRoleMenuEntity::getMenuId, menuId));
+		remove(new LambdaQueryWrapper<RoleMenuQuery>().eq(RoleMenuQuery::getMenuId, menuId));
 	}
 
 }

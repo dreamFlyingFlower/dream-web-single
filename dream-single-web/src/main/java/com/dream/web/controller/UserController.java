@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.system.web.query.UserQuery;
-import com.dream.system.web.vo.UserVO;
 import com.dream.web.entity.User;
+import com.dream.web.query.UserQuery;
 import com.dream.web.service.UserService;
+import com.dream.web.vo.UserVO;
 
 import io.swagger.annotations.Api;
 

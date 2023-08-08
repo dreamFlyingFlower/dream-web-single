@@ -2,6 +2,7 @@ package com.dream.web.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
+import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public class ParamsEntity extends AbstractEntity {
 	/**
 	 * 参数键
 	 */
+	@Unique
 	private String paramKey;
 
 	/**

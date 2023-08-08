@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.UserPostQuery;
-import com.dream.system.web.vo.UserPostVO;
 import com.dream.web.entity.UserPostEntity;
+import com.dream.web.query.UserPostQuery;
+import com.dream.web.vo.UserPostVO;
 
 /**
  * 用户岗位关系

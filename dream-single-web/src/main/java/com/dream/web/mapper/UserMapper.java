@@ -1,11 +1,15 @@
 package com.dream.web.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.UserQuery;
-import com.dream.system.web.vo.UserVO;
 import com.dream.web.entity.User;
+import com.dream.web.query.UserQuery;
+import com.dream.web.vo.UserVO;
 
 /**
  * 用户表
@@ -21,7 +25,11 @@ public interface UserMapper extends BaseMappers<User, UserQuery> {
 
 	UserVO getByMobile(String mobile);
 
-	// List<User> list(Page<User> page, @Param("query") UserQuery query);
-	//
-	// List<User> list(@Param("query") UserQuery query);
+	List<User> getList(Map<String, Object> params);
+
+	User getById(@Param("id") Long id);
+
+	List<User> getRoleUserList(Map<String, Object> params);
+
+	Integer updateUserCert(Long id);
 }

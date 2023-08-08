@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.PostQuery;
-import com.dream.system.web.vo.PostVO;
 import com.dream.web.entity.PostEntity;
+import com.dream.web.query.PostQuery;
+import com.dream.web.vo.PostVO;
 
 /**
  * 岗位管理

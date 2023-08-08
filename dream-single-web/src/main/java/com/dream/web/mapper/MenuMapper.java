@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.MenuQuery;
-import com.dream.web.entity.Menu;
+import com.dream.web.entity.MenuEntity;
+import com.dream.web.query.MenuQuery;
 
 /**
  * 菜单表
@@ -17,11 +17,8 @@ import com.dream.web.entity.Menu;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface MenuMapper extends BaseMappers<Menu, MenuQuery> {
+public interface MenuMapper extends BaseMappers<MenuEntity, MenuQuery> {
 
-	// List<Menu> list(Page<Menu> page, @Param("query") MenuQuery query);
-
-	// List<Menu> list(@Param("query") MenuQuery query);
 	/**
 	 * 查询所有权限列表
 	 */
@@ -33,4 +30,19 @@ public interface MenuMapper extends BaseMappers<Menu, MenuQuery> {
 	 * @param userId 用户ID
 	 */
 	List<String> getUserAuthorityList(@Param("userId") Long userId);
+
+	/**
+	 * 查询所有菜单列表
+	 *
+	 * @param type 菜单类型
+	 */
+	List<MenuEntity> getMenuList(@Param("type") Integer type);
+
+	/**
+	 * 查询用户菜单列表
+	 *
+	 * @param userId 用户ID
+	 * @param type 菜单类型
+	 */
+	List<MenuEntity> getUserMenuList(@Param("userId") Long userId, @Param("type") Integer type);
 }

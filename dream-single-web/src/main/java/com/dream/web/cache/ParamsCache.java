@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dream.system.cache.RedisCache;
-import com.electric.system.entity.SysParamsEntity;
-
-import cn.hutool.core.collection.CollUtil;
+import com.dream.web.entity.ParamsEntity;
+import com.wy.collection.ListTool;
 
 /**
  * 参数管理 Cache
  *
- * @author
+ * @author 飞花梦影
+ * @date 2023-08-08 10:56:42
+ * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Service
 public class ParamsCache {
@@ -33,14 +33,14 @@ public class ParamsCache {
 	 *
 	 * @param list 参数列表
 	 */
-	public void saveList(List<SysParamsEntity> list) {
-		if (CollUtil.isEmpty(list)) {
+	public void saveList(List<ParamsEntity> list) {
+		if (ListTool.isEmpty(list)) {
 			return;
 		}
 
 		// list 转成 map
 		Map<String, Object> map =
-				list.stream().collect(Collectors.toMap(SysParamsEntity::getParamKey, SysParamsEntity::getParamValue));
+				list.stream().collect(Collectors.toMap(ParamsEntity::getParamKey, ParamsEntity::getParamValue));
 
 		redisCache.hMSet(SYSTEM_PARAMS_KEY, map, RedisCache.NOT_EXPIRE);
 	}

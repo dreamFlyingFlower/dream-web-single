@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.web.query.UserPostQuery;
-import com.dream.system.web.vo.UserPostVO;
 import com.dream.web.convert.UserPostConvert;
 import com.dream.web.entity.UserPostEntity;
 import com.dream.web.mapper.UserPostMapper;
+import com.dream.web.query.UserPostQuery;
 import com.dream.web.service.UserPostService;
+import com.dream.web.vo.UserPostVO;
 import com.wy.collection.ListTool;
 
 /**

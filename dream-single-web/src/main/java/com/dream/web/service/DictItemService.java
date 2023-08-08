@@ -1,9 +1,9 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.DictItemQuery;
-import com.dream.system.web.vo.DictItemVO;
 import com.dream.web.entity.DictItem;
+import com.dream.web.query.DictItemQuery;
+import com.dream.web.vo.DictItemVO;
 
 /**
  * 

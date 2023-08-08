@@ -1,9 +1,10 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.RoleQuery;
-import com.dream.system.web.vo.RoleVO;
 import com.dream.web.entity.Role;
+import com.dream.web.query.RoleDataScopeQuery;
+import com.dream.web.query.RoleQuery;
+import com.dream.web.vo.RoleVO;
 
 /**
  * 角色信息
@@ -14,4 +15,5 @@ import com.dream.web.entity.Role;
  */
 public interface RoleService extends BaseService<Role, RoleVO, RoleQuery> {
 
+	void dataScope(RoleDataScopeQuery query);
 }

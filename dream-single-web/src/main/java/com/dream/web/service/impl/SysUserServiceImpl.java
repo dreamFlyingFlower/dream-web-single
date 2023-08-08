@@ -2,8 +2,8 @@ package com.dream.web.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.dream.system.excel.ExcelFinishCallBack;
 import com.electric.framework.constant.Constant;
-import com.electric.framework.excel.ExcelFinishCallBack;
 import com.electric.framework.exception.ServerException;
 import com.electric.framework.page.PageResult;
 import com.electric.framework.service.impl.BaseServiceImpl;
@@ -21,6 +21,7 @@ import com.electric.system.service.SysUserService;
 import com.electric.system.vo.SysUserExcelVO;
 import com.electric.system.vo.SysUserVO;
 import com.fhs.trans.service.impl.TransService;
+
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -181,18 +182,18 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper, SysUserEn
     @Transactional(rollbackFor = Exception.class)
     public void importByExcel(MultipartFile file, String password) {
 
-        ExcelUtils.readAnalysis(file, SysUserExcelVO.class, new ExcelFinishCallBack<SysUserExcelVO>() {
+        ExcelUtils.readAnalysis(file, UserExcelVO.class, new ExcelFinishCallBack<UserExcelVO>() {
             @Override
-            public void doAfterAllAnalysed(List<SysUserExcelVO> result) {
+            public void doAfterAllAnalysed(List<UserExcelVO> result) {
                 saveUser(result);
             }
 
             @Override
-            public void doSaveBatch(List<SysUserExcelVO> result) {
+            public void doSaveBatch(List<UserExcelVO> result) {
                 saveUser(result);
             }
 
-            private void saveUser(List<SysUserExcelVO> result) {
+            private void saveUser(List<UserExcelVO> result) {
                 ExcelUtils.parseDict(result);
                 List<SysUserEntity> sysUserEntities = SysUserConvert.INSTANCE.convertListEntity(result);
                 sysUserEntities.forEach(user -> user.setPassword(password));
@@ -206,10 +207,10 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper, SysUserEn
     @SneakyThrows
     public void export() {
         List<SysUserEntity> list = list(Wrappers.lambdaQuery(SysUserEntity.class).eq(SysUserEntity::getSuperAdmin, SuperAdminEnum.NO.getValue()));
-        List<SysUserExcelVO> userExcelVOS = SysUserConvert.INSTANCE.convert2List(list);
+        List<UserExcelVO> userExcelVOS = SysUserConvert.INSTANCE.convert2List(list);
         transService.transBatch(userExcelVOS);
         // 写到浏览器打开
-        ExcelUtils.excelExport(SysUserExcelVO.class, "system_user_excel" + DateUtils.format(new Date()), null, userExcelVOS);
+        ExcelUtils.excelExport(UserExcelVO.class, "system_user_excel" + DateUtils.format(new Date()), null, userExcelVOS);
     }
 
 }

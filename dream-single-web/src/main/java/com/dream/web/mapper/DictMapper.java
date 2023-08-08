@@ -3,8 +3,8 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.DictQuery;
 import com.dream.web.entity.Dict;
+import com.dream.web.query.DictQuery;
 
 /**
  * 

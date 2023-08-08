@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.UserPostQuery;
 import com.dream.web.entity.UserPostEntity;
+import com.dream.web.query.UserPostQuery;
 
 /**
  * 用户岗位关系

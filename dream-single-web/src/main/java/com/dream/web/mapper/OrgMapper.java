@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.OrgQuery;
 import com.dream.web.entity.OrgEntity;
+import com.dream.web.query.OrgQuery;
 
 /**
  * 组织机构表
@@ -17,10 +17,6 @@ import com.dream.web.entity.OrgEntity;
  */
 @Mapper
 public interface OrgMapper extends BaseMappers<OrgEntity, OrgQuery> {
-
-	// List<Org> list(Page<Org> page, @Param("query") OrgQuery query);
-
-	// List<Org> list(@Param("query") OrgQuery query);
 
 	/**
 	 * 获取所有机构的id、pid列表

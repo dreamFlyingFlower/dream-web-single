@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.system.web.query.MenuQuery;
-import com.dream.system.web.vo.MenuVO;
-import com.dream.web.entity.Menu;
+import com.dream.web.entity.MenuEntity;
+import com.dream.web.query.MenuQuery;
 import com.dream.web.service.MenuService;
+import com.dream.web.vo.MenuVO;
 
 import io.swagger.annotations.Api;
 
@@ -21,6 +21,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "菜单表API")
 @RestController
 @RequestMapping("menu")
-public class MenuController extends AbstractController<Menu, MenuVO, MenuQuery, MenuService> {
+public class MenuController extends AbstractController<MenuEntity, MenuVO, MenuQuery, MenuService> {
 
 }

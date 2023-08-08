@@ -33,16 +33,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @AllArgsConstructor
-public class SysAuthServiceImpl implements SysAuthService {
-    private final SysCaptchaService sysCaptchaService;
+public class SysAuthServiceImpl implements AuthService {
+    private final CaptchaService sysCaptchaService;
     private final TokenStoreCache tokenStoreCache;
     private final AuthenticationManager authenticationManager;
-    private final SysLogLoginService sysLogLoginService;
+    private final LogLoginService sysLogLoginService;
     private final SysUserService sysUserService;
     private final SmsApi smsApi;
     
     @Override
-    public SysTokenVO loginByAccount(SysAccountLoginVO login) {
+    public TokenVO loginByAccount(SysAccountLoginVO login) {
         // 验证码效验
         boolean flag = sysCaptchaService.validate(login.getKey(), login.getCaptcha());
         if (!flag) {
@@ -70,11 +70,11 @@ public class SysAuthServiceImpl implements SysAuthService {
         // 保存用户信息到缓存
         tokenStoreCache.saveUser(accessToken, user);
 
-        return new SysTokenVO(accessToken);
+        return new TokenVO(accessToken);
     }
 
     @Override
-    public SysTokenVO loginByMobile(SysMobileLoginVO login) {
+    public TokenVO loginByMobile(MobileLoginVO login) {
         Authentication authentication;
         try {
             // 用户认证
@@ -93,7 +93,7 @@ public class SysAuthServiceImpl implements SysAuthService {
         // 保存用户信息到缓存
         tokenStoreCache.saveUser(accessToken, user);
 
-        return new SysTokenVO(accessToken);
+        return new TokenVO(accessToken);
     }
 
     @Override

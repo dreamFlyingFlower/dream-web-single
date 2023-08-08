@@ -3,8 +3,8 @@ package com.dream.web.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import com.dream.web.storage.service.StorageService;
 import com.electric.framework.utils.Result;
-import com.electric.storage.service.StorageService;
 import com.electric.system.vo.SysFileUploadVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class SysFileUploadController {
     
     @PostMapping("upload")
     @Operation(summary = "上传")
-    public Result<SysFileUploadVO> upload(@RequestParam("file") MultipartFile file) throws Exception {
+    public Result<FileUploadVO> upload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             return Result.error("请选择需要上传的文件");
         }
@@ -43,7 +43,7 @@ public class SysFileUploadController {
         // 上传文件
         String url = storageService.upload(file.getBytes(), prefix+"/"+path);
 
-        SysFileUploadVO vo = new SysFileUploadVO();
+        FileUploadVO vo = new FileUploadVO();
         vo.setUrl(url);
         vo.setSize(file.getSize());
         vo.setName(file.getOriginalFilename());

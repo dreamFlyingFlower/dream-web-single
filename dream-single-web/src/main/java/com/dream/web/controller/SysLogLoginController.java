@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Tag(name = "登录日志")
 @AllArgsConstructor
 public class SysLogLoginController {
-    private final SysLogLoginService sysLogLoginService;
+    private final LogLoginService sysLogLoginService;
 
     @GetMapping("page")
     @Operation(summary = "分页")

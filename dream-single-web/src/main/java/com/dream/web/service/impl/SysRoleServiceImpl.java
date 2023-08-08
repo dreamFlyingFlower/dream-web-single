@@ -34,8 +34,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRoleEntity> implements SysRoleService {
-	private final SysRoleMenuService sysRoleMenuService;
-	private final SysRoleDataScopeService sysRoleDataScopeService;
+	private final RoleMenuService sysRoleMenuService;
+	private final RoleDataScopeService sysRoleDataScopeService;
 	private final SysUserRoleService sysUserRoleService;
 
 	@Override
@@ -89,7 +89,7 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRoleEn
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void dataScope(SysRoleDataScopeVO vo) {
+	public void dataScope(RoleDataScopeQuery vo) {
 		SysRoleEntity entity = getById(vo.getId());
 		entity.setDataScope(vo.getDataScope());
 		// 更新角色

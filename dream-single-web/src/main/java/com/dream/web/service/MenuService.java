@@ -5,10 +5,11 @@ import java.util.Map;
 import java.util.Set;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.system.web.query.MenuQuery;
-import com.dream.system.web.vo.MenuVO;
-import com.dream.system.web.vo.UserVO;
-import com.dream.web.entity.Menu;
+import com.dream.web.entity.MenuEntity;
+import com.dream.web.query.MenuQuery;
+import com.dream.web.security.UserDetail;
+import com.dream.web.vo.MenuVO;
+import com.dream.web.vo.UserVO;
 
 /**
  * 菜单表
@@ -17,7 +18,7 @@ import com.dream.web.entity.Menu;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface MenuService extends BaseService<Menu, MenuVO, MenuQuery> {
+public interface MenuService extends BaseService<MenuEntity, MenuVO, MenuQuery> {
 
 	Map<Long, MenuVO> getCaches(List<Long> menuIds);
 
@@ -28,4 +29,31 @@ public interface MenuService extends BaseService<Menu, MenuVO, MenuQuery> {
 	List<MenuVO> treeByUseId(Long userId);
 
 	Set<String> getUserAuthority(UserVO usesrVo);
+
+	/**
+	 * 菜单列表
+	 *
+	 * @param type 菜单类型
+	 */
+	List<MenuVO> getMenuList(Integer type);
+
+	/**
+	 * 用户菜单列表
+	 *
+	 * @param user 用户
+	 * @param type 菜单类型
+	 */
+	List<MenuVO> getUserMenuList(UserDetail user, Integer type);
+
+	/**
+	 * 获取子菜单的数量
+	 * 
+	 * @param pid 父菜单ID
+	 */
+	Long getSubMenuCount(Long pid);
+
+	/**
+	 * 获取用户权限列表
+	 */
+	Set<String> getUserAuthority(UserDetail user);
 }

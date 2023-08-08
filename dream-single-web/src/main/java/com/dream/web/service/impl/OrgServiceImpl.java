@@ -2,20 +2,22 @@ package com.dream.web.service.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.web.query.OrgQuery;
-import com.dream.system.web.vo.OrgVO;
 import com.dream.web.convert.OrgConvert;
 import com.dream.web.entity.OrgEntity;
 import com.dream.web.entity.SysUserEntity;
 import com.dream.web.mapper.OrgMapper;
+import com.dream.web.query.OrgQuery;
 import com.dream.web.service.OrgService;
+import com.dream.web.vo.OrgVO;
 import com.wy.result.ResultException;
 
 /**
@@ -29,18 +31,18 @@ import com.wy.result.ResultException;
 public class OrgServiceImpl extends AbstractServiceImpl<OrgEntity, OrgVO, OrgQuery, OrgConvert, OrgMapper>
 		implements OrgService {
 
-	// @Override
-	// public List<OrgVO> list() {
-	// Map<String, Object> params = new HashMap<>();
-	//
-	// // 数据权限
-	// params.put(Constant.DATA_SCOPE, getDataScope("t1", "id"));
-	//
-	// // 机构列表
-	// List<OrgEntity> entityList = baseMapper.getList(params);
-	//
-	// return TreeUtils.build(baseConvert.convertt(entityList));
-	// }
+	@Override
+	public List<OrgVO> getList() {
+		Map<String, Object> params = new HashMap<>();
+
+		// 数据权限
+		params.put(Constant.DATA_SCOPE, getDataScope("t1", "id"));
+
+		// 机构列表
+		List<OrgEntity> entityList = baseMapper.getList(params);
+
+		return TreeUtils.build(baseConvert.convertt(entityList));
+	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)

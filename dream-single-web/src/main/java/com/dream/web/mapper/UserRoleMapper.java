@@ -1,10 +1,13 @@
 package com.dream.web.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.system.web.query.UserRoleQuery;
 import com.dream.web.entity.UserRole;
+import com.dream.web.query.UserRoleQuery;
 
 /**
  * 账号-角色关系
@@ -15,9 +18,13 @@ import com.dream.web.entity.UserRole;
  */
 @Mapper
 public interface UserRoleMapper extends BaseMappers<UserRole, UserRoleQuery> {
-	//
-	// List<UserRole> list(Page<UserRole> page, @Param("query") UserRoleQuery
-	// query);
-	//
-	// List<UserRole> list(@Param("query") UserRoleQuery query);
+
+	/**
+	 * 角色ID列表
+	 * 
+	 * @param userId 用户ID
+	 *
+	 * @return 返回角色ID列表
+	 */
+	List<Long> getRoleIdList(@Param("userId") Long userId);
 }

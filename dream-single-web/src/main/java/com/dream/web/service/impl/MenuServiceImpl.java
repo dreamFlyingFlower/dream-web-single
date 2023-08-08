@@ -1,5 +1,6 @@
 package com.dream.web.service.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,26 +16,30 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.basic.core.enums.ResourceType;
 import com.dream.basic.core.helper.FastjsonHelper;
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.cache.RedisKeys;
 import com.dream.system.enums.SuperAdminEnum;
-import com.dream.system.web.query.MenuQuery;
-import com.dream.system.web.vo.ButtonVO;
-import com.dream.system.web.vo.MenuVO;
-import com.dream.system.web.vo.UserVO;
+import com.dream.system.utils.TreeUtils;
+import com.dream.web.cache.RedisKeys;
 import com.dream.web.convert.ButtonConvert;
 import com.dream.web.convert.MenuConvert;
 import com.dream.web.entity.Button;
-import com.dream.web.entity.Menu;
+import com.dream.web.entity.MenuEntity;
 import com.dream.web.entity.RoleResource;
 import com.dream.web.entity.UserRole;
 import com.dream.web.mapper.MenuMapper;
 import com.dream.web.mapper.UserRoleMapper;
+import com.dream.web.query.MenuQuery;
+import com.dream.web.security.UserDetail;
 import com.dream.web.service.ButtonService;
 import com.dream.web.service.MenuService;
+import com.dream.web.service.RoleMenuService;
 import com.dream.web.service.RoleResourceService;
+import com.dream.web.vo.ButtonVO;
+import com.dream.web.vo.MenuVO;
+import com.dream.web.vo.UserVO;
 import com.wy.collection.ListTool;
 import com.wy.collection.MapTool;
 import com.wy.enums.TipEnum;
@@ -49,7 +54,7 @@ import com.wy.result.ResultException;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("menuService")
-public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuVO, MenuQuery, MenuConvert, MenuMapper>
+public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, MenuQuery, MenuConvert, MenuMapper>
 		implements MenuService {
 
 	@Autowired
@@ -66,6 +71,9 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuVO, MenuQuery
 
 	@Autowired
 	private ButtonConvert buttonConvert;
+
+	@Autowired
+	private RoleMenuService roleMenuService;
 
 	@Override
 	public Map<Long, MenuVO> getCache(String key) {
@@ -88,8 +96,8 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuVO, MenuQuery
 
 	private Map<Long, MenuVO> handlerCache(List<Long> menuIds) {
 		Map<Long, MenuVO> rets = Collections.emptyMap();
-		List<Menu> menus =
-				ListTool.isEmpty(menuIds) ? list() : list(new LambdaQueryWrapper<Menu>().in(Menu::getId, menuIds));
+		List<MenuEntity> menus = ListTool.isEmpty(menuIds) ? list()
+				: list(new LambdaQueryWrapper<MenuEntity>().in(MenuEntity::getId, menuIds));
 		if (ListTool.isNotEmpty(menus)) {
 			rets = baseConvert.convertt(menus).stream().collect(Collectors.toMap(k -> k.getId(), v -> v));
 			redisTemplate.opsForHash().putAll(RedisKeys.buildKey("menu"), rets);
@@ -199,5 +207,73 @@ public class MenuServiceImpl extends AbstractServiceImpl<Menu, MenuVO, MenuQuery
 		}
 
 		return permsSet;
+	}
+
+	@Override
+	public List<MenuVO> getMenuList(Integer type) {
+		List<MenuEntity> menuList = baseMapper.getMenuList(type);
+		return TreeUtils.build(baseConvert.convertt(menuList), ConstCore.ROOT);
+	}
+
+	@Override
+	public List<MenuVO> getUserMenuList(UserDetail user, Integer type) {
+		List<MenuEntity> menuList;
+		if (user.getSuperAdmin().equals(SuperAdminEnum.YES.getValue())) {
+			menuList = baseMapper.getMenuList(type);
+		} else {
+			menuList = baseMapper.getUserMenuList(user.getId(), type);
+		}
+		return TreeUtils.build(baseConvert.convertt(menuList));
+	}
+
+	@Override
+	public Long getSubMenuCount(Long pid) {
+		return count(new LambdaQueryWrapper<MenuEntity>().eq(MenuEntity::getPid, pid));
+	}
+
+	@Override
+	public Set<String> getUserAuthority(UserDetail user) {
+		List<String> authorityList;
+		if (user.getSuperAdmin().equals(SuperAdminEnum.YES.getValue())) {
+			authorityList = baseMapper.getAuthorityList();
+		} else {
+			authorityList = baseMapper.getUserAuthorityList(user.getId());
+		}
+
+		// 用户权限列表
+		Set<String> permsSet = new HashSet<>();
+		for (String authority : authorityList) {
+			if (StrTool.isBlank(authority)) {
+				continue;
+			}
+			permsSet.addAll(Arrays.asList(authority.trim().split(",")));
+		}
+		return permsSet;
+	}
+
+	@Override
+	public Boolean edit(MenuVO dto) {
+		MenuEntity entity = baseConvert.convert(dto);
+
+		// 上级菜单不能为自己
+		if (entity.getId().equals(entity.getPid())) {
+			throw new ResultException("上级菜单不能为自己");
+		}
+
+		return updateById(entity);
+	}
+
+	@Override
+	public Boolean deleteById(Serializable id) {
+		roleMenuService.deleteByMenuId(id);
+		return removeById(id);
+	}
+
+	@Override
+	public Boolean deleteByIds(List<Serializable> ids) {
+		for (Serializable id : ids) {
+			deleteById(id);
+		}
+		return true;
 	}
 }
