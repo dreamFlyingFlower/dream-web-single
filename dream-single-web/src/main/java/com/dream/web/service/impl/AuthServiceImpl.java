@@ -6,18 +6,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.dream.system.constant.ConstCommon;
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.system.enums.LoginOperationEnum;
 import com.dream.system.manager.SmsManager;
 import com.dream.system.utils.TokenUtils;
 import com.dream.web.cache.TokenStoreCache;
 import com.dream.web.oauth.mobile.MobileAuthenticationToken;
-import com.dream.web.security.UserDetail;
+import com.dream.web.security.SecurityUserDetails;
 import com.dream.web.service.AuthService;
 import com.dream.web.service.CaptchaService;
 import com.dream.web.service.LogLoginService;
 import com.dream.web.service.UserService;
-import com.dream.web.vo.AccountLoginVO;
+import com.dream.web.vo.LoginAccountVO;
 import com.dream.web.vo.MobileLoginVO;
 import com.dream.web.vo.TokenVO;
 import com.dream.web.vo.UserVO;
@@ -50,12 +50,12 @@ public class AuthServiceImpl implements AuthService {
 	private final SmsManager smsApi;
 
 	@Override
-	public TokenVO loginByAccount(AccountLoginVO login) {
+	public TokenVO loginByAccount(LoginAccountVO login) {
 		// 验证码效验
 		boolean flag = sysCaptchaService.validate(login.getKey(), login.getCaptcha());
 		if (!flag) {
 			// 保存登录日志
-			sysLogLoginService.save(login.getUsername(), ConstCommon.FAIL, LoginOperationEnum.CAPTCHA_FAIL.getValue());
+			sysLogLoginService.save(login.getUsername(), ConstCore.FAIL, LoginOperationEnum.CAPTCHA_FAIL.getValue());
 
 			throw new ResultException("验证码错误");
 		}
@@ -70,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
 		}
 
 		// 用户信息
-		UserDetail user = (UserDetail) authentication.getPrincipal();
+		SecurityUserDetails user = (SecurityUserDetails) authentication.getPrincipal();
 
 		// 生成 accessToken
 		String accessToken = TokenUtils.generator();
@@ -93,7 +93,7 @@ public class AuthServiceImpl implements AuthService {
 		}
 
 		// 用户信息
-		UserDetail user = (UserDetail) authentication.getPrincipal();
+		SecurityUserDetails user = (SecurityUserDetails) authentication.getPrincipal();
 
 		// 生成 accessToken
 		String accessToken = TokenUtils.generator();
@@ -119,12 +119,12 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public void logout(String accessToken) {
 		// 用户信息
-		UserDetail user = tokenStoreCache.getUser(accessToken);
+		SecurityUserDetails user = tokenStoreCache.getUser(accessToken);
 
 		// 删除用户信息
 		tokenStoreCache.deleteUser(accessToken);
 
 		// 保存登录日志
-		sysLogLoginService.save(user.getUsername(), ConstCommon.SUCCESS, LoginOperationEnum.LOGOUT_SUCCESS.getValue());
+		sysLogLoginService.save(user.getUsername(), ConstCore.SUCCESS, LoginOperationEnum.LOGOUT_SUCCESS.getValue());
 	}
 }

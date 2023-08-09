@@ -1,5 +1,6 @@
 package com.dream.web.mapper;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.UserRoleEntity;
 import com.dream.web.query.UserRoleQuery;
+import com.dream.web.vo.UserRoleVO;
 
 /**
  * 账号-角色关系
@@ -17,7 +19,7 @@ import com.dream.web.query.UserRoleQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface UserRoleMapper extends BaseMappers<UserRoleEntity, UserRoleQuery> {
+public interface UserRoleMapper extends BaseMappers<UserRoleEntity, UserRoleVO, UserRoleQuery> {
 
 	/**
 	 * 角色ID列表
@@ -26,5 +28,5 @@ public interface UserRoleMapper extends BaseMappers<UserRoleEntity, UserRoleQuer
 	 *
 	 * @return 返回角色ID列表
 	 */
-	List<Long> getRoleIdList(@Param("userId") Long userId);
+	List<Long> getRoleIdList(@Param("userId") Serializable userId);
 }

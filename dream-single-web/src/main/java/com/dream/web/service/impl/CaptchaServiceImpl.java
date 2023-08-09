@@ -4,9 +4,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.dream.system.cache.RedisCache;
+import com.dream.system.cache.RedisKeys;
 import com.dream.system.enums.SysParamsEnum;
-import com.dream.web.cache.RedisCache;
-import com.dream.web.cache.RedisKeys;
 import com.dream.web.service.CaptchaService;
 import com.dream.web.service.ParamsService;
 import com.dream.web.vo.CaptchaVO;

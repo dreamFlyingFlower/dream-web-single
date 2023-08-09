@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson2.JSON;
-import com.dream.web.entity.Permission;
+import com.dream.web.entity.PermissionEntity;
 import com.dream.web.service.PermissionService;
 import com.dream.web.service.UserService;
 import com.dream.web.vo.UserVO;
@@ -38,8 +38,8 @@ public class SecurityUserDetailServiceImpl implements UserDetailsService {
 			return null;
 		}
 		// 获取权限
-		List<Permission> permissions = permissionService.getPermissionsByUserId(user.getId());
-		List<String> codes = permissions.stream().map(Permission::getPermissionCode).collect(Collectors.toList());
+		List<PermissionEntity> permissions = permissionService.getPermissionsByUserId(user.getId());
+		List<String> codes = permissions.stream().map(PermissionEntity::getPermissionCode).collect(Collectors.toList());
 		String[] authorities = null;
 		if (ListTool.isNotEmpty(codes)) {
 			authorities = new String[codes.size()];

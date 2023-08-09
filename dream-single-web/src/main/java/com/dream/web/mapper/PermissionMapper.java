@@ -3,8 +3,9 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.Permission;
+import com.dream.web.entity.PermissionEntity;
 import com.dream.web.query.PermissionQuery;
+import com.dream.web.vo.PermissionVO;
 
 /**
  * 权限
@@ -14,10 +15,6 @@ import com.dream.web.query.PermissionQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface PermissionMapper extends BaseMappers<Permission, PermissionQuery> {
+public interface PermissionMapper extends BaseMappers<PermissionEntity, PermissionVO, PermissionQuery> {
 
-	// List<Permission> list(Page<Permission> page, @Param("query") PermissionQuery
-	// query);
-
-	// List<Permission> list(@Param("query") PermissionQuery query);
 }

@@ -37,12 +37,12 @@ public interface UserPostService extends BaseService<UserPostEntity, UserPostVO,
 	 * 
 	 * @param userIdList 用户id列表
 	 */
-	void deleteByUserIdList(List<Long> userIdList);
+	void deleteByUserIdList(List<Serializable> userIdList);
 
 	/**
 	 * 岗位ID列表
 	 * 
 	 * @param userId 用户ID
 	 */
-	List<Long> getPostIdList(Long userId);
+	List<Long> getPostIdList(Serializable userId);
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.ParamsEntity;
 import com.dream.web.query.ParamsQuery;
+import com.dream.web.vo.ParamsVO;
 
 /**
  * 参数管理
@@ -15,7 +16,7 @@ import com.dream.web.query.ParamsQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface ParamsMapper extends BaseMappers<ParamsEntity, ParamsQuery> {
+public interface ParamsMapper extends BaseMappers<ParamsEntity, ParamsVO, ParamsQuery> {
 
 	default boolean isExist(String paramKey) {
 		return this.exists(new QueryWrapper<ParamsEntity>().eq("param_key", paramKey));

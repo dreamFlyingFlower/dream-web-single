@@ -38,10 +38,28 @@ public class UserRoleQuery extends AbstractQuery {
 	private Long id;
 
 	/**
+	 * 用户ID
+	 */
+	@ApiModelProperty("用户ID")
+	private Long userId;
+
+	/**
 	 * 用户名
 	 */
 	@ApiModelProperty("用户名")
-	private Long userId;
+	private String username;
+
+	/**
+	 * 手机号
+	 */
+	@ApiModelProperty("手机号")
+	private String mobile;
+
+	/**
+	 * 性别
+	 */
+	@ApiModelProperty("性别")
+	private String gender;
 
 	/**
 	 * 角色编码

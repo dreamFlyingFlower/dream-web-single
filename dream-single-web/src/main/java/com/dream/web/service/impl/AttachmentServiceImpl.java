@@ -10,6 +10,8 @@ import com.dream.web.query.AttachmentQuery;
 import com.dream.web.service.AttachmentService;
 import com.dream.web.vo.AttachmentVO;
 
+import lombok.AllArgsConstructor;
+
 /**
  * 附件管理
  *
@@ -18,6 +20,7 @@ import com.dream.web.vo.AttachmentVO;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Service
+@AllArgsConstructor
 public class AttachmentServiceImpl extends
 		AbstractServiceImpl<AttachmentEntity, AttachmentVO, AttachmentQuery, AttachmentConvert, AttachmentMapper>
 		implements AttachmentService {

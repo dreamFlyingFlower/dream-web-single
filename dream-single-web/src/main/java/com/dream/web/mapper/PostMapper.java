@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.PostEntity;
 import com.dream.web.query.PostQuery;
+import com.dream.web.vo.PostVO;
 
 /**
  * 岗位管理
@@ -17,7 +18,7 @@ import com.dream.web.query.PostQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface PostMapper extends BaseMappers<PostEntity, PostQuery> {
+public interface PostMapper extends BaseMappers<PostEntity, PostVO, PostQuery> {
 
 	Set<PostEntity> listByUserIds(List<Long> userIds);
 }

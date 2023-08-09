@@ -1,7 +1,7 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.Role;
+import com.dream.web.entity.RoleEntity;
 import com.dream.web.query.RoleQuery;
 import com.dream.web.vo.RoleDataScopeVO;
 import com.dream.web.vo.RoleVO;
@@ -13,7 +13,7 @@ import com.dream.web.vo.RoleVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface RoleService extends BaseService<Role, RoleVO, RoleQuery> {
+public interface RoleService extends BaseService<RoleEntity, RoleVO, RoleQuery> {
 
 	void dataScope(RoleDataScopeVO query);
 }

@@ -1,7 +1,7 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.Depart;
+import com.dream.web.entity.DepartEntity;
 import com.dream.web.query.DepartQuery;
 import com.dream.web.vo.DepartVO;
 
@@ -12,6 +12,6 @@ import com.dream.web.vo.DepartVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface DepartService extends BaseService<Depart, DepartVO, DepartQuery> {
+public interface DepartService extends BaseService<DepartEntity, DepartVO, DepartQuery> {
 
 }

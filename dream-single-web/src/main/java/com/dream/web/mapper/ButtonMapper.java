@@ -3,8 +3,9 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.Button;
+import com.dream.web.entity.ButtonEntity;
 import com.dream.web.query.ButtonQuery;
+import com.dream.web.vo.ButtonVO;
 
 /**
  * 按钮表
@@ -14,9 +15,6 @@ import com.dream.web.query.ButtonQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface ButtonMapper extends BaseMappers<Button,ButtonQuery> {
+public interface ButtonMapper extends BaseMappers<ButtonEntity, ButtonVO, ButtonQuery> {
 
-	// List<Button> list(Page<Button> page, @Param("query") ButtonQuery query);
-	//
-	// List<Button> list(@Param("query") ButtonQuery query);
 }

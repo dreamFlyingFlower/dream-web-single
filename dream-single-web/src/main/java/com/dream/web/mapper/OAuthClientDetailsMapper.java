@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.OAuthClientDetails;
+import com.dream.web.entity.OAuthClientDetailsDTO;
 import com.dream.web.query.OAuthClientDetailsQuery;
 
 /**
@@ -14,6 +15,7 @@ import com.dream.web.query.OAuthClientDetailsQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface OAuthClientDetailsMapper extends BaseMappers<OAuthClientDetails, OAuthClientDetailsQuery> {
+public interface OAuthClientDetailsMapper
+		extends BaseMappers<OAuthClientDetails, OAuthClientDetailsDTO, OAuthClientDetailsQuery> {
 
 }

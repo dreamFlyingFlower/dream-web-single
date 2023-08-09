@@ -1,18 +1,12 @@
 package com.dream.web.security;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
@@ -22,32 +16,21 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.util.matcher.AndRequestMatcher;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
-import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.web.accept.ContentNegotiationStrategy;
-import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 
 import com.dream.web.entity.IntegrationUserDetailsAuthenticationHandler;
 import com.dream.web.entity.IntegrationUserDetailsAuthenticationProvider;
 import com.dream.web.filter.AuthenticationTokenFilter;
-import com.dream.web.oauth.config.RestOAuth2AuthExceptionEntryPoint;
 import com.dream.web.oauth.mobile.MobileAuthenticationProvider;
 import com.dream.web.oauth.mobile.MobileUserDetailsService;
 import com.dream.web.oauth.mobile.MobileVerifyCodeService;
 import com.dream.web.properties.SecurityProperties;
 
+import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
 /**
@@ -60,38 +43,32 @@ import lombok.SneakyThrows;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@AllArgsConstructor
 public class SecurityConfig {
 
-	@Autowired
 	private SecuritySuccessHandler securitySuccessHandler;
 
-	@Autowired
 	private SecurityFailureHandler securityFailureHandler;
 
-	@Autowired
 	private SecurityLogoutHandler securityLogoutHandler;
 
-	@Autowired
 	private AuthenticationTokenFilter authenticationTokenFilter;
 
-	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Autowired
 	private MobileUserDetailsService mobileUserDetailsService;
 
-	@Autowired
 	private MobileVerifyCodeService mobileVerifyCodeService;
 
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@Autowired
 	private ApplicationEventPublisher applicationEventPublisher;
 
-	@Autowired
 	private SecurityProperties securityProperties;
 
+	// @Autowired
+	// private AuthenticationDetailsSource<HttpServletRequest,
+	// WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
 	/**
 	 * 普通用户数据库用户名密码登录
 	 * 
@@ -124,10 +101,6 @@ public class SecurityConfig {
 	IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider() {
 		return new IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
 	}
-
-	@Autowired
-	private AuthenticationDetailsSource<HttpServletRequest,
-			WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
 
 	@Bean
 	public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler() {
@@ -178,7 +151,7 @@ public class SecurityConfig {
 				.logout().logoutUrl("/logout").logoutSuccessHandler(securityLogoutHandler).deleteCookies("JSESSIONID")
 				.and().authorizeRequests().antMatchers("/**").permitAll().and()
 				// 异常相关
-				.exceptionHandling().authenticationEntryPoint(new RestOAuth2AuthExceptionEntryPoint()).and().headers()
+				.exceptionHandling().authenticationEntryPoint(new SecurityAuthenticationEntryPoint()).and().headers()
 				.frameOptions().disable().and().csrf().disable();
 
 		return httpSecurity.build();

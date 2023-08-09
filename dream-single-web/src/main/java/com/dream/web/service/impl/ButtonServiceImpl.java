@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.web.convert.ButtonConvert;
-import com.dream.web.entity.Button;
+import com.dream.web.entity.ButtonEntity;
 import com.dream.web.mapper.ButtonMapper;
 import com.dream.web.query.ButtonQuery;
 import com.dream.web.service.ButtonService;
@@ -18,7 +18,7 @@ import com.dream.web.vo.ButtonVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("buttonService")
-public class ButtonServiceImpl extends AbstractServiceImpl<Button, ButtonVO, ButtonQuery, ButtonConvert, ButtonMapper>
+public class ButtonServiceImpl extends AbstractServiceImpl<ButtonEntity, ButtonVO, ButtonQuery, ButtonConvert, ButtonMapper>
 		implements ButtonService {
 
 }

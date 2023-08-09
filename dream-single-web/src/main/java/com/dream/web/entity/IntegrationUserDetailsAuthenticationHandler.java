@@ -5,7 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import com.dream.basic.core.helper.SpringContextHelper;
-import com.dream.web.service.UserService;
+import com.dream.web.service.AuthService;
 import com.dream.web.vo.AccountVO;
 import com.dream.web.vo.LoginAccountVO;
 import com.wy.lang.StrTool;
@@ -39,8 +39,10 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		loginAccountVO.setUsername(username);
 		loginAccountVO.setMobile(username);
 		loginAccountVO.setPassword(presentedPassword);
-		UserService userService = SpringContextHelper.getBean(UserService.class);
-		AccountVO accountVO = userService.login(loginAccountVO);
+		AuthService authService = SpringContextHelper.getBean(AuthService.class);
+		// FIXME 登录从那来?
+		// AccountVO accountVO = authService.loginByAccount(loginAccountVO);
+		AccountVO accountVO = new AccountVO();
 
 		if (null == accountVO) {
 			throw new BadCredentialsException("登录失败");

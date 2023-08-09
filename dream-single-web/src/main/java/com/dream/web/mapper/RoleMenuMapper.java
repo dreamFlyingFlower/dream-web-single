@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.RoleMenuEntity;
 import com.dream.web.query.RoleMenuQuery;
+import com.dream.web.vo.RoleMenuVO;
 
 /**
  * 角色与菜单对应关系
@@ -17,7 +18,7 @@ import com.dream.web.query.RoleMenuQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface RoleMenuMapper extends BaseMappers<RoleMenuEntity, RoleMenuQuery> {
+public interface RoleMenuMapper extends BaseMappers<RoleMenuEntity, RoleMenuVO, RoleMenuQuery> {
 
 	/**
 	 * 根据角色ID,获取菜单ID列表

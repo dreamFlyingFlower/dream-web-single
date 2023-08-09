@@ -1,4 +1,4 @@
-package com.dream.web.cache;
+package com.dream.system.cache;
 
 import java.util.Collection;
 import java.util.Map;

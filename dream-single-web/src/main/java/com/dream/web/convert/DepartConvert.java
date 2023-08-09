@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.web.entity.Depart;
+import com.dream.web.entity.DepartEntity;
 import com.dream.web.vo.DepartVO;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.vo.DepartVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface DepartConvert extends BaseConvert<Depart, DepartVO> {
+public interface DepartConvert extends BaseConvert<DepartEntity, DepartVO> {
 
 	DepartConvert INSTANCE = Mappers.getMapper(DepartConvert.class);
 

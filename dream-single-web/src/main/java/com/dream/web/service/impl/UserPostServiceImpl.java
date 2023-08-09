@@ -62,12 +62,12 @@ public class UserPostServiceImpl
 	}
 
 	@Override
-	public void deleteByUserIdList(List<Long> userIdList) {
+	public void deleteByUserIdList(List<Serializable> userIdList) {
 		remove(new LambdaQueryWrapper<UserPostEntity>().in(UserPostEntity::getUserId, userIdList));
 	}
 
 	@Override
-	public List<Long> getPostIdList(Long userId) {
+	public List<Long> getPostIdList(Serializable userId) {
 		return baseMapper.getPostIdList(userId);
 	}
 }

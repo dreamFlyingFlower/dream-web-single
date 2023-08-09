@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.message.entity.SmsPlatformEntity;
 import com.dream.message.query.SmsPlatformQuery;
+import com.dream.message.vo.SmsPlatformVO;
 
 /**
  * 短信平台
@@ -14,6 +15,6 @@ import com.dream.message.query.SmsPlatformQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface SmsPlatformMapper extends BaseMappers<SmsPlatformEntity, SmsPlatformQuery> {
+public interface SmsPlatformMapper extends BaseMappers<SmsPlatformEntity, SmsPlatformVO, SmsPlatformQuery> {
 
 }

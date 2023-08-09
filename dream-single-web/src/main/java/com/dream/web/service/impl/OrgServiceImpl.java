@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
-import com.dream.system.constant.ConstCommon;
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.system.utils.TreeUtils;
 import com.dream.web.convert.OrgConvert;
 import com.dream.web.entity.OrgEntity;
@@ -21,6 +20,7 @@ import com.dream.web.query.OrgQuery;
 import com.dream.web.service.OrgService;
 import com.dream.web.service.UserService;
 import com.dream.web.vo.OrgVO;
+import com.wy.result.Result;
 import com.wy.result.ResultException;
 
 import lombok.AllArgsConstructor;
@@ -34,22 +34,22 @@ import lombok.AllArgsConstructor;
  */
 @Service("orgService")
 @AllArgsConstructor
-public class OrgServiceImpl extends AbstractServiceImpl<OrgEntity, OrgVO, OrgQuery, OrgConvert, OrgMapper>
+public class OrgServiceImpl extends AbstractScopeServiceImpl<OrgEntity, OrgVO, OrgQuery, OrgConvert, OrgMapper>
 		implements OrgService {
 
 	private final UserService userService;
 
 	@Override
-	public List<OrgVO> getList() {
+	public Result<List<OrgVO>> list(OrgQuery query) {
 		Map<String, Object> params = new HashMap<>();
 
 		// 数据权限
-		params.put(ConstCommon.DATA_SCOPE, getDataScope("t1", "id"));
+		params.put(ConstCore.DATA_SCOPE, getDataScope("t1", "id"));
 
 		// 机构列表
 		List<OrgEntity> entityList = baseMapper.getList(params);
 
-		return TreeUtils.build(baseConvert.convertt(entityList));
+		return Result.ok(TreeUtils.build(baseConvert.convertt(entityList)));
 	}
 
 	@Override

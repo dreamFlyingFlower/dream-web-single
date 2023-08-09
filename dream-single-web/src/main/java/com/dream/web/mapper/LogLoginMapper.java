@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.LogLoginEntity;
 import com.dream.web.query.LogLoginQuery;
+import com.dream.web.vo.LogLoginVO;
 
 /**
  * 登录日志
@@ -14,6 +15,6 @@ import com.dream.web.query.LogLoginQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface LogLoginMapper extends BaseMappers<LogLoginEntity, LogLoginQuery> {
+public interface LogLoginMapper extends BaseMappers<LogLoginEntity, LogLoginVO, LogLoginQuery> {
 
 }

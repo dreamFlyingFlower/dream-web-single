@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.dream.system.utils.TokenUtils;
 import com.dream.web.cache.TokenStoreCache;
-import com.dream.web.security.UserDetail;
+import com.dream.web.security.SecurityUserDetails;
 import com.wy.lang.StrTool;
 
 /**
@@ -44,7 +44,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 		}
 
 		// 获取登录用户信息
-		UserDetail user = tokenStoreCache.getUser(accessToken);
+		SecurityUserDetails user = tokenStoreCache.getUser(accessToken);
 		if (user == null) {
 			chain.doFilter(request, response);
 			return;

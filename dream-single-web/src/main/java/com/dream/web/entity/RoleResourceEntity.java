@@ -27,7 +27,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("ts_role_resource")
-public class RoleResource extends AbstractEntity {
+public class RoleResourceEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 

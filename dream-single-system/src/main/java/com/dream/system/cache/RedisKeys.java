@@ -1,4 +1,4 @@
-package com.dream.web.cache;
+package com.dream.system.cache;
 
 /**
  * Redis Key管理
@@ -26,7 +26,7 @@ public interface RedisKeys {
 	 * @param key key
 	 * @return 验证码key
 	 */
-	public static String getCaptchaKey(String key) {
+	static String getCaptchaKey(String key) {
 		return "sys:captcha:" + key;
 	}
 
@@ -36,7 +36,7 @@ public interface RedisKeys {
 	 * @param accessToken accessToken
 	 * @return accessTokenKey
 	 */
-	public static String getAccessTokenKey(String accessToken) {
+	static String getAccessTokenKey(String accessToken) {
 		return buildModuleKey("sys", "access", accessToken);
 	}
 
@@ -46,7 +46,7 @@ public interface RedisKeys {
 	 * @param prefix key前缀
 	 * @return 完整key
 	 */
-	public static String buildKey(String prefix) {
+	static String buildKey(String prefix) {
 		return String.format(KEY_FORMAT, PROJECT_NAME, MODULE_NAME, prefix);
 	}
 
@@ -56,7 +56,7 @@ public interface RedisKeys {
 	 * @param prefixs key数组
 	 * @return 完整key
 	 */
-	public static String buildKey(String... prefixs) {
+	static String buildKey(String... prefixs) {
 		return new StringBuilder(PROJECT_NAME).append(KEY_DELIMITER).append(MODULE_NAME).append(KEY_DELIMITER)
 				.toString() + String.join(KEY_DELIMITER, prefixs);
 	}
@@ -68,7 +68,7 @@ public interface RedisKeys {
 	 * @param prefix key前缀
 	 * @return 完整key
 	 */
-	public static String buildModuleKey(String moduleName, String prefix) {
+	static String buildModuleKey(String moduleName, String prefix) {
 		return String.format(KEY_FORMAT, PROJECT_NAME, moduleName, prefix);
 	}
 
@@ -79,7 +79,7 @@ public interface RedisKeys {
 	 * @param prefixs key数组
 	 * @return 完整key
 	 */
-	public static String buildModuleKey(String moduleName, String... prefixs) {
+	static String buildModuleKey(String moduleName, String... prefixs) {
 		return new StringBuilder(PROJECT_NAME).append(KEY_DELIMITER).append(moduleName).append(KEY_DELIMITER).toString()
 				+ String.join(KEY_DELIMITER, prefixs);
 	}

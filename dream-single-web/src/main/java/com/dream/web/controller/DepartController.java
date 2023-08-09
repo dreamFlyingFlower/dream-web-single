@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.web.entity.Depart;
+import com.dream.web.entity.DepartEntity;
 import com.dream.web.query.DepartQuery;
 import com.dream.web.service.DepartService;
 import com.dream.web.vo.DepartVO;
@@ -21,6 +21,6 @@ import io.swagger.annotations.Api;
 @Api(tags = "部门表API")
 @RestController
 @RequestMapping("depart")
-public class DepartController extends AbstractController<Depart, DepartVO, DepartQuery, DepartService> {
+public class DepartController extends AbstractController<DepartEntity, DepartVO, DepartQuery, DepartService> {
 
 }

@@ -2,8 +2,8 @@ package com.dream.message.sms;
 
 import java.util.Map;
 
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.sms.config.SmsConfig;
-import com.dream.system.constant.ConstCommon;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
@@ -70,7 +70,7 @@ public class TencentSmsStrategy implements SmsStrategy {
 			SendStatus sendStatus = response.getSendStatusSet()[0];
 
 			// 发送失败
-			if (!ConstCommon.OK.equalsIgnoreCase(sendStatus.getCode())) {
+			if (!ConstCore.OK.equalsIgnoreCase(sendStatus.getCode())) {
 				throw new ResultException(sendStatus.getMessage());
 			}
 		} catch (Exception e) {

@@ -76,7 +76,7 @@ public class UserRoleServiceImpl
 	}
 
 	@Override
-	public List<Long> getRoleIdList(Long userId) {
+	public List<Long> getRoleIdList(Serializable userId) {
 		return baseMapper.getRoleIdList(userId);
 	}
 }

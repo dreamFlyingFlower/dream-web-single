@@ -111,6 +111,9 @@ public class MenuVO extends TreeNode<MenuVO> {
 	@ApiModelProperty("更新人ID")
 	private Long updateUser;
 
+	@Schema(description = "上级名称")
+	private String parentName;
+
 	/**
 	 * 当前菜单子菜单列表
 	 */

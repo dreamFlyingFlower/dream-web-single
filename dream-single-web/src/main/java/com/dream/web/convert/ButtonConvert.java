@@ -5,7 +5,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.web.entity.Button;
+import com.dream.web.entity.ButtonEntity;
 import com.dream.web.vo.ButtonVO;
 
 /**
@@ -16,7 +16,7 @@ import com.dream.web.vo.ButtonVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface ButtonConvert extends BaseConvert<Button, ButtonVO> {
+public interface ButtonConvert extends BaseConvert<ButtonEntity, ButtonVO> {
 
 	ButtonConvert INSTANCE = Mappers.getMapper(ButtonConvert.class);
 

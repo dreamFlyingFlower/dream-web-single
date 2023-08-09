@@ -7,9 +7,8 @@ import java.util.Set;
 import com.dream.basic.web.service.BaseService;
 import com.dream.web.entity.MenuEntity;
 import com.dream.web.query.MenuQuery;
-import com.dream.web.security.UserDetail;
+import com.dream.web.security.SecurityUserDetails;
 import com.dream.web.vo.MenuVO;
-import com.dream.web.vo.UserVO;
 
 /**
  * 菜单表
@@ -22,28 +21,12 @@ public interface MenuService extends BaseService<MenuEntity, MenuVO, MenuQuery> 
 
 	Map<Long, MenuVO> getCaches(List<Long> menuIds);
 
-	List<MenuVO> tree(Long id);
-
-	List<MenuVO> treeByRoleId(Long roleId);
-
-	List<MenuVO> treeByUseId(Long userId);
-
-	Set<String> getUserAuthority(UserVO usesrVo);
-
 	/**
 	 * 菜单列表
 	 *
 	 * @param type 菜单类型
 	 */
 	List<MenuVO> getMenuList(Integer type);
-
-	/**
-	 * 用户菜单列表
-	 *
-	 * @param user 用户
-	 * @param type 菜单类型
-	 */
-	List<MenuVO> getUserMenuList(UserDetail user, Integer type);
 
 	/**
 	 * 获取子菜单的数量
@@ -55,5 +38,19 @@ public interface MenuService extends BaseService<MenuEntity, MenuVO, MenuQuery> 
 	/**
 	 * 获取用户权限列表
 	 */
-	Set<String> getUserAuthority(UserDetail user);
+	Set<String> getUserAuthority(SecurityUserDetails securityUserDetails);
+
+	/**
+	 * 用户菜单列表
+	 *
+	 * @param user 用户
+	 * @param type 菜单类型
+	 */
+	List<MenuVO> getUserMenuList(SecurityUserDetails user, Integer type);
+
+	List<MenuVO> tree(Long id);
+
+	List<MenuVO> treeByRoleId(Long roleId);
+
+	List<MenuVO> treeByUseId(Long userId);
 }

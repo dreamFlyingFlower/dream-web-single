@@ -6,8 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.RoleOrg;
+import com.dream.web.entity.RoleOrgEntity;
 import com.dream.web.query.RoleOrgQuery;
+import com.dream.web.vo.RoleOrgVO;
 
 /**
  * 角色数据权限
@@ -17,7 +18,7 @@ import com.dream.web.query.RoleOrgQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface RoleOrgMapper extends BaseMappers<RoleOrg, RoleOrgQuery> {
+public interface RoleOrgMapper extends BaseMappers<RoleOrgEntity, RoleOrgVO, RoleOrgQuery> {
 
 	/**
 	 * 根据角色ID,获取机构ID列表

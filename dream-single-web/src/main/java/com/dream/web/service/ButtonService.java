@@ -1,7 +1,7 @@
 package com.dream.web.service;
 
 import com.dream.basic.web.service.BaseService;
-import com.dream.web.entity.Button;
+import com.dream.web.entity.ButtonEntity;
 import com.dream.web.query.ButtonQuery;
 import com.dream.web.vo.ButtonVO;
 
@@ -12,6 +12,6 @@ import com.dream.web.vo.ButtonVO;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface ButtonService extends BaseService<Button, ButtonVO, ButtonQuery> {
+public interface ButtonService extends BaseService<ButtonEntity, ButtonVO, ButtonQuery> {
 
 }

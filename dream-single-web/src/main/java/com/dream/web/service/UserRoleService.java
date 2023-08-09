@@ -60,5 +60,5 @@ public interface UserRoleService extends BaseService<UserRoleEntity, UserRoleVO,
 	 * 
 	 * @param userId 用户ID
 	 */
-	List<Long> getRoleIdList(Long userId);
+	List<Long> getRoleIdList(Serializable userId);
 }

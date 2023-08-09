@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.UserEntity;
 import com.dream.web.query.UserQuery;
+import com.dream.web.query.UserRoleQuery;
 import com.dream.web.vo.UserVO;
 
 /**
@@ -19,7 +20,7 @@ import com.dream.web.vo.UserVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface UserMapper extends BaseMappers<UserEntity, UserQuery> {
+public interface UserMapper extends BaseMappers<UserEntity, UserVO, UserQuery> {
 
 	UserVO getByUsername(String username);
 
@@ -29,7 +30,7 @@ public interface UserMapper extends BaseMappers<UserEntity, UserQuery> {
 
 	UserEntity getById(@Param("id") Long id);
 
-	List<UserEntity> getRoleUserList(Map<String, Object> params);
+	List<UserEntity> getRoleUserList(UserRoleQuery query);
 
 	Integer updateUserCert(Long id);
 }

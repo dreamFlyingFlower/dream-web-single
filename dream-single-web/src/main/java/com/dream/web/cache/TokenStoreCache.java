@@ -3,7 +3,9 @@ package com.dream.web.cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dream.web.security.UserDetail;
+import com.dream.system.cache.RedisCache;
+import com.dream.system.cache.RedisKeys;
+import com.dream.web.security.SecurityUserDetails;
 
 /**
  * 认证 Cache
@@ -18,14 +20,14 @@ public class TokenStoreCache {
 	@Autowired
 	private RedisCache redisCache;
 
-	public void saveUser(String accessToken, UserDetail user) {
+	public void saveUser(String accessToken, SecurityUserDetails user) {
 		String key = RedisKeys.getAccessTokenKey(accessToken);
 		redisCache.set(key, user);
 	}
 
-	public UserDetail getUser(String accessToken) {
+	public SecurityUserDetails getUser(String accessToken) {
 		String key = RedisKeys.getAccessTokenKey(accessToken);
-		return (UserDetail) redisCache.get(key);
+		return (SecurityUserDetails) redisCache.get(key);
 	}
 
 	public void deleteUser(String accessToken) {

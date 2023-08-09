@@ -1,13 +1,11 @@
 package com.dream.web.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
-import com.dream.system.enums.DataScopeEnum;
 import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,53 +14,54 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 角色信息 ts_role
+ * 部门表 ts_depart
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "角色信息 ts_role")
+@ApiModel(description = "部门表 ts_depart")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_role")
-public class Role extends AbstractEntity {
+@TableName("ts_depart")
+public class DepartEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 角色名称
+	 * 主键ID
 	 */
-	private String roleName;
+	@ApiModelProperty("主键ID")
+	private Long id;
 
 	/**
-	 * 角色编码
+	 * 部门编码
 	 */
+	@ApiModelProperty("部门编码")
 	@Unique
-	private String roleCode;
+	private String departCode;
 
 	/**
-	 * 角色类型:1-超级管理员;2-普通角色
+	 * 部门名称
 	 */
-	private Integer roleType;
+	@ApiModelProperty("部门名称")
+	private String departName;
 
 	/**
-	 * 备注
+	 * 上级部门ID,顶层部门为0
 	 */
-	private String remark;
+	@ApiModelProperty("上级部门ID,顶层部门为0")
+	private Long pid;
 
 	/**
-	 * 数据范围 {@link DataScopeEnum}
+	 * 部门层级,由高到低,以-相连
 	 */
-	private Integer dataScope;
+	@ApiModelProperty("部门层级,由高到低,以-相连")
+	private String departLevel;
 
-	/**
-	 * 机构ID
-	 */
-	@TableField(fill = FieldFill.INSERT)
-	private Long orgId;
+	/** 非数据库字段 */
 }

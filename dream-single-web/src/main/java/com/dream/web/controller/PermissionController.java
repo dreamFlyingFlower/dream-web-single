@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.basic.web.controller.AbstractController;
-import com.dream.web.entity.Permission;
+import com.dream.web.entity.PermissionEntity;
 import com.dream.web.query.PermissionQuery;
 import com.dream.web.service.PermissionService;
 import com.dream.web.vo.PermissionVO;
@@ -22,6 +22,6 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("permission")
 public class PermissionController
-		extends AbstractController<Permission, PermissionVO, PermissionQuery, PermissionService> {
+		extends AbstractController<PermissionEntity, PermissionVO, PermissionQuery, PermissionService> {
 
 }

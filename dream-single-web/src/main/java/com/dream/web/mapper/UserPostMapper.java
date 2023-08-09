@@ -1,5 +1,6 @@
 package com.dream.web.mapper;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.UserPostEntity;
 import com.dream.web.query.UserPostQuery;
+import com.dream.web.vo.UserPostVO;
 
 /**
  * 用户岗位关系
@@ -17,12 +19,12 @@ import com.dream.web.query.UserPostQuery;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Mapper
-public interface UserPostMapper extends BaseMappers<UserPostEntity, UserPostQuery> {
+public interface UserPostMapper extends BaseMappers<UserPostEntity, UserPostVO, UserPostQuery> {
 
 	/**
 	 * 岗位ID列表
 	 * 
 	 * @param userId 用户ID
 	 */
-	List<Long> getPostIdList(@Param("userId") Long userId);
+	List<Long> getPostIdList(@Param("userId") Serializable userId);
 }

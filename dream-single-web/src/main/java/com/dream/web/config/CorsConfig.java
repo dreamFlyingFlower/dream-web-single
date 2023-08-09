@@ -1,5 +1,6 @@
 package com.dream.web.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -17,10 +18,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class CorsConfig {
 
 	@Bean
+	@ConditionalOnMissingBean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		// 允许跨域的站点
 		corsConfiguration.addAllowedOrigin("*");
+		corsConfiguration.addAllowedOriginPattern("*");
 		// 允许跨域的请求头
 		corsConfiguration.addAllowedHeader("*");
 		// 允许跨域的请求类型

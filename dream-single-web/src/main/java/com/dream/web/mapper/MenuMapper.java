@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.MenuEntity;
 import com.dream.web.query.MenuQuery;
+import com.dream.web.vo.MenuVO;
 
 /**
  * 菜单表
@@ -17,7 +18,7 @@ import com.dream.web.query.MenuQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface MenuMapper extends BaseMappers<MenuEntity, MenuQuery> {
+public interface MenuMapper extends BaseMappers<MenuEntity, MenuVO, MenuQuery> {
 
 	/**
 	 * 查询所有权限列表

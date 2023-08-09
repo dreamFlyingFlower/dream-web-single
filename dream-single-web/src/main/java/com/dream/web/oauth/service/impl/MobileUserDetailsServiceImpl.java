@@ -1,13 +1,15 @@
 package com.dream.web.oauth.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.dream.web.oauth.mobile.MobileUserDetailsService;
+import com.dream.web.service.UserDetailService;
 import com.dream.web.service.UserService;
 import com.dream.web.vo.UserVO;
+
+import lombok.AllArgsConstructor;
 
 /**
  * 手机验证码登录
@@ -17,18 +19,20 @@ import com.dream.web.vo.UserVO;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Service
+@AllArgsConstructor
 public class MobileUserDetailsServiceImpl implements MobileUserDetailsService {
 
-	@Autowired
-	private UserService userService;
+	private final UserDetailService userDetailsService;
+
+	private final UserService userService;
 
 	@Override
 	public UserDetails loadUserByMobile(String mobile) throws UsernameNotFoundException {
-		UserVO usesrVo = userService.getByMobile(mobile);
-		if (usesrVo == null) {
+		UserVO userVo = userService.getByMobile(mobile);
+		if (userVo == null) {
 			throw new UsernameNotFoundException("手机号或验证码错误");
 		}
-		userService.getUserDetails(usesrVo);
-		return usesrVo;
+		userDetailsService.getUserDetails(userVo);
+		return userVo;
 	}
 }

@@ -4,8 +4,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.Role;
+import com.dream.web.entity.RoleEntity;
 import com.dream.web.query.RoleQuery;
+import com.dream.web.vo.RoleVO;
 
 /**
  * 角色信息
@@ -15,7 +16,7 @@ import com.dream.web.query.RoleQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface RoleMapper extends BaseMappers<Role, RoleQuery> {
+public interface RoleMapper extends BaseMappers<RoleEntity, RoleVO, RoleQuery> {
 
 	/**
 	 * 根据用户ID,获取用户最大的数据范围

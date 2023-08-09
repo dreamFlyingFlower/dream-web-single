@@ -5,7 +5,6 @@ import com.dream.basic.web.entity.AbstractEntity;
 import com.wy.annotation.Unique;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,23 +32,33 @@ public class DictEntity extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键
-	 */
-	@ApiModelProperty("主键")
-	private Long id;
-
-	/**
 	 * 字典编码
 	 */
-	@ApiModelProperty("字典编码")
 	@Unique
 	private String dictCode;
 
 	/**
 	 * 字典名称
 	 */
-	@ApiModelProperty("字典名称")
 	private String dictName;
 
-	/** 非数据库字段 */
+	/**
+	 * 备注
+	 */
+	private String remark;
+
+	/**
+	 * 排序
+	 */
+	private Integer sort;
+
+	/**
+	 * 来源:0-字典数据;1-动态SQL
+	 */
+	private Integer dictSource;
+
+	/**
+	 * 动态sql
+	 */
+	private String dictSql;
 }

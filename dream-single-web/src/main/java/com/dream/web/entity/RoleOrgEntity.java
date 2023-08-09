@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("ts_role_org")
-public class RoleOrg {
+public class RoleOrgEntity {
 
 	/**
 	 * 角色ID

@@ -6,12 +6,11 @@ import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.sms.config.SmsConfig;
-import com.dream.system.constant.ConstCommon;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
 import com.wy.third.json.JsonTools;
-
 
 /**
  * 阿里云短信
@@ -55,7 +54,7 @@ public class AliyunSmsStrategy implements SmsStrategy {
 			SendSmsResponse response = client.sendSms(request);
 
 			// 发送失败
-			if (!ConstCommon.OK.equalsIgnoreCase(response.getBody().getCode())) {
+			if (!ConstCore.OK.equalsIgnoreCase(response.getBody().getCode())) {
 				throw new ResultException(response.getBody().getMessage());
 			}
 		} catch (Exception e) {

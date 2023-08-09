@@ -3,8 +3,9 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.RoleResource;
+import com.dream.web.entity.RoleResourceEntity;
 import com.dream.web.query.RoleResourceQuery;
+import com.dream.web.vo.RoleResourceVO;
 
 /**
  * 角色-权限关系
@@ -14,10 +15,6 @@ import com.dream.web.query.RoleResourceQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface RoleResourceMapper extends BaseMappers<RoleResource, RoleResourceQuery> {
+public interface RoleResourceMapper extends BaseMappers<RoleResourceEntity, RoleResourceVO, RoleResourceQuery> {
 
-	// List<RoleResource> list(Page<RoleResource> page, @Param("query")
-	// RoleResourceQuery query);
-	//
-	// List<RoleResource> list(@Param("query") RoleResourceQuery query);
 }

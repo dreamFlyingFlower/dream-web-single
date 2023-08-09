@@ -1,6 +1,6 @@
 package com.dream.web.service;
 
-import com.dream.web.vo.AccountLoginVO;
+import com.dream.web.vo.LoginAccountVO;
 import com.dream.web.vo.MobileLoginVO;
 import com.dream.web.vo.TokenVO;
 
@@ -18,7 +18,7 @@ public interface AuthService {
 	 *
 	 * @param login 登录信息
 	 */
-	TokenVO loginByAccount(AccountLoginVO login);
+	TokenVO loginByAccount(LoginAccountVO login);
 
 	/**
 	 * 手机短信登录

@@ -53,6 +53,12 @@ public class DictItemVO {
 	private String dictName;
 
 	/**
+	 * 字典名样式
+	 */
+	@Schema(description = "字典名样式")
+	private String labelClass;
+
+	/**
 	 * 备注
 	 */
 	@Schema(description = "备注")

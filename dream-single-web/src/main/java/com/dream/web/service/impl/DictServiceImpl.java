@@ -69,12 +69,15 @@ public class DictServiceImpl extends AbstractServiceImpl<DictEntity, DictVO, Dic
 			DictVO dict = new DictVO();
 			dict.setDictCode(type.getDictCode());
 
+			List<DictItemVO> dictItemVOs = new ArrayList<>();
+
 			for (DictItemEntity data : dataList) {
 				if (type.getId().equals(data.getDictId())) {
-					dict.getDictItemVOs()
-							.add(new DictItemVO(data.getDictName(), data.getDictValue(), data.getLabelClass()));
+					dictItemVOs.add(DictItemVO.builder().dictName(data.getDictName()).dictValue(data.getDictValue())
+							.labelClass(data.getLabelClass()).build());
 				}
 			}
+			dict.setDictItemVOs(dictItemVOs);
 
 			// 数据来源动态SQL
 			if (type.getDictSource() == DictSourceEnum.SQL.getValue()) {

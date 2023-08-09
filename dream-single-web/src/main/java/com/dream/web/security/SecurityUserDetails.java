@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDetail implements UserDetails {
+public class SecurityUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 

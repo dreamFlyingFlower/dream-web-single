@@ -6,13 +6,13 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.service.SmsLogService;
 import com.dream.message.service.SmsPlatformService;
 import com.dream.message.sms.SmsContext;
 import com.dream.message.sms.config.SmsConfig;
-import com.dream.system.constant.ConstCommon;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
 import com.wy.third.json.JsonTools;
@@ -81,10 +81,10 @@ public class SmsService {
 
 		if (e != null) {
 			String error = StringUtils.substring(e.getMessage(), 0, 2000);
-			logEntity.setStatus(ConstCommon.FAIL);
+			logEntity.setStatus(ConstCore.FAIL);
 			logEntity.setError(error);
 		} else {
-			logEntity.setStatus(ConstCommon.SUCCESS);
+			logEntity.setStatus(ConstCore.SUCCESS);
 		}
 
 		smsLogService.save(logEntity);

@@ -10,10 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.enums.DataScopeEnum;
 import com.dream.web.convert.RoleConvert;
-import com.dream.web.entity.Role;
+import com.dream.web.entity.RoleEntity;
 import com.dream.web.mapper.RoleMapper;
 import com.dream.web.query.RoleQuery;
 import com.dream.web.service.RoleDataScopeService;
@@ -36,7 +35,7 @@ import lombok.AllArgsConstructor;
  */
 @Service("roleService")
 @AllArgsConstructor
-public class RoleServiceImpl extends AbstractServiceImpl<Role, RoleVO, RoleQuery, RoleConvert, RoleMapper>
+public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO, RoleQuery, RoleConvert, RoleMapper>
 		implements RoleService {
 
 	private final RoleMenuService sysRoleMenuService;
@@ -45,19 +44,21 @@ public class RoleServiceImpl extends AbstractServiceImpl<Role, RoleVO, RoleQuery
 
 	private final UserRoleService sysUserRoleService;
 
-	public Result<RoleVO> page(RoleQuery query) {
-		IPage<Role> page = baseMapper.selectPage(getPage(query), getWrapper(query));
-		return new Result<>(baseConvert.convertt(page.getRecords()), page.getTotal());
+	@Override
+	public Result<List<RoleVO>> page(RoleQuery query) {
+		IPage<RoleEntity> page = baseMapper.selectPage(getPage(query), getWrapper(query));
+		return Result.page(baseConvert.convertt(page.getRecords()), page.getCurrent(), page.getSize(), page.getTotal());
 	}
 
-	public List<RoleVO> getList(RoleQuery query) {
-		List<Role> entityList = baseMapper.selectList(getWrapper(query));
-		return baseConvert.convertt(entityList);
+	@Override
+	public Result<List<RoleVO>> list(RoleQuery query) {
+		List<RoleEntity> entityList = baseMapper.selectList(getWrapper(query));
+		return Result.ok(baseConvert.convertt(entityList));
 	}
 
-	private Wrapper<Role> getWrapper(RoleQuery query) {
-		LambdaQueryWrapper<Role> wrapper = new LambdaQueryWrapper<>();
-		wrapper.like(StrTool.isNotBlank(query.getName()), Role::getName, query.getName());
+	private Wrapper<RoleEntity> getWrapper(RoleQuery query) {
+		LambdaQueryWrapper<RoleEntity> wrapper = new LambdaQueryWrapper<>();
+		wrapper.like(StrTool.isNotBlank(query.getRoleName()), RoleEntity::getRoleName, query.getRoleName());
 
 		// 数据权限
 		dataScopeWrapper(wrapper);
@@ -66,8 +67,8 @@ public class RoleServiceImpl extends AbstractServiceImpl<Role, RoleVO, RoleQuery
 	}
 
 	@Override
-	public Role add(RoleVO vo) {
-		Role entity = baseConvert.convert(vo);
+	public RoleEntity add(RoleVO vo) {
+		RoleEntity entity = baseConvert.convert(vo);
 
 		// 保存角色
 		entity.setDataScope(DataScopeEnum.SELF.getValue());
@@ -80,7 +81,7 @@ public class RoleServiceImpl extends AbstractServiceImpl<Role, RoleVO, RoleQuery
 
 	@Override
 	public Boolean edit(RoleVO vo) {
-		Role entity = baseConvert.convert(vo);
+		RoleEntity entity = baseConvert.convert(vo);
 
 		// 更新角色
 		updateById(entity);
@@ -93,7 +94,7 @@ public class RoleServiceImpl extends AbstractServiceImpl<Role, RoleVO, RoleQuery
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void dataScope(RoleDataScopeVO vo) {
-		Role entity = getById(vo.getId());
+		RoleEntity entity = getById(vo.getId());
 		entity.setDataScope(vo.getDataScope());
 		// 更新角色
 		updateById(entity);

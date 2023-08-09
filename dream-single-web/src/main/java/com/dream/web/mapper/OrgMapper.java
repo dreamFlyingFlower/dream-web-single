@@ -1,12 +1,14 @@
 package com.dream.web.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.web.entity.OrgEntity;
 import com.dream.web.query.OrgQuery;
+import com.dream.web.vo.OrgVO;
 
 /**
  * 组织机构表
@@ -16,7 +18,9 @@ import com.dream.web.query.OrgQuery;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper
-public interface OrgMapper extends BaseMappers<OrgEntity, OrgQuery> {
+public interface OrgMapper extends BaseMappers<OrgEntity, OrgVO, OrgQuery> {
+
+	List<OrgEntity> getList(Map<String, Object> params);
 
 	/**
 	 * 获取所有机构的id、pid列表

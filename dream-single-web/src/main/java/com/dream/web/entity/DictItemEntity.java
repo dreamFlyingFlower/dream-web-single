@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,34 +31,37 @@ public class DictItemEntity extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键
-	 */
-	@ApiModelProperty("主键")
-	private Long id;
-
-	/**
 	 * 字典ID
 	 */
-	@ApiModelProperty("字典ID")
 	private Long dictId;
 
 	/**
 	 * 字典编码
 	 */
-	@ApiModelProperty("字典编码")
 	private String dictCode;
 
 	/**
 	 * 字典值
 	 */
-	@ApiModelProperty("字典值")
 	private String dictValue;
 
 	/**
 	 * 字典名
 	 */
-	@ApiModelProperty("字典名")
 	private String dictName;
 
-	/** 非数据库字段 */
+	/**
+	 * 字典名样式
+	 */
+	private String labelClass;
+
+	/**
+	 * 备注
+	 */
+	private String remark;
+
+	/**
+	 * 排序
+	 */
+	private Integer sort;
 }
