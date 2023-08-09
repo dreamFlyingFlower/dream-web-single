@@ -14,29 +14,23 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 权限 ts_permission
+ * 权限
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "权限 ts_permission")
+@ApiModel(description = "权限")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_permission")
+@TableName("sys_permission")
 public class PermissionEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 主键
-	 */
-	@ApiModelProperty("主键")
-	private Long id;
 
 	/**
 	 * 权限编码
@@ -50,6 +44,4 @@ public class PermissionEntity extends AbstractEntity {
 	 */
 	@ApiModelProperty("权限名称")
 	private String permissionName;
-
-	/** 非数据库字段 */
 }

@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
 
-import com.dream.web.entity.OAuthClientDetails;
+import com.dream.web.oauth.entity.OAuthClientDetails;
 import com.dream.web.oauth.service.OAuthService;
 
 /**
@@ -14,11 +14,13 @@ import com.dream.web.oauth.service.OAuthService;
  * @date 2022-09-13 17:47:59
  * @git {@link https://github.com/dreamFlyingFlower }
  */
+@Deprecated
 public class OAuth2UserApprovalHandler extends TokenStoreUserApprovalHandler {
 
 	private OAuthService oauthService;
 
-	public OAuth2UserApprovalHandler() {}
+	public OAuth2UserApprovalHandler() {
+	}
 
 	@Override
 	public boolean isApproved(AuthorizationRequest authorizationRequest, Authentication userAuthentication) {

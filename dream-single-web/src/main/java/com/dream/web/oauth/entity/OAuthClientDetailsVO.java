@@ -1,4 +1,4 @@
-package com.dream.web.entity;
+package com.dream.web.oauth.entity;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OAuthClientDetailsDTO implements Serializable {
+public class OAuthClientDetailsVO implements Serializable {
 
 	private static final long serialVersionUID = -6650829879035029696L;
 

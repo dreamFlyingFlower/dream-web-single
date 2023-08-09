@@ -61,7 +61,5 @@ public class DepartEntity extends AbstractEntity {
 	 * 部门层级,由高到低,以-相连
 	 */
 	@ApiModelProperty("部门层级,由高到低,以-相连")
-	private String departLevel;
-
-	/** 非数据库字段 */
+	private String level;
 }

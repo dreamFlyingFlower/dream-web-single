@@ -25,7 +25,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_dict_item")
+@TableName("sys_dict_item")
 public class DictItemEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

@@ -10,6 +10,7 @@ import com.dream.web.vo.AccountVO;
 import com.dream.web.vo.LoginAccountVO;
 import com.wy.lang.StrTool;
 
+@Deprecated
 public class IntegrationUserDetailsAuthenticationHandler {
 
 	/**
@@ -20,6 +21,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 	 * @param token
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	public UnifiedUserDetails authentication(String domain, String authenticationType,
 			UsernamePasswordAuthenticationToken token) {
 
@@ -39,6 +41,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		loginAccountVO.setUsername(username);
 		loginAccountVO.setMobile(username);
 		loginAccountVO.setPassword(presentedPassword);
+		@SuppressWarnings("unused")
 		AuthService authService = SpringContextHelper.getBean(AuthService.class);
 		// FIXME 登录从那来?
 		// AccountVO accountVO = authService.loginByAccount(loginAccountVO);

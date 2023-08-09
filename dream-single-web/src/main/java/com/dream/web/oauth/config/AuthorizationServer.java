@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +16,6 @@ import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -44,8 +42,9 @@ import com.dream.web.oauth.service.OAuthService;
  * @date 2022-06-17 16:42:13
  * @git {@link https://github.com/dreamFlyingFlower }
  */
-@Configuration
-@EnableAuthorizationServer
+@Deprecated
+// @Configuration
+// @EnableAuthorizationServer
 public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
@@ -132,15 +131,15 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 		endpoints.authenticationManager(authenticationManager)
-		        // .userDetailsService(userDetailsService)//
-		        // 若无refresh_token会有UserDetailsService is required错误
-		        .authorizationCodeServices(authorizationCodeServices).userApprovalHandler(userApprovalHandler())
-		        // 使用默认的tokenService,默认实现 DefaultTokenServices
-		        // .tokenServices(defaulAuthorizationServerTokenServices)
-		        // 使用自定义的tokenService,改造后的 DefaultTokenServices
-		        .tokenServices(tokenService()).pathMapping("/oauth/confirm_access", "/confirm_access")
-		        .pathMapping("/oauth/error", "/oauth_error").allowedTokenEndpointRequestMethods(HttpMethod.POST)
-		        .exceptionTranslator(new OAuth2WebResponseExceptionTranslator());
+				// .userDetailsService(userDetailsService)//
+				// 若无refresh_token会有UserDetailsService is required错误
+				.authorizationCodeServices(authorizationCodeServices).userApprovalHandler(userApprovalHandler())
+				// 使用默认的tokenService,默认实现 DefaultTokenServices
+				// .tokenServices(defaulAuthorizationServerTokenServices)
+				// 使用自定义的tokenService,改造后的 DefaultTokenServices
+				.tokenServices(tokenService()).pathMapping("/oauth/confirm_access", "/confirm_access")
+				.pathMapping("/oauth/error", "/oauth_error").allowedTokenEndpointRequestMethods(HttpMethod.POST)
+				.exceptionTranslator(new OAuth2WebResponseExceptionTranslator());
 	}
 
 	@Bean
@@ -182,7 +181,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("permitAll()")
-		        // 允许表单认证
-		        .allowFormAuthenticationForClients();
+				// 允许表单认证
+				.allowFormAuthenticationForClients();
 	}
 }

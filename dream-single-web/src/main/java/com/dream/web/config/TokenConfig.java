@@ -5,7 +5,6 @@ import java.util.Collections;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
@@ -26,7 +25,7 @@ import com.dream.web.oauth.config.SelfAccessTokenConverter;
  * @date 2022-06-17 16:41:06
  * @git {@link https://github.com/dreamFlyingFlower }
  */
-@Configuration
+@Deprecated
 public class TokenConfig {
 
 	/**
@@ -55,7 +54,7 @@ public class TokenConfig {
 	 */
 	@Bean
 	public AuthorizationServerTokenServices tokenService(ClientDetailsService clientDetailsService,
-	        TokenStore tokenStore, JwtAccessTokenConverter accessTokenConverter) {
+			TokenStore tokenStore, JwtAccessTokenConverter accessTokenConverter) {
 		DefaultTokenServices service = new DefaultTokenServices();
 		service.setClientDetailsService(clientDetailsService);
 		service.setSupportRefreshToken(true);

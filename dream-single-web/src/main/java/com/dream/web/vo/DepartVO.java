@@ -56,7 +56,7 @@ public class DepartVO {
 	 * 部门层级,由高到低,以-相连
 	 */
 	@ApiModelProperty("部门层级,由高到低,以-相连")
-	private String departLevel;
+	private String level;
 
 	/**
 	 * 创建时间

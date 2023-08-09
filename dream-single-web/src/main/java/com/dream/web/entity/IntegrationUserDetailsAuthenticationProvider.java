@@ -13,7 +13,12 @@ import com.wy.lang.StrTool;
 
 /**
  * 统一用户认证处理,集成了网页(简化模式、授权码模式用户登录)认证 与 password模式认证 FIXME
+ * 
+ * @author 飞花梦影
+ * @date 2023-08-09 23:26:47
+ * @git {@link https://gitee.com/dreamFlyingFlower}
  */
+@Deprecated
 public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
 	private IntegrationUserDetailsAuthenticationHandler authenticationHandler = null;

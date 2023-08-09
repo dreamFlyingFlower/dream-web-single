@@ -13,20 +13,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 参数管理 ts_params
+ * 参数管理
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "参数管理 ts_params")
+@ApiModel(description = "参数管理")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_params")
+@TableName("sys_params")
 public class ParamsEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 9161720926235407181L;

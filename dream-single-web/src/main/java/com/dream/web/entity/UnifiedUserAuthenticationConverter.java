@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
  * @date 2022-09-07 15:43:05
  * @git {@link https://github.com/dreamFlyingFlower }
  */
+@Deprecated
 public class UnifiedUserAuthenticationConverter implements UserAuthenticationConverter {
 
 	private Collection<? extends GrantedAuthority> defaultAuthorities;
@@ -48,7 +49,7 @@ public class UnifiedUserAuthenticationConverter implements UserAuthenticationCon
 	 */
 	public void setDefaultAuthorities(String[] defaultAuthorities) {
 		this.defaultAuthorities = AuthorityUtils
-		        .commaSeparatedStringToAuthorityList(StringUtils.arrayToCommaDelimitedString(defaultAuthorities));
+				.commaSeparatedStringToAuthorityList(StringUtils.arrayToCommaDelimitedString(defaultAuthorities));
 	}
 
 	public Map<String, ?> convertUserAuthentication(Authentication authentication) {
@@ -84,7 +85,7 @@ public class UnifiedUserAuthenticationConverter implements UserAuthenticationCon
 			// UnifiedUserDetails((String)map.get(USERNAME),"N/A",new
 			// ArrayList<>(authorities));
 			UnifiedUserDetails unifiedUserDetails =
-			        new UnifiedUserDetails((String) principal, "N/A", new ArrayList<>());
+					new UnifiedUserDetails((String) principal, "N/A", new ArrayList<>());
 
 			unifiedUserDetails.setTenantId((String) map.get("tenant_id"));
 			unifiedUserDetails.setMobile((String) map.get("mobile"));
@@ -108,7 +109,7 @@ public class UnifiedUserAuthenticationConverter implements UserAuthenticationCon
 		}
 		if (authorities instanceof Collection) {
 			return AuthorityUtils.commaSeparatedStringToAuthorityList(
-			        StringUtils.collectionToCommaDelimitedString((Collection<?>) authorities));
+					StringUtils.collectionToCommaDelimitedString((Collection<?>) authorities));
 		}
 		throw new IllegalArgumentException("Authorities must be either a String or a Collection");
 	}

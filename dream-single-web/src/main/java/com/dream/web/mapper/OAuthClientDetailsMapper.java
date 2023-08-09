@@ -3,8 +3,8 @@ package com.dream.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.web.entity.OAuthClientDetails;
-import com.dream.web.entity.OAuthClientDetailsDTO;
+import com.dream.web.oauth.entity.OAuthClientDetails;
+import com.dream.web.oauth.entity.OAuthClientDetailsVO;
 import com.dream.web.query.OAuthClientDetailsQuery;
 
 /**
@@ -16,6 +16,6 @@ import com.dream.web.query.OAuthClientDetailsQuery;
  */
 @Mapper
 public interface OAuthClientDetailsMapper
-		extends BaseMappers<OAuthClientDetails, OAuthClientDetailsDTO, OAuthClientDetailsQuery> {
+		extends BaseMappers<OAuthClientDetails, OAuthClientDetailsVO, OAuthClientDetailsQuery> {
 
 }

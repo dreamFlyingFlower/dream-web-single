@@ -12,20 +12,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 用户岗位关系 ts_role_post
+ * 用户岗位关系
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "角色-权限关系 ts_role_post")
+@ApiModel(description = "用户岗位关系")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_role_post")
+@TableName("sys_role_post")
 public class UserPostEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = -6638468804336609656L;

@@ -4,11 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.stereotype.Component;
 
-@Component
+@Deprecated
+// @Component
 public class IntegrationWebAuthenticationDetailsSource
-        implements AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> {
+		implements AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> {
 
 	@Override
 	public WebAuthenticationDetails buildDetails(HttpServletRequest context) {

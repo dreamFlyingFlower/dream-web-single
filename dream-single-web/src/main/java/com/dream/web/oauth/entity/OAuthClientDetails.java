@@ -1,4 +1,4 @@
-package com.dream.web.entity;
+package com.dream.web.oauth.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

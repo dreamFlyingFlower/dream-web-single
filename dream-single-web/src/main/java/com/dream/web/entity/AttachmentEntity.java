@@ -25,7 +25,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_attachment")
+@TableName("sys_attachment")
 public class AttachmentEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = -4083079108816931702L;

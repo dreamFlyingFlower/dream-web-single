@@ -30,6 +30,7 @@ import com.alibaba.fastjson2.JSON;
  * @date 2022-09-06 17:26:38
  * @git {@link https://github.com/dreamFlyingFlower }
  */
+@Deprecated
 public class SelfAccessTokenConverter implements AccessTokenConverter {
 
 	private UserAuthenticationConverter userTokenConverter = new DefaultUserAuthenticationConverter();
@@ -91,15 +92,15 @@ public class SelfAccessTokenConverter implements AccessTokenConverter {
 
 			// 增加对client Authorities支持
 			if (authentication.getOAuth2Request().getAuthorities() != null
-			        && !authentication.getOAuth2Request().getAuthorities().isEmpty()) {
+					&& !authentication.getOAuth2Request().getAuthorities().isEmpty()) {
 				response.put(CLIENT_AUTHORITIES,
-				        AuthorityUtils.authorityListToSet(authentication.getOAuth2Request().getAuthorities()));
+						AuthorityUtils.authorityListToSet(authentication.getOAuth2Request().getAuthorities()));
 			}
 			// 结束增加对client Authorities支持
 		} else {
 			if (clientToken.getAuthorities() != null && !clientToken.getAuthorities().isEmpty()) {
 				response.put(UserAuthenticationConverter.AUTHORITIES,
-				        AuthorityUtils.authorityListToSet(clientToken.getAuthorities()));
+						AuthorityUtils.authorityListToSet(clientToken.getAuthorities()));
 			}
 		}
 
@@ -158,7 +159,7 @@ public class SelfAccessTokenConverter implements AccessTokenConverter {
 			parameters.put(GRANT_TYPE, (String) map.get(GRANT_TYPE));
 		}
 		Set<String> resourceIds =
-		        new LinkedHashSet<String>(map.containsKey(AUD) ? getAudience(map) : Collections.<String>emptySet());
+				new LinkedHashSet<String>(map.containsKey(AUD) ? getAudience(map) : Collections.<String>emptySet());
 
 		Collection<? extends GrantedAuthority> authorities = null;
 		if (user == null && map.containsKey(AUTHORITIES)) {
@@ -182,7 +183,7 @@ public class SelfAccessTokenConverter implements AccessTokenConverter {
 		// 结束增加对client Authorities支持
 
 		OAuth2Request request =
-		        new OAuth2Request(parameters, clientId, authorities, true, scope, resourceIds, null, null, null);
+				new OAuth2Request(parameters, clientId, authorities, true, scope, resourceIds, null, null, null);
 		return new OAuth2Authentication(request, user);
 	}
 

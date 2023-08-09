@@ -13,20 +13,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * ts_dict
+ * 字典
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = " ts_dict")
+@ApiModel(description = "字典")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_dict")
+@TableName("sys_dict")
 public class DictEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

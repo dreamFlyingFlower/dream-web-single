@@ -2,18 +2,18 @@ package com.dream.web.oauth.service;
 
 import java.util.List;
 
-import com.dream.web.entity.OAuthClientDetails;
-import com.dream.web.entity.OAuthClientDetailsDTO;
+import com.dream.web.oauth.entity.OAuthClientDetails;
+import com.dream.web.oauth.entity.OAuthClientDetailsVO;
 
 public interface OAuthService {
 
 	OAuthClientDetails loadOauthClientDetails(String clientId);
 
-	List<OAuthClientDetailsDTO> loadAllOauthClientDetailsDtos();
+	List<OAuthClientDetailsVO> loadAllOauthClientDetailsDtos();
 
 	void archiveOauthClientDetails(String clientId);
 
-	OAuthClientDetailsDTO loadOauthClientDetailsDto(String clientId);
+	OAuthClientDetailsVO loadOauthClientDetailsDto(String clientId);
 
-	void registerClientDetails(OAuthClientDetailsDTO formDto);
+	void registerClientDetails(OAuthClientDetailsVO formDto);
 }

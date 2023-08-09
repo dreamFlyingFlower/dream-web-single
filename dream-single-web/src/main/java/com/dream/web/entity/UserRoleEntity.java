@@ -3,6 +3,7 @@ package com.dream.web.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,19 +12,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 账号-角色关系 ts_user_role
+ * 用户角色关系
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
+@ApiModel(description = "用户角色关系")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_user_role")
+@TableName("sys_user_role")
 public class UserRoleEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

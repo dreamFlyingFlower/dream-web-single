@@ -1,6 +1,5 @@
 package com.dream.web.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
 import com.dream.system.enums.UserStatus;
@@ -32,11 +31,6 @@ import lombok.experimental.SuperBuilder;
 public class UserEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 用户ID
-	 */
-	private Long id;
 
 	/**
 	 * 用户编码
@@ -113,10 +107,4 @@ public class UserEntity extends AbstractEntity {
 	 * 用户状态,见字典user_status,{@link UserStatus}
 	 */
 	private Integer status;
-
-	/**
-	 * 机构名称
-	 */
-	@TableField(exist = false)
-	private String orgName;
 }

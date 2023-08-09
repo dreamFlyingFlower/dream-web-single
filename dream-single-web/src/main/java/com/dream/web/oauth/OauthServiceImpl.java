@@ -11,9 +11,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.dream.basic.core.helper.IpHelper;
 import com.dream.web.convert.OAuthClientDetailsConvert;
-import com.dream.web.entity.OAuthClientDetails;
-import com.dream.web.entity.OAuthClientDetailsDTO;
 import com.dream.web.mapper.OAuthClientDetailsMapper;
+import com.dream.web.oauth.entity.OAuthClientDetails;
+import com.dream.web.oauth.entity.OAuthClientDetailsVO;
 import com.dream.web.oauth.service.OAuthService;
 import com.wy.collection.ListTool;
 
@@ -39,7 +39,7 @@ public class OauthServiceImpl implements OAuthService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<OAuthClientDetailsDTO> loadAllOauthClientDetailsDtos() {
+	public List<OAuthClientDetailsVO> loadAllOauthClientDetailsDtos() {
 		List<OAuthClientDetails> clientDetailses = oauthClientDetailsMapper.selectList(
 				new LambdaQueryWrapper<OAuthClientDetails>().orderByDesc(OAuthClientDetails::getCreateTime));
 		return oauthClientDetailsConvert.convertt(clientDetailses);
@@ -55,7 +55,7 @@ public class OauthServiceImpl implements OAuthService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public OAuthClientDetailsDTO loadOauthClientDetailsDto(String clientId) {
+	public OAuthClientDetailsVO loadOauthClientDetailsDto(String clientId) {
 		List<OAuthClientDetails> oAuthClientDetails = oauthClientDetailsMapper
 				.selectList(new LambdaQueryWrapper<OAuthClientDetails>().eq(OAuthClientDetails::getClientId, clientId));
 		return ListTool.isEmpty(oAuthClientDetails) ? oauthClientDetailsConvert.convertt(oAuthClientDetails.get(0))
@@ -64,7 +64,7 @@ public class OauthServiceImpl implements OAuthService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void registerClientDetails(OAuthClientDetailsDTO formDto) {
+	public void registerClientDetails(OAuthClientDetailsVO formDto) {
 		OAuthClientDetails clientDetails = formDto.createDomain();
 		oauthClientDetailsMapper.insert(clientDetails);
 		log.debug("{}|Save OauthClientDetails: {}", IpHelper.getIp(), clientDetails);

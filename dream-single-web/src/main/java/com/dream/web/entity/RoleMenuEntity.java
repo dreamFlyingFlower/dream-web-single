@@ -3,6 +3,7 @@ package com.dream.web.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dream.basic.web.entity.AbstractEntity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.experimental.SuperBuilder;
  * @date 2023-08-08 10:05:09
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
+@ApiModel(description = "角色菜单")
 @Getter
 @Setter
 @ToString

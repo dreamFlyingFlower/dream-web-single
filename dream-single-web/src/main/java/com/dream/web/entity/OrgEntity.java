@@ -14,20 +14,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 组织机构表 ts_org
+ * 组织机构
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@ApiModel(description = "组织机构表 ts_org")
+@ApiModel(description = "组织机构")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_org")
+@TableName("sys_org")
 public class OrgEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

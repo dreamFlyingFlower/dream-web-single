@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
  * @date 2022-09-07 15:57:01
  * @git {@link https://github.com/dreamFlyingFlower }
  */
+@Deprecated
 public class IntegrationWebAuthenticationDetails extends WebAuthenticationDetails {
 
 	private static final long serialVersionUID = -7390676268907876135L;

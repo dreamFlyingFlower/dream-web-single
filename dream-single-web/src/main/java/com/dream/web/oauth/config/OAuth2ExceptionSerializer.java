@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
  * @date 2022-09-13 17:44:08
  * @git {@link https://github.com/dreamFlyingFlower }
  */
+@Deprecated
 public class OAuth2ExceptionSerializer extends StdSerializer<OAuth2Exception> {
 
 	private static final long serialVersionUID = 1374299379306174503L;

@@ -22,8 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.dream.web.entity.IntegrationUserDetailsAuthenticationHandler;
-import com.dream.web.entity.IntegrationUserDetailsAuthenticationProvider;
 import com.dream.web.filter.AuthenticationTokenFilter;
 import com.dream.web.oauth.mobile.MobileAuthenticationProvider;
 import com.dream.web.oauth.mobile.MobileUserDetailsService;
@@ -92,22 +90,25 @@ public class SecurityConfig {
 		return new MobileAuthenticationProvider(mobileUserDetailsService, mobileVerifyCodeService);
 	}
 
-	/**
-	 * 集成各种网页登录模式
-	 * 
-	 * @return IntegrationUserDetailsAuthenticationProvider
-	 */
-	@Bean
-	IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider() {
-		return new IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
-	}
-
-	@Bean
-	public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler() {
-		IntegrationUserDetailsAuthenticationHandler authenticationHandler =
-				new IntegrationUserDetailsAuthenticationHandler();
-		return authenticationHandler;
-	}
+	// /**
+	// * 集成各种网页登录模式
+	// *
+	// * @return IntegrationUserDetailsAuthenticationProvider
+	// */
+	// @Bean
+	// IntegrationUserDetailsAuthenticationProvider
+	// integrationUserDetailsAuthenticationProvider() {
+	// return new
+	// IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
+	// }
+	//
+	// @Bean
+	// public IntegrationUserDetailsAuthenticationHandler
+	// integrationUserDetailsAuthenticationHandler() {
+	// IntegrationUserDetailsAuthenticationHandler authenticationHandler =
+	// new IntegrationUserDetailsAuthenticationHandler();
+	// return authenticationHandler;
+	// }
 
 	/**
 	 * 添加各种登录解析器,可自定义添加
@@ -119,7 +120,7 @@ public class SecurityConfig {
 		List<AuthenticationProvider> authenticationProviders = new ArrayList<>();
 		authenticationProviders.add(daoAuthenticationProvider());
 		authenticationProviders.add(mobileAuthenticationProvider());
-		authenticationProviders.add(integrationUserDetailsAuthenticationProvider());
+		// authenticationProviders.add(integrationUserDetailsAuthenticationProvider());
 		ProviderManager providerManager = new ProviderManager(authenticationProviders);
 		providerManager
 				.setAuthenticationEventPublisher(new DefaultAuthenticationEventPublisher(applicationEventPublisher));

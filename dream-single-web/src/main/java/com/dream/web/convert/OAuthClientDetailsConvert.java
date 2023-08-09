@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.web.entity.OAuthClientDetails;
-import com.dream.web.entity.OAuthClientDetailsDTO;
+import com.dream.web.oauth.entity.OAuthClientDetails;
+import com.dream.web.oauth.entity.OAuthClientDetailsVO;
 
 /**
  * OAuthClient与DTO互转
@@ -16,7 +16,7 @@ import com.dream.web.entity.OAuthClientDetailsDTO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface OAuthClientDetailsConvert extends BaseConvert<OAuthClientDetails, OAuthClientDetailsDTO> {
+public interface OAuthClientDetailsConvert extends BaseConvert<OAuthClientDetails, OAuthClientDetailsVO> {
 
 	OAuthClientDetailsConvert INSTANCE = Mappers.getMapper(OAuthClientDetailsConvert.class);
 }

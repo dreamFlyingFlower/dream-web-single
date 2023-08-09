@@ -66,6 +66,4 @@ public class ButtonEntity extends AbstractEntity {
 	 */
 	@ApiModelProperty("排序")
 	private Integer sort;
-
-	/** 非数据库字段 */
 }
