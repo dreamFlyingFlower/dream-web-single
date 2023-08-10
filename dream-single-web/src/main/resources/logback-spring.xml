@@ -3,7 +3,7 @@
 
 	<springProperty scope="context" name="PROJECT_DIR" source="spring.application.name" />
 
-	<property name="LOG_PATH" value="logs/${PROJECT_DIR:temp}" />
+	<property name="LOG_PATH" value="logs/${PROJECT_DIR}" />
 	<property name="CHARSET" value="UTF-8" />
 	<property name="CONSOLE_PATTERN"
 		value="%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{50}:%L) - %gray(%msg%n)" />

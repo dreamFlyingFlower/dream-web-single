@@ -6,9 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.dream.framework.manager.SmsManager;
 import com.dream.message.cache.SmsSendCache;
 import com.dream.message.sms.service.SmsService;
-import com.dream.system.manager.SmsManager;
 
 import lombok.AllArgsConstructor;
 

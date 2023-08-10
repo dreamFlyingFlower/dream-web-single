@@ -16,6 +16,7 @@
 	</properties>
 
 	<modules>
+		<module>dream-single-framework</module>
 		<module>dream-single-message</module>
 		<module>dream-single-monitor</module>
 		<module>dream-single-system</module>

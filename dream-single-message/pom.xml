@@ -30,16 +30,12 @@
 		</dependency>
 		<dependency>
 			<groupId>dream.flying.flower</groupId>
-			<artifactId>dream-single-system</artifactId>
+			<artifactId>dream-single-framework</artifactId>
 			<version>${dream-web-single.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
 		</dependency>
 	</dependencies>
 

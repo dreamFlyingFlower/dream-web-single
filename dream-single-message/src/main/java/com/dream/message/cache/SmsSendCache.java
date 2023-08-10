@@ -2,7 +2,7 @@ package com.dream.message.cache;
 
 import org.springframework.stereotype.Service;
 
-import com.dream.system.cache.RedisCache;
+import com.dream.framework.cache.RedisCache;
 
 import lombok.AllArgsConstructor;
 

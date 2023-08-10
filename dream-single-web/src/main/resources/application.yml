@@ -1,6 +1,11 @@
 spring:
+  application:
+    name: dream-single-web
+    admin:
+      enabled: false
   profiles:
-    active: dev
+    active: 
+    - dev
   servlet:
     multipart:
       enabled: true

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dream.framework.cache.RedisCache;
 import com.dream.message.sms.config.SmsConfig;
-import com.dream.system.cache.RedisCache;
 
 import lombok.AllArgsConstructor;
 
