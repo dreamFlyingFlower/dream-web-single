@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.Assert;
 
+import com.dream.framework.security.mobile.service.MobileUserDetailsService;
+import com.dream.framework.security.mobile.service.MobileVerifyCodeService;
+
 /**
  * 手机短信登录 AuthenticationProvider FIXME
  *

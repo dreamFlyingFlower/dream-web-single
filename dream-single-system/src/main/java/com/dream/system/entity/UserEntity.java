@@ -14,20 +14,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 用户表 ts_user
+ * 用户
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Schema(description = "用户表 ts_user")
+@Schema(description = "用户")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_user")
+@TableName("sys_user")
 public class UserEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

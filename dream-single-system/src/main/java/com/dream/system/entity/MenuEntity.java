@@ -12,20 +12,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 菜单表 ts_menu
+ * 菜单
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Schema(description = "菜单表 ts_menu")
+@Schema(description = "菜单")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_menu")
+@TableName("sys_menu")
 public class MenuEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -51,17 +51,17 @@ public class MenuEntity extends AbstractEntity {
 	private String url;
 
 	/**
-	 * 授权标识(多个用逗号分隔，如：sys:menu:list,sys:menu:save)
+	 * 授权标识(多个用逗号分隔,如:sys:menu:list,sys:menu:save)
 	 */
 	private String authority;
 
 	/**
-	 * 类型 0：菜单 1：按钮 2：接口
+	 * 类型:1-菜单;2-按钮;3-接口
 	 */
 	private Integer type;
 
 	/**
-	 * 打开方式 0：内部 1：外部
+	 * 打开方式:0-内部;1-外部
 	 */
 	private Integer openStyle;
 

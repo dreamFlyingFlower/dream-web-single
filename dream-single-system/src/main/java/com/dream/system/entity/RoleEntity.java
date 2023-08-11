@@ -16,20 +16,20 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 角色信息 ts_role
+ * 角色信息
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:01:27
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Schema(description = "角色信息 ts_role")
+@Schema(description = "角色信息")
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ts_role")
+@TableName("sys_role")
 public class RoleEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;

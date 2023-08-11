@@ -14,7 +14,7 @@ import java.util.List;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Data
-@ConfigurationProperties(prefix = "config.xss")
+@ConfigurationProperties(prefix = "dream.xss")
 public class XssProperties {
 
 	/**

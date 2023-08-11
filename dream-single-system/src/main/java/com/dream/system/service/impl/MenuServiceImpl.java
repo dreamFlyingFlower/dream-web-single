@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +44,8 @@ import com.wy.enums.TipEnum;
 import com.wy.lang.StrTool;
 import com.wy.result.ResultException;
 
+import lombok.AllArgsConstructor;
+
 /**
  * 菜单表Service
  * 
@@ -53,25 +54,20 @@ import com.wy.result.ResultException;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Service("menuService")
+@AllArgsConstructor
 public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, MenuQuery, MenuConvert, MenuMapper>
 		implements MenuService {
 
-	@Autowired
-	private RedisTemplate<Object, Object> redisTemplate;
+	private RedisTemplate<String, Object> redisTemplate;
 
-	@Autowired
 	private UserRoleMapper userRoleMapper;
 
-	@Autowired
 	private RoleResourceService roleResourceService;
 
-	@Autowired
 	private ButtonService buttonService;
 
-	@Autowired
 	private ButtonConvert buttonConvert;
 
-	@Autowired
 	private RoleMenuService roleMenuService;
 
 	@Override

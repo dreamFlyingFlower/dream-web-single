@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.dream.basic.web.interceptor.DataScopeInnerInterceptor;
-import com.dream.framework.handler.FieldMetaObjectHandler;
 
 @Configuration
 public class MybatisPlusConfig {
@@ -26,10 +25,5 @@ public class MybatisPlusConfig {
 		mybatisPlusInterceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
 
 		return mybatisPlusInterceptor;
-	}
-
-	@Bean
-	public FieldMetaObjectHandler fieldMetaObjectHandler() {
-		return new FieldMetaObjectHandler();
 	}
 }

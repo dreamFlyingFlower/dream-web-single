@@ -5,8 +5,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 import com.dream.basic.web.convert.BaseConvert;
-import com.dream.system.entity.RoleDataScopeEntity;
-import com.dream.system.vo.RoleDataScopeVO;
+import com.dream.system.entity.DataScopeEntity;
+import com.dream.system.vo.DataScopeVO;
 
 /**
  * 角色权限对应关系
@@ -16,7 +16,7 @@ import com.dream.system.vo.RoleDataScopeVO;
  * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface RoleDataScopeConvert extends BaseConvert<RoleDataScopeEntity, RoleDataScopeVO> {
+public interface RoleDataScopeConvert extends BaseConvert<DataScopeEntity, DataScopeVO> {
 
 	RoleDataScopeConvert INSTANCE = Mappers.getMapper(RoleDataScopeConvert.class);
 

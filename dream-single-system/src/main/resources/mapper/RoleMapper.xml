@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.system.mapper.RoleMapper">
+
+	<resultMap id="BaseResultMap" type="com.dream.system.entity.RoleEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="role_name" jdbcType="VARCHAR" property="roleName" />
+		<result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+		<result column="role_type" jdbcType="TINYINT" property="roleType" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_user" jdbcType="BIGINT" property="createUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="update_user" jdbcType="BIGINT" property="updateUser" />
+	</resultMap>
+
+	<sql id="BaseColumnList">
+		a.id, a.role_name, a.role_code, a.role_type, a.create_time, a.create_user, a.update_time, a.update_user
+	</sql>
+
+	<select id="list" resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		FROM ts_role a
+		<where>
+			<if test="query.id != null and query.id != ''">
+				AND a.id = #{query.id, jdbcType=BIGINT }
+			</if>
+			<if test="query.roleName != null and query.roleName != ''">
+				AND a.role_name = #{query.roleName, jdbcType=VARCHAR }
+			</if>
+			<if test="query.roleCode != null and query.roleCode != ''">
+				AND a.role_code = #{query.roleCode, jdbcType=VARCHAR }
+			</if>
+			<if test="query.roleType != null and query.roleType != ''">
+				AND a.role_type = #{query.roleType, jdbcType=TINYINT }
+			</if>
+		</where>
+		ORDER BY a.id DESC
+	</select>
+
+	<select id="getDataScopeByUserId" resultType="integer">
+		SELECT MIN(a.data_scope) FROM ts_role a, ts_user_role b
+		WHERE
+		a.id = b.role_id AND b.user_id = #{userId} AND a.deleted = 0
+	</select>
+</mapper>

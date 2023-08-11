@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dream.system.mapper.RoleDataScopeMapper">
+
+	<select id="getOrgIdList" resultType="long">
+		SELECT org_id FROM sys_data_scope WHERE role_id = #{roleId} AND deleted = 0
+	</select>
+
+	<select id="getDataScopeList" resultType="long">
+		SELECT b.org_id FROM sys_user_role a, sys_data_scope b
+		WHERE a.user_id =
+		#{userId} AND a.role_id = b.role_id AND a.deleted = 0 AND b.deleted = 0
+	</select>
+
+</mapper>

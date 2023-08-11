@@ -1,46 +1,21 @@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/dream_single_web?autoReconnect=true&useUnicode=true&useSSL=false&characterEncoding=UTF8&tinyInt1isBit=false&allowMultiQueries=true
     username: root
     password: 123456
 
-mybatis:
-  mapper-locations: classpath*:/mapper/*.xml
-  type-aliases-package: com.dream.*.entity
-  configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
-    jdbc-type-for-null: 'null'
-  configuration-properties:
-    prefix:
-    blobType: BLOB
-    boolValue: TRUE
-  
-mybatis-plus:
-  global-config:
-    db-config:
-      id-type: AUTO
-    banner: false
-
-# springdoc-openapi项目配置
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-  api-docs:
-    path: /v3/api-docs
-  group-configs:
-    - group: 'default'
-      paths-to-match: '/**'
-      packages-to-scan: com.dream.web.controller
-# knife4j的增强配置,不需要增强可以不配
-knife4j:
-  enable: true
-  setting:
-    language: zh_cn
+# Spring Boot Admin 配置
+  boot:
+    admin:
+      # Spring Boot Admin Server 服务端地址
+      context-path: /monitor/admin
+      client:
+        # 指定 Spring Boot Admin Server 服务端地址
+        url: http://127.0.0.1:${server.port}/${spring.boot.admin.context-path}
+        instance:
+          service-host-type: IP
 
 dream:
   security:
@@ -55,3 +30,42 @@ dream:
     - "/swagger**"
     - "/static/**"
     - "/resources/**"
+  xss:
+    enabled: true
+  # 文件服务器配置
+  storage:
+    type: minio
+    prefix: dream-single-web
+    minio:
+      access-key: admin
+      secret-key: admin123456
+      end-point: http://172.30.252.23:9001
+      bucket-name: public
+
+wx:
+  miniapp:
+    appid: wxa541cafd2c4093f9
+    secret: e427d9a2a423e15360a8b26c360f34ab
+    msg-data-format: JSON
+    config-storage:
+      redis:
+        host: ${secret.redis.host}
+        port:  ${secret.redis.port}
+        password: ${secret.redis.password}
+      type: redistemplate
+
+ftp:
+  conf:
+    ip: 127.0.0.1
+
+mqtt:
+  ip: tcp://124.207.254.168:11883
+  username: admin
+  password : bjdv2020
+  qos: 1
+  keep-alive: 30
+  timeout: 60
+  topics:
+    - data/230ea8d0945cbd5c40b4ab01f977e084/v1
+    - data/0078315db1993a634de5e213243dc51d/v1
+    - data/f341fea3c5798be7affe0fc49dbed5ec/v1

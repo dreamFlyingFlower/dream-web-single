@@ -3,7 +3,7 @@ package com.dream.system.service;
 import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.RoleEntity;
 import com.dream.system.query.RoleQuery;
-import com.dream.system.vo.RoleDataScopeVO;
+import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
 
 /**
@@ -15,5 +15,5 @@ import com.dream.system.vo.RoleVO;
  */
 public interface RoleService extends BaseService<RoleEntity, RoleVO, RoleQuery> {
 
-	void dataScope(RoleDataScopeVO query);
+	void dataScope(DataScopeVO query);
 }

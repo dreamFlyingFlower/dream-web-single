@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dream.framework.manager.SmsManager;
-import com.dream.system.oauth.mobile.MobileVerifyCodeService;
+import com.dream.framework.security.mobile.service.MobileVerifyCodeService;
 
 /**
  * 短信验证码效验

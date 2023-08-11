@@ -1,3 +1,18 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 1000
+      min-spare: 30
+  port: 10001
+  servlet:
+    context-path: /dream-single-web
+    session:
+      cookie:
+        http-only: true
+    encoding:
+      charset: UTF-8
+
 spring:
   application:
     name: dream-single-web
@@ -10,6 +25,7 @@ spring:
     multipart:
       enabled: true
       max-file-size: 10MB
+      max-request-size: 10MB
   mvc:
     format:
       date: yyyy-MM-dd
@@ -26,6 +42,14 @@ spring:
     user:
       name: admin
       password: 123456
+  jackson:
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  main:
+    # 开启循环依赖
+    allow-circular-references: true
+    # 同名bean是否覆盖,视情况而定
+#    allow-bean-definition-overriding: true
       
 management:
   endpoints:
@@ -38,7 +62,57 @@ management:
     health:
       # 默认是NEVER
       show-details: always
-      
+
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  # 实体扫描,多个package用逗号或者分号分隔
+  type-aliases-package: com.dream.*.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+  configuration-properties:
+    prefix:
+    blobType: BLOB
+    boolValue: TRUE
+  
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: AUTO
+    banner: false
+
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.dream.web.controller
+# knife4j的增强配置,不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+    custom-code: 500
+    enable-footer-custom: false
+
+
 info:
   test: test
   version: 0.0.1
+  
+#easy trans 数据翻译组件
+easy-trans:
+  #启用redis缓存 如果不用redis请设置为false
+  is-enable-redis: false
+  #启用全局翻译(拦截所有responseBody进行自动翻译),如果对于性能要求很高可关闭此配置
+  is-enable-global: true
+  #启用平铺模式
+  is-enable-tile: true

@@ -1,6 +1,7 @@
 package com.dream.system.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.io.File;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dream.basic.web.controller.BaseController;
-import com.dream.system.storage.service.StorageService;
+import com.dream.starter.storage.StorageManager;
+import com.dream.starter.storage.properties.StorageProperties;
 import com.dream.system.vo.FileUploadVO;
 import com.wy.result.Result;
 
@@ -29,10 +31,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class FileUploadController implements BaseController {
 
-	private final StorageService storageService;
+	private final StorageManager storageManager;
 
-	@Value("${storage.minio.prefix}")
-	private String prefix;
+	private final StorageProperties storageProperties;
 
 	@PostMapping("upload")
 	@Operation(summary = "上传")
@@ -42,15 +43,15 @@ public class FileUploadController implements BaseController {
 		}
 
 		// 上传路径
-		String path = storageService.getPath(file.getOriginalFilename());
+		String path = storageManager.getPath(file.getOriginalFilename());
 		// 上传文件
-		String url = storageService.upload(file.getBytes(), prefix + "/" + path);
+		String url = storageManager.upload(file.getBytes(), storageProperties.getPrefix() + File.separator + path);
 
 		FileUploadVO vo = new FileUploadVO();
 		vo.setUrl(url);
 		vo.setSize(file.getSize());
 		vo.setName(file.getOriginalFilename());
-		vo.setPlatform(storageService.properties.getConfig().getType().name());
+		vo.setPlatform(storageProperties.getType().name());
 		return Result.ok(vo);
 	}
 }

@@ -21,13 +21,13 @@ import com.dream.system.entity.RoleEntity;
 import com.dream.system.query.RoleQuery;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.service.MenuService;
-import com.dream.system.service.RoleDataScopeService;
+import com.dream.system.service.DataScopeService;
 import com.dream.system.service.RoleMenuService;
 import com.dream.system.service.RoleService;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.service.UserService;
 import com.dream.system.vo.MenuVO;
-import com.dream.system.vo.RoleDataScopeVO;
+import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
@@ -53,7 +53,7 @@ public class RoleController extends AbstractController<RoleEntity, RoleVO, RoleQ
 
 	private final RoleMenuService roleMenuService;
 
-	private final RoleDataScopeService roleDataScopeService;
+	private final DataScopeService roleDataScopeService;
 
 	private final MenuService menuService;
 
@@ -78,7 +78,7 @@ public class RoleController extends AbstractController<RoleEntity, RoleVO, RoleQ
 
 	@PutMapping("data-scope")
 	@Operation(summary = "数据权限")
-	public Result<String> dataScope(@RequestBody @Valid RoleDataScopeVO vo) {
+	public Result<String> dataScope(@RequestBody @Valid DataScopeVO vo) {
 		baseService.dataScope(vo);
 		return Result.ok();
 	}

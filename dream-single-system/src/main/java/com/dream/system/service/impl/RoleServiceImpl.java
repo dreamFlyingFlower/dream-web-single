@@ -15,11 +15,11 @@ import com.dream.system.convert.RoleConvert;
 import com.dream.system.entity.RoleEntity;
 import com.dream.system.mapper.RoleMapper;
 import com.dream.system.query.RoleQuery;
-import com.dream.system.service.RoleDataScopeService;
+import com.dream.system.service.DataScopeService;
 import com.dream.system.service.RoleMenuService;
 import com.dream.system.service.RoleService;
 import com.dream.system.service.UserRoleService;
-import com.dream.system.vo.RoleDataScopeVO;
+import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
 import com.wy.lang.StrTool;
 import com.wy.result.Result;
@@ -40,7 +40,7 @@ public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO
 
 	private final RoleMenuService sysRoleMenuService;
 
-	private final RoleDataScopeService sysRoleDataScopeService;
+	private final DataScopeService sysRoleDataScopeService;
 
 	private final UserRoleService sysUserRoleService;
 
@@ -93,7 +93,7 @@ public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void dataScope(RoleDataScopeVO vo) {
+	public void dataScope(DataScopeVO vo) {
 		RoleEntity entity = getById(vo.getId());
 		entity.setDataScope(vo.getDataScope());
 		// 更新角色

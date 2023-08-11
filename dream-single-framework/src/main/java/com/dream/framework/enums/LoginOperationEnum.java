@@ -22,7 +22,7 @@ public enum LoginOperationEnum implements StatusMsg {
 	LOGIN_SUCCESS(0, "登录成功"),
 	LOGOUT_SUCCESS(1, "退出成功"),
 	CAPTCHA_FAIL(2, "验证码错误"),
-	ACCOUNT_FAIL(3, "账号密码错误");
+	LOGIN_FAIL(3, "账号密码错误");
 
 	private Integer code;
 

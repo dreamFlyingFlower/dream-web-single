@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("ts_role_org")
+@TableName("sys_role_org")
 public class RoleOrgEntity {
 
 	/**

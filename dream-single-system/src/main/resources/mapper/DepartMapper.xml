@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.system.mapper.DepartMapper">
+
+	<resultMap id="BaseResultMap" type="com.dream.system.entity.DepartEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="depart_code" jdbcType="VARCHAR" property="departCode" />
+		<result column="depart_name" jdbcType="VARCHAR" property="departName" />
+		<result column="pid" jdbcType="BIGINT" property="pid" />
+		<result column="depart_level" jdbcType="VARCHAR" property="departLevel" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_user" jdbcType="BIGINT" property="createUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="update_user" jdbcType="BIGINT" property="updateUser" />
+	</resultMap>
+
+	<sql id="BaseColumnList">
+		a.id, a.depart_code, a.depart_name, a.pid, a.depart_level, a.create_time, a.create_user, a.update_time,
+		a.update_user
+	</sql>
+
+	<select id="list" resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		FROM ts_depart a
+		<where>
+			<if test="query.id != null and query.id != ''">
+				AND a.id = #{query.id, jdbcType=BIGINT }
+			</if>
+			<if test="query.departCode != null and query.departCode != ''">
+				AND a.depart_code = #{query.departCode, jdbcType=VARCHAR }
+			</if>
+			<if test="query.departName != null and query.departName != ''">
+				AND a.depart_name = #{query.departName, jdbcType=VARCHAR }
+			</if>
+			<if test="query.pid != null and query.pid != ''">
+				AND a.pid = #{query.pid, jdbcType=BIGINT }
+			</if>
+			<if test="query.departLevel != null and query.departLevel != ''">
+				AND a.depart_level = #{query.departLevel, jdbcType=VARCHAR }
+			</if>
+		</where>
+		ORDER BY a.id DESC
+	</select>
+</mapper>

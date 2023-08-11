@@ -6,13 +6,14 @@ import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.dream.framework.enums.DataScopeEnum;
 import com.dream.framework.enums.UserStatus;
 import com.dream.framework.security.user.SecurityUserDetails;
-import com.dream.system.mapper.RoleDataScopeMapper;
+import com.dream.system.mapper.DataScopeMapper;
 import com.dream.system.mapper.RoleMapper;
 import com.dream.system.service.MenuService;
 import com.dream.system.service.OrgService;
@@ -31,8 +32,7 @@ import lombok.AllArgsConstructor;
  */
 @Service
 @AllArgsConstructor
-public class UserDetailServiceImpl
-		implements UserDetailService, org.springframework.security.core.userdetails.UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailService, UserDetailsService {
 
 	private final MenuService menuService;
 
@@ -40,9 +40,12 @@ public class UserDetailServiceImpl
 
 	private final RoleMapper roleMapper;
 
-	private final RoleDataScopeMapper roleDataScopeMapper;
+	private final DataScopeMapper dataScopeMapper;
 
 	private final UserService userService;
+
+	// @Autowired
+	// private PermissionService permissionService;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -51,6 +54,23 @@ public class UserDetailServiceImpl
 			throw new UsernameNotFoundException("用户名或密码错误");
 		}
 		getUserDetails(usesrVo);
+
+		// // 获取权限
+		// List<PermissionEntity> permissions =
+		// permissionService.getPermissionsByUserId(userVO.getId());
+		// List<String> codes =
+		// permissions.stream().map(PermissionEntity::getPermissionCode).collect(Collectors.toList());
+		// String[] authorities = null;
+		// if (ListTool.isNotEmpty(codes)) {
+		// authorities = new String[codes.size()];
+		// codes.toArray(authorities);
+		// }
+		// // 身份令牌
+		// String principal = JSON.toJSONString(userVO);
+		// return
+		// org.springframework.security.core.userdetails.User.withUsername(principal).password(userVO.getPassword())
+		// .authorities(authorities).build();
+
 		return usesrVo;
 	}
 
@@ -86,18 +106,18 @@ public class UserDetailServiceImpl
 			// 本机构及子机构数据
 			List<Long> dataScopeList = orgService.getSubOrgIdList(userDetail.getOrgId());
 			// 自定义数据权限范围
-			dataScopeList.addAll(roleDataScopeMapper.getDataScopeList(userDetail.getId()));
+			dataScopeList.addAll(dataScopeMapper.getDataScopeList(userDetail.getId()));
 			return dataScopeList;
 		} else if (dataScope.equals(DataScopeEnum.ORG_ONLY.getCode())) {
 			// 本机构数据
 			List<Long> dataScopeList = new ArrayList<>();
 			dataScopeList.add(userDetail.getOrgId());
 			// 自定义数据权限范围
-			dataScopeList.addAll(roleDataScopeMapper.getDataScopeList(userDetail.getId()));
+			dataScopeList.addAll(dataScopeMapper.getDataScopeList(userDetail.getId()));
 			return dataScopeList;
 		} else if (dataScope.equals(DataScopeEnum.CUSTOM.getCode())) {
 			// 自定义数据权限范围
-			return roleDataScopeMapper.getDataScopeList(userDetail.getId());
+			return dataScopeMapper.getDataScopeList(userDetail.getId());
 		}
 		return new ArrayList<>();
 	}

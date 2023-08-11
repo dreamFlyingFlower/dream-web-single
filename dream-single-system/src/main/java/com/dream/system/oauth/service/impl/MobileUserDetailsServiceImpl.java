@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.dream.system.oauth.mobile.MobileUserDetailsService;
+import com.dream.framework.security.mobile.service.MobileUserDetailsService;
 import com.dream.system.service.UserDetailService;
 import com.dream.system.service.UserService;
 import com.dream.system.vo.UserVO;

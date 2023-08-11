@@ -26,8 +26,8 @@ import com.dream.framework.properties.SecurityProperties;
 import com.dream.framework.security.exception.SecurityAuthenticationEntryPoint;
 import com.dream.framework.security.filter.AuthenticationTokenFilter;
 import com.dream.framework.security.mobile.MobileAuthenticationProvider;
-import com.dream.framework.security.mobile.MobileUserDetailsService;
-import com.dream.framework.security.mobile.MobileVerifyCodeService;
+import com.dream.framework.security.mobile.service.MobileUserDetailsService;
+import com.dream.framework.security.mobile.service.MobileVerifyCodeService;
 
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
