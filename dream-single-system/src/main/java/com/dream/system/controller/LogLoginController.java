@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
 /**
- * 登录日志
+ * 登录日志API
  * 
  * @author 飞花梦影
  * @date 2023-08-09 15:41:37
@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
  */
 @RestController
 @RequestMapping("sys/log/login")
-@Tag(name = "登录日志")
+@Tag(name = "登录日志API")
 @AllArgsConstructor
 public class LogLoginController {
 

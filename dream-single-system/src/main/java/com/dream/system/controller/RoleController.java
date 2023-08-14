@@ -37,15 +37,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
 /**
- * 角色信息API
+ * 角色管理API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "角色信息API")
+@Tag(name = "角色管理API")
 @RestController
-@RequestMapping("role")
+@RequestMapping("sys/role")
 @AllArgsConstructor
 public class RoleController extends AbstractController<RoleEntity, RoleVO, RoleQuery, RoleService> {
 

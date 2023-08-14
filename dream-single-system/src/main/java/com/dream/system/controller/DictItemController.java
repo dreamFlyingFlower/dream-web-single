@@ -12,7 +12,7 @@ import com.dream.system.vo.DictItemVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * API
+ * 字典详情API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  */
 @Tag(name = "字典详情API")
 @RestController
-@RequestMapping("dictItem")
+@RequestMapping("sys/dictItem")
 public class DictItemController extends AbstractController<DictItemEntity, DictItemVO, DictItemQuery, DictItemService> {
 
 }

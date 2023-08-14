@@ -1,10 +1,12 @@
 package com.dream.system.oauth.service.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.dream.framework.security.mobile.service.MobileUserDetailsService;
+import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.service.UserDetailService;
 import com.dream.system.service.UserService;
 import com.dream.system.vo.UserVO;
@@ -28,11 +30,14 @@ public class MobileUserDetailsServiceImpl implements MobileUserDetailsService {
 
 	@Override
 	public UserDetails loadUserByMobile(String mobile) throws UsernameNotFoundException {
-		UserVO userVo = userService.getByMobile(mobile);
-		if (userVo == null) {
+		UserVO userVO = userService.getByMobile(mobile);
+		if (userVO == null) {
 			throw new UsernameNotFoundException("手机号或验证码错误");
 		}
-		userDetailsService.getUserDetails(userVo);
-		return userVo;
+		SecurityUserDetails securityUserDetails = new SecurityUserDetails();
+		BeanUtils.copyProperties(userVO, securityUserDetails);
+		userDetailsService.getUserDetails(securityUserDetails);
+
+		return securityUserDetails;
 	}
 }

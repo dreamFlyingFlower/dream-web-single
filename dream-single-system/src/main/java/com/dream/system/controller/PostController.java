@@ -12,14 +12,14 @@ import com.dream.system.vo.PostVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 岗位管理 API
+ * 岗位管理API
  *
  * @author 飞花梦影
  * @date 2023-08-07 17:18:30
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @RestController
-@RequestMapping("post")
+@RequestMapping("sys/post")
 @Tag(name = "岗位管理API")
 public class PostController extends AbstractController<PostEntity, PostVO, PostQuery, PostService> {
 

@@ -40,11 +40,14 @@ public class UserQuery extends AbstractQuery {
 	@Schema(description = "昵称")
 	private String nickname;
 
+	@Schema(description = "性别")
+	private Integer gender;
+
 	@Schema(description = "手机号")
 	private String mobile;
 
-	@Schema(description = "性别")
-	private Integer gender;
+	@Schema(description = "邮箱")
+	private String email;
 
 	@Schema(description = "岗位证书")
 	private Boolean userCert;
@@ -57,10 +60,4 @@ public class UserQuery extends AbstractQuery {
 
 	@Schema(description = "用户状态,见字典user_status")
 	private Integer status;
-
-	@Schema(description = "创建人ID")
-	private Long createUser;
-
-	@Schema(description = "更新人ID")
-	private Long updateUser;
 }

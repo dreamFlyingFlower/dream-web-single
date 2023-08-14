@@ -1,7 +1,8 @@
 package com.dream.system.vo;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import com.dream.basic.web.valid.ValidEdit;
 import com.dream.system.entity.OrgEntity;
@@ -23,6 +23,7 @@ import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,7 +41,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserVO implements UserDetails {
+public class UserVO implements Serializable {
 
 	private static final long serialVersionUID = 2195467941855219248L;
 
@@ -54,11 +55,9 @@ public class UserVO implements UserDetails {
 	/**
 	 * 用户名,唯一
 	 */
-	@Schema(description = "用户名", required = true)
+	@Schema(description = "用户名", requiredMode = RequiredMode.REQUIRED)
 	@NotBlank(message = "用户名不能为空")
 	private String username;
-
-	private String userCode;
 
 	/**
 	 * 密码
@@ -68,15 +67,9 @@ public class UserVO implements UserDetails {
 	private String password;
 
 	/**
-	 * 盐
-	 */
-	@Schema(description = "盐")
-	private String salt;
-
-	/**
 	 * 真实姓名
 	 */
-	@Schema(description = "姓名", required = true)
+	@Schema(description = "姓名", requiredMode = RequiredMode.REQUIRED)
 	@NotBlank(message = "姓名不能为空")
 	private String realName;
 
@@ -87,24 +80,18 @@ public class UserVO implements UserDetails {
 	private String nickname;
 
 	/**
-	 * 手机号
-	 */
-	@Schema(description = "手机号", required = true)
-	@NotBlank(message = "手机号不能为空")
-	private String mobile;
-
-	/**
-	 * 头像地址
-	 */
-	@Schema(description = "头像地址")
-	private String avatar;
-
-	/**
 	 * 性别
 	 */
-	@Schema(description = "性别:1-男;2-女;3:未知", required = true)
+	@Schema(description = "性别:1-男;2-女;3:未知", requiredMode = RequiredMode.REQUIRED)
 	@Range(min = 1, max = 3, message = "性别不正确")
 	private Integer gender;
+
+	/**
+	 * 手机号
+	 */
+	@Schema(description = "手机号", requiredMode = RequiredMode.REQUIRED)
+	@NotBlank(message = "手机号不能为空")
+	private String mobile;
 
 	/**
 	 * 邮箱
@@ -114,9 +101,18 @@ public class UserVO implements UserDetails {
 	private String email;
 
 	/**
-	 * 超级管理员:1是,0否
+	 * 头像地址
 	 */
-	@Schema(description = "超级管理员:1是,0否")
+	@Schema(description = "头像地址")
+	private String avatar;
+
+	/**
+	 * 岗位证书
+	 */
+	@Schema(description = "岗位证书")
+	private String userCert;
+
+	@Schema(description = "是否超级管理员", hidden = true)
 	private Integer superAdmin;
 
 	/**
@@ -128,39 +124,31 @@ public class UserVO implements UserDetails {
 	/**
 	 * 组织机构ID
 	 */
-	@Schema(description = "机构ID", required = true)
+	@Schema(description = "机构ID", requiredMode = RequiredMode.REQUIRED)
 	@NotNull(message = "机构ID不能为空")
 	@Trans(type = TransType.SIMPLE, target = OrgEntity.class, fields = "name", ref = "orgName")
 	private Long orgId;
 
+	@Schema(description = "用户状态,见字典user_status")
+	private Integer status;
+
 	@Schema(description = "机构名称")
 	private String orgName;
 
-	/**
-	 * 角色ID列表
-	 */
 	@Schema(description = "角色ID列表")
 	private List<Long> roleIds;
 
+	@Schema(description = "岗位名称")
 	private String postName;
-
-	@Schema(description = "岗位证书")
-	private String userCert;
 
 	@Schema(description = "岗位ID列表")
 	private List<Long> postIds;
 
 	/**
-	 * 用户状态,见字典user_status
-	 */
-	@Schema(description = "用户状态,见字典user_status")
-	private Integer status;
-
-	/**
 	 * 创建时间
 	 */
 	@Schema(description = "创建时间")
-	private LocalDateTime createTime;
+	private Date createTime;
 
 	/**
 	 * 创建人ID
@@ -172,7 +160,7 @@ public class UserVO implements UserDetails {
 	 * 更新时间
 	 */
 	@Schema(description = "更新时间")
-	private LocalDateTime updateTime;
+	private Date updateTime;
 
 	/**
 	 * 更新人ID
@@ -214,29 +202,30 @@ public class UserVO implements UserDetails {
 	 */
 	private List<Long> dataScopeList;
 
-	@Override
-	@JsonIgnore
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authoritySet.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return this.isAccountNonExpired;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return this.isAccountNonLocked;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return this.isCredentialsNonExpired;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return this.isEnabled;
-	}
+	// @Override
+	// @JsonIgnore
+	// public Collection<? extends GrantedAuthority> getAuthorities() {
+	// return
+	// authoritySet.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
+	// }
+	//
+	// @Override
+	// public boolean isAccountNonExpired() {
+	// return this.isAccountNonExpired;
+	// }
+	//
+	// @Override
+	// public boolean isAccountNonLocked() {
+	// return this.isAccountNonLocked;
+	// }
+	//
+	// @Override
+	// public boolean isCredentialsNonExpired() {
+	// return this.isCredentialsNonExpired;
+	// }
+	//
+	// @Override
+	// public boolean isEnabled() {
+	// return this.isEnabled;
+	// }
 }

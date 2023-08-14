@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
 /**
- * 文件上传
+ * 文件上传API
  *
  * @author 飞花梦影
  * @date 2023-08-09 15:40:57
@@ -27,7 +27,7 @@ import lombok.AllArgsConstructor;
  */
 @RestController
 @RequestMapping("sys/file")
-@Tag(name = "文件上传")
+@Tag(name = "文件上传API")
 @AllArgsConstructor
 public class FileUploadController implements BaseController {
 

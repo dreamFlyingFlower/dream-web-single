@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
 /**
- * 认证管理
+ * 认证管理API
  *
  * @author 飞花梦影
  * @date 2023-08-09 15:35:21
@@ -31,7 +31,7 @@ import lombok.AllArgsConstructor;
  */
 @RestController
 @RequestMapping("sys/auth")
-@Tag(name = "认证管理")
+@Tag(name = "认证管理API")
 @AllArgsConstructor
 public class AuthController implements BaseController {
 

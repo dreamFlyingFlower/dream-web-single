@@ -12,15 +12,15 @@ import com.dream.system.vo.UserRoleVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 账号-角色关系API
+ * 用户角色API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "账号-角色关系API")
+@Tag(name = "用户角色API")
 @RestController
-@RequestMapping("userRole")
+@RequestMapping("sys/userRole")
 public class UserRoleController extends AbstractController<UserRoleEntity, UserRoleVO, UserRoleQuery, UserRoleService> {
 
 }

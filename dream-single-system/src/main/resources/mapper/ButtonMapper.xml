@@ -23,7 +23,7 @@
 	<select id="list" resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
-		FROM ts_button a
+		FROM sys_button a
 		<where>
 			<if test="query.id != null and query.id != ''">
 				AND a.id = #{query.id, jdbcType=BIGINT }

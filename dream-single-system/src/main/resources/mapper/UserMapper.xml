@@ -6,12 +6,20 @@
 		<id column="id" jdbcType="BIGINT" property="id" />
 		<result column="username" jdbcType="VARCHAR" property="username" />
 		<result column="password" jdbcType="VARCHAR" property="password" />
-		<result column="salt" jdbcType="VARCHAR" property="salt" />
+		<result column="real_name" jdbcType="VARCHAR" property="realName" />
 		<result column="nickname" jdbcType="VARCHAR" property="nickname" />
+		<result column="gender" jdbcType="VARCHAR" property="gender" />
 		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="avatar" jdbcType="VARCHAR" property="avatar" />
+		<result column="user_cert" jdbcType="VARCHAR" property="user_cert" />
+		<result column="super_admin" jdbcType="VARCHAR" property="super_admin" />
 		<result column="depart_id" jdbcType="BIGINT" property="departId" />
 		<result column="org_id" jdbcType="BIGINT" property="orgId" />
-		<result column="status" jdbcType="TINYINT" property="status" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+
+		<result column="version" jdbcType="INTEGER" property="version" />
+		<result column="deleted" jdbcType="TINYINT" property="deleted" />
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 		<result column="create_user" jdbcType="BIGINT" property="createUser" />
 		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -19,9 +27,10 @@
 	</resultMap>
 
 	<sql id="BaseColumnList">
-		a.id, a.username, a.password, a.salt, a.nickname, a.mobile, a.depart_id, a.org_id,
-		a.status,
-		a.create_time,a.create_user, a.update_time,a.update_user
+		a.id, a.username, a.password, a.real_name, a.nickname, a.gender, a.mobile, a.email, a.avatar, a.user_cert,
+		a.super_admin, a.depart_id, a.org_id, a.status, a.version, a.deleted,
+		a.create_time,a.create_user,
+		a.update_time,a.update_user
 	</sql>
 
 	<select id="list" resultMap="BaseResultMap">
@@ -36,11 +45,8 @@
 			<if test="query.username != null and query.username != ''">
 				AND a.username = #{query.username, jdbcType=VARCHAR }
 			</if>
-			<if test="query.password != null and query.password != ''">
-				AND a.password = #{query.password, jdbcType=VARCHAR }
-			</if>
-			<if test="query.salt != null and query.salt != ''">
-				AND a.salt = #{query.salt, jdbcType=VARCHAR }
+			<if test="query.realName != null and query.realName != ''">
+				AND a.real_name = #{query.realName, jdbcType=VARCHAR }
 			</if>
 			<if test="query.nickname != null and query.nickname != ''">
 				AND a.nickname = #{query.nickname, jdbcType=VARCHAR }

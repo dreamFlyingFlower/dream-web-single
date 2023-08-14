@@ -20,13 +20,8 @@ spring:
 dream:
   security:
     http-ignore-resources:
-    - /sys/auth/captcha
-    - /sys/auth/login
-    - /sys/auth/logout*
-    - /sys/auth/send/code
-    - /sys/auth/mobile
-    - /upload/**
-    - /online/**
+    - /login*
+    - /logout*
     - /druid/**
     - /actuator/**
     - /v3/api-docs/**
@@ -35,7 +30,6 @@ dream:
     - /swagger-resources/**
     - /swagger-ui.html
     - /swagger-ui/**
-    - /favicon.ico
     - /doc.html
     - /
     web-ignore-resources:
@@ -45,7 +39,6 @@ dream:
     - "/swagger**"
     - "/static/**"
     - "/resources/**"
-    - /favicon.ico
     - "/doc.html"
   xss:
     enabled: true
@@ -58,46 +51,30 @@ dream:
       secret-key: admin123456
       end-point: http://172.30.252.23:9001
       bucket-name: public
-  open-api:
-    info:
-      title: '单体Web开发系统API'
-      description: '单体Web开发系统'
-      version: 1.0
-      terms-of-service: http://github.com/dreamFlyingFlower
-      license:
-        name: Apache 2.0
-        url: http://github.com/dreamFlyingFlower
-      contact:
-        email: '582822832@qq.com'
-        name: '飞花梦影'
-        url: 'http://github.com/dreamFlyingFlower'
-
+    
 # springdoc-openapi项目配置
 springdoc:
   swagger-ui:
-    enabled: true
+    enabled: false
     path: /swagger-ui.html
     tags-sorter: alpha
     operations-sorter: alpha
   api-docs:
-    enabled: true
+    enabled: false
     path: /v3/api-docs
   group-configs:
     - group: 'system'
       paths-to-match: '/**'
       packages-to-scan: com.dream.system.controller
-      display-name: '系统API'
 # knife4j的增强配置,不需要增强可以不配
 knife4j:
-  enable: true
+  enable: false
   # 正式环境为true
   production: false
   setting:
     language: zh_cn
     custom-code: 500
-    enable-footer: true
-    enable-footer-custom: true
-    footer-custom-content: Apache License 2.0 | Copyright  2023-[飞花梦影](https://github.com/dreamFlyingFlower/dream-single-web)
+    enable-footer-custom: false
     
 wx:
   miniapp:

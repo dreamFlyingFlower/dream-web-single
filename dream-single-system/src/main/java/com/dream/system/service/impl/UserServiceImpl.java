@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.dream.basic.core.constant.ConstCore;
@@ -30,6 +31,7 @@ import com.dream.system.vo.UserExcelVO;
 import com.dream.system.vo.UserPasswordVO;
 import com.dream.system.vo.UserVO;
 import com.fhs.trans.service.impl.TransService;
+import com.wy.collection.ListTool;
 import com.wy.result.Result;
 import com.wy.result.ResultException;
 import com.wy.util.DateTimeTool;
@@ -95,13 +97,13 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 		entity.setPassword(passwordEncoder.encode(vo.getPassword()));
 
 		// 判断用户名是否存在
-		UserVO user = baseMapper.getByUsername(entity.getUsername());
+		UserVO user = this.getByUsername(entity.getUsername());
 		if (user != null) {
 			throw new ResultException("用户名已经存在");
 		}
 
 		// 判断手机号是否存在
-		user = baseMapper.getByMobile(entity.getMobile());
+		user = this.getByMobile(entity.getMobile());
 		if (user != null) {
 			throw new ResultException("手机号已经存在");
 		}
@@ -123,13 +125,13 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 	public Boolean edit(UserVO vo) {
 		vo.setPassword(null);
 		// 判断用户名是否存在
-		UserVO userVO = baseMapper.getByUsername(vo.getUsername());
+		UserVO userVO = this.getByUsername(vo.getUsername());
 		if (userVO != null && !userVO.getId().equals(vo.getId())) {
 			throw new ResultException("用户名已经存在");
 		}
 
 		// 判断手机号是否存在
-		userVO = baseMapper.getByMobile(vo.getMobile());
+		userVO = this.getByMobile(vo.getMobile());
 		if (userVO != null && !userVO.getId().equals(vo.getId())) {
 			throw new ResultException("手机号已经存在");
 		}
@@ -146,7 +148,7 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 	}
 
 	@Override
-	public Boolean deleteByIds(List<Serializable> ids) {
+	public Boolean deletes(List<Serializable> ids) {
 		Long userId = SecurityHelper.getUserId();
 		if (ids.contains(userId)) {
 			throw new ResultException("不能删除当前登录用户");
@@ -162,12 +164,16 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 
 	@Override
 	public UserVO getByMobile(String mobile) {
-		return baseMapper.getByMobile(mobile);
+		List<UserEntity> userEntities = baseMapper
+				.selectList(new LambdaQueryWrapper<UserEntity>().eq(UserEntity::getMobile, mobile).last(" limit 1 "));
+		return ListTool.isEmpty(userEntities) ? null : baseConvert.convertt(userEntities.get(0));
 	}
 
 	@Override
 	public UserVO getByUsername(String username) {
-		return baseMapper.getByUsername(username);
+		List<UserEntity> userEntities = baseMapper.selectList(
+				new LambdaQueryWrapper<UserEntity>().eq(UserEntity::getUsername, username).last(" limit 1 "));
+		return ListTool.isEmpty(userEntities) ? null : baseConvert.convertt(userEntities.get(0));
 	}
 
 	@Override
@@ -230,8 +236,8 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 	}
 
 	@Override
-	public UserVO getDetail(Serializable id) {
-		UserVO userVO = super.getDetail(id);
+	public UserVO getInfo(Serializable id) {
+		UserVO userVO = super.getInfo(id);
 		// 用户角色列表
 		List<Long> roleIdList = userRoleService.getRoleIdList(id);
 		userVO.setRoleIds(roleIdList);

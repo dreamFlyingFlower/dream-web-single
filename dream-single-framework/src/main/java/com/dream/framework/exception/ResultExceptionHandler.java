@@ -25,6 +25,7 @@ public class ResultExceptionHandler {
 
 	@ExceptionHandler(ResultException.class)
 	public Result<String> handleException(ResultException ex) {
+		ex.printStackTrace();
 		return Result.error(ex.getCode(), ex.getMessage());
 	}
 
@@ -33,6 +34,7 @@ public class ResultExceptionHandler {
 	 */
 	@ExceptionHandler(BindException.class)
 	public Result<String> bindException(BindException ex) {
+		ex.printStackTrace();
 		FieldError fieldError = ex.getFieldError();
 		assert fieldError != null;
 		return Result.error(fieldError.getDefaultMessage());
@@ -40,11 +42,13 @@ public class ResultExceptionHandler {
 
 	@ExceptionHandler(AccessDeniedException.class)
 	public Result<String> handleAccessDeniedException(Exception ex) {
+		ex.printStackTrace();
 		return Result.error(TipEnum.TIP_INTERNAL_UNAUTHORIZED);
 	}
 
 	@ExceptionHandler(Exception.class)
 	public Result<String> handleException(Exception ex) {
+		ex.printStackTrace();
 		log.error(ex.getMessage(), ex);
 		return Result.error(TipEnum.TIP_INTERNAL_SERVER_ERROR);
 	}

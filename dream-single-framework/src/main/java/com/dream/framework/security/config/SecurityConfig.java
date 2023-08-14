@@ -151,10 +151,9 @@ public class SecurityConfig {
 				.failureHandler(securityFailureHandler).permitAll().and()
 				// 登出相关
 				.logout().logoutUrl("/logout").logoutSuccessHandler(securityLogoutHandler).deleteCookies("JSESSIONID")
-				.and().authorizeRequests().antMatchers("/**").permitAll().and()
 				// 异常相关
-				.exceptionHandling().authenticationEntryPoint(new SecurityAuthenticationEntryPoint()).and().headers()
-				.frameOptions().disable().and().csrf().disable();
+				.and().exceptionHandling().authenticationEntryPoint(new SecurityAuthenticationEntryPoint()).and()
+				.headers().frameOptions().disable().and().csrf().disable();
 
 		return httpSecurity.build();
 	}

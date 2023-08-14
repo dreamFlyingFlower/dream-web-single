@@ -1,11 +1,11 @@
 package com.dream.system.service;
 
-import com.dream.system.vo.UserVO;
+import com.dream.framework.security.user.SecurityUserDetails;
 
 public interface UserDetailService {
 
 	/**
 	 * 获取 UserDetails 对象
 	 */
-	void getUserDetails(UserVO userVO);
+	void getUserDetails(SecurityUserDetails securityUserDetails);
 }

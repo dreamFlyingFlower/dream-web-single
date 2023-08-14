@@ -30,7 +30,7 @@ public class PostServiceImpl extends AbstractServiceImpl<PostEntity, PostVO, Pos
 	private UserPostService sysUserPostService;
 
 	@Override
-	public Boolean deleteById(Serializable id) {
+	public Boolean delete(Serializable id) {
 		// 删除岗位
 		removeById(id);
 		// 删除岗位用户关系
@@ -39,7 +39,7 @@ public class PostServiceImpl extends AbstractServiceImpl<PostEntity, PostVO, Pos
 	}
 
 	@Override
-	public Boolean deleteByIds(List<Serializable> idList) {
+	public Boolean deletes(List<Serializable> idList) {
 		// 删除岗位
 		removeByIds(idList);
 		// 删除岗位用户关系

@@ -12,15 +12,15 @@ import com.dream.system.vo.DepartVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 部门表API
+ * 部门API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "部门表API")
+@Tag(name = "部门API")
 @RestController
-@RequestMapping("depart")
+@RequestMapping("sys/depart")
 public class DepartController extends AbstractController<DepartEntity, DepartVO, DepartQuery, DepartService> {
 
 }

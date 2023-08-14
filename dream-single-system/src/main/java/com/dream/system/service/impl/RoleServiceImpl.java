@@ -108,7 +108,7 @@ public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO
 	}
 
 	@Override
-	public Boolean deleteByIds(List<Serializable> idList) {
+	public Boolean deletes(List<Serializable> idList) {
 		// 删除角色
 		removeByIds(idList);
 

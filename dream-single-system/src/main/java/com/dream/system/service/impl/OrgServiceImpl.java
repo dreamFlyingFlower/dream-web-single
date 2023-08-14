@@ -73,7 +73,7 @@ public class OrgServiceImpl extends AbstractScopeServiceImpl<OrgEntity, OrgVO, O
 	}
 
 	@Override
-	public Boolean deleteById(Serializable id) {
+	public Boolean delete(Serializable id) {
 		// 判断是否有子机构
 		long orgCount = count(new QueryWrapper<OrgEntity>().eq("pid", id));
 		if (orgCount > 0) {

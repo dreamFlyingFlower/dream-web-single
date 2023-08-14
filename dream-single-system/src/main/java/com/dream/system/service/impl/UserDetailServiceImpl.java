@@ -49,11 +49,16 @@ public class UserDetailServiceImpl implements UserDetailService, UserDetailsServ
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserVO usesrVo = userService.getByUsername(username);
-		if (usesrVo == null) {
+		UserVO userVO = userService.getByUsername(username);
+		if (userVO == null) {
 			throw new UsernameNotFoundException("用户名或密码错误");
 		}
-		getUserDetails(usesrVo);
+
+		SecurityUserDetails securityUserDetails = new SecurityUserDetails();
+		BeanUtils.copyProperties(userVO, securityUserDetails);
+
+		// 权限
+		getUserDetails(securityUserDetails);
 
 		// // 获取权限
 		// List<PermissionEntity> permissions =
@@ -71,26 +76,26 @@ public class UserDetailServiceImpl implements UserDetailService, UserDetailsServ
 		// org.springframework.security.core.userdetails.User.withUsername(principal).password(userVO.getPassword())
 		// .authorities(authorities).build();
 
-		return usesrVo;
+		return securityUserDetails;
 	}
 
 	@Override
-	public void getUserDetails(UserVO userVO) {
-		SecurityUserDetails securityUserDetails = new SecurityUserDetails();
-		BeanUtils.copyProperties(userVO, securityUserDetails);
+	public void getUserDetails(SecurityUserDetails securityUserDetails) {
+		// SecurityUserDetails securityUserDetails = new SecurityUserDetails();
+		// BeanUtils.copyProperties(userVO, securityUserDetails);
 
 		// 账号不可用
-		if (userVO.getStatus() == UserStatus.DISABLE.getCode()) {
-			userVO.setEnabled(false);
+		if (securityUserDetails.getStatus() == UserStatus.DISABLE.getCode()) {
+			securityUserDetails.setEnabled(false);
 		}
 
-		// 数据权限范围
-		List<Long> dataScopeList = getDataScope(userVO);
-		userVO.setDataScopeList(dataScopeList);
+		// 数据权限范围,暂不开放
+		// List<Long> dataScopeList = getDataScope(userVO);
+		// userVO.setDataScopeList(dataScopeList);
 
 		// 用户权限列表
 		Set<String> authoritySet = menuService.getUserAuthority(securityUserDetails);
-		userVO.setAuthoritySet(authoritySet);
+		securityUserDetails.setAuthoritySet(authoritySet);
 	}
 
 	private List<Long> getDataScope(UserVO userDetail) {

@@ -20,6 +20,8 @@ import com.dream.framework.helper.TokenHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
 import com.wy.lang.StrTool;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 认证过滤器
  *
@@ -28,6 +30,7 @@ import com.wy.lang.StrTool;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @Component
+@Slf4j
 public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
 	@Autowired
@@ -37,7 +40,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
 		String accessToken = TokenHelper.getAccessToken(request);
-		// accessToken为空,表示未登录
+		log.info("@@@the request url:{}", request.getRequestURI());
+		// accessToken为空,表示未登录,直接放过由SpringSecurity抛出异常
 		if (StrTool.isBlank(accessToken)) {
 			chain.doFilter(request, response);
 			return;
@@ -45,6 +49,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
 		// 获取登录用户信息
 		SecurityUserDetails user = tokenStoreCache.getUser(accessToken);
+		// 获取失败,表示未登录,直接放过由SpringSecurity抛出异常
 		if (user == null) {
 			chain.doFilter(request, response);
 			return;

@@ -19,15 +19,15 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * API
+ * 字典API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "字典类型")
+@Tag(name = "字典API")
 @RestController
-@RequestMapping("dict")
+@RequestMapping("sys/dict")
 public class DictController extends AbstractController<DictEntity, DictVO, DictQuery, DictService> {
 
 	@GetMapping("list/sql")

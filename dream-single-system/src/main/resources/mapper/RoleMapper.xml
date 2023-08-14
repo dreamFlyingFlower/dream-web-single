@@ -20,7 +20,7 @@
 	<select id="list" resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
-		FROM ts_role a
+		FROM sys_role a
 		<where>
 			<if test="query.id != null and query.id != ''">
 				AND a.id = #{query.id, jdbcType=BIGINT }
@@ -39,7 +39,7 @@
 	</select>
 
 	<select id="getDataScopeByUserId" resultType="integer">
-		SELECT MIN(a.data_scope) FROM ts_role a, ts_user_role b
+		SELECT MIN(a.data_scope) FROM sys_role a, sys_user_role b
 		WHERE
 		a.id = b.role_id AND b.user_id = #{userId} AND a.deleted = 0
 	</select>

@@ -18,15 +18,15 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 组织机构表API
+ * 组织机构API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "组织机构表API")
+@Tag(name = "组织机构API")
 @RestController
-@RequestMapping("org")
+@RequestMapping("sys/org")
 public class OrgController extends AbstractController<OrgEntity, OrgVO, OrgQuery, OrgService> {
 
 	@GetMapping("{id}")

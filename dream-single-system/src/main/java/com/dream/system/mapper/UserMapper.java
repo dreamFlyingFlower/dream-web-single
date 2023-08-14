@@ -22,10 +22,6 @@ import com.dream.system.vo.UserVO;
 @Mapper
 public interface UserMapper extends BaseMappers<UserEntity, UserVO, UserQuery> {
 
-	UserVO getByUsername(String username);
-
-	UserVO getByMobile(String mobile);
-
 	List<UserEntity> getList(Map<String, Object> params);
 
 	UserEntity getById(@Param("id") Long id);

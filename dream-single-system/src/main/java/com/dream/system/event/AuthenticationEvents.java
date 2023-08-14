@@ -7,14 +7,16 @@ import org.springframework.security.authentication.event.AuthenticationSuccessEv
 import org.springframework.stereotype.Component;
 
 import com.dream.framework.enums.LoginOperationEnum;
+import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.service.LogLoginService;
-import com.dream.system.vo.UserVO;
 import com.wy.enums.TipEnum;
 
 /**
  * 认证事件处理
  *
- * @author
+ * @author 飞花梦影
+ * @date 2023-08-14 17:41:37
+ * @git {@link https://github.com/dreamFlyingFlower}
  */
 @Component
 public class AuthenticationEvents {
@@ -24,7 +26,7 @@ public class AuthenticationEvents {
 
 	@EventListener
 	public void onSuccess(AuthenticationSuccessEvent event) {
-		UserVO user = (UserVO) event.getAuthentication().getPrincipal();
+		SecurityUserDetails user = (SecurityUserDetails) event.getAuthentication().getPrincipal();
 		// 保存登录日志
 		logLoginService.save(user.getUsername(), TipEnum.TIP_REQUEST_SUCCESS.getCode(),
 				LoginOperationEnum.LOGIN_SUCCESS.getCode());

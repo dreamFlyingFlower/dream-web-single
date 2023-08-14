@@ -12,13 +12,13 @@ import com.dream.system.vo.ButtonVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 按钮表API
+ * 按钮API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "按钮表API")
+@Tag(name = "按钮API")
 @RestController
 @RequestMapping("button")
 public class ButtonController extends AbstractController<ButtonEntity, ButtonVO, ButtonQuery, ButtonService> {

@@ -56,7 +56,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 
 	@Override
 	public boolean validate(String key, String code) {
-		// 如果关闭了验证码，则直接效验通过
+		// 如果关闭了验证码,则直接效验通过
 		if (!isCaptchaEnabled()) {
 			return true;
 		}
@@ -86,7 +86,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 	/**
 	 * 是否开启登录验证码
 	 *
-	 * @return true：开启 false：关闭
+	 * @return true-开启;false-关闭
 	 */
 	private boolean isCaptchaEnabled() {
 		return paramsService.getBoolean(SysParamsEnum.LOGIN_CAPTCHA.name());

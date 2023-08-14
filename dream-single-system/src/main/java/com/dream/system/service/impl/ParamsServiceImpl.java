@@ -69,7 +69,7 @@ public class ParamsServiceImpl extends
 	}
 
 	@Override
-	public Boolean deleteByIds(List<Serializable> ids) {
+	public Boolean deletes(List<Serializable> ids) {
 		// 查询列表
 		List<ParamsEntity> list = baseMapper.selectBatchIds(ids);
 		// 删除数据
@@ -84,7 +84,7 @@ public class ParamsServiceImpl extends
 	public String getString(String paramKey) {
 		String value = paramsCache.get(paramKey);
 		if (StrTool.isBlank(value)) {
-			throw new ResultException("参数不能为空,paramKey：" + paramKey);
+			throw new ResultException("参数管理的key:[" + paramKey + "]不能为空");
 		}
 		return value;
 	}

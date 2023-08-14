@@ -19,8 +19,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 @RestController
-@RequestMapping("attachment")
-@Tag(name = "附件管理")
+@RequestMapping("sys/attachment")
+@Tag(name = "附件管理API")
 public class AttachmentController
 		extends AbstractController<AttachmentEntity, AttachmentVO, AttachmentQuery, AttachmentService> {
 

@@ -71,15 +71,15 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	private RoleMenuService roleMenuService;
 
 	@Override
-	public Boolean deleteById(Serializable id) {
+	public Boolean delete(Serializable id) {
 		roleMenuService.deleteByMenuId(id);
 		return removeById(id);
 	}
 
 	@Override
-	public Boolean deleteByIds(List<Serializable> ids) {
+	public Boolean deletes(List<Serializable> ids) {
 		for (Serializable id : ids) {
-			deleteById(id);
+			delete(id);
 		}
 		return true;
 	}

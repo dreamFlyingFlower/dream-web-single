@@ -19,7 +19,7 @@
 	<select id="list" resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
-		FROM ts_role_org a
+		FROM sys_role_org a
 		<where>
 			<if test="query.id != null and query.id != ''">
 				AND a.id = #{query.id, jdbcType=BIGINT }
@@ -35,7 +35,7 @@
 	</select>
 
 	<select id="getDataScopeList" resultType="long">
-		SELECT t2.org_id FROM ts_user_role t1, ts_role_org t2
+		SELECT t2.org_id FROM sys_user_role t1, sys_role_org t2
 		WHERE t1.user_id = #{userId} AND t1.role_id = t2.role_id AND t1.deleted = 0 AND t2.deleted = 0
 	</select>
 </mapper>

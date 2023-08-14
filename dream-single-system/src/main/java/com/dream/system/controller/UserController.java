@@ -26,15 +26,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
 /**
- * 用户API
+ * 用户管理API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "用户API")
+@Tag(name = "用户管理API")
 @RestController
-@RequestMapping("user")
+@RequestMapping("sys/user")
 @AllArgsConstructor
 public class UserController extends AbstractController<UserEntity, UserVO, UserQuery, UserService> {
 

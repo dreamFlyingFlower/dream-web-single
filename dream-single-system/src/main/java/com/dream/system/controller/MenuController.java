@@ -27,15 +27,15 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 菜单表API
+ * 菜单管理API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "菜单管理")
+@Tag(name = "菜单管理API")
 @RestController
-@RequestMapping("menu")
+@RequestMapping("sys/menu")
 public class MenuController extends AbstractController<MenuEntity, MenuVO, MenuQuery, MenuService> {
 
 	@GetMapping("nav")
@@ -90,7 +90,7 @@ public class MenuController extends AbstractController<MenuEntity, MenuVO, MenuQ
 			return Result.error("请先删除子菜单");
 		}
 
-		baseService.deleteById(id);
+		baseService.delete(id);
 
 		return Result.ok();
 	}

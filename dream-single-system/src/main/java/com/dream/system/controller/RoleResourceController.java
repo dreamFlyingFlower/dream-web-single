@@ -12,13 +12,13 @@ import com.dream.system.vo.RoleResourceVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * 角色-权限关系API
+ * 角色权限API
  * 
  * @author 飞花梦影
  * @date 2022-09-01 16:58:56
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-@Tag(name = "角色-权限关系API")
+@Tag(name = "角色权限API")
 @RestController
 @RequestMapping("roleResource")
 public class RoleResourceController

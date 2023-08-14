@@ -24,6 +24,7 @@ public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoin
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException {
+		authException.printStackTrace();
 		WebHelper.write(response, Result.error(TipEnum.TIP_AUTH_FAIL));
 	}
 }

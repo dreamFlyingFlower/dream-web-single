@@ -19,7 +19,7 @@
 	<select id="list" resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
-		FROM ts_user_role a
+		FROM sys_user_role a
 		<where>
 			<if test="query.id != null and query.id != ''">
 				AND a.id = #{query.id, jdbcType=BIGINT }
