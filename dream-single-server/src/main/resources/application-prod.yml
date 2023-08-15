@@ -40,8 +40,6 @@ dream:
     - "/static/**"
     - "/resources/**"
     - "/doc.html"
-  xss:
-    enabled: true
   # 文件服务器配置
   storage:
     type: minio
@@ -76,6 +74,15 @@ knife4j:
     custom-code: 500
     enable-footer-custom: false
     
+# easy trans 数据翻译组件
+easy-trans:
+  #启用redis缓存 如果不用redis请设置为false
+  is-enable-redis: false
+  #启用全局翻译(拦截所有responseBody进行自动翻译),如果对于性能要求很高可关闭此配置
+  is-enable-global: true
+  #启用平铺模式
+  is-enable-tile: true
+
 wx:
   miniapp:
     appid: wxa541cafd2c4093f9
@@ -87,10 +94,6 @@ wx:
         port:  ${secret.redis.port}
         password: ${secret.redis.password}
       type: redistemplate
-
-ftp:
-  conf:
-    ip: 127.0.0.1
 
 mqtt:
   ip: tcp://124.207.254.168:11883

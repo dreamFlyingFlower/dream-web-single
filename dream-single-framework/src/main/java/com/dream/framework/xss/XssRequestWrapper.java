@@ -30,12 +30,12 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
 
 	@Override
 	public ServletInputStream getInputStream() throws IOException {
-		// 如果是json数据，则不处理
+		// 如果是json数据,则不处理
 		if (!StrUtil.startWithIgnoreCase(this.getContentType(), MediaType.APPLICATION_JSON_VALUE)) {
 			return super.getInputStream();
 		}
 
-		// 读取内容，进行xss过滤
+		// 读取内容,进行xss过滤
 		String content = IoUtil.readUtf8(super.getInputStream());
 		content = filterXss(content);
 

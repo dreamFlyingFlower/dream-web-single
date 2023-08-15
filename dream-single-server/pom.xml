@@ -9,10 +9,10 @@
 		<version>0.0.1</version>
 	</parent>
 
-	<artifactId>dream-single-web</artifactId>
-	<name>dream-single-web</name>
+	<artifactId>dream-single-server</artifactId>
+	<name>dream-single-server</name>
 	<version>${dream-web-single.version}</version>
-	<description>dream-single-web</description>
+	<description>dream-single-server</description>
 
 	<dependencies>
 		<dependency>

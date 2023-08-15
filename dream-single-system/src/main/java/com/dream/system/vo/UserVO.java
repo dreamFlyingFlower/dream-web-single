@@ -1,23 +1,18 @@
 package com.dream.system.vo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.dream.basic.web.valid.ValidEdit;
 import com.dream.system.entity.OrgEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
@@ -171,61 +166,35 @@ public class UserVO implements Serializable {
 	/**
 	 * 帐户是否过期
 	 */
-	@Builder.Default
-	private boolean isAccountNonExpired = true;
+	@Schema(description = "账户是否过期")
+	private boolean isAccountNonExpired;
 
 	/**
 	 * 帐户是否被锁定
 	 */
-	@Builder.Default
-	private boolean isAccountNonLocked = true;
+	@Schema(description = "账户是否被锁定")
+	private boolean isAccountNonLocked;
 
 	/**
 	 * 密码是否过期
 	 */
-	@Builder.Default
-	private boolean isCredentialsNonExpired = true;
+	@Schema(description = "密码是否过期")
+	private boolean isCredentialsNonExpired;
 
 	/**
 	 * 帐户是否可用
 	 */
-	@Builder.Default
-	private boolean isEnabled = true;
+	@Schema(description = "账户是否可用")
+	private boolean isEnabled;
 
 	/**
 	 * 拥有权限集合
 	 */
+	@Schema(description = "权限集合")
 	private Set<String> authoritySet;
 
 	/**
 	 * 数据权限范. null表示全部数据权限
 	 */
 	private List<Long> dataScopeList;
-
-	// @Override
-	// @JsonIgnore
-	// public Collection<? extends GrantedAuthority> getAuthorities() {
-	// return
-	// authoritySet.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
-	// }
-	//
-	// @Override
-	// public boolean isAccountNonExpired() {
-	// return this.isAccountNonExpired;
-	// }
-	//
-	// @Override
-	// public boolean isAccountNonLocked() {
-	// return this.isAccountNonLocked;
-	// }
-	//
-	// @Override
-	// public boolean isCredentialsNonExpired() {
-	// return this.isCredentialsNonExpired;
-	// }
-	//
-	// @Override
-	// public boolean isEnabled() {
-	// return this.isEnabled;
-	// }
 }

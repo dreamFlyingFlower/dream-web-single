@@ -20,7 +20,7 @@
 		<module>dream-single-message</module>
 		<module>dream-single-monitor</module>
 		<module>dream-single-system</module>
-		<module>dream-single-web</module>
+		<module>dream-single-server</module>
 	</modules>
 
 	<build>

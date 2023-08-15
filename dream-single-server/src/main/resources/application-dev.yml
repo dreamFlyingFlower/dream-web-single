@@ -17,6 +17,33 @@ spring:
         instance:
           service-host-type: IP
 
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  group-configs:
+    - group: 'system'
+      paths-to-match: '/**'
+      packages-to-scan: com.dream.system.controller
+      display-name: '系统API'
+# knife4j的增强配置,不需要增强可以不配
+knife4j:
+  enable: true
+  # 正式环境为true
+  production: false
+  setting:
+    language: zh_cn
+    custom-code: 500
+    enable-footer: true
+    enable-footer-custom: true
+    footer-custom-content: Apache License 2.0 | Copyright  2023-[飞花梦影](https://github.com/dreamFlyingFlower/dream-single-web)
+    
 dream:
   security:
     http-ignore-resources:
@@ -47,17 +74,15 @@ dream:
     - "/resources/**"
     - /favicon.ico
     - "/doc.html"
-  xss:
-    enabled: true
   # 文件服务器配置
-  storage:
-    type: minio
-    prefix: dream-single-web
-    minio:
-      access-key: admin
-      secret-key: admin123456
-      end-point: http://172.30.252.23:9001
-      bucket-name: public
+#  storage:
+#    type: minio
+#    prefix: dream-single-server
+#    minio:
+#      access-key: admin
+#      secret-key: admin123456
+#      end-point: http://172.30.252.23:9001
+#      bucket-name: public
   open-api:
     info:
       title: '单体Web开发系统API'
@@ -71,34 +96,16 @@ dream:
         email: '582822832@qq.com'
         name: '飞花梦影'
         url: 'http://github.com/dreamFlyingFlower'
-
-# springdoc-openapi项目配置
-springdoc:
-  swagger-ui:
-    enabled: true
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-  api-docs:
-    enabled: true
-    path: /v3/api-docs
-  group-configs:
-    - group: 'system'
-      paths-to-match: '/**'
-      packages-to-scan: com.dream.system.controller
-      display-name: '系统API'
-# knife4j的增强配置,不需要增强可以不配
-knife4j:
-  enable: true
-  # 正式环境为true
-  production: false
-  setting:
-    language: zh_cn
-    custom-code: 500
-    enable-footer: true
-    enable-footer-custom: true
-    footer-custom-content: Apache License 2.0 | Copyright  2023-[飞花梦影](https://github.com/dreamFlyingFlower/dream-single-web)
     
+# easy trans 数据翻译组件
+easy-trans:
+  #启用redis缓存 如果不用redis请设置为false
+  is-enable-redis: false
+  #启用全局翻译(拦截所有responseBody进行自动翻译),如果对于性能要求很高可关闭此配置
+  is-enable-global: true
+  #启用平铺模式
+  is-enable-tile: true
+
 wx:
   miniapp:
     appid: wxa541cafd2c4093f9
@@ -110,10 +117,6 @@ wx:
         port:  ${secret.redis.port}
         password: ${secret.redis.password}
       type: redistemplate
-
-ftp:
-  conf:
-    ip: 127.0.0.1
 
 mqtt:
   ip: tcp://124.207.254.168:11883

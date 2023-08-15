@@ -17,18 +17,12 @@ import lombok.Getter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum UserGenderEnum {
 
-	/**
-	 * 男
-	 */
-	MAN(0, "男"),
-	/**
-	 * 女
-	 */
-	WOMEN(1, "女"),
-	/**
-	 * 未知
-	 */
-	UNKNOWN(2, "未知");
+	/** 男 */
+	MAN(1, "男"),
+	/** 女 */
+	WOMEN(2, "女"),
+	/** 未知 */
+	UNKNOWN(3, "未知");
 
 	private final Integer code;
 

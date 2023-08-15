@@ -6,7 +6,7 @@ server:
       min-spare: 30
   port: 10001
   servlet:
-    context-path: /dream-single-web
+    context-path: /dream-single-server
     session:
       cookie:
         http-only: true
@@ -15,7 +15,7 @@ server:
 
 spring:
   application:
-    name: dream-single-web
+    name: dream-single-server
     admin:
       enabled: false
   profiles:
@@ -83,16 +83,6 @@ mybatis-plus:
       id-type: AUTO
     banner: false
 
-
 info:
   test: test
   version: 0.0.1
-  
-#easy trans 数据翻译组件
-easy-trans:
-  #启用redis缓存 如果不用redis请设置为false
-  is-enable-redis: false
-  #启用全局翻译(拦截所有responseBody进行自动翻译),如果对于性能要求很高可关闭此配置
-  is-enable-global: true
-  #启用平铺模式
-  is-enable-tile: true
