@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.system.entity.DataScopeEntity;
 import com.dream.system.vo.DataScopeVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 角色权限对应关系

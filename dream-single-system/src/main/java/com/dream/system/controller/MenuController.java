@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.enums.MenuType;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
@@ -22,6 +20,8 @@ import com.dream.system.service.MenuService;
 import com.dream.system.vo.MenuVO;
 import com.wy.result.Result;
 
+import dream.framework.core.constant.ConstCore;
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

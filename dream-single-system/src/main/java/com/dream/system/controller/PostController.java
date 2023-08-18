@@ -3,12 +3,12 @@ package com.dream.system.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.system.entity.PostEntity;
 import com.dream.system.query.PostQuery;
 import com.dream.system.service.PostService;
 import com.dream.system.vo.PostVO;
 
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**

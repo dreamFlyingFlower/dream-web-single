@@ -7,11 +7,12 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.entity.UserEntity;
 import com.dream.system.vo.UserExcelVO;
 import com.dream.system.vo.UserVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 用户表数据库实体与DTO互转

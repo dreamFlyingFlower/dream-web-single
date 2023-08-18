@@ -2,10 +2,11 @@ package com.dream.system.service;
 
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.OrgEntity;
 import com.dream.system.query.OrgQuery;
 import com.dream.system.vo.OrgVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 组织机构表

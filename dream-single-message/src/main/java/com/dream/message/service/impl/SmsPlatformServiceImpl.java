@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.convert.SmsPlatformConvert;
 import com.dream.message.entity.SmsPlatformEntity;
@@ -21,6 +19,9 @@ import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
 import com.wy.lang.StrTool;
 import com.wy.result.Result;
+
+import dream.framework.core.constant.ConstCore;
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 短信平台

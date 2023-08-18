@@ -5,10 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.RoleOrgEntity;
 import com.dream.system.query.RoleOrgQuery;
 import com.dream.system.vo.RoleOrgVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 角色数据权限

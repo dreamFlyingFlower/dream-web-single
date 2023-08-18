@@ -1,9 +1,10 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.AttachmentEntity;
 import com.dream.system.query.AttachmentQuery;
 import com.dream.system.vo.AttachmentVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 附件管理表

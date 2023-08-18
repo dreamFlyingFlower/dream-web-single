@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.DepartEntity;
 import com.dream.system.query.DepartQuery;
 import com.dream.system.vo.DepartVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 部门表

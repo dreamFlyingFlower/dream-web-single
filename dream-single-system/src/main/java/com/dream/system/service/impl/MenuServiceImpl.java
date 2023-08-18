@@ -15,10 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.core.enums.ResourceType;
-import com.dream.basic.core.helper.FastjsonHelper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.cache.RedisKeys;
 import com.dream.framework.enums.SuperAdminEnum;
 import com.dream.framework.helper.TreeHelper;
@@ -44,6 +40,10 @@ import com.wy.enums.TipEnum;
 import com.wy.lang.StrTool;
 import com.wy.result.ResultException;
 
+import dream.framework.core.constant.ConstCore;
+import dream.framework.core.enums.ResourceType;
+import dream.framework.core.json.FastjsonHelper;
+import dream.framework.web.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

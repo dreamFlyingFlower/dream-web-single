@@ -5,10 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.MenuEntity;
 import com.dream.system.query.MenuQuery;
 import com.dream.system.vo.MenuVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 菜单表

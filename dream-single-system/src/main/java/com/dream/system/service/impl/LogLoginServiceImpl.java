@@ -7,11 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.core.excel.EasyExcelHelper;
-import com.dream.basic.core.helper.AddressHelper;
-import com.dream.basic.core.helper.IpHelper;
-import com.dream.basic.core.helper.WebHelper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.LogLoginConvert;
 import com.dream.system.entity.LogLoginEntity;
 import com.dream.system.mapper.LogLoginMapper;
@@ -21,6 +16,11 @@ import com.dream.system.vo.LogLoginVO;
 import com.fhs.trans.service.impl.TransService;
 import com.wy.util.DateTimeTool;
 
+import dream.framework.web.helper.AddressHelper;
+import dream.framework.web.helper.EasyExcelHelper;
+import dream.framework.web.helper.IpHelper;
+import dream.framework.web.helper.WebHelper;
+import dream.framework.web.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 

@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.system.entity.DepartEntity;
 import com.dream.system.vo.DepartVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 部门表数据库实体与DTO互转

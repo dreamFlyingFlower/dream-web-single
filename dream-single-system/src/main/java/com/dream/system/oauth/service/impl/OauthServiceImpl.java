@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.dream.basic.core.helper.IpHelper;
 import com.dream.system.convert.OAuthClientDetailsConvert;
 import com.dream.system.mapper.OAuthClientDetailsMapper;
 import com.dream.system.oauth.entity.OAuthClientDetails;
@@ -17,6 +16,7 @@ import com.dream.system.oauth.entity.OAuthClientDetailsVO;
 import com.dream.system.oauth.service.OAuthService;
 import com.wy.collection.ListTool;
 
+import dream.framework.web.helper.IpHelper;
 import lombok.extern.slf4j.Slf4j;
 
 @Service("oauthService")

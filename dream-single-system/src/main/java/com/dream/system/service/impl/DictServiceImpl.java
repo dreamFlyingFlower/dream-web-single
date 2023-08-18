@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.enums.DictSourceEnum;
 import com.dream.system.convert.DictConvert;
 import com.dream.system.entity.DictEntity;
@@ -26,6 +25,7 @@ import com.dream.system.vo.DictVO;
 import com.fhs.trans.service.impl.DictionaryTransService;
 import com.wy.result.ResultException;
 
+import dream.framework.web.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

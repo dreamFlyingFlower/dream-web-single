@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.RoleMenuConvert;
 import com.dream.system.entity.RoleMenuEntity;
 import com.dream.system.mapper.RoleMenuMapper;
@@ -17,6 +16,8 @@ import com.dream.system.query.RoleMenuQuery;
 import com.dream.system.service.RoleMenuService;
 import com.dream.system.vo.RoleMenuVO;
 import com.wy.collection.ListTool;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 角色与菜单对应关系

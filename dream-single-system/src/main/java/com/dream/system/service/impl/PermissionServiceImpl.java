@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.PermissionConvert;
 import com.dream.system.entity.PermissionEntity;
 import com.dream.system.mapper.PermissionMapper;
 import com.dream.system.query.PermissionQuery;
 import com.dream.system.service.PermissionService;
 import com.dream.system.vo.PermissionVO;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 权限Service

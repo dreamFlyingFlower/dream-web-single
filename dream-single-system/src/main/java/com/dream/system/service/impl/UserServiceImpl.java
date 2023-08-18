@@ -13,9 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.core.excel.EasyExcelHelper;
-import com.dream.basic.core.excel.callback.ExcelFinishCallBack;
 import com.dream.framework.enums.SuperAdminEnum;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
@@ -36,6 +33,9 @@ import com.wy.result.Result;
 import com.wy.result.ResultException;
 import com.wy.util.DateTimeTool;
 
+import dream.framework.core.constant.ConstCore;
+import dream.framework.web.excel.ExcelFinishCallBack;
+import dream.framework.web.helper.EasyExcelHelper;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -215,7 +215,8 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 			}
 
 			private void saveUser(List<UserExcelVO> result) {
-				EasyExcelHelper.parseDict(result);
+				// FIXME 需要使用easy-trans的自动转换
+				// EasyExcelHelper.parseDict(result);
 				List<UserEntity> sysUserEntities = baseConvert.convertExcel(result);
 				sysUserEntities.forEach(user -> user.setPassword(password));
 				saveBatch(sysUserEntities);

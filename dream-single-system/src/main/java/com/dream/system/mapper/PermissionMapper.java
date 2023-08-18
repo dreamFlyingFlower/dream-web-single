@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.PermissionEntity;
 import com.dream.system.query.PermissionQuery;
 import com.dream.system.vo.PermissionVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 权限

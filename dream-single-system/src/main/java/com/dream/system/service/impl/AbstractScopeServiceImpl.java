@@ -5,14 +5,15 @@ import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.web.convert.BaseConvert;
-import com.dream.basic.web.interceptor.DataScope;
-import com.dream.basic.web.mapper.BaseMappers;
-import com.dream.basic.web.query.AbstractQuery;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
+
+import dream.framework.core.constant.ConstCore;
+import dream.framework.web.convert.BaseConvert;
+import dream.framework.web.interceptor.DataScope;
+import dream.framework.web.mapper.BaseMappers;
+import dream.framework.web.query.AbstractQuery;
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 通用业务实现类

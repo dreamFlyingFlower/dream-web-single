@@ -3,10 +3,11 @@ package com.dream.system.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.ParamsEntity;
 import com.dream.system.query.ParamsQuery;
 import com.dream.system.vo.ParamsVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 参数管理

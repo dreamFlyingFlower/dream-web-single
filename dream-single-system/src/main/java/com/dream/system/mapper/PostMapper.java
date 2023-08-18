@@ -5,10 +5,11 @@ import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.PostEntity;
 import com.dream.system.query.PostQuery;
 import com.dream.system.vo.PostVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 岗位管理

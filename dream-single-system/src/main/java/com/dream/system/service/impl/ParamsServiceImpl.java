@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.cache.ParamsCache;
 import com.dream.system.convert.ParamsConvert;
 import com.dream.system.entity.ParamsEntity;
@@ -18,6 +17,7 @@ import com.dream.system.vo.ParamsVO;
 import com.wy.lang.StrTool;
 import com.wy.result.ResultException;
 
+import dream.framework.web.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

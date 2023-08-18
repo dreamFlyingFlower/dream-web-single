@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.system.entity.PostEntity;
 import com.dream.system.vo.PostVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 职位表数据库实体与DTO互转

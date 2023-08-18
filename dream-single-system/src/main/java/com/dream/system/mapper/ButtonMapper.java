@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.ButtonEntity;
 import com.dream.system.query.ButtonQuery;
 import com.dream.system.vo.ButtonVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 按钮表

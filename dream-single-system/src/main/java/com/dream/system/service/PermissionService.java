@@ -2,10 +2,11 @@ package com.dream.system.service;
 
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.PermissionEntity;
 import com.dream.system.query.PermissionQuery;
 import com.dream.system.vo.PermissionVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 权限

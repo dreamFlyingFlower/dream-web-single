@@ -2,11 +2,12 @@ package com.dream.message.service;
 
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.query.SmsLogQuery;
 import com.dream.message.vo.SmsLogVO;
 import com.wy.result.Result;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 短信日志

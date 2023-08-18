@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.system.entity.DictEntity;
 import com.dream.system.query.DictQuery;
 import com.dream.system.service.DictService;
@@ -15,6 +14,7 @@ import com.dream.system.vo.DictItemVO;
 import com.dream.system.vo.DictVO;
 import com.wy.result.Result;
 
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

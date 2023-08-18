@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-import com.dream.basic.core.helper.WebHelper;
 import com.wy.enums.TipEnum;
 import com.wy.result.Result;
+
+import dream.framework.web.helper.WebHelper;
 
 /**
  * 匿名用户(token不存在、错误)，异常处理器

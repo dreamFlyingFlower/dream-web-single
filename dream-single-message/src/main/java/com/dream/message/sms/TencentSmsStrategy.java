@@ -2,7 +2,6 @@ package com.dream.message.sms;
 
 import java.util.Map;
 
-import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.sms.config.SmsConfig;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -13,6 +12,8 @@ import com.tencentcloudapi.sms.v20210111.models.SendSmsResponse;
 import com.tencentcloudapi.sms.v20210111.models.SendStatus;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
+
+import dream.framework.core.constant.ConstCore;
 
 /**
  * 腾讯云短信

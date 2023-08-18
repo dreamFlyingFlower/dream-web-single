@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.LogLoginEntity;
 import com.dream.system.query.LogLoginQuery;
 import com.dream.system.vo.LogLoginVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 登录日志

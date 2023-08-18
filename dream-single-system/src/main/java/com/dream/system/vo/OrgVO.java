@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.Min;
 
-import com.dream.basic.web.entity.node.AbstractNode;
-
+import dream.framework.web.entity.node.AbstractNode;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

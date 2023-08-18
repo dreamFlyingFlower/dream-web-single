@@ -3,10 +3,11 @@ package com.dream.system.service;
 import java.io.Serializable;
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.UserPostEntity;
 import com.dream.system.query.UserPostQuery;
 import com.dream.system.vo.UserPostVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 用户岗位关系

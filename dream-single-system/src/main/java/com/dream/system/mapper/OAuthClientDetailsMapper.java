@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.oauth.entity.OAuthClientDetails;
 import com.dream.system.oauth.entity.OAuthClientDetailsVO;
 import com.dream.system.query.OAuthClientDetailsQuery;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * OAuth详情表

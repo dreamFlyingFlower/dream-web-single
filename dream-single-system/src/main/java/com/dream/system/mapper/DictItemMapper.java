@@ -6,10 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.DictItemEntity;
 import com.dream.system.query.DictItemQuery;
 import com.dream.system.vo.DictItemVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 字典项

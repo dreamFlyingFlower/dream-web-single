@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.system.oauth.entity.OAuthClientDetails;
 import com.dream.system.oauth.entity.OAuthClientDetailsVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * OAuthClient与DTO互转

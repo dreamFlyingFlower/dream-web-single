@@ -1,9 +1,10 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.RoleResourceEntity;
 import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.vo.RoleResourceVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 角色-权限关系

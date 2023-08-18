@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.entity.MenuEntity;
 import com.dream.system.query.MenuQuery;
 import com.dream.system.vo.MenuVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 菜单表

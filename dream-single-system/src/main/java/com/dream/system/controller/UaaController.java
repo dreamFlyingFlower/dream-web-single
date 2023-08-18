@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dream.basic.core.helper.IpHelper;
-
+import dream.framework.web.helper.IpHelper;
 import lombok.extern.slf4j.Slf4j;
 
 // @Controller

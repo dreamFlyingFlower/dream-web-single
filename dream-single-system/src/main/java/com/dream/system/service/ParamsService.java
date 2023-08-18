@@ -1,10 +1,11 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.ParamsEntity;
 import com.dream.system.query.ParamsQuery;
 import com.dream.system.vo.ParamsVO;
-import com.wy.third.json.JsonTools;
+
+import dream.framework.core.json.JsonHelper;
+import dream.framework.web.service.BaseService;
 
 /**
  * 参数管理
@@ -45,6 +46,6 @@ public interface ParamsService extends BaseService<ParamsEntity, ParamsVO, Param
 	 * @param valueType 类型
 	 */
 	default <T> T getJSONObject(String paramKey, Class<T> valueType) {
-		return JsonTools.parse(getString(paramKey), valueType);
+		return JsonHelper.read(getString(paramKey), valueType);
 	}
 }

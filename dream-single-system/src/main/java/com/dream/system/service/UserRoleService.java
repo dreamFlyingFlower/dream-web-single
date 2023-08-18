@@ -3,10 +3,11 @@ package com.dream.system.service;
 import java.io.Serializable;
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.UserRoleEntity;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserRoleVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 账号-角色关系

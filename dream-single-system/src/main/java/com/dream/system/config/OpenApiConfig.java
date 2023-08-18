@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.method.HandlerMethod;
 
-import com.dream.basic.web.properties.OpenApiProperties;
 import com.wy.collection.ListTool;
 
+import dream.framework.web.properties.OpenApiProperties;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;

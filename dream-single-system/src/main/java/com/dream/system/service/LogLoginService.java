@@ -1,9 +1,10 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.LogLoginEntity;
 import com.dream.system.query.LogLoginQuery;
 import com.dream.system.vo.LogLoginVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 登录日志

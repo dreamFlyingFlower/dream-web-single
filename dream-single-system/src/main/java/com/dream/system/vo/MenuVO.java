@@ -7,8 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Range;
 
-import com.dream.basic.web.entity.node.AbstractNode;
-
+import dream.framework.web.entity.node.AbstractNode;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

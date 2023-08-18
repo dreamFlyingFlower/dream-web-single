@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.UserEntity;
 import com.dream.system.query.UserQuery;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserPasswordVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 用户表

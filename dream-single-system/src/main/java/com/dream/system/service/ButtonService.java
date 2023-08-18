@@ -1,9 +1,10 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.ButtonEntity;
 import com.dream.system.query.ButtonQuery;
 import com.dream.system.vo.ButtonVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 按钮表

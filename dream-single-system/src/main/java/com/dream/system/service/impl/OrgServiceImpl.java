@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.dream.basic.core.constant.ConstCore;
 import com.dream.framework.helper.TreeHelper;
 import com.dream.system.convert.OrgConvert;
 import com.dream.system.entity.OrgEntity;
@@ -23,6 +22,7 @@ import com.dream.system.vo.OrgVO;
 import com.wy.result.Result;
 import com.wy.result.ResultException;
 
+import dream.framework.core.constant.ConstCore;
 import lombok.AllArgsConstructor;
 
 /**

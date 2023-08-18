@@ -6,11 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.UserEntity;
 import com.dream.system.query.UserQuery;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 用户表

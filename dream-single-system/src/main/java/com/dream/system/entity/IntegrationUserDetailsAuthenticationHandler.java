@@ -4,11 +4,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import com.dream.basic.core.helper.SpringContextHelper;
 import com.dream.system.service.AuthService;
 import com.dream.system.vo.AccountVO;
 import com.dream.system.vo.LoginAccountVO;
 import com.wy.lang.StrTool;
+
+import dream.framework.web.helper.SpringContextHelper;
 
 @Deprecated
 public class IntegrationUserDetailsAuthenticationHandler {

@@ -2,10 +2,11 @@ package com.dream.system.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.RoleResourceEntity;
 import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.vo.RoleResourceVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 角色-权限关系

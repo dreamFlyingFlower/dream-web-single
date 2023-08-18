@@ -11,9 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
-import com.dream.basic.core.helper.WebHelper;
 import com.wy.enums.TipEnum;
 import com.wy.result.Result;
+
+import dream.framework.web.helper.WebHelper;
 
 /**
  * Security登录失败

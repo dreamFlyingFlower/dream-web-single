@@ -27,8 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson2.JSON;
-import com.dream.basic.core.helper.IpHelper;
-import com.dream.basic.core.helper.WebHelper;
 import com.dream.system.entity.OperateLog;
 import com.dream.system.filter.PropertyPreExcludeFilter;
 import com.dream.system.service.OperateLogService;
@@ -38,6 +36,8 @@ import com.wy.logger.BusinessType;
 import com.wy.logger.Logger;
 import com.wy.logger.OperatorType;
 
+import dream.framework.web.helper.IpHelper;
+import dream.framework.web.helper.WebHelper;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 

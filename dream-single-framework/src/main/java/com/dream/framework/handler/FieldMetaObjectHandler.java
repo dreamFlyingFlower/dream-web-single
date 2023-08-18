@@ -4,10 +4,11 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import com.dream.basic.web.handler.MyBatisPlusHandler;
-import com.dream.basic.web.properties.MyBatisPlusProperties;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
+
+import dream.framework.web.handler.MyBatisPlusHandler;
+import dream.framework.web.properties.MyBatisPlusProperties;
 
 /**
  * mybatis-plus 自动填充字段

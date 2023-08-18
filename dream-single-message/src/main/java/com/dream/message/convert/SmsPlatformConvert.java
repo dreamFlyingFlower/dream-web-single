@@ -1,15 +1,16 @@
 package com.dream.message.convert;
 
-import com.dream.basic.web.convert.BaseConvert;
-import com.dream.message.entity.SmsPlatformEntity;
-import com.dream.message.sms.config.SmsConfig;
-import com.dream.message.vo.SmsPlatformVO;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
+import com.dream.message.entity.SmsPlatformEntity;
+import com.dream.message.sms.config.SmsConfig;
+import com.dream.message.vo.SmsPlatformVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 短信平台

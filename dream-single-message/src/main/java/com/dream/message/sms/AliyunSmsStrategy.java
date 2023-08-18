@@ -6,11 +6,12 @@ import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
-import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.sms.config.SmsConfig;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
-import com.wy.third.json.JsonTools;
+
+import dream.framework.core.constant.ConstCore;
+import dream.framework.core.json.JsonHelper;
 
 /**
  * 阿里云短信
@@ -46,7 +47,7 @@ public class AliyunSmsStrategy implements SmsStrategy {
 		request.setPhoneNumbers(mobile);
 		// request.setTemplateParam("{\"code\":\"1234\"}");
 		if (MapTool.isNotEmpty(params)) {
-			request.setTemplateParam(JsonTools.toJson(params));
+			request.setTemplateParam(JsonHelper.toJson(params));
 		}
 
 		try {

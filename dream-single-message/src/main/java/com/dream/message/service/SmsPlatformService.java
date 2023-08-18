@@ -2,12 +2,13 @@ package com.dream.message.service;
 
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.message.entity.SmsPlatformEntity;
 import com.dream.message.query.SmsPlatformQuery;
 import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
 import com.wy.result.Result;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 短信平台

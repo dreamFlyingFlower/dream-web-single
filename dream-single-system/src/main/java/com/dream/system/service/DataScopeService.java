@@ -3,10 +3,11 @@ package com.dream.system.service;
 import java.io.Serializable;
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.DataScopeEntity;
 import com.dream.system.query.DataScopeQuery;
 import com.dream.system.vo.DataScopeVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 角色数据权限

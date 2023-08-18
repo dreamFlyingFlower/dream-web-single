@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.entity.UserEntity;
@@ -21,6 +20,7 @@ import com.dream.system.vo.UserPasswordVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
 
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

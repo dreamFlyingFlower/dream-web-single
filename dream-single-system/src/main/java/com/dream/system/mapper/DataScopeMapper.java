@@ -5,10 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.DataScopeEntity;
 import com.dream.system.query.DataScopeQuery;
 import com.dream.system.vo.DataScopeVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 角色数据权限

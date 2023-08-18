@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.core.constant.ConstCore;
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.system.convert.OrgConvert;
 import com.dream.system.entity.OrgEntity;
 import com.dream.system.query.OrgQuery;
@@ -14,6 +12,8 @@ import com.dream.system.service.OrgService;
 import com.dream.system.vo.OrgVO;
 import com.wy.result.Result;
 
+import dream.framework.core.constant.ConstCore;
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

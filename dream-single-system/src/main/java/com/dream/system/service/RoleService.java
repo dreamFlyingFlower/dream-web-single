@@ -1,10 +1,11 @@
 package com.dream.system.service;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.RoleEntity;
 import com.dream.system.query.RoleQuery;
 import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 角色信息

@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
-import com.dream.basic.web.valid.ValidEdit;
-
+import dream.framework.web.valid.ValidEdit;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

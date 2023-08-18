@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dream.basic.web.controller.BaseController;
 import com.dream.system.vo.FileUploadVO;
 import com.wy.result.Result;
 
 import dream.flying.flower.storage.StorageManager;
 import dream.flying.flower.storage.properties.StorageProperties;
+import dream.framework.web.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

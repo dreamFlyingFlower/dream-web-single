@@ -5,8 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dream.basic.web.entity.node.AbstractNode;
 import com.wy.lang.AssertTool;
+
+import dream.framework.web.entity.node.AbstractNode;
 
 /**
  * 树形结构工具类

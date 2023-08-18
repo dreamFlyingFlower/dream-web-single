@@ -1,7 +1,6 @@
 package com.dream.system.query;
 
-import com.dream.basic.web.query.AbstractQuery;
-
+import dream.framework.web.query.AbstractQuery;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

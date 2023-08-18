@@ -2,11 +2,12 @@ package com.dream.system.service;
 
 import java.util.List;
 
-import com.dream.basic.web.service.BaseService;
 import com.dream.system.entity.DictEntity;
 import com.dream.system.query.DictQuery;
 import com.dream.system.vo.DictItemVO;
 import com.dream.system.vo.DictVO;
+
+import dream.framework.web.service.BaseService;
 
 /**
  * 

@@ -27,9 +27,9 @@ import com.dream.message.sms.config.SmsConfig;
 import com.wy.ConstLang;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
-import com.wy.third.json.JsonTools;
 
 import cn.hutool.core.io.IoUtil;
+import dream.framework.core.json.JsonHelper;
 import lombok.Data;
 
 /**
@@ -57,7 +57,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 		// 有参数则设置
 		String templateParas = null;
 		if (MapTool.isNotEmpty(params)) {
-			templateParas = JsonTools.toJson(params.values().toArray(new String[0]));
+			templateParas = JsonHelper.toJson(params.values().toArray(new String[0]));
 		}
 
 		// 请求Body,不携带签名名称时,signature请填null
@@ -97,7 +97,7 @@ public class HuaweiSmsStrategy implements SmsStrategy {
 			int status = connection.getResponseCode();
 			if (status == HttpStatus.OK.value()) {
 				String response = IoUtil.read(connection.getInputStream(), ConstLang.DEFAULT_CHARSET);
-				HuaweiSmsResult result = JsonTools.parse(response, HuaweiSmsResult.class);
+				HuaweiSmsResult result = JsonHelper.read(response, HuaweiSmsResult.class);
 
 				// 短信是否发送成功
 				assert result != null;

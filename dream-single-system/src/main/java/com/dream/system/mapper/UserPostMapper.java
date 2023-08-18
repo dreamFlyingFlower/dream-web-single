@@ -6,10 +6,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.UserPostEntity;
 import com.dream.system.query.UserPostQuery;
 import com.dream.system.vo.UserPostVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 用户岗位关系

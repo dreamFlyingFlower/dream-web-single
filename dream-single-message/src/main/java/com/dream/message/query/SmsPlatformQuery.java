@@ -1,7 +1,6 @@
 package com.dream.message.query;
 
-import com.dream.basic.web.query.AbstractQuery;
-
+import dream.framework.web.query.AbstractQuery;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -38,7 +38,7 @@
 		</dependency>
 		<dependency>
 			<groupId>dream.flying.flower</groupId>
-			<artifactId>dream-basic-web</artifactId>
+			<artifactId>dream-framework-web</artifactId>
 		</dependency>
 	</dependencies>
 

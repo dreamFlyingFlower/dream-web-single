@@ -10,8 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
-import com.dream.basic.core.helper.WebHelper;
 import com.wy.result.Result;
+
+import dream.framework.web.helper.WebHelper;
 
 /**
  * 登出成功

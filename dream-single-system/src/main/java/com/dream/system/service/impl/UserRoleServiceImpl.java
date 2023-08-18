@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.UserRoleConvert;
 import com.dream.system.entity.UserRoleEntity;
 import com.dream.system.mapper.UserRoleMapper;
@@ -16,6 +15,8 @@ import com.dream.system.query.UserRoleQuery;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.UserRoleVO;
 import com.wy.collection.ListTool;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 账号-角色关系Service

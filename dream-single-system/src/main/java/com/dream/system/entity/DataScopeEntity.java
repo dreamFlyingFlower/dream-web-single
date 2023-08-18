@@ -1,8 +1,8 @@
 package com.dream.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.dream.basic.web.entity.AbstractEntity;
 
+import dream.framework.web.entity.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -2,13 +2,14 @@ package com.dream.system.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.ButtonConvert;
 import com.dream.system.entity.ButtonEntity;
 import com.dream.system.mapper.ButtonMapper;
 import com.dream.system.query.ButtonQuery;
 import com.dream.system.service.ButtonService;
 import com.dream.system.vo.ButtonVO;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 按钮表Service

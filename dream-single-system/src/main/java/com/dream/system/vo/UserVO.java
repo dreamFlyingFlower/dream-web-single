@@ -11,12 +11,12 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
-import com.dream.basic.web.valid.ValidEdit;
 import com.dream.system.entity.OrgEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
 
+import dream.framework.web.valid.ValidEdit;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.AllArgsConstructor;

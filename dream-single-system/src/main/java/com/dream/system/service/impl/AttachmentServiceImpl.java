@@ -2,7 +2,6 @@ package com.dream.system.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.AttachmentConvert;
 import com.dream.system.entity.AttachmentEntity;
 import com.dream.system.mapper.AttachmentMapper;
@@ -10,6 +9,7 @@ import com.dream.system.query.AttachmentQuery;
 import com.dream.system.service.AttachmentService;
 import com.dream.system.vo.AttachmentVO;
 
+import dream.framework.web.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

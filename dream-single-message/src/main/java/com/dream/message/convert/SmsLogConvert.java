@@ -3,9 +3,10 @@ package com.dream.message.convert;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.vo.SmsLogVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 短信日志

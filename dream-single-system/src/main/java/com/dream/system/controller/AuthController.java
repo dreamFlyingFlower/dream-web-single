@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.web.controller.BaseController;
 import com.dream.framework.helper.TokenHelper;
 import com.dream.system.service.AuthService;
 import com.dream.system.service.CaptchaService;
@@ -18,6 +17,7 @@ import com.dream.system.vo.MobileLoginVO;
 import com.dream.system.vo.TokenVO;
 import com.wy.result.Result;
 
+import dream.framework.web.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

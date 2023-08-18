@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dream.basic.web.controller.AbstractController;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
 import com.dream.system.convert.RoleConvert;
@@ -32,6 +31,7 @@ import com.dream.system.vo.RoleVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
 
+import dream.framework.web.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

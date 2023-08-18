@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.core.constant.ConstCore;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.service.SmsLogService;
@@ -15,8 +14,9 @@ import com.dream.message.sms.SmsContext;
 import com.dream.message.sms.config.SmsConfig;
 import com.wy.collection.MapTool;
 import com.wy.result.ResultException;
-import com.wy.third.json.JsonTools;
 
+import dream.framework.core.constant.ConstCore;
+import dream.framework.core.json.JsonHelper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -77,7 +77,7 @@ public class SmsService {
 		logEntity.setPlatform(config.getPlatform());
 		logEntity.setPlatformId(config.getId());
 		logEntity.setMobile(mobile);
-		logEntity.setParams(JsonTools.toJson(params));
+		logEntity.setParams(JsonHelper.toJson(params));
 
 		if (e != null) {
 			String error = StringUtils.substring(e.getMessage(), 0, 2000);

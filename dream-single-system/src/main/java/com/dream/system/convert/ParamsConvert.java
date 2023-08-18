@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import com.dream.basic.web.convert.BaseConvert;
 import com.dream.system.entity.ParamsEntity;
 import com.dream.system.vo.ParamsVO;
+
+import dream.framework.web.convert.BaseConvert;
 
 /**
  * 参数管理数据库实体与DTO互转

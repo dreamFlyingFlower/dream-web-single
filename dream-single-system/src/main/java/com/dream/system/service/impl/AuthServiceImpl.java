@@ -6,7 +6,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.dream.basic.core.constant.ConstCore;
 import com.dream.framework.cache.TokenStoreCache;
 import com.dream.framework.enums.LoginOperationEnum;
 import com.dream.framework.helper.TokenHelper;
@@ -24,6 +23,7 @@ import com.dream.system.vo.UserVO;
 import com.wy.result.ResultException;
 import com.wy.util.RandomTool;
 
+import dream.framework.core.constant.ConstCore;
 import lombok.AllArgsConstructor;
 
 /**

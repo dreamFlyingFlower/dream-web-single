@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.system.convert.UserPostConvert;
 import com.dream.system.entity.UserPostEntity;
 import com.dream.system.mapper.UserPostMapper;
@@ -16,6 +15,8 @@ import com.dream.system.query.UserPostQuery;
 import com.dream.system.service.UserPostService;
 import com.dream.system.vo.UserPostVO;
 import com.wy.collection.ListTool;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 用户岗位关系

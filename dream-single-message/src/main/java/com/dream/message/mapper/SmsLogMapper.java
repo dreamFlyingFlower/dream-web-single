@@ -2,10 +2,11 @@ package com.dream.message.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.query.SmsLogQuery;
 import com.dream.message.vo.SmsLogVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 短信日志

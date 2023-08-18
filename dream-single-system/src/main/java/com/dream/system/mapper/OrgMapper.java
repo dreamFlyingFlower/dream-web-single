@@ -5,10 +5,11 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dream.basic.web.mapper.BaseMappers;
 import com.dream.system.entity.OrgEntity;
 import com.dream.system.query.OrgQuery;
 import com.dream.system.vo.OrgVO;
+
+import dream.framework.web.mapper.BaseMappers;
 
 /**
  * 组织机构表

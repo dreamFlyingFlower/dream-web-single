@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.dream.basic.web.service.impl.AbstractServiceImpl;
 import com.dream.message.convert.SmsLogConvert;
 import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.mapper.SmsLogMapper;
@@ -15,6 +14,8 @@ import com.dream.message.query.SmsLogQuery;
 import com.dream.message.service.SmsLogService;
 import com.dream.message.vo.SmsLogVO;
 import com.wy.result.Result;
+
+import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 短信日志
