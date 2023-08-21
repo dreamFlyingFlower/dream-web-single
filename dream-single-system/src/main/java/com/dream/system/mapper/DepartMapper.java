@@ -6,7 +6,7 @@ import com.dream.system.entity.DepartEntity;
 import com.dream.system.query.DepartQuery;
 import com.dream.system.vo.DepartVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 部门表

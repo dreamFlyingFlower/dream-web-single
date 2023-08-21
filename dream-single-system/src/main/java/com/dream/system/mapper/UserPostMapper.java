@@ -10,7 +10,7 @@ import com.dream.system.entity.UserPostEntity;
 import com.dream.system.query.UserPostQuery;
 import com.dream.system.vo.UserPostVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 用户岗位关系

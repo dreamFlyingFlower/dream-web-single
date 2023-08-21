@@ -4,7 +4,7 @@ import com.dream.system.entity.RoleResourceEntity;
 import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.vo.RoleResourceVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 角色-权限关系
@@ -13,6 +13,6 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface RoleResourceService extends BaseService<RoleResourceEntity, RoleResourceVO, RoleResourceQuery> {
+public interface RoleResourceService extends BaseServices<RoleResourceEntity, RoleResourceVO, RoleResourceQuery> {
 
 }

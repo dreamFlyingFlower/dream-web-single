@@ -11,7 +11,7 @@ import com.dream.system.query.UserQuery;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 用户表

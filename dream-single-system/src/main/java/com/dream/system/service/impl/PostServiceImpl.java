@@ -14,7 +14,7 @@ import com.dream.system.service.PostService;
 import com.dream.system.service.UserPostService;
 import com.dream.system.vo.PostVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 岗位管理

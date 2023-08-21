@@ -8,7 +8,7 @@ import com.dream.system.query.UserRoleQuery;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.UserRoleVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "用户角色API")
 @RestController
 @RequestMapping("sys/userRole")
-public class UserRoleController extends AbstractController<UserRoleEntity, UserRoleVO, UserRoleQuery, UserRoleService> {
+public class UserRoleController
+		extends MyBatisPlusController<UserRoleEntity, UserRoleVO, UserRoleQuery, UserRoleService> {
 
 }

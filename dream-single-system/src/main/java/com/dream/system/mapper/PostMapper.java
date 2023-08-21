@@ -9,7 +9,7 @@ import com.dream.system.entity.PostEntity;
 import com.dream.system.query.PostQuery;
 import com.dream.system.vo.PostVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 岗位管理

@@ -7,7 +7,7 @@ import com.dream.system.entity.RoleEntity;
 import com.dream.system.query.RoleQuery;
 import com.dream.system.vo.RoleVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 角色信息

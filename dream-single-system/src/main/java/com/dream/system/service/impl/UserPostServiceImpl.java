@@ -16,7 +16,7 @@ import com.dream.system.service.UserPostService;
 import com.dream.system.vo.UserPostVO;
 import com.wy.collection.ListTool;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 用户岗位关系

@@ -6,7 +6,7 @@ import com.dream.system.entity.LogLoginEntity;
 import com.dream.system.query.LogLoginQuery;
 import com.dream.system.vo.LogLoginVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 登录日志

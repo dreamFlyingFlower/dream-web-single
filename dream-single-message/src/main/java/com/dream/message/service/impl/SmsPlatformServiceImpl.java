@@ -21,7 +21,7 @@ import com.wy.lang.StrTool;
 import com.wy.result.Result;
 
 import dream.framework.core.constant.ConstCore;
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 短信平台

@@ -6,7 +6,7 @@ import com.dream.system.entity.AttachmentEntity;
 import com.dream.system.query.AttachmentQuery;
 import com.dream.system.vo.AttachmentVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 @Mapper
 public interface AttachmentMapper extends BaseMappers<AttachmentEntity, AttachmentVO, AttachmentQuery> {

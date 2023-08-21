@@ -8,7 +8,7 @@ import com.dream.system.query.PostQuery;
 import com.dream.system.service.PostService;
 import com.dream.system.vo.PostVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("sys/post")
 @Tag(name = "岗位管理API")
-public class PostController extends AbstractController<PostEntity, PostVO, PostQuery, PostService> {
+public class PostController extends MyBatisPlusController<PostEntity, PostVO, PostQuery, PostService> {
 
 }

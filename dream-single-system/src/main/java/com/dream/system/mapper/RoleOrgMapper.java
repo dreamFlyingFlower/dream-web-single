@@ -9,7 +9,7 @@ import com.dream.system.entity.RoleOrgEntity;
 import com.dream.system.query.RoleOrgQuery;
 import com.dream.system.vo.RoleOrgVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 角色数据权限

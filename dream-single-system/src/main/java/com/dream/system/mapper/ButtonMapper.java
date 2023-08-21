@@ -6,7 +6,7 @@ import com.dream.system.entity.ButtonEntity;
 import com.dream.system.query.ButtonQuery;
 import com.dream.system.vo.ButtonVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 按钮表

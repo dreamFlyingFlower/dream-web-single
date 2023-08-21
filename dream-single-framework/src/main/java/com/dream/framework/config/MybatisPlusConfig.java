@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 
-import dream.framework.web.interceptor.DataScopeInnerInterceptor;
+import dream.framework.mybatis.plus.interceptor.DataScopeInnerInterceptor;
 
 @Configuration
 public class MybatisPlusConfig {

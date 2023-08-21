@@ -8,7 +8,7 @@ import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.service.RoleResourceService;
 import com.dream.system.vo.RoleResourceVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -22,6 +22,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("roleResource")
 public class RoleResourceController
-		extends AbstractController<RoleResourceEntity, RoleResourceVO, RoleResourceQuery, RoleResourceService> {
+		extends MyBatisPlusController<RoleResourceEntity, RoleResourceVO, RoleResourceQuery, RoleResourceService> {
 
 }

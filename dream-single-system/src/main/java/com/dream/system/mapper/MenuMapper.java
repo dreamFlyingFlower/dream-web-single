@@ -9,7 +9,7 @@ import com.dream.system.entity.MenuEntity;
 import com.dream.system.query.MenuQuery;
 import com.dream.system.vo.MenuVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 菜单表

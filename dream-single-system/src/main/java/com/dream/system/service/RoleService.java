@@ -5,7 +5,7 @@ import com.dream.system.query.RoleQuery;
 import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 角色信息
@@ -14,7 +14,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface RoleService extends BaseService<RoleEntity, RoleVO, RoleQuery> {
+public interface RoleService extends BaseServices<RoleEntity, RoleVO, RoleQuery> {
 
 	void dataScope(DataScopeVO query);
 }

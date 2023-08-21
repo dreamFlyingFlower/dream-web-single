@@ -9,7 +9,7 @@ import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.service.RoleResourceService;
 import com.dream.system.vo.RoleResourceVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 角色-资源关系Service

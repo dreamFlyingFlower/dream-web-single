@@ -43,7 +43,7 @@ import com.wy.result.ResultException;
 import dream.framework.core.constant.ConstCore;
 import dream.framework.core.enums.ResourceType;
 import dream.framework.core.json.FastjsonHelper;
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

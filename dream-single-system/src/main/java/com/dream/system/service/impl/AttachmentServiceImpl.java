@@ -9,7 +9,7 @@ import com.dream.system.query.AttachmentQuery;
 import com.dream.system.service.AttachmentService;
 import com.dream.system.vo.AttachmentVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

@@ -4,7 +4,7 @@ import com.dream.system.entity.DepartEntity;
 import com.dream.system.query.DepartQuery;
 import com.dream.system.vo.DepartVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 部门表
@@ -13,6 +13,6 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface DepartService extends BaseService<DepartEntity, DepartVO, DepartQuery> {
+public interface DepartService extends BaseServices<DepartEntity, DepartVO, DepartQuery> {
 
 }

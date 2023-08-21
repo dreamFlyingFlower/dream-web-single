@@ -6,7 +6,7 @@ import com.dream.message.entity.SmsPlatformEntity;
 import com.dream.message.query.SmsPlatformQuery;
 import com.dream.message.vo.SmsPlatformVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 短信平台

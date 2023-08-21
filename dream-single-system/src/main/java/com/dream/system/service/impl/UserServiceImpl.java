@@ -34,7 +34,7 @@ import com.wy.result.ResultException;
 import com.wy.util.DateTimeTool;
 
 import dream.framework.core.constant.ConstCore;
-import dream.framework.web.excel.ExcelFinishCallBack;
+import dream.framework.web.easyexcel.ExcelFinishCallBack;
 import dream.framework.web.helper.EasyExcelHelper;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;

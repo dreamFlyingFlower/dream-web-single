@@ -2,7 +2,7 @@ package com.dream.message.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import dream.framework.web.entity.AbstractEntity;
+import dream.framework.mybatis.plus.entity.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

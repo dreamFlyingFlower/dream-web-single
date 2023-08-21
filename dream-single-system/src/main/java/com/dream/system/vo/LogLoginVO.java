@@ -5,13 +5,13 @@ import java.util.Date;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.dream.framework.excel.DateConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
 import com.fhs.core.trans.vo.TransPojo;
 import com.wy.ConstDate;
 
+import dream.framework.web.easyexcel.DateConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

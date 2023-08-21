@@ -7,7 +7,7 @@ import com.dream.system.entity.DataScopeEntity;
 import com.dream.system.query.DataScopeQuery;
 import com.dream.system.vo.DataScopeVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 角色数据权限
@@ -16,7 +16,7 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-08 14:17:39
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface DataScopeService extends BaseService<DataScopeEntity, DataScopeVO, DataScopeQuery> {
+public interface DataScopeService extends BaseServices<DataScopeEntity, DataScopeVO, DataScopeQuery> {
 
 	/**
 	 * 保存或修改

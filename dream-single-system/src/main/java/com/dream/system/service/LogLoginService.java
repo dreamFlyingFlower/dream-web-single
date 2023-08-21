@@ -4,7 +4,7 @@ import com.dream.system.entity.LogLoginEntity;
 import com.dream.system.query.LogLoginQuery;
 import com.dream.system.vo.LogLoginVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 登录日志
@@ -13,7 +13,7 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-08 13:35:46
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface LogLoginService extends BaseService<LogLoginEntity, LogLoginVO, LogLoginQuery> {
+public interface LogLoginService extends BaseServices<LogLoginEntity, LogLoginVO, LogLoginQuery> {
 
 	/**
 	 * 保存登录日志

@@ -6,7 +6,7 @@ import com.dream.message.entity.SmsLogEntity;
 import com.dream.message.query.SmsLogQuery;
 import com.dream.message.vo.SmsLogVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 短信日志

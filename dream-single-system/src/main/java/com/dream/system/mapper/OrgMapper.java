@@ -9,7 +9,7 @@ import com.dream.system.entity.OrgEntity;
 import com.dream.system.query.OrgQuery;
 import com.dream.system.vo.OrgVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 组织机构表

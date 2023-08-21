@@ -8,7 +8,7 @@ import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
 import com.wy.result.Result;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 短信平台
@@ -17,7 +17,7 @@ import dream.framework.web.service.BaseService;
  * @date 2023-07-11 00:16:01
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface SmsPlatformService extends BaseService<SmsPlatformEntity, SmsPlatformVO, SmsPlatformQuery> {
+public interface SmsPlatformService extends BaseServices<SmsPlatformEntity, SmsPlatformVO, SmsPlatformQuery> {
 
 	Result<List<SmsPlatformVO>> page(SmsPlatformQuery query);
 

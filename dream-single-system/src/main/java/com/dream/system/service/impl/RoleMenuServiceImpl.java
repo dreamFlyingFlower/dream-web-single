@@ -17,7 +17,7 @@ import com.dream.system.service.RoleMenuService;
 import com.dream.system.vo.RoleMenuVO;
 import com.wy.collection.ListTool;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 角色与菜单对应关系

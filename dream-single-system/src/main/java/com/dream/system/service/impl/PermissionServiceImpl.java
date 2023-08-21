@@ -11,7 +11,7 @@ import com.dream.system.query.PermissionQuery;
 import com.dream.system.service.PermissionService;
 import com.dream.system.vo.PermissionVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 权限Service

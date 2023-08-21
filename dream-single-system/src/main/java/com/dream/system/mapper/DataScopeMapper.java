@@ -9,7 +9,7 @@ import com.dream.system.entity.DataScopeEntity;
 import com.dream.system.query.DataScopeQuery;
 import com.dream.system.vo.DataScopeVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 角色数据权限

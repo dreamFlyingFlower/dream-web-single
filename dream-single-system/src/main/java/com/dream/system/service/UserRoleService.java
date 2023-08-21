@@ -7,7 +7,7 @@ import com.dream.system.entity.UserRoleEntity;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserRoleVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 账号-角色关系
@@ -16,7 +16,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface UserRoleService extends BaseService<UserRoleEntity, UserRoleVO, UserRoleQuery> {
+public interface UserRoleService extends BaseServices<UserRoleEntity, UserRoleVO, UserRoleQuery> {
 
 	/**
 	 * 保存或修改

@@ -8,7 +8,7 @@ import com.dream.system.query.DictItemQuery;
 import com.dream.system.service.DictItemService;
 import com.dream.system.vo.DictItemVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "字典详情API")
 @RestController
 @RequestMapping("sys/dictItem")
-public class DictItemController extends AbstractController<DictItemEntity, DictItemVO, DictItemQuery, DictItemService> {
+public class DictItemController
+		extends MyBatisPlusController<DictItemEntity, DictItemVO, DictItemQuery, DictItemService> {
 
 }

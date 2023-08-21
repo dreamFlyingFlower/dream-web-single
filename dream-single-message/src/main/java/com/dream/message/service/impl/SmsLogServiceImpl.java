@@ -15,7 +15,7 @@ import com.dream.message.service.SmsLogService;
 import com.dream.message.vo.SmsLogVO;
 import com.wy.result.Result;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 短信日志

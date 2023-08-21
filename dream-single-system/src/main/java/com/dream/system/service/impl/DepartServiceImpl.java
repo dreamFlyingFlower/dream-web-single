@@ -9,7 +9,7 @@ import com.dream.system.query.DepartQuery;
 import com.dream.system.service.DepartService;
 import com.dream.system.vo.DepartVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 部门表Service

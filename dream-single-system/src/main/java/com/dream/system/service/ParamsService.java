@@ -5,14 +5,16 @@ import com.dream.system.query.ParamsQuery;
 import com.dream.system.vo.ParamsVO;
 
 import dream.framework.core.json.JsonHelper;
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 参数管理
- *
- * @author
+ * 
+ * @author 飞花梦影
+ * @date 2023-08-21 17:00:42
+ * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface ParamsService extends BaseService<ParamsEntity, ParamsVO, ParamsQuery> {
+public interface ParamsService extends BaseServices<ParamsEntity, ParamsVO, ParamsQuery> {
 
 	/**
 	 * 根据paramKey,获取字符串值

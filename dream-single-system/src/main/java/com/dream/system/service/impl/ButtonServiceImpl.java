@@ -9,7 +9,7 @@ import com.dream.system.query.ButtonQuery;
 import com.dream.system.service.ButtonService;
 import com.dream.system.vo.ButtonVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 按钮表Service

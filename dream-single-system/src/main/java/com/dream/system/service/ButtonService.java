@@ -4,7 +4,7 @@ import com.dream.system.entity.ButtonEntity;
 import com.dream.system.query.ButtonQuery;
 import com.dream.system.vo.ButtonVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 按钮表
@@ -13,6 +13,6 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface ButtonService extends BaseService<ButtonEntity, ButtonVO, ButtonQuery> {
+public interface ButtonService extends BaseServices<ButtonEntity, ButtonVO, ButtonQuery> {
 
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
 
-import dream.framework.web.handler.MyBatisPlusHandler;
-import dream.framework.web.properties.MyBatisPlusProperties;
+import dream.framework.mybatis.plus.handler.MyBatisPlusHandler;
+import dream.framework.mybatis.plus.properties.MyBatisPlusProperties;
 
 /**
  * mybatis-plus 自动填充字段

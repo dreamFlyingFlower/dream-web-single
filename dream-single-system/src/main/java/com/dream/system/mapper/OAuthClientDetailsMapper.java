@@ -6,7 +6,7 @@ import com.dream.system.oauth.entity.OAuthClientDetails;
 import com.dream.system.oauth.entity.OAuthClientDetailsVO;
 import com.dream.system.query.OAuthClientDetailsQuery;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * OAuth详情表

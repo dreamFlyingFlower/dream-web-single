@@ -6,7 +6,7 @@ import com.dream.system.entity.DictEntity;
 import com.dream.system.query.DictQuery;
 import com.dream.system.vo.DictVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 字典

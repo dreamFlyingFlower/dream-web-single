@@ -4,7 +4,7 @@ import com.dream.system.entity.PostEntity;
 import com.dream.system.query.PostQuery;
 import com.dream.system.vo.PostVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 岗位管理
@@ -13,6 +13,6 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-07 17:10:06
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface PostService extends BaseService<PostEntity, PostVO, PostQuery> {
+public interface PostService extends BaseServices<PostEntity, PostVO, PostQuery> {
 
 }

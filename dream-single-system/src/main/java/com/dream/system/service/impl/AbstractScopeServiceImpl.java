@@ -9,11 +9,11 @@ import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
 
 import dream.framework.core.constant.ConstCore;
+import dream.framework.mybatis.plus.interceptor.DataScope;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 import dream.framework.web.convert.BaseConvert;
-import dream.framework.web.interceptor.DataScope;
-import dream.framework.web.mapper.BaseMappers;
 import dream.framework.web.query.AbstractQuery;
-import dream.framework.web.service.impl.AbstractServiceImpl;
 
 /**
  * 通用业务实现类

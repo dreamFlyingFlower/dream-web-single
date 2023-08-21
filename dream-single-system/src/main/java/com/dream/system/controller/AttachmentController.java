@@ -8,7 +8,7 @@ import com.dream.system.query.AttachmentQuery;
 import com.dream.system.service.AttachmentService;
 import com.dream.system.vo.AttachmentVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -22,6 +22,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping("sys/attachment")
 @Tag(name = "附件管理API")
 public class AttachmentController
-		extends AbstractController<AttachmentEntity, AttachmentVO, AttachmentQuery, AttachmentService> {
+		extends MyBatisPlusController<AttachmentEntity, AttachmentVO, AttachmentQuery, AttachmentService> {
 
 }

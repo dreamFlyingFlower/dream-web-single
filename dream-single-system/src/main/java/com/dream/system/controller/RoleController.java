@@ -19,19 +19,19 @@ import com.dream.system.convert.RoleConvert;
 import com.dream.system.entity.RoleEntity;
 import com.dream.system.query.RoleQuery;
 import com.dream.system.query.UserRoleQuery;
-import com.dream.system.service.MenuService;
 import com.dream.system.service.DataScopeService;
+import com.dream.system.service.MenuService;
 import com.dream.system.service.RoleMenuService;
 import com.dream.system.service.RoleService;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.service.UserService;
-import com.dream.system.vo.MenuVO;
 import com.dream.system.vo.DataScopeVO;
+import com.dream.system.vo.MenuVO;
 import com.dream.system.vo.RoleVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -47,7 +47,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("sys/role")
 @AllArgsConstructor
-public class RoleController extends AbstractController<RoleEntity, RoleVO, RoleQuery, RoleService> {
+public class RoleController extends MyBatisPlusController<RoleEntity, RoleVO, RoleQuery, RoleService> {
 
 	private final UserService userService;
 

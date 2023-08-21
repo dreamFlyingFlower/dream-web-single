@@ -21,7 +21,7 @@ import com.dream.system.vo.MenuVO;
 import com.wy.result.Result;
 
 import dream.framework.core.constant.ConstCore;
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "菜单管理API")
 @RestController
 @RequestMapping("sys/menu")
-public class MenuController extends AbstractController<MenuEntity, MenuVO, MenuQuery, MenuService> {
+public class MenuController extends MyBatisPlusController<MenuEntity, MenuVO, MenuQuery, MenuService> {
 
 	@GetMapping("nav")
 	@Operation(summary = "菜单导航")

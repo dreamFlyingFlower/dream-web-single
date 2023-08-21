@@ -6,7 +6,7 @@ import com.dream.system.entity.PermissionEntity;
 import com.dream.system.query.PermissionQuery;
 import com.dream.system.vo.PermissionVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 权限
@@ -15,7 +15,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface PermissionService extends BaseService<PermissionEntity, PermissionVO, PermissionQuery> {
+public interface PermissionService extends BaseServices<PermissionEntity, PermissionVO, PermissionQuery> {
 
 	List<PermissionEntity> getPermissionsByUserId(Long userId);
 }

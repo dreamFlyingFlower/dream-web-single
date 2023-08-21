@@ -7,7 +7,7 @@ import com.dream.system.query.DictQuery;
 import com.dream.system.vo.DictItemVO;
 import com.dream.system.vo.DictVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 
@@ -16,7 +16,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface DictService extends BaseService<DictEntity, DictVO, DictQuery> {
+public interface DictService extends BaseServices<DictEntity, DictVO, DictQuery> {
 
 	/**
 	 * 获取动态SQL数据

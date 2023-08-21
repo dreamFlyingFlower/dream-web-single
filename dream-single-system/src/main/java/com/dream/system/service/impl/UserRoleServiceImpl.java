@@ -16,7 +16,7 @@ import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.UserRoleVO;
 import com.wy.collection.ListTool;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 账号-角色关系Service

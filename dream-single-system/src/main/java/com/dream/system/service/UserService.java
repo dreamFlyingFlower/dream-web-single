@@ -11,7 +11,7 @@ import com.dream.system.vo.UserPasswordVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 用户表
@@ -20,7 +20,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface UserService extends BaseService<UserEntity, UserVO, UserQuery> {
+public interface UserService extends BaseServices<UserEntity, UserVO, UserQuery> {
 
 	UserVO getByMobile(String mobile);
 

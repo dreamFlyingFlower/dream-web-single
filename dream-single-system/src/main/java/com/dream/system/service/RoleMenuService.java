@@ -7,7 +7,7 @@ import com.dream.system.entity.RoleMenuEntity;
 import com.dream.system.query.RoleMenuQuery;
 import com.dream.system.vo.RoleMenuVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 角色与菜单对应关系
@@ -16,7 +16,7 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-08 14:18:28
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface RoleMenuService extends BaseService<RoleMenuEntity, RoleMenuVO, RoleMenuQuery> {
+public interface RoleMenuService extends BaseServices<RoleMenuEntity, RoleMenuVO, RoleMenuQuery> {
 
 	/**
 	 * 根据角色ID，获取菜单ID列表

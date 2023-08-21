@@ -10,7 +10,7 @@ import com.dream.system.entity.UserRoleEntity;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.vo.UserRoleVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 账号-角色关系

@@ -7,7 +7,7 @@ import com.dream.system.entity.ParamsEntity;
 import com.dream.system.query.ParamsQuery;
 import com.dream.system.vo.ParamsVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 参数管理

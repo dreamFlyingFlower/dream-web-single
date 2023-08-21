@@ -17,7 +17,7 @@ import com.dream.system.service.DataScopeService;
 import com.dream.system.vo.DataScopeVO;
 import com.wy.collection.ListTool;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 角色数据权限

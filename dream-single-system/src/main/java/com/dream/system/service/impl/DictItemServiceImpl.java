@@ -9,7 +9,7 @@ import com.dream.system.query.DictItemQuery;
 import com.dream.system.service.DictItemService;
 import com.dream.system.vo.DictItemVO;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
 /**
  * 字典项Service

@@ -8,7 +8,7 @@ import com.dream.system.query.DepartQuery;
 import com.dream.system.service.DepartService;
 import com.dream.system.vo.DepartVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "部门API")
 @RestController
 @RequestMapping("sys/depart")
-public class DepartController extends AbstractController<DepartEntity, DepartVO, DepartQuery, DepartService> {
+public class DepartController extends MyBatisPlusController<DepartEntity, DepartVO, DepartQuery, DepartService> {
 
 }

@@ -7,7 +7,7 @@ import com.dream.system.entity.UserPostEntity;
 import com.dream.system.query.UserPostQuery;
 import com.dream.system.vo.UserPostVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 用户岗位关系
@@ -16,7 +16,7 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-07 17:24:14
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface UserPostService extends BaseService<UserPostEntity, UserPostVO, UserPostQuery> {
+public interface UserPostService extends BaseServices<UserPostEntity, UserPostVO, UserPostQuery> {
 
 	/**
 	 * 保存或修改

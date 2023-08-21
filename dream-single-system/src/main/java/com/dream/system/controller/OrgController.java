@@ -13,7 +13,7 @@ import com.dream.system.vo.OrgVO;
 import com.wy.result.Result;
 
 import dream.framework.core.constant.ConstCore;
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "组织机构API")
 @RestController
 @RequestMapping("sys/org")
-public class OrgController extends AbstractController<OrgEntity, OrgVO, OrgQuery, OrgService> {
+public class OrgController extends MyBatisPlusController<OrgEntity, OrgVO, OrgQuery, OrgService> {
 
 	@GetMapping("{id}")
 	@Operation(summary = "信息")

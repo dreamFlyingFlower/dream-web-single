@@ -14,7 +14,7 @@ import com.dream.system.vo.DictItemVO;
 import com.dream.system.vo.DictVO;
 import com.wy.result.Result;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "字典API")
 @RestController
 @RequestMapping("sys/dict")
-public class DictController extends AbstractController<DictEntity, DictVO, DictQuery, DictService> {
+public class DictController extends MyBatisPlusController<DictEntity, DictVO, DictQuery, DictService> {
 
 	@GetMapping("list/sql")
 	@Operation(summary = "动态SQL数据")

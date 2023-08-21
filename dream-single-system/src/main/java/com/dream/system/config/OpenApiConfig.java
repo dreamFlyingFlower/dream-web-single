@@ -13,7 +13,7 @@ import org.springframework.web.method.HandlerMethod;
 
 import com.wy.collection.ListTool;
 
-import dream.framework.web.properties.OpenApiProperties;
+import dream.flying.flower.autoconfigure.web.properties.OpenApiProperties;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;

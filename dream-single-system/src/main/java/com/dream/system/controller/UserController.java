@@ -20,7 +20,7 @@ import com.dream.system.vo.UserPasswordVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.Result;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -36,7 +36,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("sys/user")
 @AllArgsConstructor
-public class UserController extends AbstractController<UserEntity, UserVO, UserQuery, UserService> {
+public class UserController extends MyBatisPlusController<UserEntity, UserVO, UserQuery, UserService> {
 
 	@GetMapping("export")
 	@Operation(summary = "导出用户")

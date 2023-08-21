@@ -8,7 +8,7 @@ import com.dream.system.query.PermissionQuery;
 import com.dream.system.service.PermissionService;
 import com.dream.system.vo.PermissionVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -22,6 +22,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("permission")
 public class PermissionController
-		extends AbstractController<PermissionEntity, PermissionVO, PermissionQuery, PermissionService> {
+		extends MyBatisPlusController<PermissionEntity, PermissionVO, PermissionQuery, PermissionService> {
 
 }

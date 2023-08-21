@@ -8,7 +8,7 @@ import com.dream.system.query.ParamsQuery;
 import com.dream.system.service.ParamsService;
 import com.dream.system.vo.ParamsVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("sys/params")
 @Tag(name = "参数管理API")
-public class ParamsController extends AbstractController<ParamsEntity, ParamsVO, ParamsQuery, ParamsService> {
+public class ParamsController extends MyBatisPlusController<ParamsEntity, ParamsVO, ParamsQuery, ParamsService> {
 
 }

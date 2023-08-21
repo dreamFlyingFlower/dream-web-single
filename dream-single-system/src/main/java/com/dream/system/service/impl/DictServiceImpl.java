@@ -25,7 +25,7 @@ import com.dream.system.vo.DictVO;
 import com.fhs.trans.service.impl.DictionaryTransService;
 import com.wy.result.ResultException;
 
-import dream.framework.web.service.impl.AbstractServiceImpl;
+import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**

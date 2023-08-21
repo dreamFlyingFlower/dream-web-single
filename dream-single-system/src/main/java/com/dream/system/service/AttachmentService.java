@@ -4,7 +4,7 @@ import com.dream.system.entity.AttachmentEntity;
 import com.dream.system.query.AttachmentQuery;
 import com.dream.system.vo.AttachmentVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 附件管理表
@@ -13,6 +13,6 @@ import dream.framework.web.service.BaseService;
  * @date 2023-08-07 16:27:34
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
-public interface AttachmentService extends BaseService<AttachmentEntity, AttachmentVO, AttachmentQuery> {
+public interface AttachmentService extends BaseServices<AttachmentEntity, AttachmentVO, AttachmentQuery> {
 
 }

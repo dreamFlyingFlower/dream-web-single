@@ -6,7 +6,7 @@ import com.dream.system.entity.PermissionEntity;
 import com.dream.system.query.PermissionQuery;
 import com.dream.system.vo.PermissionVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 权限

@@ -6,7 +6,7 @@ import com.dream.system.entity.OrgEntity;
 import com.dream.system.query.OrgQuery;
 import com.dream.system.vo.OrgVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 组织机构表
@@ -15,7 +15,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface OrgService extends BaseService<OrgEntity, OrgVO, OrgQuery> {
+public interface OrgService extends BaseServices<OrgEntity, OrgVO, OrgQuery> {
 
 	/**
 	 * 根据机构ID,获取子机构ID列表(包含本机构ID)

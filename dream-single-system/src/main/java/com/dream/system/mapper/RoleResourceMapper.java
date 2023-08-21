@@ -6,7 +6,7 @@ import com.dream.system.entity.RoleResourceEntity;
 import com.dream.system.query.RoleResourceQuery;
 import com.dream.system.vo.RoleResourceVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 角色-权限关系

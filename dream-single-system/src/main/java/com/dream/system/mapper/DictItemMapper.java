@@ -10,7 +10,7 @@ import com.dream.system.entity.DictItemEntity;
 import com.dream.system.query.DictItemQuery;
 import com.dream.system.vo.DictItemVO;
 
-import dream.framework.web.mapper.BaseMappers;
+import dream.framework.mybatis.plus.mapper.BaseMappers;
 
 /**
  * 字典项

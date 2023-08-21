@@ -9,7 +9,7 @@ import com.dream.system.entity.MenuEntity;
 import com.dream.system.query.MenuQuery;
 import com.dream.system.vo.MenuVO;
 
-import dream.framework.web.service.BaseService;
+import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
  * 菜单表
@@ -18,7 +18,7 @@ import dream.framework.web.service.BaseService;
  * @date 2022-09-01 16:40:21
  * @git {@link https://github.com/dreamFlyingFlower}
  */
-public interface MenuService extends BaseService<MenuEntity, MenuVO, MenuQuery> {
+public interface MenuService extends BaseServices<MenuEntity, MenuVO, MenuQuery> {
 
 	Map<Long, MenuVO> getCaches(List<Long> menuIds);
 

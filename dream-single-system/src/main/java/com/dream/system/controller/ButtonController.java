@@ -8,7 +8,7 @@ import com.dream.system.query.ButtonQuery;
 import com.dream.system.service.ButtonService;
 import com.dream.system.vo.ButtonVO;
 
-import dream.framework.web.controller.AbstractController;
+import dream.framework.mybatis.plus.controller.MyBatisPlusController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
@@ -21,6 +21,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "按钮API")
 @RestController
 @RequestMapping("button")
-public class ButtonController extends AbstractController<ButtonEntity, ButtonVO, ButtonQuery, ButtonService> {
+public class ButtonController extends MyBatisPlusController<ButtonEntity, ButtonVO, ButtonQuery, ButtonService> {
 
 }
