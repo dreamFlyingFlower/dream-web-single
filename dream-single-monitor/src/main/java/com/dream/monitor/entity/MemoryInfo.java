@@ -1,6 +1,6 @@
 package com.dream.monitor.entity;
 
-import com.wy.lang.NumberTool;
+import com.wy.lang.NumberHelper;
 
 import cn.hutool.system.oshi.OshiUtil;
 import lombok.AllArgsConstructor;
@@ -42,9 +42,9 @@ public class MemoryInfo {
 
 	public MemoryInfo() {
 		GlobalMemory globalMemory = OshiUtil.getMemory();
-		this.setTotal(NumberTool.div(globalMemory.getTotal(), 1024 * 1024 * 1024).doubleValue());
-		this.setFree(NumberTool.div(globalMemory.getAvailable(), 1024 * 1024 * 1024).doubleValue());
-		this.setUsed(NumberTool.subtract(this.getTotal(), this.getFree()).doubleValue());
-		this.setUsage(NumberTool.round(NumberTool.div(this.getUsed(), this.getTotal(), 4).doubleValue() * 100, 2));
+		this.setTotal(NumberHelper.div(globalMemory.getTotal(), 1024 * 1024 * 1024).doubleValue());
+		this.setFree(NumberHelper.div(globalMemory.getAvailable(), 1024 * 1024 * 1024).doubleValue());
+		this.setUsed(NumberHelper.subtract(this.getTotal(), this.getFree()).doubleValue());
+		this.setUsage(NumberHelper.round(NumberHelper.div(this.getUsed(), this.getTotal(), 4).doubleValue() * 100, 2));
 	}
 }

@@ -4,7 +4,7 @@ import com.dream.system.entity.ParamsEntity;
 import com.dream.system.query.ParamsQuery;
 import com.dream.system.vo.ParamsVO;
 
-import dream.framework.core.json.JsonHelper;
+import dream.framework.core.json.JsonHelpers;
 import dream.framework.mybatis.plus.service.BaseServices;
 
 /**
@@ -48,6 +48,6 @@ public interface ParamsService extends BaseServices<ParamsEntity, ParamsVO, Para
 	 * @param valueType 类型
 	 */
 	default <T> T getJSONObject(String paramKey, Class<T> valueType) {
-		return JsonHelper.read(getString(paramKey), valueType);
+		return JsonHelpers.read(getString(paramKey), valueType);
 	}
 }

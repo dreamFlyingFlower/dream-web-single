@@ -3,7 +3,7 @@ package com.dream.monitor.entity;
 import java.util.Date;
 import java.util.List;
 
-import com.wy.lang.NumberTool;
+import com.wy.lang.NumberHelper;
 
 import cn.hutool.core.date.BetweenFormatter;
 import cn.hutool.core.date.DateUtil;
@@ -90,11 +90,11 @@ public class JvmInfo {
 	private List<String> inputArguments;
 
 	public JvmInfo() {
-		this.setMax(NumberTool.div(SystemUtil.getMaxMemory(), 1024 * 1024 * 1024).doubleValue());
-		this.setTotal(NumberTool.div(SystemUtil.getTotalMemory(), 1024 * 1024 * 1024).doubleValue());
-		this.setFree(NumberTool.div(SystemUtil.getFreeMemory(), 1024 * 1024 * 1024).doubleValue());
-		this.setUsed(NumberTool.round(this.getTotal() - this.getFree()));
-		this.setUsage(NumberTool.div(this.getUsed(), this.getTotal(), 4).doubleValue() * 100);
+		this.setMax(NumberHelper.div(SystemUtil.getMaxMemory(), 1024 * 1024 * 1024).doubleValue());
+		this.setTotal(NumberHelper.div(SystemUtil.getTotalMemory(), 1024 * 1024 * 1024).doubleValue());
+		this.setFree(NumberHelper.div(SystemUtil.getFreeMemory(), 1024 * 1024 * 1024).doubleValue());
+		this.setUsed(NumberHelper.round(this.getTotal() - this.getFree()));
+		this.setUsage(NumberHelper.div(this.getUsed(), this.getTotal(), 4).doubleValue() * 100);
 		this.setName(SystemUtil.getRuntimeMXBean().getVmName());
 		this.setVersion(SystemUtil.getJavaInfo().getVersion());
 		this.setVendor(SystemUtil.getJavaInfo().getVendor());

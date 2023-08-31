@@ -21,7 +21,7 @@ import com.dream.system.vo.MobileLoginVO;
 import com.dream.system.vo.TokenVO;
 import com.dream.system.vo.UserVO;
 import com.wy.result.ResultException;
-import com.wy.util.RandomTool;
+import com.wy.util.RandomHelper;
 
 import dream.framework.core.constant.ConstCore;
 import lombok.AllArgsConstructor;
@@ -107,7 +107,7 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public boolean sendCode(String mobile) {
 		// 生成6位验证码
-		String code = RandomTool.randomNumeric(6);
+		String code = RandomHelper.randomNumeric(6);
 		UserVO user = sysUserService.getByMobile(mobile);
 		if (user == null) {
 			throw new ResultException("手机号未注册");

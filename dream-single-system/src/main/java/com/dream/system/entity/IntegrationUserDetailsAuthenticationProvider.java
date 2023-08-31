@@ -9,7 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
 /**
  * 统一用户认证处理,集成了网页(简化模式、授权码模式用户登录)认证 与 password模式认证 FIXME
@@ -76,11 +76,11 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
 			throw new InternalAuthenticationServiceException("WebAuthenticationDetails type is not support");
 		}
 
-		if (StrTool.isBlank(domain)) {
+		if (StrHelper.isBlank(domain)) {
 			throw new InternalAuthenticationServiceException("domain is blank");
 		}
 
-		if (StrTool.isBlank(authenticationType)) {
+		if (StrHelper.isBlank(authenticationType)) {
 			throw new InternalAuthenticationServiceException("authenticationType is blank");
 		}
 		return authenticationHandler.authentication(domain, authenticationType, authentication);

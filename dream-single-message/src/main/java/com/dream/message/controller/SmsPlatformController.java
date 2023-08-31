@@ -27,7 +27,7 @@ import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.sms.service.SmsService;
 import com.dream.message.vo.SmsPlatformVO;
 import com.dream.message.vo.SmsSendVO;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.Result;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -82,7 +82,7 @@ public class SmsPlatformController {
 		SmsConfig config = SmsPlatformConvert.INSTANCE.convert2(entity);
 		// 短信参数
 		Map<String, String> params = new LinkedHashMap<>();
-		if (StrTool.isNotBlank(vo.getParamValue())) {
+		if (StrHelper.isNotBlank(vo.getParamValue())) {
 			params.put(vo.getParamKey(), vo.getParamValue());
 		}
 

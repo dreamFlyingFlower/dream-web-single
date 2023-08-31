@@ -10,7 +10,7 @@ import com.tencentcloudapi.sms.v20210111.SmsClient;
 import com.tencentcloudapi.sms.v20210111.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20210111.models.SendSmsResponse;
 import com.tencentcloudapi.sms.v20210111.models.SendStatus;
-import com.wy.collection.MapTool;
+import com.wy.collection.MapHelper;
 import com.wy.result.ResultException;
 
 import dream.framework.core.constant.ConstCore;
@@ -54,7 +54,7 @@ public class TencentSmsStrategy implements SmsStrategy {
 		request.setTemplateId(smsConfig.getTemplateId());
 
 		// 有参数则设置
-		if (MapTool.isNotEmpty(params)) {
+		if (MapHelper.isNotEmpty(params)) {
 			request.setTemplateParamSet(params.values().toArray(new String[0]));
 		}
 

@@ -18,7 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.dream.framework.cache.TokenStoreCache;
 import com.dream.framework.helper.TokenHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +42,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 		String accessToken = TokenHelper.getAccessToken(request);
 		log.info("@@@the request url:{}", request.getRequestURI());
 		// accessToken为空,表示未登录,直接放过由SpringSecurity抛出异常
-		if (StrTool.isBlank(accessToken)) {
+		if (StrHelper.isBlank(accessToken)) {
 			chain.doFilter(request, response);
 			return;
 		}

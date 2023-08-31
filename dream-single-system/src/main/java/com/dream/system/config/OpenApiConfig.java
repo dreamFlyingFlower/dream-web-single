@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.method.HandlerMethod;
 
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 import dream.flying.flower.autoconfigure.web.properties.OpenApiProperties;
 import io.swagger.v3.oas.models.Components;
@@ -55,7 +55,7 @@ public class OpenApiConfig implements GlobalOperationCustomizer {
 	 */
 	@Override
 	public Operation customize(Operation operation, HandlerMethod handlerMethod) {
-		if (ListTool.isEmpty(openApiProperties.getGlobalParameters())) {
+		if (ListHelper.isEmpty(openApiProperties.getGlobalParameters())) {
 			return operation;
 		}
 

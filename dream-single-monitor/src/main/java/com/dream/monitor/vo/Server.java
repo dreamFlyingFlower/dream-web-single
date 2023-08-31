@@ -7,7 +7,7 @@ import com.dream.monitor.entity.CpuInfo;
 import com.dream.monitor.entity.DiskInfo;
 import com.dream.monitor.entity.JvmInfo;
 import com.dream.monitor.entity.MemoryInfo;
-import com.wy.lang.NumberTool;
+import com.wy.lang.NumberHelper;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -89,7 +89,7 @@ public class Server {
 			disk.setTotal(convertFileSize(total));
 			disk.setFree(convertFileSize(free));
 			disk.setUsed(convertFileSize(used));
-			disk.setUsage(NumberTool.multiply(NumberTool.div(used, total, 4), 100).doubleValue());
+			disk.setUsage(NumberHelper.multiply(NumberHelper.div(used, total, 4), 100).doubleValue());
 			this.disks.add(disk);
 		}
 	}

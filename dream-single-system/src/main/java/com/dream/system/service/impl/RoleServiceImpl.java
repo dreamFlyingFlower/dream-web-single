@@ -21,7 +21,7 @@ import com.dream.system.service.RoleService;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.Result;
 
 import lombok.AllArgsConstructor;
@@ -58,7 +58,7 @@ public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO
 
 	private Wrapper<RoleEntity> getWrapper(RoleQuery query) {
 		LambdaQueryWrapper<RoleEntity> wrapper = new LambdaQueryWrapper<>();
-		wrapper.like(StrTool.isNotBlank(query.getRoleName()), RoleEntity::getRoleName, query.getRoleName());
+		wrapper.like(StrHelper.isNotBlank(query.getRoleName()), RoleEntity::getRoleName, query.getRoleName());
 
 		// 数据权限
 		dataScopeWrapper(wrapper);

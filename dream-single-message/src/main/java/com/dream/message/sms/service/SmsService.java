@@ -12,11 +12,11 @@ import com.dream.message.service.SmsLogService;
 import com.dream.message.service.SmsPlatformService;
 import com.dream.message.sms.SmsContext;
 import com.dream.message.sms.config.SmsConfig;
-import com.wy.collection.MapTool;
+import com.wy.collection.MapHelper;
 import com.wy.result.ResultException;
 
 import dream.framework.core.constant.ConstCore;
-import dream.framework.core.json.JsonHelper;
+import dream.framework.core.json.JsonHelpers;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,7 +45,7 @@ public class SmsService {
 	 * @return 是否发送成功
 	 */
 	public boolean send(String mobile) {
-		return this.send(mobile, MapTool.newHashMap());
+		return this.send(mobile, MapHelper.newHashMap());
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class SmsService {
 		logEntity.setPlatform(config.getPlatform());
 		logEntity.setPlatformId(config.getId());
 		logEntity.setMobile(mobile);
-		logEntity.setParams(JsonHelper.toJson(params));
+		logEntity.setParams(JsonHelpers.toJson(params));
 
 		if (e != null) {
 			String error = StringUtils.substring(e.getMessage(), 0, 2000);

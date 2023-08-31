@@ -14,7 +14,7 @@ import com.dream.system.mapper.ParamsMapper;
 import com.dream.system.query.ParamsQuery;
 import com.dream.system.service.ParamsService;
 import com.dream.system.vo.ParamsVO;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.ResultException;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
@@ -52,7 +52,7 @@ public class ParamsServiceImpl extends
 	@Override
 	public Boolean edit(ParamsVO vo) {
 		ParamsEntity entity = baseMapper.selectById(vo.getId());
-		if (!StrTool.equalsIgnoreCase(entity.getParamKey(), vo.getParamKey())) {
+		if (!StrHelper.equalsIgnoreCase(entity.getParamKey(), vo.getParamKey())) {
 			boolean exist = baseMapper.isExist(vo.getParamKey());
 			if (exist) {
 				throw new ResultException("参数键已存在");
@@ -83,7 +83,7 @@ public class ParamsServiceImpl extends
 	@Override
 	public String getString(String paramKey) {
 		String value = paramsCache.get(paramKey);
-		if (StrTool.isBlank(value)) {
+		if (StrHelper.isBlank(value)) {
 			throw new ResultException("参数管理的key:[" + paramKey + "]不能为空");
 		}
 		return value;

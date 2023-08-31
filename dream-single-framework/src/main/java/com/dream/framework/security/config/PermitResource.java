@@ -11,7 +11,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
 import lombok.SneakyThrows;
 
@@ -44,7 +44,7 @@ public class PermitResource {
 			Properties properties = loadYamlProperties(resource);
 
 			for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-				String tmpKey = StrTool.subBefore(entry.getKey().toString(), "[");
+				String tmpKey = StrHelper.subBefore(entry.getKey().toString(), "[");
 				if (tmpKey.equalsIgnoreCase(key)) {
 					list.add(entry.getValue().toString());
 				}

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import dream.framework.web.helper.IpHelper;
+import dream.framework.web.helper.IpHelpers;
 import lombok.extern.slf4j.Slf4j;
 
 // @Controller
@@ -31,7 +31,7 @@ public class UaaController {
 
 	@GetMapping(value = { "/login" })
 	public String login(Model model) {
-		log.info("Go to login, IP: {}", IpHelper.getIp());
+		log.info("Go to login, IP: {}", IpHelpers.getIp());
 		return "login";
 	}
 

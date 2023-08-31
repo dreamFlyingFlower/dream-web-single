@@ -15,7 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import com.dream.framework.cache.RedisKeys;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
 /**
  * 序列号生成工具类
@@ -181,7 +181,7 @@ public class SerialNoHelper {
 	static String generateSerialNumber(String prefix) {
 		String result = null;
 		String random = String.format("%03d", ThreadLocalRandom.current().nextInt(1, 999));
-		if (StrTool.isNotBlank(prefix)) {
+		if (StrHelper.isNotBlank(prefix)) {
 			String nowTime = prefix + "-" + System.currentTimeMillis();
 			result = nowTime + random;
 		} else {

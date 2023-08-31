@@ -14,13 +14,13 @@ import com.dream.system.query.LogLoginQuery;
 import com.dream.system.service.LogLoginService;
 import com.dream.system.vo.LogLoginVO;
 import com.fhs.trans.service.impl.TransService;
-import com.wy.util.DateTimeTool;
+import com.wy.util.DateTimeHelper;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
-import dream.framework.web.helper.AddressHelper;
-import dream.framework.web.helper.EasyExcelHelper;
-import dream.framework.web.helper.IpHelper;
-import dream.framework.web.helper.WebHelper;
+import dream.framework.web.helper.AddressHelpers;
+import dream.framework.web.helper.EasyExcelHelpers;
+import dream.framework.web.helper.IpHelpers;
+import dream.framework.web.helper.WebHelpers;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -41,11 +41,11 @@ public class LogLoginServiceImpl
 
 	@Override
 	public void save(String username, Integer status, Integer operation) {
-		HttpServletRequest request = WebHelper.getRequest();
+		HttpServletRequest request = WebHelpers.getRequest();
 		assert request != null;
 		String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
-		String ip = IpHelper.getIp(request);
-		String address = AddressHelper.getAddressByIP(ip);
+		String ip = IpHelpers.getIp(request);
+		String address = AddressHelpers.getAddressByIP(ip);
 		LogLoginEntity entity = LogLoginEntity.builder().username(username).status(status).operation(operation).ip(ip)
 				.address(address).userAgent(userAgent).build();
 		baseMapper.insert(entity);
@@ -57,7 +57,7 @@ public class LogLoginServiceImpl
 		List<LogLoginEntity> list = list();
 		List<LogLoginVO> sysLogLoginVOS = baseConvert.convertt(list);
 		transService.transBatch(sysLogLoginVOS);
-		EasyExcelHelper.excelExport(LogLoginVO.class, "system_login_log_excel" + DateTimeTool.formatDateTime(), null,
+		EasyExcelHelpers.excelExport(LogLoginVO.class, "system_login_log_excel" + DateTimeHelper.formatDateTime(), null,
 				sysLogLoginVOS);
 	}
 }

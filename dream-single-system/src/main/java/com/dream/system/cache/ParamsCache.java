@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dream.framework.cache.RedisCache;
 import com.dream.system.entity.ParamsEntity;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 /**
  * 参数管理 Cache
@@ -35,7 +35,7 @@ public class ParamsCache {
 	 * @param list 参数列表
 	 */
 	public void saveList(List<ParamsEntity> list) {
-		if (ListTool.isEmpty(list)) {
+		if (ListHelper.isEmpty(list)) {
 			return;
 		}
 

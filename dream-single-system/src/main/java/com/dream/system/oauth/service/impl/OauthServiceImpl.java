@@ -14,9 +14,9 @@ import com.dream.system.mapper.OAuthClientDetailsMapper;
 import com.dream.system.oauth.entity.OAuthClientDetails;
 import com.dream.system.oauth.entity.OAuthClientDetailsVO;
 import com.dream.system.oauth.service.OAuthService;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
-import dream.framework.web.helper.IpHelper;
+import dream.framework.web.helper.IpHelpers;
 import lombok.extern.slf4j.Slf4j;
 
 @Service("oauthService")
@@ -34,7 +34,7 @@ public class OauthServiceImpl implements OAuthService {
 	public OAuthClientDetails loadOauthClientDetails(String clientId) {
 		List<OAuthClientDetails> oAuthClientDetails = oauthClientDetailsMapper
 				.selectList(new LambdaQueryWrapper<OAuthClientDetails>().eq(OAuthClientDetails::getClientId, clientId));
-		return ListTool.isEmpty(oAuthClientDetails) ? null : oAuthClientDetails.get(0);
+		return ListHelper.isEmpty(oAuthClientDetails) ? null : oAuthClientDetails.get(0);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class OauthServiceImpl implements OAuthService {
 	public void archiveOauthClientDetails(String clientId) {
 		new LambdaUpdateWrapper<OAuthClientDetails>().set(OAuthClientDetails::isArchived, true)
 				.eq(OAuthClientDetails::getClientId, clientId);
-		log.debug("{}|Update OauthClientDetails(clientId: {}) archive = true", IpHelper.getIp(), clientId);
+		log.debug("{}|Update OauthClientDetails(clientId: {}) archive = true", IpHelpers.getIp(), clientId);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class OauthServiceImpl implements OAuthService {
 	public OAuthClientDetailsVO loadOauthClientDetailsDto(String clientId) {
 		List<OAuthClientDetails> oAuthClientDetails = oauthClientDetailsMapper
 				.selectList(new LambdaQueryWrapper<OAuthClientDetails>().eq(OAuthClientDetails::getClientId, clientId));
-		return ListTool.isEmpty(oAuthClientDetails) ? oauthClientDetailsConvert.convertt(oAuthClientDetails.get(0))
+		return ListHelper.isEmpty(oAuthClientDetails) ? oauthClientDetailsConvert.convertt(oAuthClientDetails.get(0))
 				: null;
 	}
 
@@ -67,6 +67,6 @@ public class OauthServiceImpl implements OAuthService {
 	public void registerClientDetails(OAuthClientDetailsVO formDto) {
 		OAuthClientDetails clientDetails = formDto.createDomain();
 		oauthClientDetailsMapper.insert(clientDetails);
-		log.debug("{}|Save OauthClientDetails: {}", IpHelper.getIp(), clientDetails);
+		log.debug("{}|Save OauthClientDetails: {}", IpHelpers.getIp(), clientDetails);
 	}
 }

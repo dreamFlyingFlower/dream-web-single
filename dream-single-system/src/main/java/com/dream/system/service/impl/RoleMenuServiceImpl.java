@@ -15,7 +15,7 @@ import com.dream.system.mapper.RoleMenuMapper;
 import com.dream.system.query.RoleMenuQuery;
 import com.dream.system.service.RoleMenuService;
 import com.dream.system.vo.RoleMenuVO;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
@@ -38,8 +38,8 @@ public class RoleMenuServiceImpl
 		List<Long> dbMenuIdList = getMenuIdList(roleId);
 
 		// 需要新增的菜单ID
-		Collection<Long> insertMenuIdList = ListTool.getSubtract(menuIdList, dbMenuIdList);
-		if (ListTool.isNotEmpty(insertMenuIdList)) {
+		Collection<Long> insertMenuIdList = ListHelper.getSubtract(menuIdList, dbMenuIdList);
+		if (ListHelper.isNotEmpty(insertMenuIdList)) {
 			List<RoleMenuEntity> menuList = insertMenuIdList.stream()
 					.map(menuId -> RoleMenuEntity.builder().menuId(menuId).roleId(roleId).build())
 					.collect(Collectors.toList());
@@ -47,8 +47,8 @@ public class RoleMenuServiceImpl
 		}
 
 		// 需要删除的菜单ID
-		Collection<Long> deleteMenuIdList = ListTool.getSubtract(dbMenuIdList, menuIdList);
-		if (ListTool.isNotEmpty(deleteMenuIdList)) {
+		Collection<Long> deleteMenuIdList = ListHelper.getSubtract(dbMenuIdList, menuIdList);
+		if (ListHelper.isNotEmpty(deleteMenuIdList)) {
 			LambdaQueryWrapper<RoleMenuEntity> queryWrapper = new LambdaQueryWrapper<>();
 			remove(queryWrapper.eq(RoleMenuEntity::getRoleId, roleId).in(RoleMenuEntity::getMenuId, deleteMenuIdList));
 		}

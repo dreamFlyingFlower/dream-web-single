@@ -15,7 +15,7 @@ import com.dream.system.mapper.DataScopeMapper;
 import com.dream.system.query.DataScopeQuery;
 import com.dream.system.service.DataScopeService;
 import com.dream.system.vo.DataScopeVO;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
@@ -35,8 +35,8 @@ public class DataScopeServiceImpl extends AbstractServiceImpl<DataScopeEntity, D
 		List<Long> dbOrgIdList = getOrgIdList(roleId);
 
 		// 需要新增的机构ID
-		Collection<Long> insertOrgIdList = ListTool.getSubtract(orgIdList, dbOrgIdList);
-		if (ListTool.isNotEmpty(insertOrgIdList)) {
+		Collection<Long> insertOrgIdList = ListHelper.getSubtract(orgIdList, dbOrgIdList);
+		if (ListHelper.isNotEmpty(insertOrgIdList)) {
 			List<DataScopeEntity> orgList = insertOrgIdList.stream()
 					.map(orgId -> DataScopeEntity.builder().orgId(orgId).roleId(roleId).build())
 					.collect(Collectors.toList());
@@ -44,8 +44,8 @@ public class DataScopeServiceImpl extends AbstractServiceImpl<DataScopeEntity, D
 		}
 
 		// 需要删除的机构ID
-		Collection<Long> deleteOrgIdList = ListTool.getSubtract(dbOrgIdList, orgIdList);
-		if (ListTool.isNotEmpty(deleteOrgIdList)) {
+		Collection<Long> deleteOrgIdList = ListHelper.getSubtract(dbOrgIdList, orgIdList);
+		if (ListHelper.isNotEmpty(deleteOrgIdList)) {
 			remove(new LambdaQueryWrapper<DataScopeEntity>().eq(DataScopeEntity::getRoleId, roleId)
 					.in(DataScopeEntity::getOrgId, deleteOrgIdList));
 		}

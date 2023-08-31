@@ -17,7 +17,7 @@ import com.dream.message.query.SmsPlatformQuery;
 import com.dream.message.service.SmsPlatformService;
 import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.Result;
 
 import dream.framework.core.constant.ConstCore;
@@ -47,7 +47,7 @@ public class SmsPlatformServiceImpl extends
 	private LambdaQueryWrapper<SmsPlatformEntity> getWrapper(SmsPlatformQuery query) {
 		LambdaQueryWrapper<SmsPlatformEntity> wrapper = Wrappers.lambdaQuery();
 		wrapper.eq(query.getPlatform() != null, SmsPlatformEntity::getPlatform, query.getPlatform());
-		wrapper.like(StrTool.isNotBlank(query.getSignName()), SmsPlatformEntity::getSignName, query.getSignName());
+		wrapper.like(StrHelper.isNotBlank(query.getSignName()), SmsPlatformEntity::getSignName, query.getSignName());
 		return wrapper;
 	}
 

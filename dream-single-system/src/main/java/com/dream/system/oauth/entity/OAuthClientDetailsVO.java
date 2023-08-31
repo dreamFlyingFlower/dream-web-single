@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.wy.digest.DigestTool;
-import com.wy.lang.StrTool;
+import com.wy.digest.DigestHelper;
+import com.wy.lang.StrHelper;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +25,12 @@ public class OAuthClientDetailsVO implements Serializable {
 	private boolean archived;
 
 	@Builder.Default
-	private String clientId = DigestTool.uuid();
+	private String clientId = DigestHelper.uuid();
 
 	private String resourceIds;
 
 	@Builder.Default
-	private String clientSecret = DigestTool.uuid();
+	private String clientSecret = DigestHelper.uuid();
 
 	private String scope;
 
@@ -80,11 +80,11 @@ public class OAuthClientDetailsVO implements Serializable {
 				.clientSecret(new BCryptPasswordEncoder().encode(clientSecret)).resourceIds(resourceIds)
 				.authorizedGrantTypes(authorizedGrantTypes).scope(scope).build();
 
-		if (StrTool.isNotBlank(webServerRedirectUri)) {
+		if (StrHelper.isNotBlank(webServerRedirectUri)) {
 			clientDetails.setWebServerRedirectUri(webServerRedirectUri);
 		}
 
-		if (StrTool.isNotBlank(authorities)) {
+		if (StrHelper.isNotBlank(authorities)) {
 			clientDetails.setAuthorities(authorities);
 		}
 
@@ -94,7 +94,7 @@ public class OAuthClientDetailsVO implements Serializable {
 
 		clientDetails.setTrusted(trusted);
 
-		if (StrTool.isNotEmpty(additionalInformation)) {
+		if (StrHelper.isNotEmpty(additionalInformation)) {
 			clientDetails.setAdditionalInformation(additionalInformation);
 		}
 

@@ -12,7 +12,7 @@ import com.dream.system.service.ParamsService;
 import com.dream.system.vo.CaptchaVO;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
 import lombok.AllArgsConstructor;
 
@@ -61,7 +61,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 			return true;
 		}
 
-		if (StrTool.isBlank(key) || StrTool.isBlank(code)) {
+		if (StrHelper.isBlank(key) || StrHelper.isBlank(code)) {
 			return false;
 		}
 

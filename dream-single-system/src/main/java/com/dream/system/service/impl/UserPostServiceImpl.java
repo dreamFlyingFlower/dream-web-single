@@ -14,7 +14,7 @@ import com.dream.system.mapper.UserPostMapper;
 import com.dream.system.query.UserPostQuery;
 import com.dream.system.service.UserPostService;
 import com.dream.system.vo.UserPostVO;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
@@ -36,8 +36,8 @@ public class UserPostServiceImpl
 		List<Long> dbPostIdList = getPostIdList(userId);
 
 		// 需要新增的岗位ID
-		Collection<Long> insertPostIdList = ListTool.getSubtract(postIdList, dbPostIdList);
-		if (ListTool.isNotEmpty(insertPostIdList)) {
+		Collection<Long> insertPostIdList = ListHelper.getSubtract(postIdList, dbPostIdList);
+		if (ListHelper.isNotEmpty(insertPostIdList)) {
 			List<UserPostEntity> postList = insertPostIdList.stream().map(postId -> {
 				UserPostEntity entity = new UserPostEntity();
 				entity.setUserId(userId);
@@ -50,8 +50,8 @@ public class UserPostServiceImpl
 		}
 
 		// 需要删除的岗位ID
-		Collection<Long> deletePostIdList = ListTool.getSubtract(dbPostIdList, postIdList);
-		if (ListTool.isNotEmpty(deletePostIdList)) {
+		Collection<Long> deletePostIdList = ListHelper.getSubtract(dbPostIdList, postIdList);
+		if (ListHelper.isNotEmpty(deletePostIdList)) {
 			LambdaQueryWrapper<UserPostEntity> queryWrapper = new LambdaQueryWrapper<>();
 			remove(queryWrapper.eq(UserPostEntity::getUserId, userId).in(UserPostEntity::getPostId, deletePostIdList));
 		}

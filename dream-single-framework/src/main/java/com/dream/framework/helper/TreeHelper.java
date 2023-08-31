@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.wy.lang.AssertTool;
+import com.wy.lang.AssertHelper;
 
 import dream.framework.web.entity.node.AbstractNode;
 
@@ -22,7 +22,7 @@ public class TreeHelper {
 	 * 根据pid,构建树节点
 	 */
 	public static <T extends AbstractNode<T, Long>> List<T> build(List<T> treeNodes, Long pid) {
-		AssertTool.isNull(pid, "pid");
+		AssertHelper.isNull(pid, "pid");
 		List<T> treeList = new ArrayList<>();
 		for (T treeNode : treeNodes) {
 			if (pid.equals(treeNode.getPid())) {

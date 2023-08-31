@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dream.monitor.vo.Cache;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.Result;
 
 /**
@@ -60,7 +60,7 @@ public class CacheController {
 				Map<String, Object> data = new HashMap<>();
 				String property = commandStats.getProperty(key);
 				data.put("name", key.substring(8));
-				data.put("value", StrTool.subBetween(property, "calls=", ",use"));
+				data.put("value", StrHelper.subBetween(property, "calls=", ",use"));
 				pieList.add(data);
 			});
 		}

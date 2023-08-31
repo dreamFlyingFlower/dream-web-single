@@ -34,15 +34,15 @@ import com.dream.system.service.RoleMenuService;
 import com.dream.system.service.RoleResourceService;
 import com.dream.system.vo.ButtonVO;
 import com.dream.system.vo.MenuVO;
-import com.wy.collection.ListTool;
-import com.wy.collection.MapTool;
+import com.wy.collection.ListHelper;
+import com.wy.collection.MapHelper;
 import com.wy.enums.TipEnum;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 import com.wy.result.ResultException;
 
 import dream.framework.core.constant.ConstCore;
 import dream.framework.core.enums.ResourceType;
-import dream.framework.core.json.FastjsonHelper;
+import dream.framework.core.json.FastjsonHelpers;
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 import lombok.AllArgsConstructor;
 
@@ -99,8 +99,8 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	@Override
 	public Map<Long, MenuVO> getCache(String key) {
 		Map<Object, Object> cacheEntries = redisTemplate.opsForHash().entries(RedisKeys.buildKey("menu"));
-		if (MapTool.isNotEmpty(cacheEntries)) {
-			return FastjsonHelper.parseMap(cacheEntries, new HashMap<Long, MenuVO>());
+		if (MapHelper.isNotEmpty(cacheEntries)) {
+			return FastjsonHelpers.parseMap(cacheEntries, new HashMap<Long, MenuVO>());
 		}
 		return handlerCache(null);
 	}
@@ -109,8 +109,8 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	public Map<Long, MenuVO> getCaches(List<Long> menuIds) {
 		List<Object> cacheMenus = redisTemplate.opsForHash().multiGet(RedisKeys.buildKey("menu"),
 				menuIds.stream().map(t -> t).collect(Collectors.toCollection(() -> new ArrayList<Object>())));
-		if (ListTool.isNotEmpty(cacheMenus)) {
-			return FastjsonHelper.parseMap(cacheMenus, new HashMap<Long, MenuVO>());
+		if (ListHelper.isNotEmpty(cacheMenus)) {
+			return FastjsonHelpers.parseMap(cacheMenus, new HashMap<Long, MenuVO>());
 		}
 		return handlerCache(menuIds);
 	}
@@ -137,7 +137,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 		// 用户权限列表
 		Set<String> permsSet = new HashSet<>();
 		for (String authority : authorityList) {
-			if (StrTool.isBlank(authority)) {
+			if (StrHelper.isBlank(authority)) {
 				continue;
 			}
 			permsSet.addAll(Arrays.asList(authority.trim().split(",")));
@@ -158,9 +158,9 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 
 	private Map<Long, MenuVO> handlerCache(List<Long> menuIds) {
 		Map<Long, MenuVO> rets = Collections.emptyMap();
-		List<MenuEntity> menus = ListTool.isEmpty(menuIds) ? list()
+		List<MenuEntity> menus = ListHelper.isEmpty(menuIds) ? list()
 				: list(new LambdaQueryWrapper<MenuEntity>().in(MenuEntity::getId, menuIds));
-		if (ListTool.isNotEmpty(menus)) {
+		if (ListHelper.isNotEmpty(menus)) {
 			rets = baseConvert.convertt(menus).stream().collect(Collectors.toMap(k -> k.getId(), v -> v));
 			redisTemplate.opsForHash().putAll(RedisKeys.buildKey("menu"), rets);
 		}
@@ -170,7 +170,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	private void handlerChildren(MenuVO parent, Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs,
 			Map<Long, List<ButtonVO>> mapMenuId2Buttons) {
 		List<MenuVO> children = mapMenuPid2MenuDTOs.get(parent.getId());
-		if (ListTool.isNotEmpty(children)) {
+		if (ListHelper.isNotEmpty(children)) {
 			parent.setChildren(children);
 			children.forEach(t -> t.setButtons(mapMenuId2Buttons.get(t.getId())));
 			for (MenuVO menuDTO : children) {
@@ -183,7 +183,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 		List<RoleResourceEntity> roleResources = roleResourceService
 				.list(new LambdaQueryWrapper<RoleResourceEntity>().eq(RoleResourceEntity::getRoleId, roleId)
 						.in(RoleResourceEntity::getResourceType, ResourceType.MENU, ResourceType.BUTTON));
-		if (ListTool.isEmpty(roleResources)) {
+		if (ListHelper.isEmpty(roleResources)) {
 			ResultException.throwException(TipEnum.TIP_ROLE_UNASSIGNED_RESOURCE);
 		}
 
@@ -199,7 +199,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 		}
 
 		Map<Long, MenuVO> cacheMenus = getCaches(menuIds);
-		if (MapTool.isEmpty(cacheMenus)) {
+		if (MapHelper.isEmpty(cacheMenus)) {
 			ResultException.throwException(TipEnum.TIP_ROLE_UNASSIGNED_RESOURCE);
 		}
 		Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs =
@@ -209,7 +209,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 				.stream().collect(Collectors.groupingBy(k -> k.getMenuId()));
 
 		List<MenuVO> rootMenus = mapMenuPid2MenuDTOs.get(0L);
-		if (ListTool.isEmpty(rootMenus)) {
+		if (ListHelper.isEmpty(rootMenus)) {
 			ResultException.throwException("根目录不存在,请重新分配菜单");
 		}
 		handlerChildren(rootMenus.get(0), mapMenuPid2MenuDTOs, mapMenuId2Buttons);
@@ -219,7 +219,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	@Override
 	public List<MenuVO> tree(Long id) {
 		Map<Long, MenuVO> cacheMenus = getCache(null);
-		if (MapTool.isEmpty(cacheMenus)) {
+		if (MapHelper.isEmpty(cacheMenus)) {
 			ResultException.throwException(TipEnum.TIP_ROLE_UNASSIGNED_RESOURCE);
 		}
 		Map<Long, List<MenuVO>> mapMenuPid2MenuDTOs =
@@ -240,7 +240,7 @@ public class MenuServiceImpl extends AbstractServiceImpl<MenuEntity, MenuVO, Men
 	public List<MenuVO> treeByUseId(Long userId) {
 		List<UserRoleEntity> userRoles = userRoleMapper.selectList(
 				new LambdaQueryWrapper<UserRoleEntity>().eq(UserRoleEntity::getUserId, userId).last(" limit 1"));
-		if (ListTool.isEmpty(userRoles)) {
+		if (ListHelper.isEmpty(userRoles)) {
 			ResultException.throwException(TipEnum.TIP_USER_NOT_DISTRIBUTE_ROLE);
 		}
 		// FIXME 若多角色,可从登录缓存中取得正在使用的角色 (飞花梦影,2022-09-05,[2022-09-05])

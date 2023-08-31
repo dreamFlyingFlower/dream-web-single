@@ -14,7 +14,7 @@ import com.dream.system.mapper.UserRoleMapper;
 import com.dream.system.query.UserRoleQuery;
 import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.UserRoleVO;
-import com.wy.collection.ListTool;
+import com.wy.collection.ListHelper;
 
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
 
@@ -36,8 +36,8 @@ public class UserRoleServiceImpl
 		List<Long> dbRoleIdList = getRoleIdList(userId);
 
 		// 需要新增的角色ID
-		Collection<Long> insertRoleIdList = ListTool.getSubtract(roleIdList, dbRoleIdList);
-		if (ListTool.isNotEmpty(insertRoleIdList)) {
+		Collection<Long> insertRoleIdList = ListHelper.getSubtract(roleIdList, dbRoleIdList);
+		if (ListHelper.isNotEmpty(insertRoleIdList)) {
 			List<UserRoleEntity> roleList = insertRoleIdList.stream()
 					.map(roleId -> UserRoleEntity.builder().userId(userId).roleId(roleId).build())
 					.collect(Collectors.toList());
@@ -45,8 +45,8 @@ public class UserRoleServiceImpl
 		}
 
 		// 需要删除的角色ID
-		Collection<Long> deleteRoleIdList = ListTool.getSubtract(dbRoleIdList, roleIdList);
-		if (ListTool.isNotEmpty(deleteRoleIdList)) {
+		Collection<Long> deleteRoleIdList = ListHelper.getSubtract(dbRoleIdList, roleIdList);
+		if (ListHelper.isNotEmpty(deleteRoleIdList)) {
 			LambdaQueryWrapper<UserRoleEntity> queryWrapper = new LambdaQueryWrapper<>();
 			remove(queryWrapper.eq(UserRoleEntity::getUserId, userId).in(UserRoleEntity::getRoleId, deleteRoleIdList));
 		}

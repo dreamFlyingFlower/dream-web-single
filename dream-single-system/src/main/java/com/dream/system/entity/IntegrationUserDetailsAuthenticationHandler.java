@@ -7,9 +7,9 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import com.dream.system.service.AuthService;
 import com.dream.system.vo.AccountVO;
 import com.dream.system.vo.LoginAccountVO;
-import com.wy.lang.StrTool;
+import com.wy.lang.StrHelper;
 
-import dream.framework.web.helper.SpringContextHelper;
+import dream.framework.web.helper.SpringContextHelpers;
 
 @Deprecated
 public class IntegrationUserDetailsAuthenticationHandler {
@@ -28,7 +28,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 
 		// 从客户端取数据
 		String username = token.getName();
-		if (StrTool.isBlank(username)) {
+		if (StrHelper.isBlank(username)) {
 			throw new BadCredentialsException("账户为空");
 		}
 		if (token.getCredentials() == null) {
@@ -43,7 +43,7 @@ public class IntegrationUserDetailsAuthenticationHandler {
 		loginAccountVO.setMobile(username);
 		loginAccountVO.setPassword(presentedPassword);
 		@SuppressWarnings("unused")
-		AuthService authService = SpringContextHelper.getBean(AuthService.class);
+		AuthService authService = SpringContextHelpers.getBean(AuthService.class);
 		// FIXME 登录从那来?
 		// AccountVO accountVO = authService.loginByAccount(loginAccountVO);
 		AccountVO accountVO = new AccountVO();
