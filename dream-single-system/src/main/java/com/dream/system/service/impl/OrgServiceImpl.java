@@ -19,7 +19,6 @@ import com.dream.system.query.OrgQuery;
 import com.dream.system.service.OrgService;
 import com.dream.system.service.UserService;
 import com.dream.system.vo.OrgVO;
-import com.wy.result.Result;
 import com.wy.result.ResultException;
 
 import dream.framework.core.constant.ConstCore;
@@ -40,7 +39,7 @@ public class OrgServiceImpl extends AbstractScopeServiceImpl<OrgEntity, OrgVO, O
 	private final UserService userService;
 
 	@Override
-	public Result<List<OrgVO>> list(OrgQuery query) {
+	public List<OrgVO> list(OrgQuery query) {
 		Map<String, Object> params = new HashMap<>();
 
 		// 数据权限
@@ -49,7 +48,7 @@ public class OrgServiceImpl extends AbstractScopeServiceImpl<OrgEntity, OrgVO, O
 		// 机构列表
 		List<OrgEntity> entityList = baseMapper.getList(params);
 
-		return Result.ok(TreeHelper.build(baseConvert.convertt(entityList)));
+		return TreeHelper.build(baseConvert.convertt(entityList));
 	}
 
 	@Override

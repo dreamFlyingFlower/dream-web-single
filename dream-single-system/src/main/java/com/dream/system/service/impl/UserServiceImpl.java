@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dream.framework.enums.SuperAdminEnum;
 import com.dream.framework.security.user.SecurityHelper;
 import com.dream.framework.security.user.SecurityUserDetails;
@@ -61,7 +62,7 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
-	public Result<List<UserVO>> page(UserQuery query) {
+	public Page<UserVO> page(UserQuery query) {
 		// 查询参数
 		Map<String, Object> params = getParams(query);
 		// 分页查询
@@ -69,7 +70,8 @@ public class UserServiceImpl extends AbstractScopeServiceImpl<UserEntity, UserVO
 		params.put(ConstCore.PAGE, page);
 		// 数据列表
 		List<UserEntity> list = baseMapper.getList(params);
-		return Result.page(baseConvert.convertt(list), page.getCurrent(), page.getSize(), page.getTotal());
+		return new Page<UserVO>(page.getCurrent(), page.getSize(), page.getTotal())
+				.setRecords(baseConvert.convertt(list));
 	}
 
 	private Map<String, Object> getParams(UserQuery query) {

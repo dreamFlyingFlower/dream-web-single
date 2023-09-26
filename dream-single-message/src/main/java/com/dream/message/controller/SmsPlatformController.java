@@ -55,7 +55,7 @@ public class SmsPlatformController {
 	@Operation(summary = "分页")
 	@PreAuthorize("hasAuthority('sms:platform:page')")
 	public Result<?> page(@ParameterObject @Valid SmsPlatformQuery query) {
-		return smsPlatformService.page(query);
+		return smsPlatformService.listPage(query);
 	}
 
 	@GetMapping("{id}")

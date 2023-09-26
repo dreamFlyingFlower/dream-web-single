@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dream.framework.enums.DataScopeEnum;
 import com.dream.system.convert.RoleConvert;
 import com.dream.system.entity.RoleEntity;
@@ -22,7 +23,6 @@ import com.dream.system.service.UserRoleService;
 import com.dream.system.vo.DataScopeVO;
 import com.dream.system.vo.RoleVO;
 import com.wy.lang.StrHelper;
-import com.wy.result.Result;
 
 import lombok.AllArgsConstructor;
 
@@ -45,15 +45,16 @@ public class RoleServiceImpl extends AbstractScopeServiceImpl<RoleEntity, RoleVO
 	private final UserRoleService sysUserRoleService;
 
 	@Override
-	public Result<List<RoleVO>> page(RoleQuery query) {
+	public Page<RoleVO> page(RoleQuery query) {
 		IPage<RoleEntity> page = baseMapper.selectPage(getPage(query), getWrapper(query));
-		return Result.page(baseConvert.convertt(page.getRecords()), page.getCurrent(), page.getSize(), page.getTotal());
+		return new Page<RoleVO>(page.getCurrent(), page.getSize(), page.getTotal())
+				.setRecords(baseConvert.convertt(page.getRecords()));
 	}
 
 	@Override
-	public Result<List<RoleVO>> list(RoleQuery query) {
+	public List<RoleVO> list(RoleQuery query) {
 		List<RoleEntity> entityList = baseMapper.selectList(getWrapper(query));
-		return Result.ok(baseConvert.convertt(entityList));
+		return baseConvert.convertt(entityList);
 	}
 
 	private Wrapper<RoleEntity> getWrapper(RoleQuery query) {

@@ -16,6 +16,7 @@ import com.dream.message.service.SmsLogService;
 import com.dream.message.vo.SmsLogVO;
 import com.wy.result.Result;
 
+import dream.framework.web.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("message/sms/log")
 @Tag(name = "短信日志")
 @AllArgsConstructor
-public class SmsLogController {
+public class SmsLogController implements BaseController {
 
 	private final SmsLogService smsLogService;
 
@@ -39,7 +40,7 @@ public class SmsLogController {
 	@Operation(summary = "分页")
 	@PreAuthorize("hasAuthority('sms:log')")
 	public Result<?> page(@ParameterObject @Valid SmsLogQuery query) {
-		return smsLogService.page(query);
+		return smsLogService.listPage(query);
 	}
 
 	@GetMapping("{id}")

@@ -6,7 +6,6 @@ import com.dream.message.entity.SmsPlatformEntity;
 import com.dream.message.query.SmsPlatformQuery;
 import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
-import com.wy.result.Result;
 
 import dream.framework.mybatis.plus.service.BaseServices;
 
@@ -18,8 +17,6 @@ import dream.framework.mybatis.plus.service.BaseServices;
  * @git {@link https://gitee.com/dreamFlyingFlower}
  */
 public interface SmsPlatformService extends BaseServices<SmsPlatformEntity, SmsPlatformVO, SmsPlatformQuery> {
-
-	Result<List<SmsPlatformVO>> page(SmsPlatformQuery query);
 
 	List<SmsConfig> listByEnable();
 

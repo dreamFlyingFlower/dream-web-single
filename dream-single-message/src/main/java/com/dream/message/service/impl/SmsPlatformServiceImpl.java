@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dream.message.cache.SmsPlatformCache;
 import com.dream.message.convert.SmsPlatformConvert;
 import com.dream.message.entity.SmsPlatformEntity;
@@ -18,7 +19,6 @@ import com.dream.message.service.SmsPlatformService;
 import com.dream.message.sms.config.SmsConfig;
 import com.dream.message.vo.SmsPlatformVO;
 import com.wy.lang.StrHelper;
-import com.wy.result.Result;
 
 import dream.framework.core.constant.ConstCore;
 import dream.framework.mybatis.plus.service.impl.AbstractServiceImpl;
@@ -39,9 +39,12 @@ public class SmsPlatformServiceImpl extends
 	private SmsPlatformCache smsPlatformCache;
 
 	@Override
-	public Result<List<SmsPlatformVO>> page(SmsPlatformQuery query) {
+	public Page<SmsPlatformVO> page(SmsPlatformQuery query) {
 		IPage<SmsPlatformEntity> page = baseMapper.selectPage(getPage(query), getWrapper(query));
-		return Result.page(baseConvert.convertt(page.getRecords()), page.getCurrent(), page.getSize(), page.getTotal());
+		// return Result.page(baseConvert.convertt(page.getRecords()),
+		// page.getCurrent(), page.getSize(), page.getTotal());
+		return new Page<SmsPlatformVO>(page.getCurrent(), page.getSize(), page.getTotal())
+				.setRecords(baseConvert.convertt(page.getRecords()));
 	}
 
 	private LambdaQueryWrapper<SmsPlatformEntity> getWrapper(SmsPlatformQuery query) {
